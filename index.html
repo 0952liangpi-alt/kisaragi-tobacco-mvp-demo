@@ -54,7 +54,14 @@
 
     <section class="section" id="shop">
       <div class="section-heading"><div><p class="eyebrow">CURATED SELECTION</p><h2>商品一覧</h2></div><button class="filter-link" id="toggleFilter" aria-expanded="false" aria-controls="filterPanel">絞り込み <span>＋</span></button></div>
-      <div class="filter-panel" id="filterPanel"><label>ブランド<select id="brandFilter"><option value="all">すべて</option><option value="kisaragi">Kisaragi</option><option value="haru">Haru Leaf</option><option value="nami">Nami</option></select></label><label>在庫<select id="stockFilter"><option value="all">すべて</option><option value="available">在庫あり</option><option value="soldout">売り切れ</option></select></label><label class="search-field">商品名・ブランド・番号<input id="searchInput" type="search" placeholder="商品名・ブランド・品番" /></label></div>
+      <div class="filter-panel" id="filterPanel">
+        <label>ブランド<select id="brandFilter"><option value="all">すべて</option><option value="kisaragi">Kisaragi</option><option value="haru">Haru Leaf</option><option value="nami">Nami</option></select></label>
+        <label>在庫<select id="stockFilter"><option value="all">すべて</option><option value="in_stock">在庫あり</option><option value="pre_order">予約受付中</option><option value="out_of_stock">売り切れ</option></select></label>
+        <label class="search-field">商品名・ブランド・番号<input id="searchInput" type="search" placeholder="商品名・ブランド・品番" /></label>
+        <fieldset class="filter-group"><legend>カテゴリー</legend><div class="check-grid"><label><input type="checkbox" name="category" value="cigarette" /> 紙巻き</label><label><input type="checkbox" name="category" value="cigar" /> シガー</label><label><input type="checkbox" name="category" value="ryo" /> 手巻き</label><label><input type="checkbox" name="category" value="iqos" /> 加熱式</label></div></fieldset>
+        <fieldset class="filter-group"><legend>風味</legend><div class="check-grid"><label><input type="checkbox" name="flavor" value="regular" /> レギュラー</label><label><input type="checkbox" name="flavor" value="menthol" /> メンソール</label><label><input type="checkbox" name="flavor" value="capsule" /> カプセル</label><label><input type="checkbox" name="flavor" value="flavored" /> フレーバー</label></div></fieldset>
+        <fieldset class="filter-group tar-filter"><legend>タール <output id="tarRangeValue">0–15mg</output></legend><div class="range-pair"><input id="tarMin" type="range" min="0" max="15" value="0" aria-label="タール最小値" /><input id="tarMax" type="range" min="0" max="15" value="15" aria-label="タール最大値" /></div></fieldset>
+      </div>
       <p class="result-count" id="resultCount" aria-live="polite"></p>
       <div class="product-grid" id="productGrid"></div>
     </section>
