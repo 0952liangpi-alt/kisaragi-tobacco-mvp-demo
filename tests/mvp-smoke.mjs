@@ -7,7 +7,7 @@ const html = read('index.html');
 const js = read('app.js');
 const css = read('styles.css');
 
-for (const [name, source, expected] of [
+const requiredChecks = [
   ['age gate', html, 'id="ageGate"'],
   ['catalog', html, 'id="productGrid"'],
   ['review form', html, 'id="reviewForm"'],
@@ -16,8 +16,16 @@ for (const [name, source, expected] of [
   ['review safety copy', js, '本人確認・住所確認・許可条件を審査します。'],
   ['mobile safe-area', html, 'apple-mobile-web-app-capable'],
   ['keyboard focus', css, 'focus-visible'],
-]) assert.ok(source.includes(expected), `${name} is missing`);
+  ['age background isolation', js, "element.setAttribute('inert', '')"],
+  ['tax-inclusive price format', js, "toLocaleString('ja-JP')}（税込）"],
+  ['legal modal controls', html, 'data-legal="tokusho"'],
+  ['drawer above mobile navigation', css, 'aside[aria-label="カート"]{position:fixed;right:0;bottom:0;z-index:9999}'],
+  ['stable review vote identity', js, 'data-helpful="${product.id}:${review.id}"'],
+  ['generic modal focus isolation', js, 'releaseActiveModalFocus'],
+];
+
+for (const [name, source, expected] of requiredChecks) assert.ok(source.includes(expected), `${name} is missing`);
 
 assert.ok(!html.includes('yinzuoshop.com') && !html.includes('world-tobacco.jp'), 'reference-site material leaked into MVP');
 assert.ok(!js.includes('fetch('), 'MVP must not send customer or identity data');
-console.log('MVP smoke: PASS (9 assertions)');
+console.log(`MVP smoke: PASS (${requiredChecks.length + 2} assertions)`);

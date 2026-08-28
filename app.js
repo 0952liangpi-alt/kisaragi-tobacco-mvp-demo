@@ -1,10 +1,10 @@
 const products = [
-  {id:1,brand:'Kisaragi',brandKey:'kisaragi',name:'Kisaragi No. 01',sku:'KS-001',price:620,stock:24,category:'cigarette',flavor:'regular',origin:'日本',stock_status:'in_stock',meta:'20本 / レギュラー',tar:8,nicotine:0.6,size:'20本入',tone:'',profile:{strength:4,aroma:5,throat_hit:3,sweetness:2,menthol:0},reviews:[{nickname:'Sora',rating:5,smoothness:4,comment:'香りの印象が分かりやすく、ゆっくり楽しみたい時に選びました。',created:'2026.08.20',helpful:18},{nickname:'T.K.',rating:4,smoothness:4,comment:'しっかりした味わいですが、後味は重すぎません。',created:'2026.08.13',helpful:9}]},
-  {id:2,brand:'Haru Leaf',brandKey:'haru',name:'Haru Leaf Mild',sku:'HL-014',price:580,stock:12,category:'cigarette',flavor:'regular',origin:'日本',stock_status:'in_stock',meta:'20本 / レギュラー',tar:6,nicotine:0.5,size:'20本入',tone:'red',profile:{strength:3,aroma:3,throat_hit:2,sweetness:3,menthol:0},reviews:[{nickname:'Miki',rating:4,smoothness:5,comment:'軽めの口当たりを探している人向けの印象です。',created:'2026.08.19',helpful:11}]},
-  {id:3,brand:'Nami',brandKey:'nami',name:'Nami Classic',sku:'NM-022',price:610,stock:0,category:'cigar',flavor:'flavored',origin:'ドミニカ共和国',stock_status:'out_of_stock',meta:'5本 / アロマ',tar:10,nicotine:0.8,size:'5本入',tone:'dark',profile:{strength:5,aroma:5,throat_hit:4,sweetness:2,menthol:0},reviews:[{nickname:'Yuu',rating:5,smoothness:3,comment:'香りが強めなので、時間を取れる日に向いています。',created:'2026.08.04',helpful:7}]},
-  {id:4,brand:'Kisaragi',brandKey:'kisaragi',name:'Kisaragi Menthol',sku:'KS-008',price:620,stock:31,category:'cigarette',flavor:'menthol',origin:'日本',stock_status:'in_stock',meta:'20本 / メンソール',tar:7,nicotine:0.6,size:'20本入',tone:'dark',profile:{strength:3,aroma:3,throat_hit:3,sweetness:1,menthol:5},reviews:[{nickname:'Rin',rating:4,smoothness:4,comment:'清涼感がはっきりしていて、香りは控えめです。',created:'2026.08.21',helpful:22}]},
-  {id:5,brand:'Haru Leaf',brandKey:'haru',name:'Haru Leaf Gold',sku:'HL-020',price:650,stock:7,category:'ryo',flavor:'flavored',origin:'アメリカ',stock_status:'pre_order',meta:'30g / リッチ',tar:9,nicotine:0.7,size:'30g',tone:'',profile:{strength:4,aroma:4,throat_hit:3,sweetness:4,menthol:0},reviews:[{nickname:'Jun',rating:4,smoothness:3,comment:'香りを楽しむタイプのデモ商品です。',created:'2026.08.17',helpful:6}]},
-  {id:6,brand:'Nami',brandKey:'nami',name:'Nami Blue',sku:'NM-031',price:590,stock:0,category:'iqos',flavor:'capsule',origin:'日本',stock_status:'out_of_stock',meta:'20本 / カプセル',tar:4,nicotine:0.3,size:'20本入',tone:'red',profile:{strength:2,aroma:3,throat_hit:2,sweetness:2,menthol:4},reviews:[{nickname:'Aoi',rating:3,smoothness:4,comment:'軽めの設計を想定したデモデータです。',created:'2026.08.08',helpful:3}]},
+  {id:1,brand:'Kisaragi',brandKey:'kisaragi',name:'Kisaragi No. 01',sku:'KS-001',price:620,stock:24,category:'cigarette',flavor:'regular',origin:'日本',stock_status:'in_stock',meta:'20本 / レギュラー',tar:8,nicotine:0.6,size:'20本入',tone:'',profile:{strength:4,aroma:5,throat_hit:3,sweetness:2,menthol:0},reviews:[{id:'ks001-sora',nickname:'Sora',rating:5,smoothness:4,comment:'香りの印象が分かりやすく、ゆっくり楽しみたい時に選びました。',created:'2026.08.20',helpful:18},{id:'ks001-tk',nickname:'T.K.',rating:4,smoothness:4,comment:'しっかりした味わいですが、後味は重すぎません。',created:'2026.08.13',helpful:9}]},
+  {id:2,brand:'Haru Leaf',brandKey:'haru',name:'Haru Leaf Mild',sku:'HL-014',price:580,stock:12,category:'cigarette',flavor:'regular',origin:'日本',stock_status:'in_stock',meta:'20本 / レギュラー',tar:6,nicotine:0.5,size:'20本入',tone:'red',profile:{strength:3,aroma:3,throat_hit:2,sweetness:3,menthol:0},reviews:[{id:'hl014-miki',nickname:'Miki',rating:4,smoothness:5,comment:'軽めの口当たりを探している人向けの印象です。',created:'2026.08.19',helpful:11}]},
+  {id:3,brand:'Nami',brandKey:'nami',name:'Nami Classic',sku:'NM-022',price:610,stock:0,category:'cigar',flavor:'flavored',origin:'ドミニカ共和国',stock_status:'out_of_stock',meta:'5本 / アロマ',tar:10,nicotine:0.8,size:'5本入',tone:'dark',profile:{strength:5,aroma:5,throat_hit:4,sweetness:2,menthol:0},reviews:[{id:'nm022-yuu',nickname:'Yuu',rating:5,smoothness:3,comment:'香りが強めなので、時間を取れる日に向いています。',created:'2026.08.04',helpful:7}]},
+  {id:4,brand:'Kisaragi',brandKey:'kisaragi',name:'Kisaragi Menthol',sku:'KS-008',price:620,stock:31,category:'cigarette',flavor:'menthol',origin:'日本',stock_status:'in_stock',meta:'20本 / メンソール',tar:7,nicotine:0.6,size:'20本入',tone:'dark',profile:{strength:3,aroma:3,throat_hit:3,sweetness:1,menthol:5},reviews:[{id:'ks008-rin',nickname:'Rin',rating:4,smoothness:4,comment:'清涼感がはっきりしていて、香りは控えめです。',created:'2026.08.21',helpful:22}]},
+  {id:5,brand:'Haru Leaf',brandKey:'haru',name:'Haru Leaf Gold',sku:'HL-020',price:650,stock:7,category:'ryo',flavor:'flavored',origin:'アメリカ',stock_status:'pre_order',meta:'30g / リッチ',tar:9,nicotine:0.7,size:'30g',tone:'',profile:{strength:4,aroma:4,throat_hit:3,sweetness:4,menthol:0},reviews:[{id:'hl020-jun',nickname:'Jun',rating:4,smoothness:3,comment:'香りを楽しむタイプのデモ商品です。',created:'2026.08.17',helpful:6}]},
+  {id:6,brand:'Nami',brandKey:'nami',name:'Nami Blue',sku:'NM-031',price:590,stock:0,category:'iqos',flavor:'capsule',origin:'日本',stock_status:'out_of_stock',meta:'20本 / カプセル',tar:4,nicotine:0.3,size:'20本入',tone:'red',profile:{strength:2,aroma:3,throat_hit:2,sweetness:2,menthol:4},reviews:[{id:'nm031-aoi',nickname:'Aoi',rating:3,smoothness:4,comment:'軽めの設計を想定したデモデータです。',created:'2026.08.08',helpful:3}]},
 ];
 
 let cart = [];
@@ -17,6 +17,7 @@ const focusable = 'button:not([disabled]), [href], input:not([disabled]), select
 const ageModal = $('#ageGate');
 const mainContent = $('#mainContent');
 let releaseAgeFocus = null;
+let releaseActiveModalFocus = null;
 let activeDetailProductId = null;
 const helpfulVotes = new Set();
 const categoryNames = {cigarette:'紙巻き',cigar:'シガー',ryo:'手巻き',iqos:'加熱式'};
@@ -60,10 +61,58 @@ function showToast(message) {
 
 function setModal(selector, open) {
   const modal = $(selector);
-  modal.classList.toggle('open', open);
-  document.body.classList.toggle('modal-open', open);
-  if (open) window.setTimeout(() => modal.querySelector(focusable)?.focus(), 0);
-  else lastTrigger?.focus?.();
+  if (!modal) return;
+
+  if (open) {
+    releaseActiveModalFocus?.();
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+
+    const background = [...document.body.children].filter((element) => element !== modal && element.tagName !== 'SCRIPT');
+    background.forEach((element) => {
+      element.dataset.modalAriaHidden = element.getAttribute('aria-hidden') || '';
+      element.dataset.modalWasInert = String(element.hasAttribute('inert'));
+      element.setAttribute('aria-hidden', 'true');
+      element.setAttribute('inert', '');
+    });
+    const getFocusable = () => [...modal.querySelectorAll(focusable)].filter((element) => !element.hidden);
+    const onKeydown = (event) => {
+      if (event.key !== 'Tab') return;
+      const elements = getFocusable();
+      if (!elements.length) return;
+      const first = elements[0];
+      const last = elements[elements.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    modal.addEventListener('keydown', onKeydown);
+    window.setTimeout(() => getFocusable()[0]?.focus(), 0);
+    releaseActiveModalFocus = () => {
+      modal.removeEventListener('keydown', onKeydown);
+      background.forEach((element) => {
+        const previous = element.dataset.modalAriaHidden;
+        if (previous) element.setAttribute('aria-hidden', previous);
+        else element.removeAttribute('aria-hidden');
+        if (element.dataset.modalWasInert !== 'true') element.removeAttribute('inert');
+        delete element.dataset.modalAriaHidden;
+        delete element.dataset.modalWasInert;
+      });
+      releaseActiveModalFocus = null;
+    };
+    return;
+  }
+
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  releaseActiveModalFocus?.();
+  document.body.classList.remove('modal-open');
+  lastTrigger?.focus?.();
 }
 
 function lockAgeModalFocus() {
@@ -231,7 +280,7 @@ function reviewMarkup(product, order = 'latest') {
     const count = product.reviews.filter((review) => review.rating === rating).length;
     return `<div class="rating-row"><span>${rating} ★</span><i><b style="width:${(count / product.reviews.length) * 100}%"></b></i><strong>${count}</strong></div>`;
   }).join('');
-  return `<section class="review-section" aria-labelledby="reviewHeading"><div class="review-heading"><div><p class="eyebrow">DEMO TASTE REVIEWS</p><h3 id="reviewHeading">口感レビュー</h3></div><div class="rating-total"><strong>${average}</strong><span>/ 5.0<br />${product.reviews.length}件</span></div></div><p class="review-disclaimer">掲載内容は機能検証用の架空レビューです。実運用では投稿規約・本人確認・モデレーションを設定します。</p><div class="rating-distribution">${distribution}</div><label class="review-sort">並び順<select data-review-sort><option value="latest" ${order === 'latest' ? 'selected' : ''}>最新順</option><option value="helpful" ${order === 'helpful' ? 'selected' : ''}>参考になった順</option></select></label><div class="review-list">${reviews.map((review, index) => `<article class="review-item"><div class="review-meta"><strong>${review.nickname}</strong><span>${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)} · なめらかさ ${review.smoothness_rating || review.smoothness}/5</span><time>${review.created}</time></div><p>${review.comment}</p><button type="button" class="helpful-button" data-helpful="${product.id}:${index}" ${helpfulVotes.has(`${product.id}:${index}`) ? 'disabled' : ''}>このレビューは参考になりましたか？ はい <b>${review.helpful}</b></button></article>`).join('')}</div></section>`;
+  return `<section class="review-section" aria-labelledby="reviewHeading"><div class="review-heading"><div><p class="eyebrow">DEMO TASTE REVIEWS</p><h3 id="reviewHeading">口感レビュー</h3></div><div class="rating-total"><strong>${average}</strong><span>/ 5.0<br />${product.reviews.length}件</span></div></div><p class="review-disclaimer">掲載内容は機能検証用の架空レビューです。実運用では投稿規約・本人確認・モデレーションを設定します。</p><div class="rating-distribution">${distribution}</div><label class="review-sort">並び順<select data-review-sort><option value="latest" ${order === 'latest' ? 'selected' : ''}>最新順</option><option value="helpful" ${order === 'helpful' ? 'selected' : ''}>参考になった順</option></select></label><div class="review-list">${reviews.map((review) => `<article class="review-item"><div class="review-meta"><strong>${review.nickname}</strong><span>${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)} · なめらかさ ${review.smoothness_rating || review.smoothness}/5</span><time>${review.created}</time></div><p>${review.comment}</p><button type="button" class="helpful-button" data-helpful="${product.id}:${review.id}" ${helpfulVotes.has(`${product.id}:${review.id}`) ? 'disabled' : ''}>このレビューは参考になりましたか？ はい <b>${review.helpful}</b></button></article>`).join('')}</div></section>`;
 }
 
 function productProfileMarkup(product) {
@@ -289,11 +338,14 @@ document.addEventListener('click', (event) => {
 
   const helpful = event.target.closest('[data-helpful]');
   if (helpful) {
-    const [productId, reviewIndex] = helpful.dataset.helpful.split(':').map(Number);
-    const voteKey = `${productId}:${reviewIndex}`;
+    const [rawProductId, reviewId] = helpful.dataset.helpful.split(':');
+    const productId = Number(rawProductId);
+    const voteKey = `${productId}:${reviewId}`;
     if (!helpfulVotes.has(voteKey)) {
       helpfulVotes.add(voteKey);
-      products.find((product) => product.id === productId)?.reviews[reviewIndex] && (products.find((product) => product.id === productId).reviews[reviewIndex].helpful += 1);
+      const reviewedProduct = products.find((product) => product.id === productId);
+      const review = reviewedProduct?.reviews.find((item) => item.id === reviewId);
+      if (review) review.helpful += 1;
       const product = products.find((item) => item.id === activeDetailProductId);
       if (product) renderProductDetail(product, $('#detailBody [data-review-sort]')?.value || 'latest');
       showToast('参考になったレビューとして記録しました（デモ）');
