@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kisaragi-demo-v3';
+const CACHE_NAME = 'kisaragi-demo-v4';
 const APP_SHELL = [
   './',
   './index.html',

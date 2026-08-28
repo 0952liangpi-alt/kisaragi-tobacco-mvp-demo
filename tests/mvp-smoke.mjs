@@ -42,7 +42,9 @@ const requiredChecks = [
   ['catalog category filters', html, 'data-catalog-filter="smokeless"'],
   ['catalog source links', js, 'entry.sourceUrl'],
   ['service worker registration', js, "serviceWorker.register('./service-worker.js')"],
-  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v3'"],
+  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v4'"],
+  ['glass product direction', css, 'Aurora Glass product direction'],
+  ['real catalog primary CTA', html, 'href="#catalog">実物図鑑を見る'],
   ['Japanese navigation label', html, 'aria-label="メインナビゲーション"'],
   ['prototype status above the fold', html, 'PROTOTYPE / NO SALES'],
 ];
@@ -50,6 +52,7 @@ const requiredChecks = [
 for (const [name, source, expected] of requiredChecks) assert.ok(source.includes(expected), `${name} is missing`);
 
 assert.ok(!html.includes('yinzuoshop.com') && !html.includes('world-tobacco.jp'), 'reference-site material leaked into MVP');
+assert.equal((html.match(/data-catalog-filter="all"/g) || []).length, 1, 'catalog must have one all-category filter');
 assert.ok(!js.includes('fetch('), 'MVP must not send customer or identity data');
 assert.equal(catalog.length, 35, 'catalog must contain 35 verified product records');
 assert.equal(new Set(catalog.map((entry) => entry.id)).size, 35, 'catalog IDs must be unique');

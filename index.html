@@ -7,16 +7,16 @@
   <meta name="description" content="日本市場のたばこ・ニコチン関連商品を10品類、35件の実物資料で確認できる20歳以上向け調査デモ" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
   <meta name="referrer" content="no-referrer" />
-  <meta name="theme-color" content="#171717" />
+  <meta name="theme-color" content="#f5f5f7" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Kisaragi" />
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="canonical" href="https://0952liangpi-alt.github.io/kisaragi-tobacco-mvp-demo/" />
   <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./assets/icon.svg" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css?v=20260828-2200" />
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
@@ -39,7 +39,7 @@
       <span class="brand-mark">K</span><span>KISARAGI</span>
     </a>
     <nav class="desktop-nav" aria-label="メインナビゲーション">
-      <a href="#shop">商品一覧</a><a href="#story">店について</a><a href="#guide">購入ガイド</a><a href="#contact">お問い合わせ</a>
+      <a href="#catalog">実物図鑑</a><a href="#story">このサイトについて</a><a href="#guide">利用ガイド</a><a href="#contact">お問い合わせ</a>
     </nav>
     <div class="header-actions"><button class="text-button" data-open="account">ログイン</button><button class="cart-button" data-open="cart">カート <b id="cartCount">0</b></button></div>
   </header>
@@ -48,16 +48,16 @@
     <section class="hero" id="home">
       <div class="hero-copy">
         <p class="eyebrow">PROTOTYPE / NO SALES</p>
-        <h1>選ぶ時間まで、<em>丁寧に。</em></h1>
-        <p class="hero-lede shimmer-text">日本市場のたばこ関連商品を、品類・実物写真・出典から確認できる調査用カタログ。</p>
-        <div class="hero-actions"><a class="button button-primary" href="#shop">商品を見る</a><a class="button button-outline" href="#guide">購入について</a></div>
+        <h1>実物で見る。<em>品類でわかる。</em></h1>
+        <p class="hero-lede shimmer-text">日本市場のたばこ関連商品を、実物写真と確かな出典から静かに見渡せる調査用カタログ。</p>
+        <div class="hero-actions"><a class="button button-primary" href="#catalog">実物図鑑を見る</a><a class="button button-outline" href="#guide">利用方法</a></div>
         <div class="trust-line"><span>20歳以上限定</span><span>調査用デモ</span><span>実販売なし</span></div>
       </div>
       <div class="hero-product-container hero-real-gallery" aria-label="日本たばこの実物参考写真">
         <a class="hero-real-photo hero-real-photo-main" href="./assets/catalog/image2.jpg" target="_blank" rel="noopener"><img src="./assets/catalog/image2.jpg" alt="Peace（10本入）の実物参考写真" width="640" height="960" /></a>
         <a class="hero-real-photo hero-real-photo-top" href="./assets/catalog/image3.png" target="_blank" rel="noopener"><img src="./assets/catalog/image3.png" alt="Seven Starsの実物参考写真" width="480" height="640" /></a>
         <a class="hero-real-photo hero-real-photo-bottom" href="./assets/catalog/image5.jpg" target="_blank" rel="noopener"><img src="./assets/catalog/image5.jpg" alt="MEVIUSの実物参考写真" width="640" height="480" /></a>
-        <span class="hero-photo-label">実物写真 · 点击查看大图</span><div class="seal">20<br /><small>ONLY</small></div>
+        <span class="hero-photo-label">実物写真 · クリックして拡大</span><div class="seal">20<br /><small>ONLY</small></div>
       </div>
     </section>
 
@@ -116,7 +116,7 @@
   </main>
 
   <footer><div class="footer-brand"><span class="brand-mark">K</span><strong>KISARAGI</strong><small>Research Prototype / No Real Sales</small></div><div class="footer-links"><a href="#guide">購入ガイド</a><button class="footer-link-button" type="button" data-legal="tokusho">特定商取引法に基づく表記</button><button class="footer-link-button" type="button" data-legal="privacy">プライバシーポリシー</button></div><small>© 2026 KISARAGI. DEMO SITE — NO REAL SALES.</small></footer>
-  <div class="bottom-nav"><a href="#home">ホーム</a><a href="#shop">商品</a><a href="#guide">ガイド</a><button data-open="cart">カート <span id="mobileCartCount">0</span></button><button data-open="account">マイページ</button></div>
+  <div class="bottom-nav"><a href="#home">ホーム</a><a href="#catalog">図鑑</a><a href="#guide">ガイド</a><button data-open="cart">カート <span id="mobileCartCount">0</span></button><button data-open="account">マイページ</button></div>
   <div class="drawer-backdrop" id="drawerBackdrop"></div><aside class="drawer" id="cartDrawer" aria-label="カート" aria-hidden="true" inert><div class="drawer-head"><h2>カート</h2><button class="close-button" data-close>閉じる</button></div><div id="cartItems" class="cart-items"></div><div class="drawer-total"><span>合計</span><strong id="cartTotal">¥0</strong></div><button class="button button-primary full" id="checkoutButton">審査へ進む</button><p class="drawer-caption">デモ表示です。実決済・発送は接続されていません。</p></aside>
   <div class="toast" id="toast" role="status"></div>
   <div class="member-modal" id="memberModal" role="dialog" aria-modal="true" aria-labelledby="memberTitle" aria-hidden="true"><div class="member-card"><button class="close-button" data-member-close>閉じる</button><div id="memberBody"><p class="eyebrow">DEMO / MEMBER AREA</p><h2 id="memberTitle">会員ページ</h2><p>ログイン・会員登録、購入履歴、お気に入り、定期お届け便の契約管理をここに接続します。</p><div class="member-links"><button class="button button-primary" data-member-action="login">ログインする</button><button class="button button-outline" data-member-action="register">無料会員登録</button></div><small>デモ版ではアカウント、注文、決済情報を保存・送信しません。</small></div></div></div>

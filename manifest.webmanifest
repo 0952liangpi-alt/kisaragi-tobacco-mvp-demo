@@ -4,8 +4,8 @@
   "lang": "ja-JP",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f4f0e8",
-  "theme_color": "#171717",
+  "background_color": "#f5f5f7",
+  "theme_color": "#f5f5f7",
   "description": "日本市場のたばこ関連商品を品類・実物資料・出典から確認する20歳以上向け調査デモ",
   "icons": [
     {
