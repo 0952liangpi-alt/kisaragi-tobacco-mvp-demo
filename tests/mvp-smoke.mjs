@@ -42,7 +42,7 @@ const requiredChecks = [
   ['catalog category filters', html, 'data-catalog-filter="smokeless"'],
   ['catalog source links', js, 'entry.sourceUrl'],
   ['service worker registration', js, "serviceWorker.register('./service-worker.js')"],
-  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v8'"],
+  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v9'"],
   ['Apple system font stack', css, '--font-system:-apple-system,BlinkMacSystemFont'],
   ['Japanese font fallback', css, '"Hiragino Sans"'],
   ['semantic type scale', css, '--type-hero:clamp'],
@@ -55,6 +55,9 @@ const requiredChecks = [
   ['member lock stays inside product visual', js, '<span class="member-lock">ログインして詳細を見る</span>'],
   ['mobile readable caption floor', css, 'font-size:.75rem'],
   ['compact mobile section rhythm', css, 'padding:56px 20px'],
+  ['single-row floating mobile dock', css, 'grid-template-columns:repeat(5,minmax(0,1fr))'],
+  ['compact mobile footer', css, 'grid-template-columns:40px 1fr'],
+  ['mobile dock icon labels', html, 'aria-label="モバイルナビゲーション"'],
 ];
 
 for (const [name, source, expected] of requiredChecks) assert.ok(source.includes(expected), `${name} is missing`);

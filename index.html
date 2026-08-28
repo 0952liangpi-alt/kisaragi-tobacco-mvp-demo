@@ -16,7 +16,7 @@
   <link rel="canonical" href="https://0952liangpi-alt.github.io/kisaragi-tobacco-mvp-demo/" />
   <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./assets/icon.svg" />
-  <link rel="stylesheet" href="./styles.css?v=20260829-0015" />
+  <link rel="stylesheet" href="./styles.css?v=20260829-0045" />
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
@@ -117,7 +117,13 @@
   </main>
 
   <footer><div class="footer-brand"><span class="brand-mark">K</span><strong>KISARAGI</strong><small>Research Prototype / No Real Sales</small></div><div class="footer-links"><a href="#guide">購入ガイド</a><button class="footer-link-button" type="button" data-legal="tokusho">特定商取引法に基づく表記</button><button class="footer-link-button" type="button" data-legal="privacy">プライバシーポリシー</button></div><small>© 2026 KISARAGI. DEMO SITE — NO REAL SALES.</small></footer>
-  <div class="bottom-nav"><a href="#home">ホーム</a><a href="#catalog">図鑑</a><a href="#guide">ガイド</a><button data-open="cart">カート <span id="mobileCartCount">0</span></button><button data-open="account">マイページ</button></div>
+  <nav class="bottom-nav" aria-label="モバイルナビゲーション">
+    <a href="#home"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 11.5 12 5l8 6.5V20h-5v-5H9v5H4z" /></svg><span>ホーム</span></a>
+    <a href="#catalog"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z" /></svg><span>図鑑</span></a>
+    <a href="#guide"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5.5c3.2-.8 5.9-.2 8 1.7 2.1-1.9 4.8-2.5 8-1.7v13c-3.2-.8-5.9-.2-8 1.7-2.1-1.9-4.8-2.5-8-1.7zm8 1.7v13" /></svg><span>ガイド</span></a>
+    <button data-open="cart"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7zM9 8a3 3 0 0 1 6 0" /></svg><span>カート <b id="mobileCartCount">0</b></span></button>
+    <button data-open="account"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-7 8c.8-4 3.1-6 7-6s6.2 2 7 6" /></svg><span>マイページ</span></button>
+  </nav>
   <div class="drawer-backdrop" id="drawerBackdrop"></div><aside class="drawer" id="cartDrawer" aria-label="カート" aria-hidden="true" inert><div class="drawer-head"><h2>カート</h2><button class="close-button" data-close>閉じる</button></div><div id="cartItems" class="cart-items"></div><div class="drawer-total"><span>合計</span><strong id="cartTotal">¥0</strong></div><button class="button button-primary full" id="checkoutButton">審査へ進む</button><p class="drawer-caption">デモ表示です。実決済・発送は接続されていません。</p></aside>
   <div class="toast" id="toast" role="status"></div>
   <div class="member-modal" id="memberModal" role="dialog" aria-modal="true" aria-labelledby="memberTitle" aria-hidden="true"><div class="member-card"><button class="close-button" data-member-close>閉じる</button><div id="memberBody"><p class="eyebrow">DEMO / MEMBER AREA</p><h2 id="memberTitle">会員ページ</h2><p>ログイン・会員登録、購入履歴、お気に入り、定期お届け便の契約管理をここに接続します。</p><div class="member-links"><button class="button button-primary" data-member-action="login">ログインする</button><button class="button button-outline" data-member-action="register">無料会員登録</button></div><small>デモ版ではアカウント、注文、決済情報を保存・送信しません。</small></div></div></div>
@@ -147,6 +153,6 @@
     </article>
   </div>
   <script src="./catalog-data.js?v=20260828-2030"></script>
-  <script src="./app.js?v=20260829-0015"></script>
+  <script src="./app.js?v=20260829-0045"></script>
 </body>
 </html>
