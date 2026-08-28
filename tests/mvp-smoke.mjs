@@ -31,6 +31,9 @@ const requiredChecks = [
   ['subtle noise texture', css, "feTurbulence"],
   ['five-dimensional taste profile', js, "sweetness:'甘さ',menthol:'清涼感'"],
   ['low-stock state', js, "label:'残りわずか'"],
+  ['real-photo hero', html, 'hero-real-gallery'],
+  ['clickable full-size catalog photo', js, 'catalog-photo-link'],
+  ['network-first page refresh', sw, "event.request.mode === 'navigate'"],
   ['stable review vote identity', js, 'data-helpful="${product.id}:${review.id}"'],
   ['generic modal focus isolation', js, 'releaseActiveModalFocus'],
   ['cart focus isolation', js, 'releaseCartFocus'],
@@ -39,7 +42,7 @@ const requiredChecks = [
   ['catalog category filters', html, 'data-catalog-filter="smokeless"'],
   ['catalog source links', js, 'entry.sourceUrl'],
   ['service worker registration', js, "serviceWorker.register('./service-worker.js')"],
-  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v2'"],
+  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v3'"],
   ['Japanese navigation label', html, 'aria-label="メインナビゲーション"'],
   ['prototype status above the fold', html, 'PROTOTYPE / NO SALES'],
 ];

@@ -279,13 +279,15 @@ function renderCatalog() {
   const grid = $('#catalogGrid');
   if (!grid) return;
   const activeCategory = document.querySelector('[data-catalog-filter][aria-pressed="true"]')?.dataset.catalogFilter || 'all';
-  const entries = activeCategory === 'all' ? catalogEntries : catalogEntries.filter((entry) => entry.category === activeCategory);
-  $('#catalogCount').textContent = `${entries.length}件 / 全${catalogEntries.length}件`;
+  const filteredEntries = activeCategory === 'all' ? catalogEntries : catalogEntries.filter((entry) => entry.category === activeCategory);
+  const entries = [...filteredEntries].sort((a, b) => Number(Boolean(b.asset)) - Number(Boolean(a.asset)));
+  const photoCount = entries.filter((entry) => entry.asset && entry.publicationAllowed).length;
+  $('#catalogCount').textContent = `${entries.length}件 / 実物写真${photoCount}件`;
   grid.innerHTML = entries.map((entry) => `
     <article class="catalog-card reveal-on-scroll">
       <div class="catalog-media ${entry.asset ? '' : 'source-only'}">
-        ${entry.asset
-          ? `<img src="./assets/catalog/${entry.asset}" alt="${entry.nameJa}の実物参考写真" loading="lazy" width="640" height="420" />`
+        ${entry.asset && entry.publicationAllowed
+          ? `<a class="catalog-photo-link" href="./assets/catalog/${entry.asset}" target="_blank" rel="noopener" aria-label="${entry.nameJa}の実物写真を原寸で見る"><img src="./assets/catalog/${entry.asset}" alt="${entry.nameJa}の実物参考写真" loading="lazy" width="640" height="420" /></a>`
           : `<a href="${entry.sourceUrl}" target="_blank" rel="noopener noreferrer" aria-label="${entry.nameJa}の実物写真を出典サイトで確認"><b>実物写真</b><span>出典先で確認 ↗</span></a>`}
         <span>${entry.categoryLabel}</span>
       </div>
