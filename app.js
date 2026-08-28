@@ -24,6 +24,24 @@ const categoryNames = {cigarette:'紙巻き',cigar:'シガー',ryo:'手巻き',i
 const flavorNames = {regular:'レギュラー',menthol:'メンソール',capsule:'カプセル',flavored:'フレーバー'};
 const stockStates = {in_stock:{label:'在庫あり',className:'in-stock'},pre_order:{label:'予約受付中',className:'pre-order'},out_of_stock:{label:'売り切れ',className:'out-of-stock'}};
 
+let revealObserver;
+function observeRevealElements() {
+  document.body.classList.add('motion-ready');
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal-on-scroll').forEach((element) => element.classList.add('active'));
+    return;
+  }
+  revealObserver?.disconnect();
+  revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
+    });
+  }, {threshold: 0.15});
+  document.querySelectorAll('.reveal-on-scroll').forEach((element) => revealObserver.observe(element));
+}
+
 const legalContent = {
   tokusho: {
     title: '特定商取引法に基づく表記',
@@ -118,6 +136,8 @@ function setModal(selector, open) {
 function lockAgeModalFocus() {
   if (!ageModal || releaseAgeFocus) return;
 
+  document.body.classList.add('unverified');
+
   const background = [...document.body.children].filter((element) => element !== ageModal && element.tagName !== 'SCRIPT');
   background.forEach((element) => {
     element.dataset.ageGateAriaHidden = element.getAttribute('aria-hidden') || '';
@@ -155,6 +175,7 @@ function lockAgeModalFocus() {
       delete element.dataset.ageGateAriaHidden;
     });
     document.body.style.overflow = '';
+    document.body.classList.remove('unverified');
     mainContent?.removeAttribute('aria-hidden');
     releaseAgeFocus = null;
   };
@@ -221,7 +242,7 @@ function renderProducts() {
 
   $('#resultCount').textContent = `${list.length} 件の商品`;
   $('#productGrid').innerHTML = list.length ? list.map((product) => `
-    <article class="product-card">
+    <article class="product-card reveal-on-scroll">
       <button class="product-visual ${product.tone}" data-detail="${product.id}" aria-label="${product.name}の詳細を見る">
         <span class="stock-badge ${stockStates[product.stock_status].className}">${stockStates[product.stock_status].label}</span>
         <div class="pack"><small>${product.brand.toUpperCase()}</small><strong>${product.name.split(' ')[0]}<br />${product.name.split(' ')[1] || ''}</strong><small>20 / JAPAN</small></div>
@@ -233,6 +254,7 @@ function renderProducts() {
         <div class="product-bottom"><span class="price">${yen(product.price)}</span><button class="add-button" data-add="${product.id}" ${canAdd(product) ? '' : 'disabled'}>${product.stock_status === 'pre_order' ? '予約を申請' : canAdd(product) ? 'カートに追加' : '再入荷待ち'}</button></div>
       </div>
     </article>`).join('') : '<p class="empty-cart">条件に一致する商品がありません。</p>';
+  if (document.body.classList.contains('motion-ready')) observeRevealElements();
 }
 
 function renderCart() {
@@ -388,3 +410,4 @@ restoreCart();
 updateTarRange();
 renderProducts();
 renderCart();
+observeRevealElements();
