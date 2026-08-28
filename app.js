@@ -10,9 +10,26 @@ const products = [
 let cart = [];
 let lastTrigger = null;
 const CART_KEY = 'kisaragiDemoCart';
+const AGE_VERIFIED_KEY = 'age_verified';
 const $ = (selector) => document.querySelector(selector);
-const yen = (value) => `¥${value.toLocaleString('ja-JP')}`;
+const yen = (value) => `¥${value.toLocaleString('ja-JP')}（税込）`;
 const focusable = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled])';
+const ageModal = $('#ageGate');
+const mainContent = $('#mainContent');
+let releaseAgeFocus = null;
+
+const legalContent = {
+  tokusho: {
+    title: '特定商取引法に基づく表記',
+    body: `<p>本ページは機能検証用のデモサイトです。商品の実販売、決済、契約、配送は行っていません。</p>
+      <dl class="legal-list"><div><dt>販売事業者</dt><dd>テストサイトのため未設定</dd></div><div><dt>販売価格</dt><dd>画面上の価格はデモ表示です</dd></div><div><dt>代金の支払時期・方法</dt><dd>決済機能は未接続です</dd></div><div><dt>引渡時期</dt><dd>配送・引渡しは行いません</dd></div><div><dt>返品・交換</dt><dd>デモのため対象外です</dd></div></dl><p>実運用前に、許可を持つ事業者の正確な事業者情報・販売条件・通信販売条件へ差し替えが必要です。</p>`
+  },
+  privacy: {
+    title: 'プライバシーポリシー',
+    body: `<p>本デモはサーバーへ個人情報を送信しません。お問い合わせ・購入審査フォームの入力内容は送信・保存されません。</p>
+      <dl class="legal-list"><div><dt>取得する情報</dt><dd>デモ動作に必要な年齢確認状態とカート内容のみ、端末内に保存します</dd></div><div><dt>第三者提供</dt><dd>行いません</dd></div><div><dt>実運用時</dt><dd>本人確認・注文・配送を開始する前に、適法なプライバシーポリシーとデータ取扱体制を整備します</dd></div></dl>`
+  }
+};
 
 function persistCart() {
   localStorage.setItem(CART_KEY, JSON.stringify(cart.map(({product, qty}) => ({id: product.id, qty}))));
@@ -43,6 +60,75 @@ function setModal(selector, open) {
   if (open) window.setTimeout(() => modal.querySelector(focusable)?.focus(), 0);
   else lastTrigger?.focus?.();
 }
+
+function lockAgeModalFocus() {
+  if (!ageModal || releaseAgeFocus) return;
+
+  const background = [...document.body.children].filter((element) => element !== ageModal && element.tagName !== 'SCRIPT');
+  background.forEach((element) => {
+    element.dataset.ageGateAriaHidden = element.getAttribute('aria-hidden') || '';
+    element.setAttribute('aria-hidden', 'true');
+    element.setAttribute('inert', '');
+  });
+  document.body.style.overflow = 'hidden';
+  mainContent?.setAttribute('aria-hidden', 'true');
+
+  const getFocusable = () => [...ageModal.querySelectorAll(focusable)].filter((element) => !element.hidden);
+  const onKeydown = (event) => {
+    if (event.key !== 'Tab') return;
+    const elements = getFocusable();
+    if (!elements.length) return;
+    const firstElement = elements[0];
+    const lastElement = elements[elements.length - 1];
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  };
+
+  ageModal.addEventListener('keydown', onKeydown);
+  window.setTimeout(() => getFocusable()[0]?.focus(), 0);
+  releaseAgeFocus = () => {
+    ageModal.removeEventListener('keydown', onKeydown);
+    background.forEach((element) => {
+      const previous = element.dataset.ageGateAriaHidden;
+      if (previous) element.setAttribute('aria-hidden', previous);
+      else element.removeAttribute('aria-hidden');
+      element.removeAttribute('inert');
+      delete element.dataset.ageGateAriaHidden;
+    });
+    document.body.style.overflow = '';
+    mainContent?.removeAttribute('aria-hidden');
+    releaseAgeFocus = null;
+  };
+}
+
+function unlockAgeModal() {
+  releaseAgeFocus?.();
+  localStorage.setItem(AGE_VERIFIED_KEY, 'true');
+  ageModal?.setAttribute('aria-hidden', 'true');
+  if (ageModal) ageModal.style.display = 'none';
+}
+
+function openLegalModal(type, trigger = document.activeElement) {
+  const content = legalContent[type];
+  if (!content) return;
+  lastTrigger = trigger;
+  $('#legalTitle').textContent = content.title;
+  $('#legalBody').innerHTML = content.body;
+  $('#legalModal').setAttribute('aria-hidden', 'false');
+  setModal('#legalModal', true);
+}
+
+function closeLegalModal() {
+  $('#legalModal').setAttribute('aria-hidden', 'true');
+  setModal('#legalModal', false);
+}
+
+window.openLegalModal = openLegalModal;
 
 function renderProducts() {
   const brand = $('#brandFilter').value;
@@ -142,14 +228,22 @@ document.addEventListener('click', (event) => {
   if (event.target.closest('[data-open="account"]')) showToast('ログイン機能はデモ表示です');
   if (event.target.closest('[data-detail-close]') || event.target.id === 'detailModal') setModal('#detailModal', false);
   if (event.target.closest('[data-review-close]') || event.target.id === 'reviewModal') setModal('#reviewModal', false);
+  const legalTrigger = event.target.closest('[data-legal]');
+  if (legalTrigger) openLegalModal(legalTrigger.dataset.legal, legalTrigger);
+  if (event.target.closest('[data-legal-close]') || event.target.id === 'legalModal') closeLegalModal();
 
   const remove = event.target.closest('[data-remove]');
   if (remove) { cart = cart.filter((item) => item.product.id !== Number(remove.dataset.remove)); renderCart(); }
 });
 
-$('#enterSite').addEventListener('click', () => { sessionStorage.setItem('ageConfirmed', '1'); $('#ageGate').style.display = 'none'; });
+$('#enterSite').addEventListener('click', unlockAgeModal);
 $('#leaveSite').addEventListener('click', () => { document.body.innerHTML = '<main class="exit-page"><h1>ご利用ありがとうございました。</h1><p>このページを閉じてください。</p></main>'; });
-if (sessionStorage.getItem('ageConfirmed')) $('#ageGate').style.display = 'none';
+if (localStorage.getItem(AGE_VERIFIED_KEY)) {
+  ageModal?.setAttribute('aria-hidden', 'true');
+  if (ageModal) ageModal.style.display = 'none';
+} else {
+  lockAgeModalFocus();
+}
 
 $('#toggleFilter').addEventListener('click', () => {
   const open = $('#filterPanel').classList.toggle('open');
@@ -163,6 +257,7 @@ document.addEventListener('keydown', (event) => {
   if (event.key !== 'Escape') return;
   if ($('#reviewModal').classList.contains('open')) setModal('#reviewModal', false);
   else if ($('#detailModal').classList.contains('open')) setModal('#detailModal', false);
+  else if ($('#legalModal').classList.contains('open')) closeLegalModal();
   else if ($('#cartDrawer').classList.contains('open')) closeCart();
 });
 

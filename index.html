@@ -18,7 +18,7 @@
   <div id="ageGate" class="age-gate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
     <div class="age-card">
       <p class="eyebrow">KISARAGI / TOBACCO ATELIER</p>
-      <h1 id="ageTitle">20歳以上の方のみ<br />ご利用いただけます</h1>
+      <h2 class="modal-title" id="ageTitle">20歳以上の方のみ<br />ご利用いただけます</h2>
       <p>本サイトは日本国内の成人向け商品カタログです。商品購入には別途、法定の年齢・本人確認が必要です。</p>
       <div class="age-actions">
         <button class="button button-primary" id="enterSite">20歳以上です</button>
@@ -66,7 +66,7 @@
     <section class="contact section" id="contact"><div><p class="eyebrow">CONTACT / WHOLESALE</p><h2>店舗・卸売の<br />ご相談はこちら</h2></div><form id="contactForm"><label>お名前<input required type="text" placeholder="山田 太郎" /></label><label>メールアドレス<input required type="email" placeholder="name@example.jp" /></label><label>ご相談内容<textarea rows="3" placeholder="お問い合わせ内容"></textarea></label><button class="button button-primary" type="submit">相談を送る</button><p class="form-status" id="formStatus"></p></form></section>
   </main>
 
-  <footer><div class="footer-brand"><span class="brand-mark">K</span><strong>KISARAGI</strong><small>Licensed Tobacco Atelier / Tokyo</small></div><div class="footer-links"><a href="#guide">購入ガイド</a><a href="#contact">特定商取引法に基づく表記</a><a href="#contact">プライバシーポリシー</a></div><small>© 2026 KISARAGI. DEMO SITE — NO REAL SALES.</small></footer>
+  <footer><div class="footer-brand"><span class="brand-mark">K</span><strong>KISARAGI</strong><small>Licensed Tobacco Atelier / Tokyo</small></div><div class="footer-links"><a href="#guide">購入ガイド</a><button class="footer-link-button" type="button" data-legal="tokusho">特定商取引法に基づく表記</button><button class="footer-link-button" type="button" data-legal="privacy">プライバシーポリシー</button></div><small>© 2026 KISARAGI. DEMO SITE — NO REAL SALES.</small></footer>
   <div class="bottom-nav"><a href="#home">ホーム</a><a href="#shop">商品</a><a href="#guide">ガイド</a><button data-open="cart">カート <span id="mobileCartCount">0</span></button><button data-open="account">マイページ</button></div>
   <div class="drawer-backdrop" id="drawerBackdrop"></div><aside class="drawer" id="cartDrawer" aria-label="カート" aria-hidden="true"><div class="drawer-head"><h2>カート</h2><button class="close-button" data-close>閉じる</button></div><div id="cartItems" class="cart-items"></div><div class="drawer-total"><span>合計</span><strong id="cartTotal">¥0</strong></div><button class="button button-primary full" id="checkoutButton">審査へ進む</button><p class="drawer-caption">デモ表示です。実決済・発送は接続されていません。</p></aside>
   <div class="toast" id="toast" role="status"></div>
@@ -86,6 +86,14 @@
       </form>
       <p class="form-status" id="reviewStatus" aria-live="polite"></p>
     </div>
+  </div>
+  <div class="legal-modal" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalTitle" aria-hidden="true">
+    <article class="legal-card">
+      <button class="close-button legal-close" type="button" data-legal-close>閉じる</button>
+      <p class="eyebrow">DEMO / LEGAL INFORMATION</p>
+      <h2 id="legalTitle"></h2>
+      <div id="legalBody"></div>
+    </article>
   </div>
   <script src="./app.js"></script>
 </body>
