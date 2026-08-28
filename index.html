@@ -52,6 +52,17 @@
 
     <section class="notice-strip reveal-on-scroll"><span>NOTICE 01</span><strong>当店は20歳以上のお客様のみご利用いただけます。</strong><a href="#guide">購入条件を確認 →</a></section>
 
+    <section class="member-services section reveal-on-scroll" aria-labelledby="memberServicesTitle">
+      <div class="section-heading"><div><p class="eyebrow">MEMBER SERVICES</p><h2 id="memberServicesTitle">会員になると、<br />選択肢が広がる。</h2></div><button class="button button-outline" data-open="account">ログイン / 登録</button></div>
+      <div class="service-grid">
+        <article class="service-card"><span class="service-index">01</span><h3>会員限定商品</h3><p>限定商品・先行情報は、適法な年齢確認と会員認証の後に表示します。</p><button class="under-link" data-open="account">会員ページを見る →</button></article>
+        <article class="service-card service-card-featured"><span class="service-index">02</span><h3>定期お届け便</h3><p>お気に入りの商品を定期配送するための契約管理をデモ表示します。</p><button class="under-link" data-subscription>仕組みを見る →</button></article>
+        <article class="service-card"><span class="service-index">03</span><h3>購入履歴・お気に入り</h3><p>購入・配送履歴、保存した商品、契約内容をひとつの場所で確認します。</p><button class="under-link" data-open="account">マイページを開く →</button></article>
+      </div>
+    </section>
+
+    <section class="updates section reveal-on-scroll" id="updates" aria-labelledby="updatesTitle"><div class="section-heading"><div><p class="eyebrow">UPDATES</p><h2 id="updatesTitle">お知らせ</h2></div><a class="under-link" href="#contact">お問い合わせ →</a></div><div class="update-list"><article><time>2026.08.28</time><strong>デモサイトのサービス構成を更新しました。</strong><span>サイト更新</span></article><article><time>2026.08.20</time><strong>配送・年齢確認に関するご案内</strong><span>購入ガイド</span></article><article><time>2026.08.08</time><strong>新しいセレクションを追加しました。</strong><span>商品情報</span></article></div></section>
+
     <section class="section reveal-on-scroll" id="shop">
       <div class="section-heading"><div><p class="eyebrow">CURATED SELECTION</p><h2>商品一覧</h2></div><button class="filter-link" id="toggleFilter" aria-expanded="false" aria-controls="filterPanel">絞り込み <span>＋</span></button></div>
       <div class="filter-panel" id="filterPanel">
@@ -77,6 +88,7 @@
   <div class="bottom-nav"><a href="#home">ホーム</a><a href="#shop">商品</a><a href="#guide">ガイド</a><button data-open="cart">カート <span id="mobileCartCount">0</span></button><button data-open="account">マイページ</button></div>
   <div class="drawer-backdrop" id="drawerBackdrop"></div><aside class="drawer" id="cartDrawer" aria-label="カート" aria-hidden="true"><div class="drawer-head"><h2>カート</h2><button class="close-button" data-close>閉じる</button></div><div id="cartItems" class="cart-items"></div><div class="drawer-total"><span>合計</span><strong id="cartTotal">¥0</strong></div><button class="button button-primary full" id="checkoutButton">審査へ進む</button><p class="drawer-caption">デモ表示です。実決済・発送は接続されていません。</p></aside>
   <div class="toast" id="toast" role="status"></div>
+  <div class="member-modal" id="memberModal" role="dialog" aria-modal="true" aria-labelledby="memberTitle" aria-hidden="true"><div class="member-card"><button class="close-button" data-member-close>閉じる</button><div id="memberBody"><p class="eyebrow">DEMO / MEMBER AREA</p><h2 id="memberTitle">会員ページ</h2><p>ログイン・会員登録、購入履歴、お気に入り、定期お届け便の契約管理をここに接続します。</p><div class="member-links"><button class="button button-primary" data-member-action="login">ログインする</button><button class="button button-outline" data-member-action="register">無料会員登録</button></div><small>デモ版ではアカウント、注文、決済情報を保存・送信しません。</small></div></div></div>
   <div class="detail-modal" id="detailModal" role="dialog" aria-modal="true" aria-label="商品詳細"><div class="detail-card"><button class="close-button detail-close" data-detail-close>閉じる</button><div id="detailBody"></div></div></div>
   <div class="review-modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
     <div class="review-card">

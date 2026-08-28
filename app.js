@@ -8,6 +8,7 @@ const products = [
 ];
 
 let cart = [];
+let memberLoggedIn = false;
 let lastTrigger = null;
 const CART_KEY = 'kisaragiDemoCart';
 const AGE_VERIFIED_KEY = 'age_verified';
@@ -242,11 +243,12 @@ function renderProducts() {
 
   $('#resultCount').textContent = `${list.length} 件の商品`;
   $('#productGrid').innerHTML = list.length ? list.map((product) => `
-    <article class="product-card reveal-on-scroll">
+    <article class="product-card reveal-on-scroll ${memberLoggedIn ? '' : 'member-locked'}">
       <button class="product-visual ${product.tone}" data-detail="${product.id}" aria-label="${product.name}の詳細を見る">
         <span class="stock-badge ${stockStates[product.stock_status].className}">${stockStates[product.stock_status].label}</span>
         <div class="pack"><small>${product.brand.toUpperCase()}</small><strong>${product.name.split(' ')[0]}<br />${product.name.split(' ')[1] || ''}</strong><small>20 / JAPAN</small></div>
       </button>
+      ${memberLoggedIn ? '' : '<span class="member-lock">会員ログインで商品詳細を表示</span>'}
       <div class="product-info">
         <p class="eyebrow">${product.sku}</p><h3>${product.name}</h3>
         <div class="product-meta"><span>${categoryNames[product.category]} / ${flavorNames[product.flavor]}</span><span>${product.meta}</span></div>
@@ -322,6 +324,11 @@ function renderProductDetail(product, order = 'latest') {
 }
 
 function openProductDetail(product, trigger) {
+  if (!memberLoggedIn) {
+    lastTrigger = trigger;
+    setModal('#memberModal', true);
+    return;
+  }
   lastTrigger = trigger;
   activeDetailProductId = product.id;
   renderProductDetail(product);
@@ -338,6 +345,16 @@ function openReview() {
   setModal('#reviewModal', true);
 }
 
+function openMemberCenter() {
+  $('#memberBody').innerHTML = memberLoggedIn ? `<p class="eyebrow">DEMO / MEMBER AREA</p><h2 id="memberTitle">マイページ</h2><p class="member-welcome">デモ会員としてログイン中です。</p><div class="member-dashboard"><div><strong>お気に入り</strong><span>3 件</span></div><div><strong>購入・配送履歴</strong><span>2 件</span></div><div><strong>定期お届け便</strong><span>1 契約</span></div></div><div class="member-links"><button class="button button-primary" data-subscription>契約を確認</button><button class="button button-outline" data-member-action="logout">ログアウト</button></div><small>これはデモです。アカウント、注文、決済情報は保存・送信されません。</small>` : `<p class="eyebrow">DEMO / MEMBER AREA</p><h2 id="memberTitle">会員ページ</h2><p>煙草製品は、年齢確認に加えて会員認証後に閲覧・購入へ進みます。</p><div class="member-links"><button class="button button-primary" data-member-action="login">デモログイン</button><button class="button button-outline" data-member-action="register">無料会員登録</button></div><small>デモ版ではアカウント、注文、決済情報を保存・送信しません。</small>`;
+  setModal('#memberModal', true);
+}
+
+function openSubscriptionModal() {
+  $('#memberBody').innerHTML = `<p class="eyebrow">DEMO / SUBSCRIPTION</p><h2 id="memberTitle">定期お届け便</h2><p>お気に入りの商品を定期配送するための契約管理画面です。実運用では在庫、価格、配送間隔と解約条件を確認します。</p><div class="subscription-options"><button data-plan="monthly"><strong>毎月お届け</strong><span>配送間隔を指定</span></button><button data-plan="bi-monthly"><strong>2か月ごと</strong><span>ゆっくり選ぶ</span></button></div><div class="member-links"><button class="button button-primary" data-subscription-action>デモ契約を選択</button></div><small>デモ版では契約・決済・配送は発生しません。</small>`;
+  setModal('#memberModal', true);
+}
+
 document.addEventListener('click', (event) => {
   const detail = event.target.closest('[data-detail]');
   if (detail) openProductDetail(products.find((product) => product.id === Number(detail.dataset.detail)), detail);
@@ -348,7 +365,28 @@ document.addEventListener('click', (event) => {
   const cartTrigger = event.target.closest('[data-open="cart"]');
   if (cartTrigger) openCart(cartTrigger);
   if (event.target.closest('[data-close]') || event.target.id === 'drawerBackdrop') closeCart();
-  if (event.target.closest('[data-open="account"]')) showToast('ログイン機能はデモ表示です');
+  if (event.target.closest('[data-open="account"]')) { lastTrigger = event.target.closest('[data-open="account"]'); openMemberCenter(); }
+  if (event.target.closest('[data-member-close]') || event.target.id === 'memberModal') setModal('#memberModal', false);
+  const memberAction = event.target.closest('[data-member-action]');
+  if (memberAction) {
+    if (memberAction.dataset.memberAction === 'login') {
+      memberLoggedIn = true;
+      localStorage.setItem('kisaragiDemoMember', 'true');
+      setModal('#memberModal', false);
+      renderProducts();
+      showToast('デモ会員としてログインしました');
+    } else if (memberAction.dataset.memberAction === 'register') {
+      showToast('会員登録はデモ表示です');
+    } else if (memberAction.dataset.memberAction === 'logout') {
+      memberLoggedIn = false;
+      localStorage.removeItem('kisaragiDemoMember');
+      setModal('#memberModal', false);
+      renderProducts();
+      showToast('デモログアウトしました');
+    }
+  }
+  if (event.target.closest('[data-subscription]')) openSubscriptionModal();
+  if (event.target.closest('[data-subscription-action]')) showToast('定期お届け便を選択しました（デモ）');
   if (event.target.closest('[data-detail-close]') || event.target.id === 'detailModal') setModal('#detailModal', false);
   if (event.target.closest('[data-review-close]') || event.target.id === 'reviewModal') setModal('#reviewModal', false);
   const legalTrigger = event.target.closest('[data-legal]');
@@ -383,6 +421,7 @@ if (localStorage.getItem(AGE_VERIFIED_KEY)) {
 } else {
   lockAgeModalFocus();
 }
+memberLoggedIn = localStorage.getItem('kisaragiDemoMember') === 'true';
 
 $('#toggleFilter').addEventListener('click', () => {
   const open = $('#filterPanel').classList.toggle('open');
@@ -403,6 +442,7 @@ document.addEventListener('keydown', (event) => {
   if ($('#reviewModal').classList.contains('open')) setModal('#reviewModal', false);
   else if ($('#detailModal').classList.contains('open')) setModal('#detailModal', false);
   else if ($('#legalModal').classList.contains('open')) closeLegalModal();
+  else if ($('#memberModal').classList.contains('open')) setModal('#memberModal', false);
   else if ($('#cartDrawer').classList.contains('open')) closeCart();
 });
 
