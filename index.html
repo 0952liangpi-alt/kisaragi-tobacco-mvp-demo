@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KISARAGI — Licensed Tobacco Atelier</title>
-  <meta name="description" content="日本国内向け、20歳以上限定の煙草商品カタログ・注文デモ" />
+  <title>KISARAGI — 日本たばこ全品類実物図鑑デモ</title>
+  <meta name="description" content="日本市場のたばこ・ニコチン関連商品を10品類、35件の実物資料で確認できる20歳以上向け調査デモ" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta name="referrer" content="no-referrer" />
   <meta name="theme-color" content="#171717" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Kisaragi" />
   <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="canonical" href="https://0952liangpi-alt.github.io/kisaragi-tobacco-mvp-demo/" />
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/icon.svg" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
   <div id="ageGate" class="age-gate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
     <div class="age-card">
-      <p class="eyebrow">KISARAGI / TOBACCO ATELIER</p>
+      <p class="eyebrow">KISARAGI / RESEARCH DEMO</p>
       <h2 class="modal-title" id="ageTitle">20歳以上の方のみ<br />ご利用いただけます</h2>
       <p>本サイトは日本国内の成人向け商品カタログです。商品購入には別途、法定の年齢・本人確認が必要です。</p>
       <p class="age-law-note">未成年者の喫煙は法律で禁じられています。</p>
@@ -30,10 +35,10 @@
   </div>
 
   <header class="site-header">
-    <a class="brand" href="#home" aria-label="Kisaragi home">
+    <a class="brand" href="#home" aria-label="Kisaragi ホーム">
       <span class="brand-mark">K</span><span>KISARAGI</span>
     </a>
-    <nav class="desktop-nav" aria-label="主导航">
+    <nav class="desktop-nav" aria-label="メインナビゲーション">
       <a href="#shop">商品一覧</a><a href="#story">店について</a><a href="#guide">購入ガイド</a><a href="#contact">お問い合わせ</a>
     </nav>
     <div class="header-actions"><button class="text-button" data-open="account">ログイン</button><button class="cart-button" data-open="cart">カート <b id="cartCount">0</b></button></div>
@@ -42,11 +47,11 @@
   <main id="mainContent">
     <section class="hero" id="home">
       <div class="hero-copy">
-        <p class="eyebrow">LICENSED TOBACCO / TOKYO</p>
+        <p class="eyebrow">PROTOTYPE / NO SALES</p>
         <h1>選ぶ時間まで、<em>丁寧に。</em></h1>
-        <p class="hero-lede shimmer-text">正規取扱いの煙草を、品番・仕様・在庫から静かに探せる商品カタログ。</p>
+        <p class="hero-lede shimmer-text">日本市場のたばこ関連商品を、品類・実物写真・出典から確認できる調査用カタログ。</p>
         <div class="hero-actions"><a class="button button-primary" href="#shop">商品を見る</a><a class="button button-outline" href="#guide">購入について</a></div>
-        <div class="trust-line"><span>20歳以上限定</span><span>国内向けデモ</span><span>正規価格表示</span></div>
+        <div class="trust-line"><span>20歳以上限定</span><span>調査用デモ</span><span>実販売なし</span></div>
       </div>
       <div class="hero-product-container" aria-label="商品展示イメージ"><div class="art-card art-card-back"></div><div class="art-card art-card-front hero-product-image"><span>KISARAGI</span><strong>煙草を、選ぶ。</strong><small>EST. 2026 / TOKYO</small></div><div class="seal">20<br /><small>ONLY</small></div></div>
     </section>
@@ -54,10 +59,23 @@
     <section class="notice-strip reveal-on-scroll"><span>NOTICE 01</span><strong>当店は20歳以上のお客様のみご利用いただけます。</strong><a href="#guide">購入条件を確認 →</a></section>
 
     <section class="catalog-atlas section reveal-on-scroll" id="catalog" aria-labelledby="catalogTitle">
-      <div class="section-heading"><div><p class="eyebrow">PHOTO ATLAS / REFERENCE</p><h2 id="catalogTitle">日本の煙草、<br />全品種を知る。</h2></div><span class="guide-note">36 IMAGES / SOURCE-TRACKED</span></div>
-      <p class="catalog-intro">文档目录中的实物照片与官方产品渲染。这里用于品类识别与客户资料确认，不代表当前库存、价格或可销售状态。</p>
+      <div class="section-heading"><div><p class="eyebrow">PHOTO ATLAS / REFERENCE</p><h2 id="catalogTitle">日本のたばこ、<br />全品類を知る。</h2></div><span class="guide-note" id="catalogCount">35件 / 10品類</span></div>
+      <p class="catalog-intro">日本市場の主要な商品形態を、35件の実物資料と出典で整理しています。全SKUの在庫一覧ではなく、品類を横断して識別するための調査デモです。</p>
+      <div class="catalog-filter-bar" aria-label="実物図鑑の品類フィルター">
+        <button type="button" data-catalog-filter="all" aria-pressed="true">すべて</button>
+        <button type="button" data-catalog-filter="cigarette" aria-pressed="false">紙巻き</button>
+        <button type="button" data-catalog-filter="menthol" aria-pressed="false">メンソール等</button>
+        <button type="button" data-catalog-filter="heated" aria-pressed="false">加熱式たばこ</button>
+        <button type="button" data-catalog-filter="vape" aria-pressed="false">電子たばこ</button>
+        <button type="button" data-catalog-filter="rolling" aria-pressed="false">手巻き</button>
+        <button type="button" data-catalog-filter="pipe" aria-pressed="false">パイプ</button>
+        <button type="button" data-catalog-filter="kiseru" aria-pressed="false">刻み・きせる</button>
+        <button type="button" data-catalog-filter="cigar" aria-pressed="false">葉巻</button>
+        <button type="button" data-catalog-filter="shisha" aria-pressed="false">水たばこ</button>
+        <button type="button" data-catalog-filter="smokeless" aria-pressed="false">無煙製品</button>
+      </div>
       <div class="catalog-grid" id="catalogGrid"></div>
-      <p class="catalog-disclaimer">图片来源与授权状态沿用客户提供的目录记录；商业发布前需逐图确认版权、包装商标和品牌使用许可。</p>
+      <p class="catalog-disclaimer">公開利用条件を確認できた6件のみ写真を掲載しています。残る29件は、権利者の許諾を得るまで画像を転載せず、実物写真の出典リンクのみを案内します。包装・商標の権利は別途確認が必要です。</p>
     </section>
 
     <section class="member-services section reveal-on-scroll" aria-labelledby="memberServicesTitle">
@@ -72,7 +90,7 @@
     <section class="updates section reveal-on-scroll" id="updates" aria-labelledby="updatesTitle"><div class="section-heading"><div><p class="eyebrow">UPDATES</p><h2 id="updatesTitle">お知らせ</h2></div><a class="under-link" href="#contact">お問い合わせ →</a></div><div class="update-list"><article><time>2026.08.28</time><strong>デモサイトのサービス構成を更新しました。</strong><span>サイト更新</span></article><article><time>2026.08.20</time><strong>配送・年齢確認に関するご案内</strong><span>購入ガイド</span></article><article><time>2026.08.08</time><strong>新しいセレクションを追加しました。</strong><span>商品情報</span></article></div></section>
 
     <section class="section reveal-on-scroll" id="shop">
-      <div class="section-heading"><div><p class="eyebrow">CURATED SELECTION</p><h2>商品一覧</h2></div><button class="filter-link" id="toggleFilter" aria-expanded="false" aria-controls="filterPanel">絞り込み <span>＋</span></button></div>
+      <div class="section-heading"><div><p class="eyebrow">FICTIONAL PRODUCTS / DEMO</p><h2>デモ商品一覧</h2></div><button class="filter-link" id="toggleFilter" aria-expanded="false" aria-controls="filterPanel">絞り込み <span>＋</span></button></div>
       <div class="filter-panel" id="filterPanel">
         <label>ブランド<select id="brandFilter"><option value="all">すべて</option><option value="kisaragi">Kisaragi</option><option value="haru">Haru Leaf</option><option value="nami">Nami</option></select></label>
         <label>在庫<select id="stockFilter"><option value="all">すべて</option><option value="in_stock">在庫あり</option><option value="low_stock">残りわずか</option><option value="pre_order">入荷待ち</option><option value="out_of_stock">売り切れ</option></select></label>
@@ -92,9 +110,9 @@
     <section class="contact section reveal-on-scroll" id="contact"><div><p class="eyebrow">CONTACT / WHOLESALE</p><h2>店舗・卸売の<br />ご相談はこちら</h2></div><form id="contactForm"><label>お名前<input required type="text" placeholder="山田 太郎" /></label><label>メールアドレス<input required type="email" placeholder="name@example.jp" /></label><label>ご相談内容<textarea rows="3" placeholder="お問い合わせ内容"></textarea></label><button class="button button-primary" type="submit">相談を送る</button><p class="form-status" id="formStatus"></p></form></section>
   </main>
 
-  <footer><div class="footer-brand"><span class="brand-mark">K</span><strong>KISARAGI</strong><small>Licensed Tobacco Atelier / Tokyo</small></div><div class="footer-links"><a href="#guide">購入ガイド</a><button class="footer-link-button" type="button" data-legal="tokusho">特定商取引法に基づく表記</button><button class="footer-link-button" type="button" data-legal="privacy">プライバシーポリシー</button></div><small>© 2026 KISARAGI. DEMO SITE — NO REAL SALES.</small></footer>
+  <footer><div class="footer-brand"><span class="brand-mark">K</span><strong>KISARAGI</strong><small>Research Prototype / No Real Sales</small></div><div class="footer-links"><a href="#guide">購入ガイド</a><button class="footer-link-button" type="button" data-legal="tokusho">特定商取引法に基づく表記</button><button class="footer-link-button" type="button" data-legal="privacy">プライバシーポリシー</button></div><small>© 2026 KISARAGI. DEMO SITE — NO REAL SALES.</small></footer>
   <div class="bottom-nav"><a href="#home">ホーム</a><a href="#shop">商品</a><a href="#guide">ガイド</a><button data-open="cart">カート <span id="mobileCartCount">0</span></button><button data-open="account">マイページ</button></div>
-  <div class="drawer-backdrop" id="drawerBackdrop"></div><aside class="drawer" id="cartDrawer" aria-label="カート" aria-hidden="true"><div class="drawer-head"><h2>カート</h2><button class="close-button" data-close>閉じる</button></div><div id="cartItems" class="cart-items"></div><div class="drawer-total"><span>合計</span><strong id="cartTotal">¥0</strong></div><button class="button button-primary full" id="checkoutButton">審査へ進む</button><p class="drawer-caption">デモ表示です。実決済・発送は接続されていません。</p></aside>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div><aside class="drawer" id="cartDrawer" aria-label="カート" aria-hidden="true" inert><div class="drawer-head"><h2>カート</h2><button class="close-button" data-close>閉じる</button></div><div id="cartItems" class="cart-items"></div><div class="drawer-total"><span>合計</span><strong id="cartTotal">¥0</strong></div><button class="button button-primary full" id="checkoutButton">審査へ進む</button><p class="drawer-caption">デモ表示です。実決済・発送は接続されていません。</p></aside>
   <div class="toast" id="toast" role="status"></div>
   <div class="member-modal" id="memberModal" role="dialog" aria-modal="true" aria-labelledby="memberTitle" aria-hidden="true"><div class="member-card"><button class="close-button" data-member-close>閉じる</button><div id="memberBody"><p class="eyebrow">DEMO / MEMBER AREA</p><h2 id="memberTitle">会員ページ</h2><p>ログイン・会員登録、購入履歴、お気に入り、定期お届け便の契約管理をここに接続します。</p><div class="member-links"><button class="button button-primary" data-member-action="login">ログインする</button><button class="button button-outline" data-member-action="register">無料会員登録</button></div><small>デモ版ではアカウント、注文、決済情報を保存・送信しません。</small></div></div></div>
   <div class="detail-modal" id="detailModal" role="dialog" aria-modal="true" aria-label="商品詳細"><div class="detail-card"><button class="close-button detail-close" data-detail-close>閉じる</button><div id="detailBody"></div></div></div>
@@ -122,6 +140,7 @@
       <div id="legalBody"></div>
     </article>
   </div>
-  <script src="./app.js?v=20260828-1750"></script>
+  <script src="./catalog-data.js?v=20260828-1900"></script>
+  <script src="./app.js?v=20260828-1900"></script>
 </body>
 </html>

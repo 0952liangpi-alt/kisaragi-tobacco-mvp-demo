@@ -7,34 +7,7 @@ const products = [
   {id:6,brand:'Nami',brandKey:'nami',name:'Nami Blue',sku:'NM-031',price:590,stock:0,category:'iqos',flavor:'capsule',origin:'日本',stock_status:'out_of_stock',meta:'20本 / カプセル',tar:4,nicotine:0.3,size:'20本入',tone:'red',profile:{strength:2,aroma:3,throat_hit:2,sweetness:2,menthol:4},reviews:[{id:'nm031-aoi',nickname:'Aoi',rating:3,smoothness:4,comment:'軽めの設計を想定したデモデータです。',created:'2026.08.08',helpful:3}]},
 ];
 
-const catalogEntries = [
-  ['image3.png','纸卷烟','Peace（10支装）','Wikimedia Commons / Horaizon2018','CC BY-SA 4.0；包装与商标权另计'],
-  ['image4.jpg','纸卷烟','Seven Stars','Wikimedia Commons / Yoshinori Mori','CC BY-SA 3.0；包装与商标权另计'],
-  ['image5.jpg','纸卷烟','Hope','Wikimedia Commons / Kakura','CC BY-SA 3.0；包装与商标权另计'],
-  ['image6.jpg','纸卷烟','MEVIUS','Wikimedia Commons / Asgawaji','CC0 1.0；包装与商标权另计'],
-  ['image7.jpg','纸卷烟','Camel Craft','シリウスタバコ','商业外发需另行授权'],
-  ['image9.jpg','纸卷烟','Marlboro Ice Blast（2013）','Wikimedia Commons / Takeaway','CC BY-SA 3.0；历史包装参考'],
-  ['image10.jpg','纸卷烟','LARK Black Label','Yahoo! Auctions 镜像','商业外发需另行授权'],
-  ['image11.jpg','纸卷烟','Parliament One 100’s','71mai 商品页','商业外发需另行授权'],
-  ['image12.jpg','纸卷烟','Kent 1','ビックリッキー','商业外发需另行授权'],
-  ['image13.jpg','纸卷烟','Lucky Strike','71mai 商品页','商业外发需另行授权'],
-  ['image15.jpg','薄荷 / 爆珠','MEVIUS Option','Tobacco Asia','商业外发需另行授权'],
-  ['image16.jpg','薄荷 / 爆珠','Camel Craft Berry Capsule','Walkerplus','商业外发需另行授权'],
-  ['image17.jpg','薄荷 / 细支','Pianissimo 2019 冬季限定','JT 新闻稿 via @Press','商业外发需另行授权；历史包装'],
-  ['image19.png','加热式设备','Ploom AURA','Japan Tobacco','官方产品图；外发前需授权'],
-  ['image20.jpg','加热式设备','IQOS ILUMA i','IQOS Japan','官方产品图；外发前需授权'],
-  ['image21.jpg','加热式设备','IQOS ILUMA i One / Ploom AURA / glo Hilo','価格.comマガジン','编辑照片；商业外发需授权'],
-  ['image23.jpg','加热式耗材','EVO + Ploom AURA','価格.comマガジン','编辑照片；商业外发需授权'],
-  ['image24.jpg','加热式耗材','TEREA','DR. STICK コラム','商业外发需另行授权'],
-  ['image25.jpg','加热式耗材','neo + glo HYPER','価格.comマガジン','编辑照片；商业外发需授权'],
-  ['image27.jpg','电子雾化','日本产电子烟液 + 雾化设备','VAPERS','商业外发需另行授权'],
-  ['image28.jpg','手卷烟丝','Che Shag Blue','第一商事','商业外发需另行授权'],
-  ['image30.jpg','斗烟丝','Peterson Elizabethan Mixture','田辺たばこ','商业外发需另行授权'],
-  ['image32.jpg','雪茄','Gloria Handmade Cigar','note.com / 今田ずんばあらず','商业外发需另行授权'],
-  ['image34.jpg','水烟 / 烟草','Black Spider Cherry Cola','世界のたばこ通販','商业外发需另行授权'],
-  ['image35.jpg','无烟产品','NORDIC SPIRIT','特選街web','商业外发需另行授权'],
-  ['image36.jpg','口含烟','Zero Style SNUS Rich Strong','第一商事','商业外发需另行授权']
-];
+const catalogEntries = globalThis.KISARAGI_CATALOG;
 
 let cart = [];
 let memberLoggedIn = false;
@@ -48,6 +21,7 @@ const ageModal = $('#ageGate');
 const mainContent = $('#mainContent');
 let releaseAgeFocus = null;
 let releaseActiveModalFocus = null;
+let releaseCartFocus = null;
 let activeDetailProductId = null;
 const helpfulVotes = new Set();
 const categoryNames = {cigarette:'紙巻き',cigar:'シガー',ryo:'手巻き',iqos:'加熱式'};
@@ -304,11 +278,20 @@ function renderProducts() {
 function renderCatalog() {
   const grid = $('#catalogGrid');
   if (!grid) return;
-  grid.innerHTML = catalogEntries.map(([image, category, name, source, rights]) => `
+  const activeCategory = document.querySelector('[data-catalog-filter][aria-pressed="true"]')?.dataset.catalogFilter || 'all';
+  const entries = activeCategory === 'all' ? catalogEntries : catalogEntries.filter((entry) => entry.category === activeCategory);
+  $('#catalogCount').textContent = `${entries.length}件 / 全${catalogEntries.length}件`;
+  grid.innerHTML = entries.map((entry) => `
     <article class="catalog-card reveal-on-scroll">
-      <div class="catalog-media"><img src="./assets/catalog/${image}" alt="${name} 实物参考图" loading="lazy" /><span>${category}</span></div>
-      <div class="catalog-copy"><h3>${name}</h3><p>${source}</p><small>${rights}</small></div>
+      <div class="catalog-media ${entry.asset ? '' : 'source-only'}">
+        ${entry.asset
+          ? `<img src="./assets/catalog/${entry.asset}" alt="${entry.nameJa}の実物参考写真" loading="lazy" width="640" height="420" />`
+          : `<a href="${entry.sourceUrl}" target="_blank" rel="noopener noreferrer" aria-label="${entry.nameJa}の実物写真を出典サイトで確認"><b>実物写真</b><span>出典先で確認 ↗</span></a>`}
+        <span>${entry.categoryLabel}</span>
+      </div>
+      <div class="catalog-copy"><h3>${entry.name}</h3><p>${entry.nameJa}</p><a class="catalog-source" href="${entry.sourceUrl}" target="_blank" rel="noopener noreferrer">出典：${entry.source} ↗</a><small class="${entry.publicationAllowed ? 'license-open' : 'license-pending'}">${entry.license}</small></div>
     </article>`).join('');
+  if (document.body.classList.contains('motion-ready')) observeRevealElements();
 }
 
 function renderCart() {
@@ -334,17 +317,54 @@ function addToCart(product) {
 
 function openCart(trigger) {
   lastTrigger = trigger || document.activeElement;
-  $('#cartDrawer').classList.add('open');
-  $('#cartDrawer').setAttribute('aria-hidden', 'false');
-  $('#drawerBackdrop').classList.add('open');
+  const drawer = $('#cartDrawer');
+  const backdrop = $('#drawerBackdrop');
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
+  drawer.removeAttribute('inert');
+  backdrop.classList.add('open');
   document.body.classList.add('modal-open');
-  $('#cartDrawer').querySelector(focusable)?.focus();
+  const background = [...document.body.children].filter((element) => ![drawer, backdrop].includes(element) && element.tagName !== 'SCRIPT');
+  background.forEach((element) => {
+    element.dataset.cartAriaHidden = element.getAttribute('aria-hidden') || '';
+    element.dataset.cartWasInert = String(element.hasAttribute('inert'));
+    element.setAttribute('aria-hidden', 'true');
+    element.setAttribute('inert', '');
+  });
+  const getFocusable = () => [...drawer.querySelectorAll(focusable)].filter((element) => !element.hidden);
+  const onKeydown = (event) => {
+    if (event.key === 'Escape') return closeCart();
+    if (event.key !== 'Tab') return;
+    const elements = getFocusable();
+    if (!elements.length) return;
+    const first = elements[0];
+    const last = elements[elements.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  };
+  drawer.addEventListener('keydown', onKeydown);
+  releaseCartFocus = () => {
+    drawer.removeEventListener('keydown', onKeydown);
+    background.forEach((element) => {
+      const previous = element.dataset.cartAriaHidden;
+      if (previous) element.setAttribute('aria-hidden', previous);
+      else element.removeAttribute('aria-hidden');
+      if (element.dataset.cartWasInert !== 'true') element.removeAttribute('inert');
+      delete element.dataset.cartAriaHidden;
+      delete element.dataset.cartWasInert;
+    });
+    releaseCartFocus = null;
+  };
+  getFocusable()[0]?.focus();
 }
 
 function closeCart() {
-  $('#cartDrawer').classList.remove('open');
-  $('#cartDrawer').setAttribute('aria-hidden', 'true');
+  const drawer = $('#cartDrawer');
+  drawer.classList.remove('open');
+  drawer.setAttribute('aria-hidden', 'true');
+  drawer.setAttribute('inert', '');
   $('#drawerBackdrop').classList.remove('open');
+  releaseCartFocus?.();
   document.body.classList.remove('modal-open');
   lastTrigger?.focus?.();
 }
@@ -370,7 +390,7 @@ function renderProductDetail(product, order = 'latest') {
     <div class="detail-pack product-visual ${product.tone}"><div class="pack"><small>${product.brand.toUpperCase()}</small><strong>${product.name.split(' ')[0]}<br />${product.name.split(' ')[1] || ''}</strong><small>20 / JAPAN</small></div></div>
     <dl class="detail-specs"><div><dt>価格</dt><dd>${yen(product.price)}</dd></div><div><dt>カテゴリー</dt><dd>${categoryNames[product.category]}</dd></div><div><dt>風味</dt><dd>${flavorNames[product.flavor]}</dd></div><div><dt>原産地</dt><dd>${product.origin}</dd></div><div><dt>規格</dt><dd>${product.size}</dd></div><div><dt>タール / ニコチン</dt><dd>${product.tar}mg / ${product.nicotine}mg</dd></div><div><dt>在庫状態</dt><dd>${getStockState(product).label}</dd></div></dl>
     ${productProfileMarkup(product)}
-    <p class="detail-note">本商品はデモ用の架空商品です。実運用では正規商品情報・批准価格・販売許可範囲を確認して掲載します。</p>
+    <p class="detail-note">本商品はデモ用の架空商品です。実運用では正規商品情報・適正価格・販売許可範囲を確認して掲載します。</p>
     <button class="button button-primary full" data-add="${product.id}" ${canAdd(product) ? '' : 'disabled'}>${product.stock_status === 'pre_order' ? '予約を申請' : canAdd(product) ? 'カートに追加' : '再入荷待ち'}</button>
     ${reviewMarkup(product, order)}`;
 }
@@ -408,6 +428,12 @@ function openSubscriptionModal() {
 }
 
 document.addEventListener('click', (event) => {
+  const catalogFilter = event.target.closest('[data-catalog-filter]');
+  if (catalogFilter) {
+    document.querySelectorAll('[data-catalog-filter]').forEach((button) => button.setAttribute('aria-pressed', String(button === catalogFilter)));
+    renderCatalog();
+  }
+
   const detail = event.target.closest('[data-detail]');
   if (detail) openProductDetail(products.find((product) => product.id === Number(detail.dataset.detail)), detail);
 
@@ -504,3 +530,7 @@ renderProducts();
 renderCart();
 renderCatalog();
 observeRevealElements();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {}));
+}

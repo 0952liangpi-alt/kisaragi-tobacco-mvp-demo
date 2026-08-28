@@ -1,11 +1,18 @@
 {
-  "name": "Kisaragi Tobacco Atelier",
+  "name": "Kisaragi 日本たばこ全品類実物図鑑デモ",
   "short_name": "Kisaragi",
   "lang": "ja-JP",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#f4f0e8",
   "theme_color": "#171717",
-  "description": "日本国内向け、20歳以上限定の商品カタログデモ",
-  "icons": []
+  "description": "日本市場のたばこ関連商品を品類・実物資料・出典から確認する20歳以上向け調査デモ",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }

@@ -17,11 +17,11 @@
 
 ## `catalog/`
 
-`catalog/` contains the 36 image files extracted from the customer-provided
-Japan tobacco category catalog DOCX. The website uses a curated subset in the
-reference photo atlas. Source and rights notes are kept in the DOCX and are
-also summarized in `../DELIVERY.md`.
+`catalog/` contains only the six photographs whose open copyright licences were
+verified in the customer-provided catalog. Their records, source URLs and
+licence notes live in `../catalog-data.js`.
 
-Do not treat these images as proof of current stock or permission for
-commercial publication. Confirm image, packaging, trademark, and brand rights
-per item before production use.
+The remaining 29 product records deliberately contain source-page links but no
+local image asset. Do not add those images to a public build until written reuse
+permission is recorded. An open photo licence does not waive packaging,
+trademark or brand rights.
