@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KISARAGI — Licensed Tobacco Atelier</title>
+  <meta name="description" content="日本国内向け、20歳以上限定の煙草商品カタログ・注文デモ" />
+  <meta name="theme-color" content="#171717" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Kisaragi" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div id="ageGate" class="age-gate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+    <div class="age-card">
+      <p class="eyebrow">KISARAGI / TOBACCO ATELIER</p>
+      <h1 id="ageTitle">20歳以上の方のみ<br />ご利用いただけます</h1>
+      <p>本サイトは日本国内の成人向け商品カタログです。商品購入には別途、法定の年齢・本人確認が必要です。</p>
+      <div class="age-actions">
+        <button class="button button-primary" id="enterSite">20歳以上です</button>
+        <button class="button button-quiet" id="leaveSite">退出する</button>
+      </div>
+      <small>この確認はデモ用です。実運用では適法な本人確認サービスと審査フローを接続します。</small>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Kisaragi home">
+      <span class="brand-mark">K</span><span>KISARAGI</span>
+    </a>
+    <nav class="desktop-nav" aria-label="主导航">
+      <a href="#shop">商品一覧</a><a href="#story">店について</a><a href="#guide">購入ガイド</a><a href="#contact">お問い合わせ</a>
+    </nav>
+    <div class="header-actions"><button class="text-button" data-open="account">ログイン</button><button class="cart-button" data-open="cart">カート <b id="cartCount">0</b></button></div>
+  </header>
+
+  <main id="mainContent">
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">LICENSED TOBACCO / TOKYO</p>
+        <h1>選ぶ時間まで、<em>丁寧に。</em></h1>
+        <p class="hero-lede">正規取扱いの煙草を、品番・仕様・在庫から静かに探せる商品カタログ。</p>
+        <div class="hero-actions"><a class="button button-primary" href="#shop">商品を見る</a><a class="button button-outline" href="#guide">購入について</a></div>
+        <div class="trust-line"><span>20歳以上限定</span><span>国内向けデモ</span><span>正規価格表示</span></div>
+      </div>
+      <div class="hero-art" aria-label="商品展示イメージ"><div class="art-card art-card-back"></div><div class="art-card art-card-front"><span>KISARAGI</span><strong>煙草を、選ぶ。</strong><small>EST. 2026 / TOKYO</small></div><div class="seal">20<br /><small>ONLY</small></div></div>
+    </section>
+
+    <section class="notice-strip"><span>NOTICE 01</span><strong>当店は20歳以上のお客様のみご利用いただけます。</strong><a href="#guide">購入条件を確認 →</a></section>
+
+    <section class="section" id="shop">
+      <div class="section-heading"><div><p class="eyebrow">CURATED SELECTION</p><h2>商品一覧</h2></div><button class="filter-link" id="toggleFilter" aria-expanded="false" aria-controls="filterPanel">絞り込み <span>＋</span></button></div>
+      <div class="filter-panel" id="filterPanel"><label>ブランド<select id="brandFilter"><option value="all">すべて</option><option value="kisaragi">Kisaragi</option><option value="haru">Haru Leaf</option><option value="nami">Nami</option></select></label><label>在庫<select id="stockFilter"><option value="all">すべて</option><option value="available">在庫あり</option><option value="soldout">売り切れ</option></select></label><label class="search-field">商品名・ブランド・番号<input id="searchInput" type="search" placeholder="商品名・ブランド・品番" /></label></div>
+      <p class="result-count" id="resultCount" aria-live="polite"></p>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="story section" id="story"><div class="story-image"><span>EST. 2026</span></div><div class="story-copy"><p class="eyebrow">ABOUT KISARAGI</p><h2>知るほどに、<br />選びやすく。</h2><p>商品名だけでは分からない仕様や在庫を、ひとつずつ整理してお届けします。店頭相談とオンラインカタログをつなぐ、持続可能な小売体験を目指しています。</p><a class="under-link" href="#contact">店舗情報を見る →</a></div></section>
+
+    <section class="guide section" id="guide"><div class="section-heading"><div><p class="eyebrow">HOW TO ORDER</p><h2>購入ガイド</h2></div><span class="guide-note">DEMO FLOW / COMPLIANCE FIRST</span></div><div class="steps"><article><b>01</b><h3>年齢を確認</h3><p>20歳以上限定。実運用では法定の年齢・本人確認を行います。</p></article><article><b>02</b><h3>商品を選ぶ</h3><p>ブランド、品番、仕様、在庫を確認してカートへ進みます。</p></article><article><b>03</b><h3>審査・配送</h3><p>本人確認と住所確認の完了後、注文・配送手続きを進めます。</p></article></div></section>
+
+    <section class="contact section" id="contact"><div><p class="eyebrow">CONTACT / WHOLESALE</p><h2>店舗・卸売の<br />ご相談はこちら</h2></div><form id="contactForm"><label>お名前<input required type="text" placeholder="山田 太郎" /></label><label>メールアドレス<input required type="email" placeholder="name@example.jp" /></label><label>ご相談内容<textarea rows="3" placeholder="お問い合わせ内容"></textarea></label><button class="button button-primary" type="submit">相談を送る</button><p class="form-status" id="formStatus"></p></form></section>
+  </main>
+
+  <footer><div class="footer-brand"><span class="brand-mark">K</span><strong>KISARAGI</strong><small>Licensed Tobacco Atelier / Tokyo</small></div><div class="footer-links"><a href="#guide">購入ガイド</a><a href="#contact">特定商取引法に基づく表記</a><a href="#contact">プライバシーポリシー</a></div><small>© 2026 KISARAGI. DEMO SITE — NO REAL SALES.</small></footer>
+  <div class="bottom-nav"><a href="#home">ホーム</a><a href="#shop">商品</a><a href="#guide">ガイド</a><button data-open="cart">カート <span id="mobileCartCount">0</span></button><button data-open="account">マイページ</button></div>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div><aside class="drawer" id="cartDrawer" aria-label="カート" aria-hidden="true"><div class="drawer-head"><h2>カート</h2><button class="close-button" data-close>閉じる</button></div><div id="cartItems" class="cart-items"></div><div class="drawer-total"><span>合計</span><strong id="cartTotal">¥0</strong></div><button class="button button-primary full" id="checkoutButton">審査へ進む</button><p class="drawer-caption">デモ表示です。実決済・発送は接続されていません。</p></aside>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="detail-modal" id="detailModal" role="dialog" aria-modal="true" aria-label="商品詳細"><div class="detail-card"><button class="close-button detail-close" data-detail-close>閉じる</button><div id="detailBody"></div></div></div>
+  <div class="review-modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
+    <div class="review-card">
+      <button class="close-button review-close" data-review-close>閉じる</button>
+      <p class="eyebrow">DEMO / COMPLIANCE REVIEW</p>
+      <h2 id="reviewTitle">購入審査の申請</h2>
+      <p class="review-lede">これはテスト用フォームです。本人確認書類、決済情報、注文情報は保存・送信されません。</p>
+      <div id="reviewSummary" class="review-summary"></div>
+      <form id="reviewForm" class="review-form">
+        <label>お名前<input name="name" required autocomplete="name" placeholder="山田 太郎" /></label>
+        <label>メールアドレス<input name="email" required type="email" autocomplete="email" placeholder="name@example.jp" /></label>
+        <label class="consent"><input name="consent" required type="checkbox" /> <span>20歳以上であることを確認しました（デモ）</span></label>
+        <button class="button button-primary full" type="submit">デモ申請を送る</button>
+      </form>
+      <p class="form-status" id="reviewStatus" aria-live="polite"></p>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>

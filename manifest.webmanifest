@@ -1,0 +1,11 @@
+{
+  "name": "Kisaragi Tobacco Atelier",
+  "short_name": "Kisaragi",
+  "lang": "ja-JP",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f0e8",
+  "theme_color": "#171717",
+  "description": "日本国内向け、20歳以上限定の商品カタログデモ",
+  "icons": []
+}
