@@ -42,7 +42,7 @@ const requiredChecks = [
   ['catalog category filters', html, 'data-catalog-filter="smokeless"'],
   ['catalog source links', js, 'entry.sourceUrl'],
   ['service worker registration', js, "serviceWorker.register('./service-worker.js')"],
-  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v10'"],
+  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v11'"],
   ['Apple system font stack', css, '--font-system:-apple-system,BlinkMacSystemFont'],
   ['Japanese font fallback', css, '"Hiragino Sans"'],
   ['semantic type scale', css, '--type-hero:clamp'],
@@ -64,6 +64,9 @@ const requiredChecks = [
   ['category indicator controller', js, 'function updateCatalogIndicator'],
   ['add-to-cart success feedback', js, "trigger.textContent = '追加済み ✓'"],
   ['animated catalog disclosure', js, 'renderCatalog({animate: true})'],
+  ['visible Instagram research section', html, 'DESIGN RESEARCH / INSTAGRAM'],
+  ['three attributed creator links', html, 'https://www.instagram.com/kevin.snippet/'],
+  ['collapsed reference disclosure', html, '<details class="reference-lab">'],
 ];
 
 for (const [name, source, expected] of requiredChecks) assert.ok(source.includes(expected), `${name} is missing`);
