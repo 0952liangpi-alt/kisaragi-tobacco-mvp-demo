@@ -42,7 +42,7 @@ const requiredChecks = [
   ['catalog category filters', html, 'data-catalog-filter="smokeless"'],
   ['catalog source links', js, 'entry.sourceUrl'],
   ['service worker registration', js, "serviceWorker.register('./service-worker.js')"],
-  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v7'"],
+  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v8'"],
   ['Apple system font stack', css, '--font-system:-apple-system,BlinkMacSystemFont'],
   ['Japanese font fallback', css, '"Hiragino Sans"'],
   ['semantic type scale', css, '--type-hero:clamp'],
@@ -51,6 +51,10 @@ const requiredChecks = [
   ['real catalog primary CTA', html, 'href="#catalog">実物図鑑を見る'],
   ['Japanese navigation label', html, 'aria-label="メインナビゲーション"'],
   ['prototype status above the fold', html, 'PROTOTYPE / NO SALES'],
+  ['progressive catalog disclosure', html, 'id="catalogMore"'],
+  ['member lock stays inside product visual', js, '<span class="member-lock">ログインして詳細を見る</span>'],
+  ['mobile readable caption floor', css, 'font-size:.75rem'],
+  ['compact mobile section rhythm', css, 'padding:56px 20px'],
 ];
 
 for (const [name, source, expected] of requiredChecks) assert.ok(source.includes(expected), `${name} is missing`);

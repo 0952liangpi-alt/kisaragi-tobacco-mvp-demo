@@ -262,8 +262,8 @@ function renderProducts() {
       <button class="product-visual ${product.tone}" data-detail="${product.id}" aria-label="${product.name}の詳細を見る">
         <span class="stock-badge ${stockState.className}">${stockState.label}</span>
         <div class="pack"><small>${product.brand.toUpperCase()}</small><strong>${product.name.split(' ')[0]}<br />${product.name.split(' ')[1] || ''}</strong><small>20 / JAPAN</small></div>
+        ${memberLoggedIn ? '' : '<span class="member-lock">ログインして詳細を見る</span>'}
       </button>
-      ${memberLoggedIn ? '' : '<span class="member-lock">会員ログインで商品詳細を表示</span>'}
       <div class="product-info">
         <p class="eyebrow">${product.sku}</p><h3>${product.name}</h3>
         <div class="product-meta"><span>${categoryNames[product.category]} / ${flavorNames[product.flavor]}</span><span>${product.meta}</span></div>
@@ -275,15 +275,19 @@ function renderProducts() {
   if (document.body.classList.contains('motion-ready')) observeRevealElements();
 }
 
+let catalogExpanded = false;
+
 function renderCatalog() {
   const grid = $('#catalogGrid');
   if (!grid) return;
   const activeCategory = document.querySelector('[data-catalog-filter][aria-pressed="true"]')?.dataset.catalogFilter || 'all';
   const filteredEntries = activeCategory === 'all' ? catalogEntries : catalogEntries.filter((entry) => entry.category === activeCategory);
   const entries = [...filteredEntries].sort((a, b) => Number(Boolean(b.asset)) - Number(Boolean(a.asset)));
+  const initialLimit = window.matchMedia('(max-width: 800px)').matches ? 6 : 12;
+  const visibleEntries = catalogExpanded ? entries : entries.slice(0, initialLimit);
   const photoCount = entries.filter((entry) => entry.asset && entry.publicationAllowed).length;
   $('#catalogCount').textContent = `${entries.length}件 / 実物写真${photoCount}件`;
-  grid.innerHTML = entries.map((entry) => `
+  grid.innerHTML = visibleEntries.map((entry) => `
     <article class="catalog-card reveal-on-scroll">
       <div class="catalog-media ${entry.asset ? '' : 'source-only'}">
         ${entry.asset && entry.publicationAllowed
@@ -293,6 +297,12 @@ function renderCatalog() {
       </div>
       <div class="catalog-copy"><h3>${entry.name}</h3><p>${entry.nameJa}</p><a class="catalog-source" href="${entry.sourceUrl}" target="_blank" rel="noopener noreferrer">出典：${entry.source} ↗</a><small class="${entry.publicationAllowed ? 'license-open' : 'license-pending'}">${entry.license}</small></div>
     </article>`).join('');
+  const moreButton = $('#catalogMore');
+  if (moreButton) {
+    moreButton.hidden = entries.length <= initialLimit;
+    moreButton.textContent = catalogExpanded ? '表示を少なくする' : `残り${entries.length - visibleEntries.length}件を見る`;
+    moreButton.setAttribute('aria-expanded', String(catalogExpanded));
+  }
   if (document.body.classList.contains('motion-ready')) observeRevealElements();
 }
 
@@ -433,7 +443,15 @@ document.addEventListener('click', (event) => {
   const catalogFilter = event.target.closest('[data-catalog-filter]');
   if (catalogFilter) {
     document.querySelectorAll('[data-catalog-filter]').forEach((button) => button.setAttribute('aria-pressed', String(button === catalogFilter)));
+    catalogExpanded = false;
     renderCatalog();
+  }
+
+  const catalogMore = event.target.closest('#catalogMore');
+  if (catalogMore) {
+    catalogExpanded = !catalogExpanded;
+    renderCatalog();
+    if (!catalogExpanded) $('#catalog').scrollIntoView({behavior: 'smooth'});
   }
 
   const detail = event.target.closest('[data-detail]');
