@@ -7,6 +7,35 @@ const products = [
   {id:6,brand:'Nami',brandKey:'nami',name:'Nami Blue',sku:'NM-031',price:590,stock:0,category:'iqos',flavor:'capsule',origin:'日本',stock_status:'out_of_stock',meta:'20本 / カプセル',tar:4,nicotine:0.3,size:'20本入',tone:'red',profile:{strength:2,aroma:3,throat_hit:2,sweetness:2,menthol:4},reviews:[{id:'nm031-aoi',nickname:'Aoi',rating:3,smoothness:4,comment:'軽めの設計を想定したデモデータです。',created:'2026.08.08',helpful:3}]},
 ];
 
+const catalogEntries = [
+  ['image3.png','纸卷烟','Peace（10支装）','Wikimedia Commons / Horaizon2018','CC BY-SA 4.0；包装与商标权另计'],
+  ['image4.jpg','纸卷烟','Seven Stars','Wikimedia Commons / Yoshinori Mori','CC BY-SA 3.0；包装与商标权另计'],
+  ['image5.jpg','纸卷烟','Hope','Wikimedia Commons / Kakura','CC BY-SA 3.0；包装与商标权另计'],
+  ['image6.jpg','纸卷烟','MEVIUS','Wikimedia Commons / Asgawaji','CC0 1.0；包装与商标权另计'],
+  ['image7.jpg','纸卷烟','Camel Craft','シリウスタバコ','商业外发需另行授权'],
+  ['image9.jpg','纸卷烟','Marlboro Ice Blast（2013）','Wikimedia Commons / Takeaway','CC BY-SA 3.0；历史包装参考'],
+  ['image10.jpg','纸卷烟','LARK Black Label','Yahoo! Auctions 镜像','商业外发需另行授权'],
+  ['image11.jpg','纸卷烟','Parliament One 100’s','71mai 商品页','商业外发需另行授权'],
+  ['image12.jpg','纸卷烟','Kent 1','ビックリッキー','商业外发需另行授权'],
+  ['image13.jpg','纸卷烟','Lucky Strike','71mai 商品页','商业外发需另行授权'],
+  ['image15.jpg','薄荷 / 爆珠','MEVIUS Option','Tobacco Asia','商业外发需另行授权'],
+  ['image16.jpg','薄荷 / 爆珠','Camel Craft Berry Capsule','Walkerplus','商业外发需另行授权'],
+  ['image17.jpg','薄荷 / 细支','Pianissimo 2019 冬季限定','JT 新闻稿 via @Press','商业外发需另行授权；历史包装'],
+  ['image19.png','加热式设备','Ploom AURA','Japan Tobacco','官方产品图；外发前需授权'],
+  ['image20.jpg','加热式设备','IQOS ILUMA i','IQOS Japan','官方产品图；外发前需授权'],
+  ['image21.jpg','加热式设备','IQOS ILUMA i One / Ploom AURA / glo Hilo','価格.comマガジン','编辑照片；商业外发需授权'],
+  ['image23.jpg','加热式耗材','EVO + Ploom AURA','価格.comマガジン','编辑照片；商业外发需授权'],
+  ['image24.jpg','加热式耗材','TEREA','DR. STICK コラム','商业外发需另行授权'],
+  ['image25.jpg','加热式耗材','neo + glo HYPER','価格.comマガジン','编辑照片；商业外发需授权'],
+  ['image27.jpg','电子雾化','日本产电子烟液 + 雾化设备','VAPERS','商业外发需另行授权'],
+  ['image28.jpg','手卷烟丝','Che Shag Blue','第一商事','商业外发需另行授权'],
+  ['image30.jpg','斗烟丝','Peterson Elizabethan Mixture','田辺たばこ','商业外发需另行授权'],
+  ['image32.jpg','雪茄','Gloria Handmade Cigar','note.com / 今田ずんばあらず','商业外发需另行授权'],
+  ['image34.jpg','水烟 / 烟草','Black Spider Cherry Cola','世界のたばこ通販','商业外发需另行授权'],
+  ['image35.jpg','无烟产品','NORDIC SPIRIT','特選街web','商业外发需另行授权'],
+  ['image36.jpg','口含烟','Zero Style SNUS Rich Strong','第一商事','商业外发需另行授权']
+];
+
 let cart = [];
 let memberLoggedIn = false;
 let lastTrigger = null;
@@ -259,6 +288,16 @@ function renderProducts() {
   if (document.body.classList.contains('motion-ready')) observeRevealElements();
 }
 
+function renderCatalog() {
+  const grid = $('#catalogGrid');
+  if (!grid) return;
+  grid.innerHTML = catalogEntries.map(([image, category, name, source, rights]) => `
+    <article class="catalog-card reveal-on-scroll">
+      <div class="catalog-media"><img src="./assets/catalog/${image}" alt="${name} 实物参考图" loading="lazy" /><span>${category}</span></div>
+      <div class="catalog-copy"><h3>${name}</h3><p>${source}</p><small>${rights}</small></div>
+    </article>`).join('');
+}
+
 function renderCart() {
   const count = cart.reduce((sum, item) => sum + item.qty, 0);
   $('#cartCount').textContent = count;
@@ -450,4 +489,5 @@ restoreCart();
 updateTarRange();
 renderProducts();
 renderCart();
+renderCatalog();
 observeRevealElements();

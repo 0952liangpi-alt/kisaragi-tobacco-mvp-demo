@@ -14,3 +14,14 @@
 - Pexels License: https://www.pexels.com/license/
 
 使用前仍需逐张检查人物、商标、包装和平台条款；不要把图库图片原样销售或制作成竞争图库服务。
+
+## `catalog/`
+
+`catalog/` contains the 36 image files extracted from the customer-provided
+Japan tobacco category catalog DOCX. The website uses a curated subset in the
+reference photo atlas. Source and rights notes are kept in the DOCX and are
+also summarized in `../DELIVERY.md`.
+
+Do not treat these images as proof of current stock or permission for
+commercial publication. Confirm image, packaging, trademark, and brand rights
+per item before production use.
