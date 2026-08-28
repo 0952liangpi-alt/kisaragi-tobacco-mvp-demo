@@ -52,7 +52,17 @@ let activeDetailProductId = null;
 const helpfulVotes = new Set();
 const categoryNames = {cigarette:'紙巻き',cigar:'シガー',ryo:'手巻き',iqos:'加熱式'};
 const flavorNames = {regular:'レギュラー',menthol:'メンソール',capsule:'カプセル',flavored:'フレーバー'};
-const stockStates = {in_stock:{label:'在庫あり',className:'in-stock'},pre_order:{label:'予約受付中',className:'pre-order'},out_of_stock:{label:'売り切れ',className:'out-of-stock'}};
+const stockStates = {
+  in_stock:{label:'在庫あり',className:'in-stock',filterKey:'in_stock'},
+  low_stock:{label:'残りわずか',className:'low-stock',filterKey:'low_stock'},
+  pre_order:{label:'入荷待ち',className:'awaiting-stock',filterKey:'pre_order'},
+  out_of_stock:{label:'売り切れ',className:'out-of-stock',filterKey:'out_of_stock'}
+};
+function getStockState(product) {
+  if (product.stock_status === 'out_of_stock') return stockStates.out_of_stock;
+  if (product.stock_status === 'pre_order') return stockStates.pre_order;
+  return product.stock > 0 && product.stock <= 7 ? stockStates.low_stock : stockStates.in_stock;
+}
 
 let revealObserver;
 function observeRevealElements() {
@@ -76,7 +86,7 @@ const legalContent = {
   tokusho: {
     title: '特定商取引法に基づく表記',
     body: `<p>本ページは機能検証用のデモサイトです。商品の実販売、決済、契約、配送は行っていません。</p>
-      <dl class="legal-list"><div><dt>販売事業者</dt><dd>テストサイトのため未設定</dd></div><div><dt>販売価格</dt><dd>画面上の価格はデモ表示です</dd></div><div><dt>代金の支払時期・方法</dt><dd>決済機能は未接続です</dd></div><div><dt>引渡時期</dt><dd>配送・引渡しは行いません</dd></div><div><dt>返品・交換</dt><dd>デモのため対象外です</dd></div></dl><p>実運用前に、許可を持つ事業者の正確な事業者情報・販売条件・通信販売条件へ差し替えが必要です。</p>`
+      <dl class="legal-list"><div><dt>販売事業者</dt><dd>テストサイトのため未設定</dd></div><div><dt>販売価格</dt><dd>画面上の価格はデモ表示です（すべて税込表記）</dd></div><div><dt>商品代金以外に必要な金銭</dt><dd>送料・代金引換手数料等は未設定です。実運用前に適用条件と金額を明示します。</dd></div><div><dt>代金の支払時期・方法</dt><dd>決済機能は未接続です。実運用前にクレジットカード・コンビニ決済等の可否と支払時期を明示します。</dd></div><div><dt>商品の引渡時期</dt><dd>配送・引渡しは行いません。実運用前に注文確認後の発送目安を明示します。</dd></div><div><dt>返品・不良品について</dt><dd>デモのため対象外です。実運用前に返品可否、期限、条件を明示します。</dd></div></dl><p>実運用前に、許可を持つ事業者の正確な事業者情報・販売条件・通信販売条件へ差し替えが必要です。</p>`
   },
   privacy: {
     title: 'プライバシーポリシー',
@@ -263,7 +273,7 @@ function renderProducts() {
   const tarMax = Number($('#tarMax').value);
   const list = products.filter((product) =>
     (brand === 'all' || product.brandKey === brand) &&
-    (stock === 'all' || product.stock_status === stock) &&
+    (stock === 'all' || getStockState(product).filterKey === stock) &&
     (!categories.length || categories.includes(product.category)) &&
     (!flavors.length || flavors.includes(product.flavor)) &&
     product.tar >= tarMin && product.tar <= tarMax &&
@@ -271,10 +281,12 @@ function renderProducts() {
   );
 
   $('#resultCount').textContent = `${list.length} 件の商品`;
-  $('#productGrid').innerHTML = list.length ? list.map((product) => `
+  $('#productGrid').innerHTML = list.length ? list.map((product) => {
+    const stockState = getStockState(product);
+    return `
     <article class="product-card reveal-on-scroll ${memberLoggedIn ? '' : 'member-locked'}">
       <button class="product-visual ${product.tone}" data-detail="${product.id}" aria-label="${product.name}の詳細を見る">
-        <span class="stock-badge ${stockStates[product.stock_status].className}">${stockStates[product.stock_status].label}</span>
+        <span class="stock-badge ${stockState.className}">${stockState.label}</span>
         <div class="pack"><small>${product.brand.toUpperCase()}</small><strong>${product.name.split(' ')[0]}<br />${product.name.split(' ')[1] || ''}</strong><small>20 / JAPAN</small></div>
       </button>
       ${memberLoggedIn ? '' : '<span class="member-lock">会員ログインで商品詳細を表示</span>'}
@@ -284,7 +296,8 @@ function renderProducts() {
         <div class="product-specs"><span>タール ${product.tar}mg</span><span>ニコチン ${product.nicotine}mg</span></div>
         <div class="product-bottom"><span class="price">${yen(product.price)}</span><button class="add-button" data-add="${product.id}" ${canAdd(product) ? '' : 'disabled'}>${product.stock_status === 'pre_order' ? '予約を申請' : canAdd(product) ? 'カートに追加' : '再入荷待ち'}</button></div>
       </div>
-    </article>`).join('') : '<p class="empty-cart">条件に一致する商品がありません。</p>';
+    </article>`;
+  }).join('') : '<p class="empty-cart">条件に一致する商品がありません。</p>';
   if (document.body.classList.contains('motion-ready')) observeRevealElements();
 }
 
@@ -355,7 +368,7 @@ function renderProductDetail(product, order = 'latest') {
   $('#detailBody').innerHTML = `
     <p class="eyebrow">${product.sku} / ${product.brand}</p><h2>${product.name}</h2>
     <div class="detail-pack product-visual ${product.tone}"><div class="pack"><small>${product.brand.toUpperCase()}</small><strong>${product.name.split(' ')[0]}<br />${product.name.split(' ')[1] || ''}</strong><small>20 / JAPAN</small></div></div>
-    <dl class="detail-specs"><div><dt>価格</dt><dd>${yen(product.price)}</dd></div><div><dt>カテゴリー</dt><dd>${categoryNames[product.category]}</dd></div><div><dt>風味</dt><dd>${flavorNames[product.flavor]}</dd></div><div><dt>原産地</dt><dd>${product.origin}</dd></div><div><dt>規格</dt><dd>${product.size}</dd></div><div><dt>タール / ニコチン</dt><dd>${product.tar}mg / ${product.nicotine}mg</dd></div><div><dt>在庫状態</dt><dd>${stockStates[product.stock_status].label}</dd></div></dl>
+    <dl class="detail-specs"><div><dt>価格</dt><dd>${yen(product.price)}</dd></div><div><dt>カテゴリー</dt><dd>${categoryNames[product.category]}</dd></div><div><dt>風味</dt><dd>${flavorNames[product.flavor]}</dd></div><div><dt>原産地</dt><dd>${product.origin}</dd></div><div><dt>規格</dt><dd>${product.size}</dd></div><div><dt>タール / ニコチン</dt><dd>${product.tar}mg / ${product.nicotine}mg</dd></div><div><dt>在庫状態</dt><dd>${getStockState(product).label}</dd></div></dl>
     ${productProfileMarkup(product)}
     <p class="detail-note">本商品はデモ用の架空商品です。実運用では正規商品情報・批准価格・販売許可範囲を確認して掲載します。</p>
     <button class="button button-primary full" data-add="${product.id}" ${canAdd(product) ? '' : 'disabled'}>${product.stock_status === 'pre_order' ? '予約を申請' : canAdd(product) ? 'カートに追加' : '再入荷待ち'}</button>

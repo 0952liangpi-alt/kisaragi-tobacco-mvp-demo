@@ -19,7 +19,13 @@ const requiredChecks = [
   ['age background isolation', js, "element.setAttribute('inert', '')"],
   ['tax-inclusive price format', js, "toLocaleString('ja-JP')}（税込）"],
   ['legal modal controls', html, 'data-legal="tokusho"'],
+  ['underage legal notice', html, '未成年者の喫煙は法律で禁じられています'],
+  ['low-stock selector', html, 'value="low_stock"'],
   ['drawer above mobile navigation', css, 'aside[aria-label="カート"]{position:fixed;right:0;bottom:0;z-index:9999}'],
+  ['mobile 3d reduction', css, 'transform:none!important'],
+  ['subtle noise texture', css, "feTurbulence"],
+  ['five-dimensional taste profile', js, "sweetness:'甘さ',menthol:'清涼感'"],
+  ['low-stock state', js, "label:'残りわずか'"],
   ['stable review vote identity', js, 'data-helpful="${product.id}:${review.id}"'],
   ['generic modal focus isolation', js, 'releaseActiveModalFocus'],
 ];
