@@ -42,7 +42,7 @@ const requiredChecks = [
   ['catalog category filters', html, 'data-catalog-filter="smokeless"'],
   ['catalog source links', js, 'entry.sourceUrl'],
   ['service worker registration', js, "serviceWorker.register('./service-worker.js')"],
-  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v4'"],
+  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v5'"],
   ['glass product direction', css, 'Aurora Glass product direction'],
   ['real catalog primary CTA', html, 'href="#catalog">実物図鑑を見る'],
   ['Japanese navigation label', html, 'aria-label="メインナビゲーション"'],
