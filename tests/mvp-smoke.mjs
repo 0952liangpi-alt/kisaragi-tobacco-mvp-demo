@@ -42,7 +42,7 @@ const requiredChecks = [
   ['catalog category filters', html, 'data-catalog-filter="smokeless"'],
   ['catalog source links', js, 'entry.sourceUrl'],
   ['service worker registration', js, "serviceWorker.register('./service-worker.js')"],
-  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v9'"],
+  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v10'"],
   ['Apple system font stack', css, '--font-system:-apple-system,BlinkMacSystemFont'],
   ['Japanese font fallback', css, '"Hiragino Sans"'],
   ['semantic type scale', css, '--type-hero:clamp'],
@@ -58,6 +58,12 @@ const requiredChecks = [
   ['single-row floating mobile dock', css, 'grid-template-columns:repeat(5,minmax(0,1fr))'],
   ['compact mobile footer', css, 'grid-template-columns:40px 1fr'],
   ['mobile dock icon labels', html, 'aria-label="モバイルナビゲーション"'],
+  ['dock current state', html, 'aria-current="page"'],
+  ['category sliding indicator', html, 'catalog-filter-indicator'],
+  ['dock state controller', js, 'function setDockActive'],
+  ['category indicator controller', js, 'function updateCatalogIndicator'],
+  ['add-to-cart success feedback', js, "trigger.textContent = '追加済み ✓'"],
+  ['animated catalog disclosure', js, 'renderCatalog({animate: true})'],
 ];
 
 for (const [name, source, expected] of requiredChecks) assert.ok(source.includes(expected), `${name} is missing`);

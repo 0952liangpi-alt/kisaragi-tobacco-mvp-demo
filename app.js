@@ -277,9 +277,17 @@ function renderProducts() {
 
 let catalogExpanded = false;
 
-function renderCatalog() {
+function updateCatalogIndicator(button = document.querySelector('[data-catalog-filter][aria-pressed="true"]')) {
+  const bar = button?.closest('.catalog-filter-bar');
+  if (!bar) return;
+  bar.style.setProperty('--indicator-left', `${button.offsetLeft}px`);
+  bar.style.setProperty('--indicator-width', `${button.offsetWidth}px`);
+}
+
+function renderCatalog({animate = false} = {}) {
   const grid = $('#catalogGrid');
   if (!grid) return;
+  const oldHeight = grid.getBoundingClientRect().height;
   const activeCategory = document.querySelector('[data-catalog-filter][aria-pressed="true"]')?.dataset.catalogFilter || 'all';
   const filteredEntries = activeCategory === 'all' ? catalogEntries : catalogEntries.filter((entry) => entry.category === activeCategory);
   const entries = [...filteredEntries].sort((a, b) => Number(Boolean(b.asset)) - Number(Boolean(a.asset)));
@@ -297,6 +305,18 @@ function renderCatalog() {
       </div>
       <div class="catalog-copy"><h3>${entry.name}</h3><p>${entry.nameJa}</p><a class="catalog-source" href="${entry.sourceUrl}" target="_blank" rel="noopener noreferrer">出典：${entry.source} ↗</a><small class="${entry.publicationAllowed ? 'license-open' : 'license-pending'}">${entry.license}</small></div>
     </article>`).join('');
+  if (animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const newHeight = grid.getBoundingClientRect().height;
+    grid.style.height = `${oldHeight}px`;
+    grid.style.overflow = 'hidden';
+    grid.classList.add('is-updating');
+    requestAnimationFrame(() => { grid.style.height = `${newHeight}px`; });
+    window.setTimeout(() => {
+      grid.style.height = '';
+      grid.style.overflow = '';
+      grid.classList.remove('is-updating');
+    }, 280);
+  }
   const moreButton = $('#catalogMore');
   if (moreButton) {
     moreButton.hidden = entries.length <= initialLimit;
@@ -317,14 +337,37 @@ function renderCart() {
   persistCart();
 }
 
-function addToCart(product) {
+function addToCart(product, trigger) {
   if (!canAdd(product)) return;
   const existing = cart.find((item) => item.product.id === product.id);
   if (existing?.qty >= product.stock) return showToast('在庫数を超えて追加できません');
   if (existing) existing.qty += 1;
   else cart.push({product, qty: 1});
   renderCart();
+  if (trigger) {
+    const originalLabel = trigger.textContent;
+    trigger.classList.add('is-success');
+    trigger.textContent = '追加済み ✓';
+    window.setTimeout(() => {
+      trigger.classList.remove('is-success');
+      trigger.textContent = originalLabel;
+    }, 1100);
+  }
+  const cartDock = document.querySelector('[data-dock="cart"]');
+  cartDock?.classList.remove('has-update');
+  requestAnimationFrame(() => cartDock?.classList.add('has-update'));
+  window.setTimeout(() => cartDock?.classList.remove('has-update'), 700);
   showToast('カートに追加しました');
+}
+
+function setDockActive(item) {
+  if (!item) return;
+  document.querySelectorAll('[data-dock]').forEach((dockItem) => {
+    const active = dockItem === item;
+    dockItem.classList.toggle('is-active', active);
+    if (active) dockItem.setAttribute('aria-current', 'page');
+    else dockItem.removeAttribute('aria-current');
+  });
 }
 
 function openCart(trigger) {
@@ -444,13 +487,14 @@ document.addEventListener('click', (event) => {
   if (catalogFilter) {
     document.querySelectorAll('[data-catalog-filter]').forEach((button) => button.setAttribute('aria-pressed', String(button === catalogFilter)));
     catalogExpanded = false;
-    renderCatalog();
+    updateCatalogIndicator(catalogFilter);
+    renderCatalog({animate: true});
   }
 
   const catalogMore = event.target.closest('#catalogMore');
   if (catalogMore) {
     catalogExpanded = !catalogExpanded;
-    renderCatalog();
+    renderCatalog({animate: true});
     if (!catalogExpanded) $('#catalog').scrollIntoView({behavior: 'smooth'});
   }
 
@@ -458,7 +502,10 @@ document.addEventListener('click', (event) => {
   if (detail) openProductDetail(products.find((product) => product.id === Number(detail.dataset.detail)), detail);
 
   const add = event.target.closest('[data-add]');
-  if (add) addToCart(products.find((product) => product.id === Number(add.dataset.add)));
+  if (add) addToCart(products.find((product) => product.id === Number(add.dataset.add)), add);
+
+  const dockItem = event.target.closest('[data-dock]');
+  if (dockItem) setDockActive(dockItem);
 
   const cartTrigger = event.target.closest('[data-open="cart"]');
   if (cartTrigger) openCart(cartTrigger);
@@ -549,6 +596,13 @@ updateTarRange();
 renderProducts();
 renderCart();
 renderCatalog();
+updateCatalogIndicator();
+window.addEventListener('resize', () => updateCatalogIndicator());
+const dockObserver = new IntersectionObserver((entries) => {
+  const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  if (visible) setDockActive(document.querySelector(`[data-dock="${visible.target.id}"]`));
+}, {rootMargin: '-20% 0px -60%', threshold: [0, .2, .5]});
+['home', 'catalog', 'guide'].forEach((id) => { const section = document.getElementById(id); if (section) dockObserver.observe(section); });
 observeRevealElements();
 
 if ('serviceWorker' in navigator) {
