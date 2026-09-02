@@ -1,8 +1,10 @@
-const CACHE_NAME = 'kisaragi-demo-v11';
+const CACHE_NAME = 'kisaragi-demo-v12';
 const APP_SHELL = [
   './',
   './index.html',
   './styles.css',
+  './styles-base.css',
+  './image-layer.css',
   './catalog-data.js',
   './app.js',
   './manifest.webmanifest',
@@ -27,7 +29,8 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
-  if (event.request.mode === 'navigate') {
+  const dest = event.request.destination;
+  if (event.request.mode === 'navigate' || dest === 'style' || dest === 'image') {
     event.respondWith(fetch(event.request).then((response) => {
       const copy = response.clone();
       caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
