@@ -1,0 +1,1 @@
+Homepage imagery is reconstructed client-side from sprite.part1.txt through sprite.part5.txt into a JPEG data URL. This avoids the prior invalid-binary upload path that produced blank image areas on GitHub Pages mobile Safari.
