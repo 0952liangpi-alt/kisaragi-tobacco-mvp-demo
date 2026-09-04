@@ -1,0 +1,1 @@
+NEXT: open delivery PR from delivery/japan-catalog-p0 to main, merge exact head if GitHub accepts, then inspect the fixed public URL and update acceptance receipt.
