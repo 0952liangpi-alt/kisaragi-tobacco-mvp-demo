@@ -1,0 +1,1 @@
+CANONICAL_PRODUCT_CATALOG is the only website product truth. Reference catalogs and source adapters are inputs, not parallel website product lists.
