@@ -1,0 +1,1 @@
+{"pipeline":["SOURCE","NORMALIZE","MATCH_SKU","DEDUPLICATE","CONFLICT_CHECK","CANONICAL_CATALOG","WEBSITE"],"core":"catalog-importer.js","rule":"New approved sources add adapters/records; they do not create a new catalog or replace USER_UPLOAD assets."}
