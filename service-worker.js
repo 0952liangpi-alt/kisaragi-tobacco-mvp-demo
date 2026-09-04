@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kisaragi-demo-v12';
+const CACHE_NAME = 'kisaragi-demo-v13-catalog';
 const APP_SHELL = [
   './',
   './index.html',
@@ -8,13 +8,7 @@ const APP_SHELL = [
   './catalog-data.js',
   './app.js',
   './manifest.webmanifest',
-  './assets/icon.svg',
-  './assets/catalog/image2.jpg',
-  './assets/catalog/image3.png',
-  './assets/catalog/image4.jpg',
-  './assets/catalog/image5.jpg',
-  './assets/catalog/image8.jpg',
-  './assets/catalog/image17.jpg'
+  './assets/icon.svg'
 ];
 
 self.addEventListener('install', (event) => {
@@ -29,6 +23,12 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
+  const url = new URL(event.request.url);
+  const catalogRuntime = /(?:world-tobacco|catalog-core|catalog-runtime|sprite-loader|user-sprite36|deployment-receipt)/.test(url.pathname);
+  if (catalogRuntime) {
+    event.respondWith(fetch(event.request, {cache:'no-store'}).catch(() => caches.match(event.request)));
+    return;
+  }
   const dest = event.request.destination;
   if (event.request.mode === 'navigate' || dest === 'style' || dest === 'image') {
     event.respondWith(fetch(event.request).then((response) => {
