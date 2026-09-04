@@ -1,0 +1,1 @@
+USER_APPROVED_IMAGE > LOCAL_VERIFIED_IMAGE > APPROVED_EXTERNAL_SOURCE > PLACEHOLDER. External importers cannot silently replace a user-approved asset.
