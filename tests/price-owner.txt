@@ -1,0 +1,1 @@
+price_jpy is structured catalog data. Price text already present in a user-uploaded image is preserved. Mismatches become PRICE_CONFLICT; neither side is silently overwritten.
