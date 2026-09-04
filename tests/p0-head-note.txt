@@ -1,0 +1,1 @@
+Use execution-time latest delivery/japan-catalog-p0 head for PR and merge. Never reuse an older head SHA.
