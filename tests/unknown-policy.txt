@@ -1,0 +1,1 @@
+Missing or inapplicable tobacco fields remain null / UNKNOWN / NOT_APPLICABLE. Never invent Tar, Nicotine, pack size, price, product code, origin, or English name.
