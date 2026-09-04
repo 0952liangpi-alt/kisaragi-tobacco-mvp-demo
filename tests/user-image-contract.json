@@ -1,0 +1,1 @@
+{"source":"USER_UPLOAD","must_preserve_original_price_text":true,"must_not_crop_price_without_retaining_original_asset":true,"must_not_be_overwritten_by_reference_image":true,"structured_price_required":true,"price_mismatch_action":"PRICE_CONFLICT","ambiguous_sku_action":"CONFLICT_REVIEW"}
