@@ -1,0 +1,1 @@
+P0 delivery evidence. Merge is not completion. Public GitHub Pages image visibility is the final acceptance gate.
