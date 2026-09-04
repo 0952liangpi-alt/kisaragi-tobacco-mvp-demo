@@ -1,0 +1,1 @@
+{"metrics":["TOTAL_REFERENCE_SKU","TOTAL_LOCAL_SKU","COMPLETE_SKU","MISSING_SKU","MISSING_IMAGE","MISSING_FIELDS","DUPLICATE_SKU","CONFLICTS","COVERAGE_PERCENT"],"reference_total":57,"rule":"Metrics are generated from KISARAGI_CANONICAL_CATALOG / KISARAGI_ASSET_REGISTRY, not maintained as a second product list."}
