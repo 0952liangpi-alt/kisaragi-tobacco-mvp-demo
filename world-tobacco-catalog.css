@@ -329,6 +329,10 @@
 }
 
 @media (max-width: 520px) {
+  .jp-sku-search input {
+    font-size: 16px;
+  }
+
   .jp-sku-section {
     scroll-margin-top: 62px;
     padding: 48px 12px 104px;
