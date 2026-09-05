@@ -114,6 +114,16 @@
   letter-spacing: 0;
 }
 
+header .brand {
+  min-height: 44px;
+}
+
+footer a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+}
+
 @media (max-width: 900px) {
   .hero {
     min-height: auto;
@@ -158,6 +168,15 @@
     height: 50px;
     border-radius: 8px;
     transition: transform .2s ease, opacity .2s ease;
+  }
+
+  .mobile-dock a {
+    display: flex;
+    min-width: 44px;
+    height: 100%;
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: center;
   }
 
   body.hero-in-view .mobile-dock {

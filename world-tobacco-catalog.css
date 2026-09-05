@@ -280,6 +280,8 @@
 
 .jp-sku-source {
   display: flex;
+  min-height: 44px;
+  align-items: center;
   justify-content: space-between;
   gap: 8px;
   margin-top: 12px;
@@ -295,6 +297,9 @@
 }
 
 .jp-sku-source a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   flex: 0 0 auto;
   color: inherit;
   text-decoration: underline;
