@@ -20,10 +20,11 @@ const requiredChecks = [
   ['mobile viewport fit', html, 'viewport-fit=cover'],
   ['Apple web app metadata', html, 'apple-mobile-web-app-capable'],
   ['canonical catalog navigation', html, 'href="#jp-sku-catalog">品項</a>'],
-  ['canonical catalog primary CTA', html, '57品項を見る'],
+  ['canonical catalog primary CTA', html, '83品項を見る'],
   ['canonical catalog loader', loader, "loadScript('./catalog-core.js"],
   ['canonical renderer', loader, "loadScript('./world-tobacco-catalog-render.js"],
-  ['per-SKU image path', renderer, 'product.image?.file_path'],
+  ['per-SKU image paths', renderer, 'product.images?.length'],
+  ['multi-image gallery', catalogCss, 'scroll-snap-type: x mandatory'],
   ['brand toolbar', renderer, 'aria-label="ブランドで絞り込む"'],
   ['image load fallback', renderer, 'IMAGE<br>LOAD FAILED'],
   ['mobile two-column catalog', catalogCss, 'grid-template-columns: repeat(2, minmax(0, 1fr))'],
@@ -34,7 +35,7 @@ const requiredChecks = [
   ['mobile dock safe area', imageCss, 'env(safe-area-inset-bottom)'],
   ['catalog dock clearance', imageCss, 'body.catalog-browsing .mobile-dock'],
   ['hero dock clearance', imageCss, 'body.hero-in-view .mobile-dock'],
-  ['hero uses individual image', html, './assets/catalog/image2.jpg'],
+  ['hero uses approved individual image', html, './assets/catalog/products/wt-1117-camel-berry-5.jpg'],
   ['whole-page sprite retired', imageCss, '.hero-visual'],
   ['service worker registration target', serviceWorker, './catalog-core.js'],
   ['service worker registration', html, "serviceWorker.register('./service-worker.js')"],
@@ -50,7 +51,10 @@ for (const [name, source, expected] of requiredChecks) {
 assert.ok(!html.includes('data-add=') && !html.includes('checkout'), 'public page must not expose purchase controls');
 assert.ok(!loader.includes('pack.part01') && !loader.includes('user-sprite36'), 'runtime must not load broken Base64 assets');
 assert.ok(!imageCss.includes('home-sprite'), 'homepage must not use the screenshot sprite');
+assert.ok(!html.includes('assets/catalog/image2.jpg'), 'rejected photo 1 must not render on the page');
+assert.ok(!html.includes('assets/catalog/image5.jpg'), 'rejected Mevius photo must not render on the page');
+assert.ok(!serviceWorker.includes('wt-1034-peace-10.jpg'), 'rejected photo 1 must not be cached');
 assert.ok(!renderer.includes('data:image'), 'product cards must use per-SKU files');
 assert.ok(manifest.icons.length > 0, 'PWA manifest needs an icon');
 
-console.log(`MVP smoke: PASS (${requiredChecks.length + 5} assertions)`);
+console.log(`MVP smoke: PASS (${requiredChecks.length + 8} assertions)`);

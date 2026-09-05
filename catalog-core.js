@@ -13,7 +13,78 @@
     OTHER_APPROVED_SOURCE: Object.freeze({id: 'OTHER_APPROVED_SOURCE', priority: 50}),
   });
 
+  const userProducts = [
+    {id: 'ua-terea-silver-blue', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（銀青系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-terea-cyan', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（シアン系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-terea-purple', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（紫系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-terea-green-black', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（緑黒系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-terea-bright-blue', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（鮮青系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-terea-lime', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（ライム系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-terea-orange', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（オレンジ系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-terea-black-purple', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（黒紫系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-terea-riviera-pearl', brand: 'TEREA', name: 'TEREA RIVIERA PEARL', category: 'HEATED_TOBACCO_STICKS', identity: 'LABEL_VISIBLE'},
+    {id: 'ua-terea-red-black', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（赤黒系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-terea-pastel', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（淡紫系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-iqos-device-purple', brand: 'IQOS', name: 'IQOS 加熱式デバイス（パープル）', category: 'HEATED_TOBACCO_DEVICES', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-iqos-iluma-prime-blue', brand: 'IQOS', name: 'IQOS ILUMA i PRIME（ブルー系）', category: 'HEATED_TOBACCO_DEVICES', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-iqos-iluma-prime-burgundy', brand: 'IQOS', name: 'IQOS ILUMA i PRIME（バーガンディ系）', category: 'HEATED_TOBACCO_DEVICES', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-iqos-iluma-prime-violet', brand: 'IQOS', name: 'IQOS ILUMA i PRIME（バイオレット系）', category: 'HEATED_TOBACCO_DEVICES', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-iqos-iluma-prime-clear-blue', brand: 'IQOS', name: 'IQOS ILUMA i PRIME 清風藍', category: 'HEATED_TOBACCO_DEVICES', identity: 'LABEL_VISIBLE'},
+    {id: 'ua-iqos-iluma-prime-green', brand: 'IQOS', name: 'IQOS ILUMA i PRIME（グリーン系）', category: 'HEATED_TOBACCO_DEVICES', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-mevius-option-fizzy-dew-8', brand: 'メビウス', name: 'MEVIUS OPTION FIZZY DEW 8', category: 'CIGARETTES', identity: 'LABEL_VISIBLE'},
+    {id: 'ua-seven-stars-prime-leaf-12', brand: 'セブンスター', name: 'Seven Stars PRIME LEAF 12', category: 'CIGARETTES', identity: 'LABEL_VISIBLE'},
+    {id: 'ua-mevius-prestige', brand: 'メビウス', name: 'MEVIUS PRESTIGE', category: 'CIGARETTES', identity: 'LABEL_VISIBLE'},
+    {id: 'ua-mevius-e-series-super-slims-1', brand: 'メビウス', name: 'MEVIUS E-SERIES SUPER SLIMS 1', category: 'CIGARETTES', identity: 'LABEL_VISIBLE'},
+    {id: 'ua-mevius-e-series-menthol-ice-storm-100s-1', brand: 'メビウス', name: 'MEVIUS E-SERIES MENTHOL ICE STORM 100’s 1', category: 'CIGARETTES', identity: 'LABEL_VISIBLE'},
+    {id: 'ua-peace-lights', brand: 'ピース', name: 'Peace LIGHTS', category: 'CIGARETTES', identity: 'LABEL_VISIBLE'},
+    {id: 'ua-peace-filter-original', brand: 'ピース', name: 'Peace Filter Original', category: 'CIGARETTES', identity: 'LABEL_VISIBLE'},
+    {id: 'ua-terea-gold', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（ゴールド系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
+    {id: 'ua-terea-velvet-pearl', brand: 'TEREA', name: 'TEREA VELVET PEARL', category: 'HEATED_TOBACCO_STICKS', identity: 'LABEL_VISIBLE'},
+  ].map((product) => Object.freeze(product));
+
+  const userAsset = (assetId, sku, filename, details = {}) => ({
+    asset_id: assetId,
+    sku,
+    file_path: `assets/catalog/products/${filename}`,
+    source: 'USER_UPLOAD',
+    status: 'USER_APPROVED_IMAGE',
+    price_preserved: false,
+    ...details,
+  });
+
   const assets = [
+    userAsset('ua-terea-silver-blue', 'ua-terea-silver-blue', 'ua-terea-silver-blue.jpg'),
+    userAsset('ua-terea-cyan', 'ua-terea-cyan', 'ua-terea-cyan.jpg'),
+    userAsset('ua-terea-purple', 'ua-terea-purple', 'ua-terea-purple.jpg'),
+    userAsset('ua-terea-green-black', 'ua-terea-green-black', 'ua-terea-green-black.jpg'),
+    userAsset('ua-terea-bright-blue', 'ua-terea-bright-blue', 'ua-terea-bright-blue.jpg'),
+    userAsset('ua-terea-lime', 'ua-terea-lime', 'ua-terea-lime.jpg'),
+    userAsset('ua-terea-orange', 'ua-terea-orange', 'ua-terea-orange.jpg'),
+    userAsset('ua-terea-black-purple', 'ua-terea-black-purple', 'ua-terea-black-purple.jpg'),
+    userAsset('ua-terea-riviera-pearl', 'ua-terea-riviera-pearl', 'ua-terea-riviera-pearl.jpg'),
+    userAsset('ua-terea-red-black', 'ua-terea-red-black', 'ua-terea-red-black.jpg'),
+    userAsset('ua-terea-pastel-a', 'ua-terea-pastel', 'ua-terea-pastel-a.jpg', {rank: 1}),
+    userAsset('ua-terea-pastel-b', 'ua-terea-pastel', 'ua-terea-pastel-b.jpg', {rank: 2}),
+    userAsset('ua-iqos-device-purple', 'ua-iqos-device-purple', 'ua-iqos-device-purple.jpg'),
+    userAsset('ua-iqos-iluma-prime-blue', 'ua-iqos-iluma-prime-blue', 'ua-iqos-iluma-prime-blue.jpg'),
+    userAsset('ua-iqos-iluma-prime-burgundy', 'ua-iqos-iluma-prime-burgundy', 'ua-iqos-iluma-prime-burgundy.jpg'),
+    userAsset('ua-iqos-iluma-prime-violet', 'ua-iqos-iluma-prime-violet', 'ua-iqos-iluma-prime-violet.jpg'),
+    userAsset('ua-iqos-iluma-prime-clear-blue', 'ua-iqos-iluma-prime-clear-blue', 'ua-iqos-iluma-prime-clear-blue.jpg', {
+      observed_price_jpy: 8980,
+      price_preserved: true,
+    }),
+    userAsset('ua-iqos-iluma-prime-green', 'ua-iqos-iluma-prime-green', 'ua-iqos-iluma-prime-green.jpg'),
+    userAsset('ua-mevius-option-purple-100s-1', 'wt-1692', 'ua-mevius-option-purple-100s-1.jpg'),
+    userAsset('ua-mevius-option-fizzy-dew-8', 'ua-mevius-option-fizzy-dew-8', 'ua-mevius-option-fizzy-dew-8.jpg'),
+    userAsset('ua-seven-stars-prime-leaf-12', 'ua-seven-stars-prime-leaf-12', 'ua-seven-stars-prime-leaf-12.jpg'),
+    userAsset('ua-mevius-prestige', 'ua-mevius-prestige', 'ua-mevius-prestige.jpg'),
+    userAsset('ua-mevius-e-series-super-slims-1', 'ua-mevius-e-series-super-slims-1', 'ua-mevius-e-series-super-slims-1.jpg'),
+    userAsset('ua-mevius-e-series-menthol-ice-storm-100s-1', 'ua-mevius-e-series-menthol-ice-storm-100s-1', 'ua-mevius-e-series-menthol-ice-storm-100s-1.jpg'),
+    userAsset('ua-mevius-lights-8', 'wt-1138', 'ua-mevius-lights-8.jpg'),
+    userAsset('ua-peace-lights', 'ua-peace-lights', 'ua-peace-lights.jpg'),
+    userAsset('ua-peace-filter-original', 'ua-peace-filter-original', 'ua-peace-filter-original.jpg'),
+    userAsset('ua-terea-gold', 'ua-terea-gold', 'ua-terea-gold.jpg'),
+    userAsset('ua-terea-velvet-pearl', 'ua-terea-velvet-pearl', 'ua-terea-velvet-pearl.jpg'),
     {
       asset_id: 'ua-camel-berry-5',
       sku: 'wt-1117',
@@ -31,16 +102,6 @@
       status: 'USER_APPROVED_IMAGE',
       observed_price_jpy: 470,
       price_preserved: true,
-    },
-    {
-      asset_id: 'lv-peace-10',
-      sku: 'wt-1034',
-      file_path: 'assets/catalog/products/wt-1034-peace-10.jpg',
-      source: 'LOCAL_VERIFIED_IMAGE',
-      status: 'LOCAL_VERIFIED_IMAGE',
-      source_url: 'https://commons.wikimedia.org/wiki/File:Peace(10).jpg',
-      license: 'CC BY-SA 4.0',
-      price_preserved: false,
     },
     {
       asset_id: 'lv-seven-stars',
@@ -78,22 +139,36 @@
     }),
   ]);
 
-  const bestAssetBySku = new Map();
+  const assetsBySku = new Map();
   assets.forEach((asset) => {
-    const current = bestAssetBySku.get(asset.sku);
-    const candidatePriority = sources[asset.source]?.priority || 0;
-    const currentPriority = current ? sources[current.source]?.priority || 0 : -1;
-    if (!current || candidatePriority > currentPriority) bestAssetBySku.set(asset.sku, asset);
+    const productAssets = assetsBySku.get(asset.sku) || [];
+    productAssets.push(asset);
+    productAssets.sort((left, right) => (
+      (sources[right.source]?.priority || 0) - (sources[left.source]?.priority || 0) ||
+      (left.rank || 0) - (right.rank || 0)
+    ));
+    assetsBySku.set(asset.sku, productAssets);
   });
 
-  const canonical = references.map((reference) => {
-    const asset = bestAssetBySku.get(reference.id) || null;
-    const priceConflict = Boolean(
-      asset &&
+  const imageRecord = (asset) => Object.freeze({
+    asset_id: asset.asset_id,
+    file_path: asset.file_path,
+    status: asset.status,
+    observed_price_jpy: asset.observed_price_jpy ?? null,
+    price_preserved: asset.price_preserved,
+  });
+
+  const productImages = (sku) => Object.freeze((assetsBySku.get(sku) || []).map(imageRecord));
+
+  const referenceProducts = references.map((reference) => {
+    const images = productImages(reference.id);
+    const image = images[0] || null;
+    const primaryAsset = (assetsBySku.get(reference.id) || [])[0] || null;
+    const priceConflict = (assetsBySku.get(reference.id) || []).some((asset) => (
       asset.observed_price_jpy != null &&
       reference.price != null &&
       asset.observed_price_jpy !== reference.price
-    );
+    ));
 
     return Object.freeze({
       id: reference.id,
@@ -113,20 +188,50 @@
       nicotine_mg: reference.nicotine ?? null,
       product_code: reference.code ?? null,
       system_code: reference.systemCode ?? null,
-      image: asset ? Object.freeze({
-        asset_id: asset.asset_id,
-        file_path: asset.file_path,
-        status: asset.status,
-        price_preserved: asset.price_preserved,
-      }) : null,
-      image_source: asset?.source || null,
+      image,
+      images,
+      image_source: primaryAsset?.source || null,
       source_url: reference.sourceUrl || sources.WORLD_TOBACCO.url,
       source_checked_at: '2026-09-05',
       availability: reference.soldOut ? 'SOLD_OUT' : 'UNKNOWN',
-      status: priceConflict ? 'PRICE_CONFLICT' : (asset ? 'IMAGE_BOUND' : 'CATALOG_ONLY'),
+      status: priceConflict ? 'PRICE_CONFLICT' : (image ? 'IMAGE_BOUND' : 'CATALOG_ONLY'),
       notes: null,
     });
   });
+
+  const uploadedProducts = userProducts.map((product) => {
+    const images = productImages(product.id);
+    const image = images[0] || null;
+    return Object.freeze({
+      id: product.id,
+      sku: product.id,
+      category: product.category,
+      subcategory: 'USER_UPLOAD',
+      origin_country: 'UNKNOWN',
+      brand: product.brand,
+      series: null,
+      variant: null,
+      product_name_ja: product.name,
+      product_name_en: null,
+      price_jpy: null,
+      reference_shop_price_jpy: null,
+      pack_size: null,
+      tar_mg: null,
+      nicotine_mg: null,
+      product_code: null,
+      system_code: null,
+      image,
+      images,
+      image_source: 'USER_UPLOAD',
+      source_url: null,
+      source_checked_at: '2026-09-05',
+      availability: 'UNKNOWN',
+      status: product.identity === 'IDENTITY_PENDING' ? 'IDENTITY_PENDING' : 'IMAGE_BOUND',
+      notes: product.identity,
+    });
+  });
+
+  const canonical = Object.freeze([...referenceProducts, ...uploadedProducts]);
 
   const ids = new Set();
   const duplicateIds = [];
@@ -155,8 +260,10 @@
   const priceConflicts = canonical.filter((product) => product.status === 'PRICE_CONFLICT').length;
 
   const audit = Object.freeze({
-    TOTAL_REFERENCE_SKU: canonical.length,
+    TOTAL_REFERENCE_SKU: references.length,
     TOTAL_LOCAL_SKU: canonical.length,
+    TOTAL_UPLOAD_ASSETS: assets.filter((asset) => asset.source === 'USER_UPLOAD').length,
+    TOTAL_UPLOAD_PRODUCTS: new Set(assets.filter((asset) => asset.source === 'USER_UPLOAD').map((asset) => asset.sku)).size,
     IMAGE_BOUND: imageBound,
     COMPLETE_SKU: completeSku,
     MISSING_SKU: 0,
@@ -171,6 +278,8 @@
       'RYO',
       'CIGARS',
       'PIPE_TOBACCO',
+      'HEATED_TOBACCO_STICKS',
+      'HEATED_TOBACCO_DEVICES',
     ],
   });
 

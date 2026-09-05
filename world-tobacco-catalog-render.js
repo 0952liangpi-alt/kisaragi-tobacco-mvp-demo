@@ -25,13 +25,15 @@
         <div class="jp-sku-head">
           <div>
             <span class="jp-sku-kicker">CANONICAL PRODUCT CATALOG</span>
-            <h2>日本たばこ<br>57品項。</h2>
+            <h2>商品庫<br>${audit.TOTAL_LOCAL_SKU ?? data.length}品項。</h2>
           </div>
-          <p>商品、価格、画像、出典は唯一の商品真値から表示しています。確認できない画像は推測で補わず、明確に未登録と表示します。</p>
+          <p>参照SKUとユーザー提供画像を、同じ唯一の商品データから表示しています。型番を特定できない商品は確認待ちのまま掲載します。</p>
         </div>
         <div class="jp-sku-summary" aria-label="商品庫の収録状況">
-          <span><b>${audit.TOTAL_REFERENCE_SKU ?? data.length}</b> SKU</span>
+          <span><b>${audit.TOTAL_REFERENCE_SKU ?? 0}</b> 参照SKU</span>
+          <span><b>${audit.TOTAL_LOCAL_SKU ?? data.length}</b> 全品項</span>
           <span><b>${new Set(data.map((product) => product.brand)).size}</b> ブランド</span>
+          <span><b>${audit.TOTAL_UPLOAD_ASSETS ?? 0}</b> ユーザー画像</span>
           <span><b>${audit.IMAGE_BOUND ?? 0}</b> 画像登録</span>
           <span><b>${audit.MISSING_IMAGE ?? 0}</b> 画像未登録</span>
           <span><b>${audit.CONFLICTS ?? 0}</b> 確認待ち</span>
@@ -49,20 +51,27 @@
     const yen = (value) => value == null ? 'UNKNOWN' : `¥${Number(value).toLocaleString('ja-JP')}`;
 
     const imageMarkup = (product) => {
-      if (!product.image?.file_path) {
+      const images = product.images?.length ? product.images : (product.image ? [product.image] : []);
+      if (!images.length) {
         return '<div class="jp-sku-image jp-sku-image-missing"><span>IMAGE<br>NOT VERIFIED</span></div>';
       }
 
-      const path = escapeHtml(product.image.file_path);
       const name = escapeHtml(product.product_name_ja);
-      const preservedPrice = product.image.price_preserved
-        ? '<span class="jp-sku-image-label">画像内価格を保持</span>'
-        : '';
       return `
-        <a class="jp-sku-image jp-sku-image-verified" href="./${path}" target="_blank" rel="noopener" aria-label="${name}の画像を原寸で見る">
-          <img src="./${path}" alt="${name}" loading="lazy" width="900" height="1200">
-          ${preservedPrice}
-        </a>`;
+        <div class="jp-sku-images ${images.length > 1 ? 'is-gallery' : ''}">
+          ${images.map((image, index) => {
+            const path = escapeHtml(image.file_path);
+            const preservedPrice = image.observed_price_jpy != null
+              ? `<span class="jp-sku-image-label">画像内価格 ${yen(image.observed_price_jpy)} を保持</span>`
+              : (image.price_preserved ? '<span class="jp-sku-image-label">画像内価格を保持</span>' : '');
+            const suffix = images.length > 1 ? ` ${index + 1}/${images.length}` : '';
+            return `
+              <a class="jp-sku-image jp-sku-image-verified" href="./${path}" target="_blank" rel="noopener" aria-label="${name}${suffix}の画像を原寸で見る">
+                <img src="./${path}" alt="${name}${suffix}" loading="lazy" width="900" height="1200">
+                ${preservedPrice}
+              </a>`;
+          }).join('')}
+        </div>`;
     };
 
     const draw = (brand = 'ALL') => {
@@ -88,7 +97,9 @@
             </div>
             <div class="jp-sku-source">
               <span>${escapeHtml(product.status)}</span>
-              <a href="${escapeHtml(product.source_url)}" target="_blank" rel="noopener noreferrer">出典</a>
+              ${product.source_url
+                ? `<a href="${escapeHtml(product.source_url)}" target="_blank" rel="noopener noreferrer">出典</a>`
+                : '<span>USER_UPLOAD</span>'}
             </div>
           </div>
         </article>`).join('');

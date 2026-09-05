@@ -124,6 +124,23 @@
   outline: 1px solid #a45b2a;
 }
 
+.jp-sku-images {
+  display: flex;
+  flex: 0 0 auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.jp-sku-images::-webkit-scrollbar {
+  display: none;
+}
+
+.jp-sku-images .jp-sku-image {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
 .jp-sku-image {
   width: 100%;
   aspect-ratio: 4 / 5;

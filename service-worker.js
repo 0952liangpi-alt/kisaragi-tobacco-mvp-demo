@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kisaragi-demo-v14-canonical-products';
+const CACHE_NAME = 'kisaragi-demo-v16-user-uploads';
 const APP_SHELL = [
   './',
   './index.html',
@@ -14,7 +14,6 @@ const APP_SHELL = [
   './assets/icon.svg',
   './assets/catalog/products/wt-1117-camel-berry-5.jpg',
   './assets/catalog/products/wt-1116-camel-berry-8.jpg',
-  './assets/catalog/products/wt-1034-peace-10.jpg',
   './assets/catalog/products/wt-1020-seven-stars.png'
 ];
 

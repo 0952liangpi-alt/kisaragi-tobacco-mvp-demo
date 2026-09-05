@@ -28,16 +28,21 @@ trademark or brand rights.
 
 ## `catalog/products/`
 
-This is the canonical per-SKU delivery path for the 57-SKU Japan catalog. Every
-file must be bound by `KISARAGI_ASSET_REGISTRY`; cards never depend on a Base64
-sprite or a second product list.
+This is the canonical per-product delivery path for the 57-SKU Japan reference
+catalog and user-uploaded additions. Every file must be bound by
+`KISARAGI_ASSET_REGISTRY`; cards never depend on a Base64 sprite or a second
+product list.
 
 - `wt-1117-camel-berry-5.jpg` and `wt-1116-camel-berry-8.jpg` are complete
   recoveries from the user-approved upload pack. Their visible prices are part
   of the original pixels and are not cropped or covered.
-- `wt-1034-peace-10.jpg` and `wt-1020-seven-stars.png` reuse the existing local
-  open-license files with exact canonical SKU matches. Provenance and licence
-  URLs remain in `catalog-core.js` and `catalog-data.js`.
+- `wt-1020-seven-stars.png` reuses the existing local open-license file with an
+  exact canonical SKU match. The rejected Peace and Mevius photos are removed
+  from the repository and are not bound, cached, or rendered.
+- `ua-*.jpg` contains the 29 distinct files from the latest approved upload.
+  Visible labels are used as product names; color-only packages and devices stay
+  `IDENTITY_PENDING`. Exact duplicate uploads are stored once, and the two
+  distinct pastel TEREA images share one canonical product record.
 
 Broken or truncated Base64 artifacts are retained for audit history but are not
 loaded by the website and are not counted as `IMAGE_BOUND`.
