@@ -10,7 +10,7 @@
   const loadCatalog = async () => {
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = './world-tobacco-catalog.css?v=20260905-image-closeout';
+    stylesheet.href = './world-tobacco-catalog.css?v=20260905-uiux-audit';
     document.head.appendChild(stylesheet);
 
     try {

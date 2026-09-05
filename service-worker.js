@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kisaragi-demo-v18-image-closeout';
+const CACHE_NAME = 'kisaragi-demo-v19-uiux-audit';
 const APP_SHELL = [
   './',
   './index.html',
