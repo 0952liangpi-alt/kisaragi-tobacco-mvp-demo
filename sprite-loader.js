@@ -1,1 +1,26 @@
-(async()=>{try{const ps=await Promise.all([1,2,3,4,5].map(i=>fetch(`./assets/home/sprite.part${i}.txt?v=20260903b`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`sprite part ${i}`);return r.text()})));const b64=ps.join('').replace(/\s+/g,'');const img=new Image();img.onload=()=>document.documentElement.style.setProperty('--home-sprite',`url("data:image/jpeg;base64,${b64}")`);img.onerror=()=>console.error('KISARAGI home sprite decode failed');img.src=`data:image/jpeg;base64,${b64}`;}catch(e){console.error('KISARAGI home sprite load failed',e)}try{const pack=await fetch('./assets/catalog/user/pack.part01.txt?v=20260905-pack1',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('user image pack');return r.json()});globalThis.KISARAGI_USER_IMAGES=Object.freeze(pack);for(const [name,b64] of Object.entries(pack)){const img=new Image();img.onload=()=>console.info('KISARAGI user image ready',name);img.onerror=()=>console.error('KISARAGI user image decode failed',name);img.src=`data:image/jpeg;base64,${String(b64).trim()}`;}}catch(e){console.error('KISARAGI user image pack load failed',e);globalThis.KISARAGI_USER_IMAGES=Object.freeze({})}const css=document.createElement('link');css.rel='stylesheet';css.href='./world-tobacco-catalog.css?v=20260905-pack1';document.head.appendChild(css);const load=src=>new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=reject;document.head.appendChild(s)});try{await load('./world-tobacco-japan.js?v=20260905-pack1');await load('./catalog-core.js?v=20260905-pack1');await load('./world-tobacco-catalog-render.js?v=20260905-pack1')}catch(e){console.error('KISARAGI canonical catalog load failed',e)}})();
+(() => {
+  const loadScript = (src) => new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+
+  const loadCatalog = async () => {
+    const stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    stylesheet.href = './world-tobacco-catalog.css?v=20260905-p0';
+    document.head.appendChild(stylesheet);
+
+    try {
+      await loadScript('./world-tobacco-japan.js?v=20260905-p0');
+      await loadScript('./catalog-core.js?v=20260905-p0');
+      await loadScript('./world-tobacco-catalog-render.js?v=20260905-p0');
+    } catch (error) {
+      console.error('KISARAGI canonical catalog load failed', error);
+    }
+  };
+
+  loadCatalog();
+})();

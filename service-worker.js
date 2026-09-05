@@ -1,14 +1,21 @@
-const CACHE_NAME = 'kisaragi-demo-v13-catalog';
+const CACHE_NAME = 'kisaragi-demo-v14-canonical-products';
 const APP_SHELL = [
   './',
   './index.html',
   './styles.css',
   './styles-base.css',
   './image-layer.css',
-  './catalog-data.js',
-  './app.js',
+  './world-tobacco-catalog.css',
+  './world-tobacco-japan.js',
+  './catalog-core.js',
+  './world-tobacco-catalog-render.js',
+  './sprite-loader.js',
   './manifest.webmanifest',
-  './assets/icon.svg'
+  './assets/icon.svg',
+  './assets/catalog/products/wt-1117-camel-berry-5.jpg',
+  './assets/catalog/products/wt-1116-camel-berry-8.jpg',
+  './assets/catalog/products/wt-1034-peace-10.jpg',
+  './assets/catalog/products/wt-1020-seven-stars.png'
 ];
 
 self.addEventListener('install', (event) => {

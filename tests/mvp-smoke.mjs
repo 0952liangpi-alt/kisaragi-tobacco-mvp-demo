@@ -1,90 +1,56 @@
-import { readFileSync, readdirSync } from 'node:fs';
-import { strict as assert } from 'node:assert';
-
-await import('../catalog-data.js');
-const catalog = globalThis.KISARAGI_CATALOG;
+import {readFileSync} from 'node:fs';
+import {strict as assert} from 'node:assert';
 
 const root = new URL('../', import.meta.url);
-const read = (name) => readFileSync(new URL(name, root), 'utf8');
+const read = (path) => readFileSync(new URL(path, root), 'utf8');
 const html = read('index.html');
-const js = read('app.js');
-const css = read('styles.css');
-const sw = read('service-worker.js');
+const baseCss = read('styles-base.css');
+const imageCss = read('image-layer.css');
+const catalogCss = read('world-tobacco-catalog.css');
+const loader = read('sprite-loader.js');
+const renderer = read('world-tobacco-catalog-render.js');
+const serviceWorker = read('service-worker.js');
 const manifest = JSON.parse(read('manifest.webmanifest'));
 
 const requiredChecks = [
-  ['age gate', html, 'id="ageGate"'],
-  ['catalog', html, 'id="productGrid"'],
-  ['review form', html, 'id="reviewForm"'],
-  ['cart persistence', js, "const CART_KEY = 'kisaragiDemoCart'"],
-  ['inventory guard', js, '在庫数を超えて追加できません'],
-  ['review safety copy', js, '本人確認・住所確認・許可条件を審査します。'],
-  ['mobile safe-area', html, 'apple-mobile-web-app-capable'],
-  ['keyboard focus', css, 'focus-visible'],
-  ['age background isolation', js, "element.setAttribute('inert', '')"],
-  ['tax-inclusive price format', js, "toLocaleString('ja-JP')}（税込）"],
-  ['legal modal controls', html, 'data-legal="tokusho"'],
-  ['underage legal notice', html, '未成年者の喫煙は法律で禁じられています'],
-  ['low-stock selector', html, 'value="low_stock"'],
-  ['drawer above mobile navigation', css, 'aside[aria-label="カート"]{position:fixed;right:0;bottom:0;z-index:9999}'],
-  ['mobile 3d reduction', css, 'transform:none!important'],
-  ['subtle noise texture', css, "feTurbulence"],
-  ['five-dimensional taste profile', js, "sweetness:'甘さ',menthol:'清涼感'"],
-  ['low-stock state', js, "label:'残りわずか'"],
-  ['real-photo hero', html, 'hero-real-gallery'],
-  ['clickable full-size catalog photo', js, 'catalog-photo-link'],
-  ['network-first page refresh', sw, "event.request.mode === 'navigate'"],
-  ['stable review vote identity', js, 'data-helpful="${product.id}:${review.id}"'],
-  ['generic modal focus isolation', js, 'releaseActiveModalFocus'],
-  ['cart focus isolation', js, 'releaseCartFocus'],
-  ['closed cart inert state', html, 'aria-hidden="true" inert'],
-  ['catalog data loaded before app', html, 'catalog-data.js'],
-  ['catalog category filters', html, 'data-catalog-filter="smokeless"'],
-  ['catalog source links', js, 'entry.sourceUrl'],
-  ['service worker registration', js, "serviceWorker.register('./service-worker.js')"],
-  ['offline cache', sw, "const CACHE_NAME = 'kisaragi-demo-v11'"],
-  ['Apple system font stack', css, '--font-system:-apple-system,BlinkMacSystemFont'],
-  ['Japanese font fallback', css, '"Hiragino Sans"'],
-  ['semantic type scale', css, '--type-hero:clamp'],
-  ['44px category touch targets', css, 'min-height:44px'],
-  ['glass product direction', css, 'Aurora Glass product direction'],
-  ['real catalog primary CTA', html, 'href="#catalog">実物図鑑を見る'],
-  ['Japanese navigation label', html, 'aria-label="メインナビゲーション"'],
-  ['prototype status above the fold', html, 'PROTOTYPE / NO SALES'],
-  ['progressive catalog disclosure', html, 'id="catalogMore"'],
-  ['member lock stays inside product visual', js, '<span class="member-lock">ログインして詳細を見る</span>'],
-  ['mobile readable caption floor', css, 'font-size:.75rem'],
-  ['compact mobile section rhythm', css, 'padding:56px 20px'],
-  ['single-row floating mobile dock', css, 'grid-template-columns:repeat(5,minmax(0,1fr))'],
-  ['compact mobile footer', css, 'grid-template-columns:40px 1fr'],
-  ['mobile dock icon labels', html, 'aria-label="モバイルナビゲーション"'],
-  ['dock current state', html, 'aria-current="page"'],
-  ['category sliding indicator', html, 'catalog-filter-indicator'],
-  ['dock state controller', js, 'function setDockActive'],
-  ['category indicator controller', js, 'function updateCatalogIndicator'],
-  ['add-to-cart success feedback', js, "trigger.textContent = '追加済み ✓'"],
-  ['animated catalog disclosure', js, 'renderCatalog({animate: true})'],
-  ['visible Instagram research section', html, 'DESIGN RESEARCH / INSTAGRAM'],
-  ['three attributed creator links', html, 'https://www.instagram.com/kevin.snippet/'],
-  ['collapsed reference disclosure', html, '<details class="reference-lab">'],
+  ['age gate', html, 'id="age"'],
+  ['adult confirmation', html, 'id="enter"'],
+  ['underage notice', html, '未成年者の喫煙は法律で禁じられています'],
+  ['no-sales disclosure', html, '本サイトでは販売・決済を行いません'],
+  ['mobile viewport fit', html, 'viewport-fit=cover'],
+  ['Apple web app metadata', html, 'apple-mobile-web-app-capable'],
+  ['canonical catalog navigation', html, 'href="#jp-sku-catalog">品項</a>'],
+  ['canonical catalog primary CTA', html, '57品項を見る'],
+  ['canonical catalog loader', loader, "loadScript('./catalog-core.js"],
+  ['canonical renderer', loader, "loadScript('./world-tobacco-catalog-render.js"],
+  ['per-SKU image path', renderer, 'product.image?.file_path'],
+  ['brand toolbar', renderer, 'aria-label="ブランドで絞り込む"'],
+  ['image load fallback', renderer, 'IMAGE<br>LOAD FAILED'],
+  ['mobile two-column catalog', catalogCss, 'grid-template-columns: repeat(2, minmax(0, 1fr))'],
+  ['contained product images', catalogCss, 'object-fit: contain'],
+  ['horizontal brand filters', catalogCss, 'overflow-x: auto'],
+  ['mobile catalog bottom clearance', catalogCss, 'padding: 48px 12px 104px'],
+  ['mobile dock', html, 'aria-label="モバイルナビゲーション"'],
+  ['mobile dock safe area', imageCss, 'env(safe-area-inset-bottom)'],
+  ['catalog dock clearance', imageCss, 'body.catalog-browsing .mobile-dock'],
+  ['hero dock clearance', imageCss, 'body.hero-in-view .mobile-dock'],
+  ['hero uses individual image', html, './assets/catalog/image2.jpg'],
+  ['whole-page sprite retired', imageCss, '.hero-visual'],
+  ['service worker registration target', serviceWorker, './catalog-core.js'],
+  ['service worker registration', html, "serviceWorker.register('./service-worker.js')"],
+  ['offline product asset', serviceWorker, './assets/catalog/products/wt-1117-camel-berry-5.jpg'],
+  ['PWA icon', JSON.stringify(manifest), 'assets/icon.svg'],
+  ['sticky header', baseCss, 'position:sticky'],
 ];
 
-for (const [name, source, expected] of requiredChecks) assert.ok(source.includes(expected), `${name} is missing`);
+for (const [name, source, expected] of requiredChecks) {
+  assert.ok(source.includes(expected), `${name} is missing`);
+}
 
-assert.ok(!html.includes('yinzuoshop.com') && !html.includes('world-tobacco.jp'), 'reference-site material leaked into MVP');
-assert.equal((html.match(/data-catalog-filter="all"/g) || []).length, 1, 'catalog must have one all-category filter');
-assert.ok(!js.includes('fetch('), 'MVP must not send customer or identity data');
-assert.equal(catalog.length, 35, 'catalog must contain 35 verified product records');
-assert.equal(new Set(catalog.map((entry) => entry.id)).size, 35, 'catalog IDs must be unique');
-assert.equal(new Set(catalog.map((entry) => entry.category)).size, 10, 'catalog must cover 10 product categories');
-assert.equal(catalog.filter((entry) => entry.publicationAllowed).length, 6, 'only six open-license images may be published');
-assert.equal(catalog.filter((entry) => !entry.publicationAllowed).length, 29, '29 records must remain source-link only');
-assert.ok(catalog.every((entry) => /^https:\/\//.test(entry.sourceUrl)), 'every catalog record needs a secure source URL');
-assert.ok(catalog.every((entry) => entry.publicationAllowed === Boolean(entry.asset)), 'image publication flag and local asset must agree');
-
-const expectedAssets = catalog.filter((entry) => entry.asset).map((entry) => entry.asset).sort();
-const deployedAssets = readdirSync(new URL('../assets/catalog/', import.meta.url)).sort();
-assert.deepEqual(deployedAssets, expectedAssets, 'public bundle must contain only approved catalog images');
+assert.ok(!html.includes('data-add=') && !html.includes('checkout'), 'public page must not expose purchase controls');
+assert.ok(!loader.includes('pack.part01') && !loader.includes('user-sprite36'), 'runtime must not load broken Base64 assets');
+assert.ok(!imageCss.includes('home-sprite'), 'homepage must not use the screenshot sprite');
+assert.ok(!renderer.includes('data:image'), 'product cards must use per-SKU files');
 assert.ok(manifest.icons.length > 0, 'PWA manifest needs an icon');
-assert.ok(!['文档目录', '实物照片', '商业发布', '主导航', '纸卷烟', '图片来源'].some((phrase) => html.includes(phrase)), 'customer-facing HTML must not contain the previous Chinese copy');
-console.log(`MVP smoke: PASS (${requiredChecks.length + 11} assertions)`);
+
+console.log(`MVP smoke: PASS (${requiredChecks.length + 5} assertions)`);

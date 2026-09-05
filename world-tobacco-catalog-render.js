@@ -1,1 +1,135 @@
-(()=>{const boot=()=>{const data=globalThis.KISARAGI_CANONICAL_CATALOG||[];const audit=globalThis.KISARAGI_CATALOG_AUDIT||{};const verified=globalThis.KISARAGI_USER_IMAGES||{};if(!Array.isArray(data)||!data.length)return;const anchor=document.getElementById('archive');if(!anchor||document.getElementById('jp-sku-catalog'))return;const brands=['ALL',...new Set(data.map(x=>x.brand).filter(Boolean))];const section=document.createElement('section');section.id='jp-sku-catalog';section.className='jp-sku-section';section.innerHTML=`<div class="jp-sku-wrap"><div class="jp-sku-head"><div><span class="jp-sku-kicker">CANONICAL PRODUCT CATALOG / PHASE 1</span><h2>日本煙を、<br>商品庫から自動表示。</h2></div><p>商品・価格・画像・出典をページへ直書きせず、唯一の商品真値から生成しています。ユーザー確認画像を最優先し、曖昧な SKU は自動上書きせず CONFLICT_REVIEW に残します。</p></div><div class="jp-sku-summary"><span><b>${audit.TOTAL_REFERENCE_SKU??data.length}</b> Reference SKU</span><span><b>${new Set(data.map(x=>x.brand)).size}</b> Brands</span><span><b>${audit.COMPLETE_SKU??0}</b> Image-bound</span><span><b>${audit.MISSING_IMAGE??0}</b> Missing images</span><span><b>${audit.CONFLICTS??0}</b> Review conflicts</span><span><b>${audit.COVERAGE_PERCENT??0}%</b> Coverage</span></div><div class="jp-sku-brands"></div><div class="jp-sku-grid"></div><p class="jp-sku-note"><strong>Canonical rule:</strong> Product Catalog → SKU → Asset Registry → Website. Future categories reuse the same schema; no second product database or hand-maintained brand list.</p></div>`;anchor.insertAdjacentElement('afterend',section);const tabs=section.querySelector('.jp-sku-brands');const grid=section.querySelector('.jp-sku-grid');const yen=n=>n==null?'UNKNOWN':`¥${Number(n).toLocaleString('ja-JP')}`;const image=x=>{if(!x.image)return`<div class="jp-sku-image jp-sku-image-missing"><span>IMAGE<br>PENDING</span></div>`;const slug=String(x.image.asset_id||'').replace(/^ua-/,'');const key=`${slug}.jpg`;if(verified[key])return`<div class="jp-sku-image jp-sku-image-verified"><img src="data:image/jpeg;base64,${verified[key]}" alt="${x.product_name_ja}" loading="lazy"></div>`;return`<div class="jp-sku-image jp-sku-image-missing"><span>IMAGE<br>REBUILDING</span></div>`};const draw=(brand='ALL')=>{const items=brand==='ALL'?data:data.filter(x=>x.brand===brand);grid.innerHTML=items.map(x=>`<article class="jp-sku-card ${x.status==='PRICE_CONFLICT'?'has-conflict':''}">${image(x)}<div class="jp-sku-body"><span class="jp-sku-brand">${x.brand}</span><h3>${x.product_name_ja}</h3><div class="jp-sku-meta"><span>税込価格<b>${yen(x.price_jpy)}</b></span><span>商品コード<b>${x.product_code||'UNKNOWN'}</b></span>${x.pack_size!=null?`<span>包装<b>${x.pack_size}本</b></span>`:''}${x.tar_mg!=null?`<span>Tar<b>${x.tar_mg}mg</b></span>`:''}${x.nicotine_mg!=null?`<span>Nicotine<b>${x.nicotine_mg}mg</b></span>`:''}</div><div class="jp-sku-source"><span>${x.status}</span><a href="${x.source_url}" target="_blank" rel="noopener">SOURCE ↗</a></div></div></article>`).join('')};brands.forEach((b,i)=>{const btn=document.createElement('button');btn.type='button';btn.textContent=b==='ALL'?'すべて':b;btn.className=i===0?'active':'';btn.onclick=()=>{tabs.querySelectorAll('button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');draw(b)};tabs.appendChild(btn)});draw()};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot()})();
+(() => {
+  const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  })[character]);
+
+  const boot = () => {
+    const data = globalThis.KISARAGI_CANONICAL_CATALOG || [];
+    const audit = globalThis.KISARAGI_CATALOG_AUDIT || {};
+    if (!Array.isArray(data) || !data.length) return;
+
+    const anchor = document.getElementById('archive');
+    if (!anchor || document.getElementById('jp-sku-catalog')) return;
+
+    const brands = ['ALL', ...new Set(data.map((product) => product.brand).filter(Boolean))];
+    const section = document.createElement('section');
+    section.id = 'jp-sku-catalog';
+    section.className = 'jp-sku-section';
+    section.tabIndex = -1;
+    section.innerHTML = `
+      <div class="jp-sku-wrap">
+        <div class="jp-sku-head">
+          <div>
+            <span class="jp-sku-kicker">CANONICAL PRODUCT CATALOG</span>
+            <h2>日本たばこ<br>57品項。</h2>
+          </div>
+          <p>商品、価格、画像、出典は唯一の商品真値から表示しています。確認できない画像は推測で補わず、明確に未登録と表示します。</p>
+        </div>
+        <div class="jp-sku-summary" aria-label="商品庫の収録状況">
+          <span><b>${audit.TOTAL_REFERENCE_SKU ?? data.length}</b> SKU</span>
+          <span><b>${new Set(data.map((product) => product.brand)).size}</b> ブランド</span>
+          <span><b>${audit.IMAGE_BOUND ?? 0}</b> 画像登録</span>
+          <span><b>${audit.MISSING_IMAGE ?? 0}</b> 画像未登録</span>
+          <span><b>${audit.CONFLICTS ?? 0}</b> 確認待ち</span>
+        </div>
+        <div class="jp-sku-brands" role="toolbar" aria-label="ブランドで絞り込む"></div>
+        <p class="jp-sku-result" aria-live="polite"></p>
+        <div class="jp-sku-grid"></div>
+        <p class="jp-sku-note">掲載情報は調査用資料です。販売、決済、在庫保証は行いません。</p>
+      </div>`;
+    anchor.insertAdjacentElement('afterend', section);
+
+    const tabs = section.querySelector('.jp-sku-brands');
+    const grid = section.querySelector('.jp-sku-grid');
+    const result = section.querySelector('.jp-sku-result');
+    const yen = (value) => value == null ? 'UNKNOWN' : `¥${Number(value).toLocaleString('ja-JP')}`;
+
+    const imageMarkup = (product) => {
+      if (!product.image?.file_path) {
+        return '<div class="jp-sku-image jp-sku-image-missing"><span>IMAGE<br>NOT VERIFIED</span></div>';
+      }
+
+      const path = escapeHtml(product.image.file_path);
+      const name = escapeHtml(product.product_name_ja);
+      const preservedPrice = product.image.price_preserved
+        ? '<span class="jp-sku-image-label">画像内価格を保持</span>'
+        : '';
+      return `
+        <a class="jp-sku-image jp-sku-image-verified" href="./${path}" target="_blank" rel="noopener" aria-label="${name}の画像を原寸で見る">
+          <img src="./${path}" alt="${name}" loading="lazy" width="900" height="1200">
+          ${preservedPrice}
+        </a>`;
+    };
+
+    const draw = (brand = 'ALL') => {
+      const filtered = brand === 'ALL' ? data : data.filter((product) => product.brand === brand);
+      const items = [...filtered].sort((left, right) => (
+        Number(Boolean(right.image)) - Number(Boolean(left.image)) ||
+        left.product_name_ja.localeCompare(right.product_name_ja, 'ja')
+      ));
+
+      result.textContent = `${brand === 'ALL' ? 'すべてのブランド' : brand} / ${items.length}品項`;
+      grid.innerHTML = items.map((product) => `
+        <article class="jp-sku-card ${product.status === 'PRICE_CONFLICT' ? 'has-conflict' : ''}" data-sku="${escapeHtml(product.id)}">
+          ${imageMarkup(product)}
+          <div class="jp-sku-body">
+            <span class="jp-sku-brand">${escapeHtml(product.brand)}</span>
+            <h3>${escapeHtml(product.product_name_ja)}</h3>
+            <div class="jp-sku-meta">
+              <span>税込価格<b>${yen(product.price_jpy)}</b></span>
+              <span>商品コード<b>${escapeHtml(product.product_code || 'UNKNOWN')}</b></span>
+              ${product.pack_size != null ? `<span>包装<b>${product.pack_size}本</b></span>` : ''}
+              ${product.tar_mg != null ? `<span>Tar<b>${product.tar_mg}mg</b></span>` : ''}
+              ${product.nicotine_mg != null ? `<span>Nicotine<b>${product.nicotine_mg}mg</b></span>` : ''}
+            </div>
+            <div class="jp-sku-source">
+              <span>${escapeHtml(product.status)}</span>
+              <a href="${escapeHtml(product.source_url)}" target="_blank" rel="noopener noreferrer">出典</a>
+            </div>
+          </div>
+        </article>`).join('');
+
+      grid.querySelectorAll('img').forEach((image) => {
+        image.addEventListener('error', () => {
+          const container = image.closest('.jp-sku-image');
+          container.outerHTML = '<div class="jp-sku-image jp-sku-image-missing"><span>IMAGE<br>LOAD FAILED</span></div>';
+        }, {once: true});
+      });
+    };
+
+    brands.forEach((brand, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = brand === 'ALL' ? 'すべて' : brand;
+      button.className = index === 0 ? 'active' : '';
+      button.setAttribute('aria-pressed', String(index === 0));
+      button.addEventListener('click', () => {
+        tabs.querySelectorAll('button').forEach((tab) => {
+          const active = tab === button;
+          tab.classList.toggle('active', active);
+          tab.setAttribute('aria-pressed', String(active));
+        });
+        draw(brand);
+      });
+      tabs.appendChild(button);
+    });
+
+    draw();
+    const dockVisibilityObserver = new IntersectionObserver((entries) => {
+      const catalogVisible = entries.some((entry) => entry.isIntersecting);
+      document.body.classList.toggle('catalog-browsing', catalogVisible);
+    }, {rootMargin: '-5% 0px -5%'});
+    dockVisibilityObserver.observe(section);
+
+    if (window.location.hash === '#jp-sku-catalog') {
+      requestAnimationFrame(() => section.scrollIntoView({block: 'start'}));
+    }
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();

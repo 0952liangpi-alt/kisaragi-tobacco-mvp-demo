@@ -1,1 +1,181 @@
-(()=>{const refs=globalThis.KISARAGI_JAPAN_SKUS||[];const SOURCES=Object.freeze({USER_UPLOAD:{id:'USER_UPLOAD',priority:100},CURRENT_WEBSITE:{id:'CURRENT_WEBSITE',priority:80},WORLD_TOBACCO:{id:'WORLD_TOBACCO',priority:60,url:'https://www.world-tobacco.jp/view/category/ct5'},CLUB_JT:{id:'CLUB_JT',priority:70},OTHER_APPROVED_SOURCE:{id:'OTHER_APPROVED_SOURCE',priority:50}});const A=[['wt-1117','camel-berry-5',0,0,470],['wt-1116','camel-berry-8',1,0,470],['wt-1174','camel-craft-1-100s',2,0,470],['wt-1643','camel-craft-10',3,0,470],['wt-1112','camel-craft-12',4,0,470],['wt-1642','camel-craft-14',5,0,470],['wt-1113','camel-craft-6',0,1,470],['wt-1175','camel-menthol-1-100s',1,1,470],['wt-1115','camel-menthol-5',2,1,470],['wt-1392','hilite-menthol',3,1,520],['wt-1027','hilite',4,1,520],['wt-1016','hope-short-10',5,1,300],['wt-1381','mevius-100s-box',0,2,580],['wt-1329','mevius-extra-lights-100',1,2,580],['wt-1310','mevius-extra-lights-box',2,2,580],['wt-1355','mevius-extra-lights',3,2,580],['wt-1223','mevius-super-lights',4,2,580],['wt-1023','mevius',5,2,580],['wt-1614','nas-light-14',0,3,440],['wt-1601','nas-organic-leaf-gold',1,3,440],['wt-1610','nas-organic-leaf-one',2,3,440],['wt-1600','nas-organic-leaf-turquoise',3,3,440],['wt-1034','peace-10',1,4,300],['wt-1018','peace-20',2,4,600],['wt-1035','peace-tin-50',3,4,1500],['wt-1487','pianissimo-aria-menthol',4,4,570],['wt-1312','sevenstars-box',5,4,600],['wt-1624','sevenstars-menthol-12',0,5,600],['wt-1143','sevenstars-menthol-8',1,5,600],['wt-1020','sevenstars',2,5,600],['wt-ime2544','sobranie-black-russian',3,5,1000],['wt-ime2543','sobranie-cocktail',4,5,1000],['wt-1470','winston-filter',5,5,530]].map(([sku,asset,col,row,price])=>Object.freeze({asset_id:'ua-'+asset,sku,file_path:'assets/catalog/user-sprite36',source:'USER_UPLOAD',status:'USER_APPROVED_IMAGE',sprite:{col,row,cols:6,rows:6},observed_price_jpy:price,price_preserved:true}));const AMBIG=Object.freeze([{asset_id:'ua-nas-organic-mint-a',sku_candidates:['wt-1525','wt-1524','wt-1523'],source:'USER_UPLOAD',status:'CONFLICT_REVIEW',reason:'three reference SKUs share the same public product name; user image does not expose a reliable unique product code'},{asset_id:'ua-nas-organic-mint-b',sku_candidates:['wt-1525','wt-1524','wt-1523'],source:'USER_UPLOAD',status:'CONFLICT_REVIEW',reason:'ambiguous exact SKU'},{asset_id:'ua-nas-organic-mint-c',sku_candidates:['wt-1525','wt-1524','wt-1523'],source:'USER_UPLOAD',status:'CONFLICT_REVIEW',reason:'ambiguous exact SKU'}]);const bySku=new Map(A.map(x=>[x.sku,x]));const canonical=refs.map(r=>{const a=bySku.get(r.id)||null;const priceConflict=!!(a&&a.observed_price_jpy!=null&&r.price!=null&&a.observed_price_jpy!==r.price);return Object.freeze({id:r.id,sku:r.code||r.id,category:'CIGARETTES',subcategory:'JAPANESE_CIGARETTE_REFERENCE',origin_country:r.origin||'UNKNOWN',brand:r.brand||'UNKNOWN',series:null,variant:null,product_name_ja:r.name||'UNKNOWN',product_name_en:null,price_jpy:r.price??null,reference_shop_price_jpy:r.shopPrice??null,pack_size:r.packCount??null,tar_mg:r.tar??null,nicotine_mg:r.nicotine??null,product_code:r.code??null,system_code:r.systemCode??null,image:a?{asset_id:a.asset_id,sprite:a.sprite,status:a.status}:null,image_source:a?'USER_UPLOAD':null,source_url:r.sourceUrl||SOURCES.WORLD_TOBACCO.url,source_checked_at:'2026-09-04',availability:r.soldOut?'SOLD_OUT':'UNKNOWN',status:priceConflict?'PRICE_CONFLICT':(a?'IMAGE_BOUND':'CATALOG_ONLY'),notes:null})});const ids=new Set();const dup=[];canonical.forEach(x=>{if(ids.has(x.id))dup.push(x.id);ids.add(x.id)});const missingImage=canonical.filter(x=>!x.image).length;const missingFields=canonical.reduce((n,x)=>n+['brand','product_name_ja','price_jpy','product_code','pack_size','tar_mg','nicotine_mg'].filter(k=>x[k]==null||x[k]==='UNKNOWN').length,0);const complete=canonical.filter(x=>x.image&&x.price_jpy!=null&&x.product_code&&x.brand&&x.product_name_ja).length;const conflicts=canonical.filter(x=>x.status==='PRICE_CONFLICT').length+AMBIG.length;const audit=Object.freeze({TOTAL_REFERENCE_SKU:canonical.length,TOTAL_LOCAL_SKU:canonical.length,COMPLETE_SKU:complete,MISSING_SKU:0,MISSING_IMAGE:missingImage,MISSING_FIELDS:missingFields,DUPLICATE_SKU:dup.length,CONFLICTS:conflicts,COVERAGE_PERCENT:Number(((complete/canonical.length)*100).toFixed(1)),SCHEMA_READY_CATEGORIES:['JAPANESE_CIGARETTES','IMPORTED_CIGARETTES','RYO','CIGARS','PIPE_TOBACCO']});globalThis.KISARAGI_SOURCE_REGISTRY=SOURCES;globalThis.KISARAGI_ASSET_REGISTRY=Object.freeze([...A,...AMBIG]);globalThis.KISARAGI_CANONICAL_CATALOG=Object.freeze(canonical);globalThis.KISARAGI_CATALOG_AUDIT=audit;})();
+(() => {
+  const references = globalThis.KISARAGI_JAPAN_SKUS || [];
+
+  const sources = Object.freeze({
+    USER_UPLOAD: Object.freeze({id: 'USER_UPLOAD', priority: 100}),
+    LOCAL_VERIFIED_IMAGE: Object.freeze({id: 'LOCAL_VERIFIED_IMAGE', priority: 80}),
+    WORLD_TOBACCO: Object.freeze({
+      id: 'WORLD_TOBACCO',
+      priority: 60,
+      url: 'https://www.world-tobacco.jp/view/category/ct5',
+    }),
+    CLUB_JT: Object.freeze({id: 'CLUB_JT', priority: 70}),
+    OTHER_APPROVED_SOURCE: Object.freeze({id: 'OTHER_APPROVED_SOURCE', priority: 50}),
+  });
+
+  const assets = [
+    {
+      asset_id: 'ua-camel-berry-5',
+      sku: 'wt-1117',
+      file_path: 'assets/catalog/products/wt-1117-camel-berry-5.jpg',
+      source: 'USER_UPLOAD',
+      status: 'USER_APPROVED_IMAGE',
+      observed_price_jpy: 470,
+      price_preserved: true,
+    },
+    {
+      asset_id: 'ua-camel-berry-8',
+      sku: 'wt-1116',
+      file_path: 'assets/catalog/products/wt-1116-camel-berry-8.jpg',
+      source: 'USER_UPLOAD',
+      status: 'USER_APPROVED_IMAGE',
+      observed_price_jpy: 470,
+      price_preserved: true,
+    },
+    {
+      asset_id: 'lv-peace-10',
+      sku: 'wt-1034',
+      file_path: 'assets/catalog/products/wt-1034-peace-10.jpg',
+      source: 'LOCAL_VERIFIED_IMAGE',
+      status: 'LOCAL_VERIFIED_IMAGE',
+      source_url: 'https://commons.wikimedia.org/wiki/File:Peace(10).jpg',
+      license: 'CC BY-SA 4.0',
+      price_preserved: false,
+    },
+    {
+      asset_id: 'lv-seven-stars',
+      sku: 'wt-1020',
+      file_path: 'assets/catalog/products/wt-1020-seven-stars.png',
+      source: 'LOCAL_VERIFIED_IMAGE',
+      status: 'LOCAL_VERIFIED_IMAGE',
+      source_url: 'https://commons.wikimedia.org/wiki/File:Sevenstars_charcoalsoft.gif',
+      license: 'CC BY-SA 3.0',
+      price_preserved: false,
+    },
+  ].map((asset) => Object.freeze(asset));
+
+  const ambiguousAssets = Object.freeze([
+    Object.freeze({
+      asset_id: 'ua-nas-organic-mint-a',
+      sku_candidates: ['wt-1525', 'wt-1524', 'wt-1523'],
+      source: 'USER_UPLOAD',
+      status: 'CONFLICT_REVIEW',
+      reason: 'Three reference SKUs share the same public product name; the image does not expose a reliable unique product code.',
+    }),
+    Object.freeze({
+      asset_id: 'ua-nas-organic-mint-b',
+      sku_candidates: ['wt-1525', 'wt-1524', 'wt-1523'],
+      source: 'USER_UPLOAD',
+      status: 'CONFLICT_REVIEW',
+      reason: 'Exact SKU is ambiguous.',
+    }),
+    Object.freeze({
+      asset_id: 'ua-nas-organic-mint-c',
+      sku_candidates: ['wt-1525', 'wt-1524', 'wt-1523'],
+      source: 'USER_UPLOAD',
+      status: 'CONFLICT_REVIEW',
+      reason: 'Exact SKU is ambiguous.',
+    }),
+  ]);
+
+  const bestAssetBySku = new Map();
+  assets.forEach((asset) => {
+    const current = bestAssetBySku.get(asset.sku);
+    const candidatePriority = sources[asset.source]?.priority || 0;
+    const currentPriority = current ? sources[current.source]?.priority || 0 : -1;
+    if (!current || candidatePriority > currentPriority) bestAssetBySku.set(asset.sku, asset);
+  });
+
+  const canonical = references.map((reference) => {
+    const asset = bestAssetBySku.get(reference.id) || null;
+    const priceConflict = Boolean(
+      asset &&
+      asset.observed_price_jpy != null &&
+      reference.price != null &&
+      asset.observed_price_jpy !== reference.price
+    );
+
+    return Object.freeze({
+      id: reference.id,
+      sku: reference.code || reference.id,
+      category: 'CIGARETTES',
+      subcategory: 'JAPANESE_CIGARETTE_REFERENCE',
+      origin_country: reference.origin || 'UNKNOWN',
+      brand: reference.brand || 'UNKNOWN',
+      series: null,
+      variant: null,
+      product_name_ja: reference.name || 'UNKNOWN',
+      product_name_en: null,
+      price_jpy: reference.price ?? null,
+      reference_shop_price_jpy: reference.shopPrice ?? null,
+      pack_size: reference.packCount ?? null,
+      tar_mg: reference.tar ?? null,
+      nicotine_mg: reference.nicotine ?? null,
+      product_code: reference.code ?? null,
+      system_code: reference.systemCode ?? null,
+      image: asset ? Object.freeze({
+        asset_id: asset.asset_id,
+        file_path: asset.file_path,
+        status: asset.status,
+        price_preserved: asset.price_preserved,
+      }) : null,
+      image_source: asset?.source || null,
+      source_url: reference.sourceUrl || sources.WORLD_TOBACCO.url,
+      source_checked_at: '2026-09-05',
+      availability: reference.soldOut ? 'SOLD_OUT' : 'UNKNOWN',
+      status: priceConflict ? 'PRICE_CONFLICT' : (asset ? 'IMAGE_BOUND' : 'CATALOG_ONLY'),
+      notes: null,
+    });
+  });
+
+  const ids = new Set();
+  const duplicateIds = [];
+  canonical.forEach((product) => {
+    if (ids.has(product.id)) duplicateIds.push(product.id);
+    ids.add(product.id);
+  });
+
+  const completeSku = canonical.filter((product) => (
+    product.image &&
+    product.price_jpy != null &&
+    product.product_code &&
+    product.brand &&
+    product.product_name_ja
+  )).length;
+  const imageBound = canonical.filter((product) => product.image).length;
+  const missingFields = canonical.reduce((count, product) => count + [
+    'brand',
+    'product_name_ja',
+    'price_jpy',
+    'product_code',
+    'pack_size',
+    'tar_mg',
+    'nicotine_mg',
+  ].filter((key) => product[key] == null || product[key] === 'UNKNOWN').length, 0);
+  const priceConflicts = canonical.filter((product) => product.status === 'PRICE_CONFLICT').length;
+
+  const audit = Object.freeze({
+    TOTAL_REFERENCE_SKU: canonical.length,
+    TOTAL_LOCAL_SKU: canonical.length,
+    IMAGE_BOUND: imageBound,
+    COMPLETE_SKU: completeSku,
+    MISSING_SKU: 0,
+    MISSING_IMAGE: canonical.length - imageBound,
+    MISSING_FIELDS: missingFields,
+    DUPLICATE_SKU: duplicateIds.length,
+    CONFLICTS: priceConflicts + ambiguousAssets.length,
+    COVERAGE_PERCENT: Number(((completeSku / canonical.length) * 100).toFixed(1)),
+    SCHEMA_READY_CATEGORIES: [
+      'JAPANESE_CIGARETTES',
+      'IMPORTED_CIGARETTES',
+      'RYO',
+      'CIGARS',
+      'PIPE_TOBACCO',
+    ],
+  });
+
+  globalThis.KISARAGI_SOURCE_REGISTRY = sources;
+  globalThis.KISARAGI_ASSET_REGISTRY = Object.freeze([...assets, ...ambiguousAssets]);
+  globalThis.KISARAGI_CANONICAL_CATALOG = Object.freeze(canonical);
+  globalThis.KISARAGI_CATALOG_AUDIT = audit;
+})();
