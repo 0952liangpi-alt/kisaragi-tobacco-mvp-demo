@@ -76,12 +76,13 @@
         <div class="jp-sku-images ${images.length > 1 ? 'is-gallery' : ''}">
           ${images.map((image, index) => {
             const path = escapeHtml(image.file_path);
+            const cropClass = image.display_crop === 'SIDE_MATTE_30PX' ? ' has-side-matte' : '';
             const preservedPrice = image.observed_price_jpy != null
               ? `<span class="jp-sku-image-label">画像内の表示価格 ${yen(image.observed_price_jpy)}</span>`
               : (image.price_preserved ? '<span class="jp-sku-image-label">画像内の価格表示あり</span>' : '');
             const suffix = images.length > 1 ? ` ${index + 1}/${images.length}` : '';
             return `
-              <a class="jp-sku-image jp-sku-image-verified" href="./${path}" target="_blank" rel="noopener" aria-label="${name}${suffix}の画像を原寸で見る">
+              <a class="jp-sku-image jp-sku-image-verified${cropClass}" href="./${path}" target="_blank" rel="noopener" aria-label="${name}${suffix}の画像を原寸で見る">
                 <img src="./${path}" alt="${name}${suffix}" loading="lazy" width="900" height="1200">
                 ${preservedPrice}
               </a>`;

@@ -207,6 +207,12 @@
   object-fit: contain;
 }
 
+.jp-sku-image-verified.has-side-matte img {
+  clip-path: inset(0 2.5%);
+  transform: scaleX(1.052);
+  transform-origin: center;
+}
+
 .jp-sku-image-label {
   flex: 0 0 auto;
   padding: 5px 0 1px;

@@ -42,6 +42,24 @@
     {id: 'ua-terea-velvet-pearl', brand: 'TEREA', name: 'TEREA VELVET PEARL', category: 'HEATED_TOBACCO_STICKS', identity: 'LABEL_VISIBLE'},
   ].map((product) => Object.freeze(product));
 
+  const sideMatteFiles = new Set([
+    'ua-iqos-device-purple.jpg',
+    'ua-iqos-iluma-prime-blue.jpg',
+    'ua-mevius-option-purple-100s-1.jpg',
+    'ua-terea-black-purple.jpg',
+    'ua-terea-bright-blue.jpg',
+    'ua-terea-cyan.jpg',
+    'ua-terea-green-black.jpg',
+    'ua-terea-lime.jpg',
+    'ua-terea-orange.jpg',
+    'ua-terea-pastel-a.jpg',
+    'ua-terea-pastel-b.jpg',
+    'ua-terea-purple.jpg',
+    'ua-terea-red-black.jpg',
+    'ua-terea-riviera-pearl.jpg',
+    'ua-terea-silver-blue.jpg',
+  ]);
+
   const userAsset = (assetId, sku, filename, details = {}) => ({
     asset_id: assetId,
     sku,
@@ -49,6 +67,7 @@
     source: 'USER_UPLOAD',
     status: 'USER_APPROVED_IMAGE',
     price_preserved: false,
+    display_crop: sideMatteFiles.has(filename) ? 'SIDE_MATTE_30PX' : null,
     ...details,
   });
 
@@ -156,6 +175,7 @@
     status: asset.status,
     observed_price_jpy: asset.observed_price_jpy ?? null,
     price_preserved: asset.price_preserved,
+    display_crop: asset.display_crop || null,
   });
 
   const productImages = (sku) => Object.freeze((assetsBySku.get(sku) || []).map(imageRecord));
@@ -258,16 +278,42 @@
     'nicotine_mg',
   ].filter((key) => product[key] == null || product[key] === 'UNKNOWN').length, 0);
   const priceConflicts = canonical.filter((product) => product.status === 'PRICE_CONFLICT').length;
+  const missingImageManifest = Object.freeze(canonical
+    .filter((product) => product.image == null || product.images.length === 0)
+    .map((product) => Object.freeze({
+      id: product.id,
+      sku: product.sku,
+      brand: product.brand,
+      product_name_ja: product.product_name_ja,
+      product_code: product.product_code,
+      system_code: product.system_code,
+      price_jpy: product.price_jpy,
+      source_url: product.source_url,
+      image_status: 'IMAGE_MISSING',
+      match_status: ambiguousAssets.some((asset) => asset.sku_candidates.includes(product.id))
+        ? 'CONFLICT_REVIEW'
+        : 'UNMATCHED',
+    })));
+  const runtimeMissingImage = canonical.length - imageBound;
+  if (missingImageManifest.length !== runtimeMissingImage) {
+    throw new Error(`Missing-image manifest mismatch: ${missingImageManifest.length} != ${runtimeMissingImage}`);
+  }
+  const missingImageByBrand = Object.freeze(missingImageManifest.reduce((counts, product) => {
+    counts[product.brand] = (counts[product.brand] || 0) + 1;
+    return counts;
+  }, {}));
 
   const audit = Object.freeze({
     TOTAL_REFERENCE_SKU: references.length,
     TOTAL_LOCAL_SKU: canonical.length,
+    TOTAL_ASSETS: assets.length,
     TOTAL_UPLOAD_ASSETS: assets.filter((asset) => asset.source === 'USER_UPLOAD').length,
     TOTAL_UPLOAD_PRODUCTS: new Set(assets.filter((asset) => asset.source === 'USER_UPLOAD').map((asset) => asset.sku)).size,
     IMAGE_BOUND: imageBound,
     COMPLETE_SKU: completeSku,
     MISSING_SKU: 0,
-    MISSING_IMAGE: canonical.length - imageBound,
+    MISSING_IMAGE: runtimeMissingImage,
+    MISSING_IMAGE_BY_BRAND: missingImageByBrand,
     MISSING_FIELDS: missingFields,
     DUPLICATE_SKU: duplicateIds.length,
     CONFLICTS: priceConflicts + ambiguousAssets.length,
@@ -286,5 +332,6 @@
   globalThis.KISARAGI_SOURCE_REGISTRY = sources;
   globalThis.KISARAGI_ASSET_REGISTRY = Object.freeze([...assets, ...ambiguousAssets]);
   globalThis.KISARAGI_CANONICAL_CATALOG = Object.freeze(canonical);
+  globalThis.KISARAGI_MISSING_IMAGE_MANIFEST = missingImageManifest;
   globalThis.KISARAGI_CATALOG_AUDIT = audit;
 })();

@@ -32,6 +32,8 @@ const requiredChecks = [
   ['localized identity state', renderer, "IDENTITY_PENDING: '商品名確認待ち'"],
   ['mobile two-column catalog', catalogCss, 'grid-template-columns: repeat(2, minmax(0, 1fr))'],
   ['contained product images', catalogCss, 'object-fit: contain'],
+  ['dark side matte display crop', catalogCss, 'clip-path: inset(0 2.5%)'],
+  ['registry-driven matte class', renderer, 'SIDE_MATTE_30PX'],
   ['horizontal brand filters', catalogCss, 'overflow-x: auto'],
   ['mobile catalog bottom clearance', catalogCss, 'padding: 48px 12px 104px'],
   ['mobile dock', html, 'aria-label="モバイルナビゲーション"'],

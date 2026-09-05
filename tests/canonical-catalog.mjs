@@ -10,6 +10,7 @@ const catalog = globalThis.KISARAGI_CANONICAL_CATALOG;
 const registry = globalThis.KISARAGI_ASSET_REGISTRY;
 const audit = globalThis.KISARAGI_CATALOG_AUDIT;
 const sourceRegistry = globalThis.KISARAGI_SOURCE_REGISTRY;
+const missingImageManifest = globalThis.KISARAGI_MISSING_IMAGE_MANIFEST;
 const boundAssets = registry.filter((asset) => asset.file_path);
 const boundSkus = new Set(boundAssets.map((asset) => asset.sku));
 
@@ -17,9 +18,41 @@ assert.equal(catalog.length, 83, 'canonical catalog must contain 57 reference SK
 assert.equal(new Set(catalog.map((product) => product.id)).size, catalog.length, 'canonical SKU IDs must be unique');
 assert.equal(audit.TOTAL_REFERENCE_SKU, 57);
 assert.equal(audit.TOTAL_LOCAL_SKU, catalog.length);
+assert.equal(audit.TOTAL_ASSETS, boundAssets.length);
 assert.equal(audit.TOTAL_UPLOAD_ASSETS, 31);
 assert.equal(audit.IMAGE_BOUND, boundSkus.size, 'audit must count image-bound products, not duplicate images');
 assert.equal(audit.MISSING_IMAGE, catalog.length - boundSkus.size);
+assert.equal(missingImageManifest.length, audit.MISSING_IMAGE, 'manifest and runtime missing-image audit must agree');
+assert.deepEqual(
+  Object.fromEntries(Object.entries(audit.MISSING_IMAGE_BY_BRAND).sort()),
+  Object.fromEntries(
+    missingImageManifest.reduce((counts, product) => {
+      counts.set(product.brand, (counts.get(product.brand) || 0) + 1);
+      return counts;
+    }, new Map())
+  ),
+  'brand totals must be derived from the missing-image manifest'
+);
+for (const product of missingImageManifest) {
+  assert.deepEqual(Object.keys(product), [
+    'id',
+    'sku',
+    'brand',
+    'product_name_ja',
+    'product_code',
+    'system_code',
+    'price_jpy',
+    'source_url',
+    'image_status',
+    'match_status',
+  ]);
+  assert.equal(product.image_status, 'IMAGE_MISSING');
+}
+assert.deepEqual(
+  missingImageManifest.filter((product) => product.match_status === 'CONFLICT_REVIEW').map((product) => product.id),
+  ['wt-1525', 'wt-1524', 'wt-1523'],
+  'the three Natural American Spirit candidates must remain fail-closed'
+);
 assert.equal(audit.CONFLICTS, registry.filter((asset) => asset.status === 'CONFLICT_REVIEW').length);
 assert.ok(sourceRegistry.USER_UPLOAD.priority > sourceRegistry.LOCAL_VERIFIED_IMAGE.priority);
 assert.ok(sourceRegistry.LOCAL_VERIFIED_IMAGE.priority > sourceRegistry.WORLD_TOBACCO.priority);
@@ -46,6 +79,11 @@ assert.ok(pricePreservedAssets.every((asset) => asset.observed_price_jpy != null
 assert.equal(catalog.find((product) => product.id === 'wt-1692').image.asset_id, 'ua-mevius-option-purple-100s-1');
 assert.equal(catalog.find((product) => product.id === 'wt-1138').image.asset_id, 'ua-mevius-lights-8');
 assert.equal(catalog.find((product) => product.id === 'ua-terea-pastel').images.length, 2);
+assert.equal(
+  boundAssets.filter((asset) => asset.display_crop === 'SIDE_MATTE_30PX').length,
+  15,
+  'all uploaded screenshots with dark side mattes must opt into the display-only crop'
+);
 assert.ok(!existsSync(new URL('assets/catalog/image2.jpg', root)), 'rejected Peace photo must be absent');
 assert.ok(!existsSync(new URL('assets/catalog/image5.jpg', root)), 'rejected Mevius pair photo must be absent');
 assert.ok(!existsSync(new URL('assets/catalog/products/wt-1034-peace-10.jpg', root)), 'rejected Peace product copy must be absent');

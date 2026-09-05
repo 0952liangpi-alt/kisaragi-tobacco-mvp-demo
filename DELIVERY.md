@@ -34,7 +34,7 @@
 ## 本地运行
 
 ```bash
-python3 -m http.server 4173 --directory /Users/wyd3/.openclaw/workspace/tobacco-commerce-prototype
+python3 -m http.server 4173 --directory .
 ```
 
 浏览器打开 `http://127.0.0.1:4173/`。
@@ -42,11 +42,13 @@ python3 -m http.server 4173 --directory /Users/wyd3/.openclaw/workspace/tobacco-
 ## 交付验收
 
 - `node --check app.js`：通过
-- `node tests/mvp-smoke.mjs`：40 项检查通过，包括图鉴数量、10 品类、图文绑定、来源链接、公开素材白名单、日文化、PWA 与购物车焦点隔离
+- `node tests/canonical-catalog.mjs`：canonical catalog、Asset Registry、缺图清单、价格保留和黑边显示元数据检查
+- `node tests/mvp-smoke.mjs`：站点结构、Catalog、来源链接、日文化和 PWA 冒烟检查
+- `node scripts/catalog-image-audit.mjs --uploads-root <upload-directory> --write`：图片存在性、解码、尺寸、哈希去重和未绑定素材检查
 - 本地 HTTP 响应：200
 - Chrome 375×667 首屏截图：通过，年龄门禁、行动按钮与移动底部导航均可见
 - 待客户确认：真实品牌素材、商品资料、许可证范围和通信销售条件
-- 待上线前：在真实 iPhone Safari 的 375×667、390×844、430×932 做完整人工流程验收；当前浏览器自动化插件受本机信任策略拒绝，未绕过该策略
+- Chromium 自动化已检查 375×667、390×844、430×932 和 1440×1000；真实 iPhone Safari 仍需单独人工验收，不能以 Chromium 视口替代
 
 ## Apple 能力边界
 
