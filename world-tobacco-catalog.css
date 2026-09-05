@@ -64,10 +64,41 @@
   font-size: 15px;
 }
 
+.jp-sku-search {
+  max-width: 520px;
+  margin: 0 0 14px;
+}
+
+.jp-sku-search label {
+  display: block;
+  margin-bottom: 6px;
+  color: #75695f;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.jp-sku-search input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  color: #251a13;
+  background: #fff;
+  border: 1px solid #d9cec0;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 14px;
+}
+
+.jp-sku-search input:focus-visible {
+  outline: 2px solid #78513b;
+  outline-offset: 2px;
+}
+
 .jp-sku-brands {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  overflow-x: auto;
+  overflow-x: visible;
   overscroll-behavior-inline: contain;
   padding: 2px 0 10px;
   scrollbar-width: none;
@@ -106,6 +137,19 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
+}
+
+.jp-sku-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 28px 16px;
+  color: #75695f;
+  background: #fff;
+  border: 1px solid #e1d8cd;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
 }
 
 .jp-sku-card {
@@ -261,6 +305,11 @@
 @media (max-width: 900px) {
   .jp-sku-head {
     grid-template-columns: 1fr;
+  }
+
+  .jp-sku-brands {
+    flex-wrap: nowrap;
+    overflow-x: auto;
   }
 
   .jp-sku-grid {

@@ -10,13 +10,13 @@
   const loadCatalog = async () => {
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = './world-tobacco-catalog.css?v=20260905-user-uploads';
+    stylesheet.href = './world-tobacco-catalog.css?v=20260905-user-audit';
     document.head.appendChild(stylesheet);
 
     try {
-      await loadScript('./world-tobacco-japan.js?v=20260905-user-uploads');
-      await loadScript('./catalog-core.js?v=20260905-user-uploads');
-      await loadScript('./world-tobacco-catalog-render.js?v=20260905-user-uploads');
+      await loadScript('./world-tobacco-japan.js?v=20260905-user-audit');
+      await loadScript('./catalog-core.js?v=20260905-user-audit');
+      await loadScript('./world-tobacco-catalog-render.js?v=20260905-user-audit');
     } catch (error) {
       console.error('KISARAGI canonical catalog load failed', error);
     }

@@ -5,6 +5,10 @@
   background: #ebe4d9;
 }
 
+.age {
+  overflow-y: auto;
+}
+
 .hero-copy,
 .hero-visual {
   visibility: visible;
@@ -92,6 +96,18 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+.contact-status {
+  display: inline-flex;
+  margin: 25px auto 0;
+  padding: 13px 18px;
+  color: #6f6257;
+  background: #ece5da;
+  border: 1px solid #ddd2c3;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .kicker,
 .brand span:not(.tougu-mark),
 .visual-note {
@@ -144,7 +160,6 @@
     transition: transform .2s ease, opacity .2s ease;
   }
 
-  body.catalog-browsing .mobile-dock,
   body.hero-in-view .mobile-dock {
     opacity: 0;
     pointer-events: none;
@@ -163,6 +178,19 @@
 
   .hero-visual {
     min-height: 320px;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .actions .primary,
+  .actions .secondary {
+    min-width: 0;
+    padding-inline: 12px;
+    font-size: 11px;
+    white-space: nowrap;
   }
 
   .section {
@@ -209,5 +237,46 @@
   .mobile-dock {
     height: 46px;
     font-size: 9px;
+  }
+}
+
+@media (max-width: 520px), (max-height: 760px) {
+  .age {
+    place-items: start center;
+  }
+
+  .age-card {
+    width: 100%;
+    margin: auto 0;
+    padding: 30px 28px;
+    border-radius: 14px;
+  }
+
+  .age-card h2 {
+    margin: 18px 0;
+    font-size: 30px;
+    line-height: 1.42;
+    white-space: nowrap;
+  }
+
+  .age-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .age-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 22px;
+  }
+
+  .age-actions button,
+  .age-actions a {
+    min-width: 0;
+    min-height: 48px;
+    padding: 12px 10px;
+    text-align: center;
+    white-space: nowrap;
   }
 }

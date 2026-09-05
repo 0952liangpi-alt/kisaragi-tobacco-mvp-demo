@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kisaragi-demo-v16-user-uploads';
+const CACHE_NAME = 'kisaragi-demo-v17-user-audit';
 const APP_SHELL = [
   './',
   './index.html',

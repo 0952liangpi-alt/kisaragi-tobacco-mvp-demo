@@ -26,15 +26,20 @@ const requiredChecks = [
   ['per-SKU image paths', renderer, 'product.images?.length'],
   ['multi-image gallery', catalogCss, 'scroll-snap-type: x mandatory'],
   ['brand toolbar', renderer, 'aria-label="ブランドで絞り込む"'],
-  ['image load fallback', renderer, 'IMAGE<br>LOAD FAILED'],
+  ['catalog search', renderer, 'type="search"'],
+  ['localized image load fallback', renderer, '画像を読み込めません'],
+  ['localized missing image state', renderer, '画像未登録'],
+  ['localized identity state', renderer, "IDENTITY_PENDING: '商品名確認待ち'"],
   ['mobile two-column catalog', catalogCss, 'grid-template-columns: repeat(2, minmax(0, 1fr))'],
   ['contained product images', catalogCss, 'object-fit: contain'],
   ['horizontal brand filters', catalogCss, 'overflow-x: auto'],
   ['mobile catalog bottom clearance', catalogCss, 'padding: 48px 12px 104px'],
   ['mobile dock', html, 'aria-label="モバイルナビゲーション"'],
   ['mobile dock safe area', imageCss, 'env(safe-area-inset-bottom)'],
-  ['catalog dock clearance', imageCss, 'body.catalog-browsing .mobile-dock'],
   ['hero dock clearance', imageCss, 'body.hero-in-view .mobile-dock'],
+  ['mobile CTA no-wrap', imageCss, 'white-space: nowrap'],
+  ['short-screen age gate', imageCss, '@media (max-width: 520px), (max-height: 760px)'],
+  ['age gate scroll fallback', imageCss, 'overflow-y: auto'],
   ['hero uses approved individual image', html, './assets/catalog/products/wt-1117-camel-berry-5.jpg'],
   ['whole-page sprite retired', imageCss, '.hero-visual'],
   ['service worker registration target', serviceWorker, './catalog-core.js'],
@@ -53,6 +58,8 @@ assert.ok(!loader.includes('pack.part01') && !loader.includes('user-sprite36'), 
 assert.ok(!imageCss.includes('home-sprite'), 'homepage must not use the screenshot sprite');
 assert.ok(!html.includes('assets/catalog/image2.jpg'), 'rejected photo 1 must not render on the page');
 assert.ok(!html.includes('assets/catalog/image5.jpg'), 'rejected Mevius photo must not render on the page');
+assert.ok(!html.includes('contact@example.jp'), 'the public page must not expose a placeholder contact address');
+assert.ok(html.includes('お問い合わせ窓口 準備中'), 'an unavailable contact channel must be represented truthfully');
 assert.ok(!serviceWorker.includes('wt-1034-peace-10.jpg'), 'rejected photo 1 must not be cached');
 assert.ok(!renderer.includes('data:image'), 'product cards must use per-SKU files');
 assert.ok(manifest.icons.length > 0, 'PWA manifest needs an icon');

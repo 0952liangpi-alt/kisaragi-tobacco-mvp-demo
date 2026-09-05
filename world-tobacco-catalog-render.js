@@ -38,6 +38,10 @@
           <span><b>${audit.MISSING_IMAGE ?? 0}</b> 画像未登録</span>
           <span><b>${audit.CONFLICTS ?? 0}</b> 確認待ち</span>
         </div>
+        <div class="jp-sku-search">
+          <label for="jp-sku-search-input">商品を検索</label>
+          <input id="jp-sku-search-input" type="search" autocomplete="off" placeholder="商品名・ブランド・商品コード">
+        </div>
         <div class="jp-sku-brands" role="toolbar" aria-label="ブランドで絞り込む"></div>
         <p class="jp-sku-result" aria-live="polite"></p>
         <div class="jp-sku-grid"></div>
@@ -46,14 +50,25 @@
     anchor.insertAdjacentElement('afterend', section);
 
     const tabs = section.querySelector('.jp-sku-brands');
+    const search = section.querySelector('#jp-sku-search-input');
     const grid = section.querySelector('.jp-sku-grid');
     const result = section.querySelector('.jp-sku-result');
-    const yen = (value) => value == null ? 'UNKNOWN' : `¥${Number(value).toLocaleString('ja-JP')}`;
+    const yen = (value) => value == null ? '未登録' : `¥${Number(value).toLocaleString('ja-JP')}`;
+    const statusLabels = Object.freeze({
+      PRICE_CONFLICT: '価格確認待ち',
+      IDENTITY_PENDING: '商品名確認待ち',
+      IMAGE_BOUND: '画像登録済み',
+      CATALOG_ONLY: '画像未登録',
+    });
+    const normalize = (value) => String(value ?? '')
+      .normalize('NFKC')
+      .toLocaleLowerCase('ja')
+      .replace(/\s+/g, '');
 
     const imageMarkup = (product) => {
       const images = product.images?.length ? product.images : (product.image ? [product.image] : []);
       if (!images.length) {
-        return '<div class="jp-sku-image jp-sku-image-missing"><span>IMAGE<br>NOT VERIFIED</span></div>';
+        return '<div class="jp-sku-image jp-sku-image-missing"><span>画像未登録</span></div>';
       }
 
       const name = escapeHtml(product.product_name_ja);
@@ -62,8 +77,8 @@
           ${images.map((image, index) => {
             const path = escapeHtml(image.file_path);
             const preservedPrice = image.observed_price_jpy != null
-              ? `<span class="jp-sku-image-label">画像内価格 ${yen(image.observed_price_jpy)} を保持</span>`
-              : (image.price_preserved ? '<span class="jp-sku-image-label">画像内価格を保持</span>' : '');
+              ? `<span class="jp-sku-image-label">画像内の表示価格 ${yen(image.observed_price_jpy)}</span>`
+              : (image.price_preserved ? '<span class="jp-sku-image-label">画像内の価格表示あり</span>' : '');
             const suffix = images.length > 1 ? ` ${index + 1}/${images.length}` : '';
             return `
               <a class="jp-sku-image jp-sku-image-verified" href="./${path}" target="_blank" rel="noopener" aria-label="${name}${suffix}の画像を原寸で見る">
@@ -74,15 +89,29 @@
         </div>`;
     };
 
-    const draw = (brand = 'ALL') => {
-      const filtered = brand === 'ALL' ? data : data.filter((product) => product.brand === brand);
+    let activeBrand = 'ALL';
+    const draw = () => {
+      const query = normalize(search.value);
+      const filtered = data.filter((product) => {
+        if (activeBrand !== 'ALL' && product.brand !== activeBrand) return false;
+        if (!query) return true;
+        return normalize([
+          product.product_name_ja,
+          product.product_name_en,
+          product.brand,
+          product.product_code,
+          product.sku,
+        ].join(' ')).includes(query);
+      });
       const items = [...filtered].sort((left, right) => (
         Number(Boolean(right.image)) - Number(Boolean(left.image)) ||
         left.product_name_ja.localeCompare(right.product_name_ja, 'ja')
       ));
 
-      result.textContent = `${brand === 'ALL' ? 'すべてのブランド' : brand} / ${items.length}品項`;
-      grid.innerHTML = items.map((product) => `
+      const brandLabel = activeBrand === 'ALL' ? 'すべてのブランド' : activeBrand;
+      const queryLabel = search.value.trim() ? ` / 「${search.value.trim()}」` : '';
+      result.textContent = `${brandLabel}${queryLabel} / ${items.length}品項`;
+      grid.innerHTML = items.length ? items.map((product) => `
         <article class="jp-sku-card ${product.status === 'PRICE_CONFLICT' ? 'has-conflict' : ''}" data-sku="${escapeHtml(product.id)}">
           ${imageMarkup(product)}
           <div class="jp-sku-body">
@@ -90,24 +119,24 @@
             <h3>${escapeHtml(product.product_name_ja)}</h3>
             <div class="jp-sku-meta">
               <span>税込価格<b>${yen(product.price_jpy)}</b></span>
-              <span>商品コード<b>${escapeHtml(product.product_code || 'UNKNOWN')}</b></span>
+              <span>商品コード<b>${escapeHtml(product.product_code || '未登録')}</b></span>
               ${product.pack_size != null ? `<span>包装<b>${product.pack_size}本</b></span>` : ''}
               ${product.tar_mg != null ? `<span>Tar<b>${product.tar_mg}mg</b></span>` : ''}
               ${product.nicotine_mg != null ? `<span>Nicotine<b>${product.nicotine_mg}mg</b></span>` : ''}
             </div>
             <div class="jp-sku-source">
-              <span>${escapeHtml(product.status)}</span>
+              <span>${escapeHtml(statusLabels[product.status] || '確認待ち')}</span>
               ${product.source_url
-                ? `<a href="${escapeHtml(product.source_url)}" target="_blank" rel="noopener noreferrer">出典</a>`
-                : '<span>USER_UPLOAD</span>'}
+                ? `<a href="${escapeHtml(product.source_url)}" target="_blank" rel="noopener noreferrer">商品情報の出典</a>`
+                : '<span>提供画像</span>'}
             </div>
           </div>
-        </article>`).join('');
+        </article>`).join('') : '<p class="jp-sku-empty">該当する商品はありません。検索語またはブランドを変更してください。</p>';
 
       grid.querySelectorAll('img').forEach((image) => {
         image.addEventListener('error', () => {
           const container = image.closest('.jp-sku-image');
-          container.outerHTML = '<div class="jp-sku-image jp-sku-image-missing"><span>IMAGE<br>LOAD FAILED</span></div>';
+          container.outerHTML = '<div class="jp-sku-image jp-sku-image-missing"><span>画像を読み込めません</span></div>';
         }, {once: true});
       });
     };
@@ -119,16 +148,18 @@
       button.className = index === 0 ? 'active' : '';
       button.setAttribute('aria-pressed', String(index === 0));
       button.addEventListener('click', () => {
+        activeBrand = brand;
         tabs.querySelectorAll('button').forEach((tab) => {
           const active = tab === button;
           tab.classList.toggle('active', active);
           tab.setAttribute('aria-pressed', String(active));
         });
-        draw(brand);
+        draw();
       });
       tabs.appendChild(button);
     });
 
+    search.addEventListener('input', draw);
     draw();
     const dockVisibilityObserver = new IntersectionObserver((entries) => {
       const catalogVisible = entries.some((entry) => entry.isIntersecting);
