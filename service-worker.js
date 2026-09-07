@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kisaragi-demo-v19-uiux-audit';
+const CACHE_NAME = 'kisaragi-demo-v20-product-detail';
 const APP_SHELL = [
   './',
   './index.html',
@@ -9,6 +9,8 @@ const APP_SHELL = [
   './world-tobacco-japan.js',
   './catalog-core.js',
   './world-tobacco-catalog-render.js',
+  './product-detail.css',
+  './product-detail.js',
   './sprite-loader.js',
   './manifest.webmanifest',
   './assets/icon.svg',
@@ -30,7 +32,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
   const url = new URL(event.request.url);
-  const catalogRuntime = /(?:world-tobacco|catalog-core|catalog-runtime|sprite-loader|user-sprite36|deployment-receipt)/.test(url.pathname);
+  const catalogRuntime = /(?:world-tobacco|catalog-core|catalog-runtime|sprite-loader|product-detail|user-sprite36|deployment-receipt)/.test(url.pathname);
   if (catalogRuntime) {
     event.respondWith(fetch(event.request, {cache:'no-store'}).catch(() => caches.match(event.request)));
     return;
