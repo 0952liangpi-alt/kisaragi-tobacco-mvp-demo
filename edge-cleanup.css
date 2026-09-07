@@ -1,0 +1,17 @@
+/* Remove unwanted outer screenshot/matte borders without altering the tobacco pack itself. */
+.home-v2-product-image{background:#f7f4ee;padding:8px}
+.home-v2-product-image img{width:100%;height:100%;object-fit:contain;clip-path:inset(3%);transform:scale(1.065);transform-origin:center;transition:transform .18s ease}
+.home-v2-product:hover .home-v2-product-image img{transform:scale(1.075)}
+
+/* Canonical catalog: trim only the outermost matte on ordinary verified assets.
+   Assets explicitly tagged has-side-matte keep their existing SKU-specific crop. */
+.jp-sku-image-verified:not(.has-side-matte){padding:4px;background:#fff}
+.jp-sku-image-verified:not(.has-side-matte) img{clip-path:inset(2%);transform:scale(1.042);transform-origin:center}
+
+/* Product detail uses a lighter crop so the full pack remains readable. */
+.jp-product-detail-image img{clip-path:inset(1.5%);transform:scale(1.032);transform-origin:center}
+
+@media(max-width:560px){
+  .home-v2-product-image img{clip-path:inset(3.5%);transform:scale(1.075)}
+  .jp-sku-image-verified:not(.has-side-matte) img{clip-path:inset(2.5%);transform:scale(1.052)}
+}
