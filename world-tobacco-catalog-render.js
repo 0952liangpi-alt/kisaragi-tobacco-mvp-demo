@@ -16,6 +16,13 @@
     if (!anchor || document.getElementById('jp-sku-catalog')) return;
 
     const brands = ['ALL', ...new Set(data.map((product) => product.brand).filter(Boolean))];
+    const categoryLabels = Object.freeze({
+      CIGARETTES: '紙巻たばこ',
+      HEATED_TOBACCO_STICKS: '加熱式たばこ',
+      HEATED_TOBACCO_DEVICES: '加熱式デバイス',
+      JAPANESE_CIGARETTES: '日本の紙巻たばこ',
+    });
+    const categories = [...new Set(data.map((product) => product.category).filter(Boolean))];
     const section = document.createElement('section');
     section.id = 'jp-sku-catalog';
     section.className = 'jp-sku-section';
@@ -38,9 +45,27 @@
           <span><b>${audit.MISSING_IMAGE ?? 0}</b> 画像未登録</span>
           <span><b>${audit.CONFLICTS ?? 0}</b> 確認待ち</span>
         </div>
-        <div class="jp-sku-search">
-          <label for="jp-sku-search-input">商品を検索</label>
-          <input id="jp-sku-search-input" type="search" autocomplete="off" placeholder="商品名・ブランド・商品コード">
+        <div class="jp-sku-controls" aria-label="商品絞り込み">
+          <div class="jp-sku-search">
+            <label for="jp-sku-search-input">商品を検索</label>
+            <input id="jp-sku-search-input" type="search" autocomplete="off" placeholder="商品名・ブランド・商品コード">
+          </div>
+          <div class="jp-sku-select">
+            <label for="jp-sku-category">品類</label>
+            <select id="jp-sku-category">
+              <option value="ALL">すべての品類</option>
+              ${categories.map((category) => `<option value="${escapeHtml(category)}">${escapeHtml(categoryLabels[category] || category)}</option>`).join('')}
+            </select>
+          </div>
+          <div class="jp-sku-select">
+            <label for="jp-sku-image-filter">画像</label>
+            <select id="jp-sku-image-filter">
+              <option value="ALL">すべて</option>
+              <option value="BOUND">画像登録済み</option>
+              <option value="MISSING">画像未登録</option>
+            </select>
+          </div>
+          <button class="jp-sku-reset" type="button">条件をクリア</button>
         </div>
         <div class="jp-sku-brands" role="toolbar" aria-label="ブランドで絞り込む"></div>
         <p class="jp-sku-result" aria-live="polite"></p>
@@ -51,6 +76,9 @@
 
     const tabs = section.querySelector('.jp-sku-brands');
     const search = section.querySelector('#jp-sku-search-input');
+    const categorySelect = section.querySelector('#jp-sku-category');
+    const imageSelect = section.querySelector('#jp-sku-image-filter');
+    const resetButton = section.querySelector('.jp-sku-reset');
     const grid = section.querySelector('.jp-sku-grid');
     const result = section.querySelector('.jp-sku-result');
     const yen = (value) => value == null ? '未登録' : `¥${Number(value).toLocaleString('ja-JP')}`;
@@ -93,8 +121,14 @@
     let activeBrand = 'ALL';
     const draw = () => {
       const query = normalize(search.value);
+      const activeCategory = categorySelect.value;
+      const imageFilter = imageSelect.value;
       const filtered = data.filter((product) => {
         if (activeBrand !== 'ALL' && product.brand !== activeBrand) return false;
+        if (activeCategory !== 'ALL' && product.category !== activeCategory) return false;
+        const hasImage = Boolean(product.image || product.images?.length);
+        if (imageFilter === 'BOUND' && !hasImage) return false;
+        if (imageFilter === 'MISSING' && hasImage) return false;
         if (!query) return true;
         return normalize([
           product.product_name_ja,
@@ -110,8 +144,10 @@
       ));
 
       const brandLabel = activeBrand === 'ALL' ? 'すべてのブランド' : activeBrand;
+      const categoryLabel = activeCategory === 'ALL' ? '' : ` / ${categoryLabels[activeCategory] || activeCategory}`;
+      const imageLabel = imageFilter === 'BOUND' ? ' / 画像登録済み' : imageFilter === 'MISSING' ? ' / 画像未登録' : '';
       const queryLabel = search.value.trim() ? ` / 「${search.value.trim()}」` : '';
-      result.textContent = `${brandLabel}${queryLabel} / ${items.length}品項`;
+      result.textContent = `${brandLabel}${categoryLabel}${imageLabel}${queryLabel} / ${items.length}品項`;
       grid.innerHTML = items.length ? items.map((product) => `
         <article class="jp-sku-card ${product.status === 'PRICE_CONFLICT' ? 'has-conflict' : ''}" data-sku="${escapeHtml(product.id)}">
           ${imageMarkup(product)}
@@ -132,7 +168,7 @@
                 : '<span>提供画像</span>'}
             </div>
           </div>
-        </article>`).join('') : '<p class="jp-sku-empty">該当する商品はありません。検索語またはブランドを変更してください。</p>';
+        </article>`).join('') : '<p class="jp-sku-empty">該当する商品はありません。検索語または絞り込み条件を変更してください。</p>';
 
       grid.querySelectorAll('img').forEach((image) => {
         image.addEventListener('error', () => {
@@ -161,6 +197,21 @@
     });
 
     search.addEventListener('input', draw);
+    categorySelect.addEventListener('change', draw);
+    imageSelect.addEventListener('change', draw);
+    resetButton.addEventListener('click', () => {
+      search.value = '';
+      categorySelect.value = 'ALL';
+      imageSelect.value = 'ALL';
+      activeBrand = 'ALL';
+      tabs.querySelectorAll('button').forEach((tab, index) => {
+        tab.classList.toggle('active', index === 0);
+        tab.setAttribute('aria-pressed', String(index === 0));
+      });
+      draw();
+      search.focus();
+    });
+
     draw();
     const dockVisibilityObserver = new IntersectionObserver((entries) => {
       const catalogVisible = entries.some((entry) => entry.isIntersecting);
