@@ -81,8 +81,9 @@
     <div class="panel-head"><h2>選択リスト</h2><button class="icon-button" id="closeCart" type="button">閉じる</button></div>
     <div id="cartItems" class="cart-items"></div>
     <div class="cart-total"><span>参考合計</span><strong id="cartTotal">¥0</strong></div>
-    <button class="button primary full" id="openReview" type="button">審査内容を確認</button>
-    <p class="panel-note">ここでは注文は送信されません。実運用前に本人確認、支払い、配送、返品の条件を接続します。</p>
+    <a class="button primary full" id="startCheckout" href="./checkout.html">申込内容を入力する</a>
+    <button class="button quiet full" id="openReview" type="button">選択内容を確認</button>
+    <p class="panel-note">申込内容は事業者の確認へ進む準備です。ここでは決済・注文確定・配送依頼は行いません。</p>
   </aside>
   <div class="review-modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="reviewTitle" aria-hidden="true">
     <section class="review-card"><button class="icon-button close-review" type="button">閉じる</button><p class="overline">REVIEW DEMO</p><h2 id="reviewTitle">審査内容の確認</h2><div id="reviewSummary"></div><p>このデモでは氏名、住所、決済情報を収集・送信しません。実販売を開始する前に、事業者情報・年齢確認・決済・配送条件を確認します。</p><button class="button primary full" id="closeReview" type="button">確認しました</button></section>
