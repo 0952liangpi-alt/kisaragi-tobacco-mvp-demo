@@ -13,16 +13,20 @@
     if (!main || document.querySelector('.home-v2')) return;
 
     const withImages = data.filter((p) => p.image || p.images?.length);
-    const preferred = withImages.filter((p) => ['キャメル','セブンスター','メビウス','ピース','TEREA'].includes(p.brand));
-    const picks = [...preferred, ...withImages].filter((p, i, arr) => arr.findIndex((x) => x.id === p.id) === i).slice(0, 5);
-    const hero = picks.find((p) => /セブンスター/.test(p.brand)) || picks[0];
-    const heroImage = hero?.image?.file_path || hero?.images?.[0]?.file_path || 'assets/catalog/products/wt-1020-seven-stars.png';
+    const homeImageBlacklist = new Set(['wt-1020']);
+    const preferred = withImages.filter((p) => !homeImageBlacklist.has(p.id) && ['キャメル','メビウス','ピース','TEREA'].includes(p.brand));
+    const picks = [...preferred, ...withImages.filter((p) => !homeImageBlacklist.has(p.id))]
+      .filter((p, i, arr) => arr.findIndex((x) => x.id === p.id) === i)
+      .slice(0, 5);
+    const hero = picks.find((p) => p.id === 'wt-1117') || picks[0];
+    const heroImage = hero?.image?.file_path || hero?.images?.[0]?.file_path || 'assets/catalog/products/wt-1117-camel-berry-5.jpg';
     const brands = [...new Set(data.map((p) => p.brand).filter(Boolean))];
 
     const productCard = (p) => {
       const image = p.image?.file_path || p.images?.[0]?.file_path;
-      return `<article class="home-v2-product">
-        <div class="home-v2-product-image">${image ? `<img src="./${escapeHtml(image)}" alt="${escapeHtml(p.product_name_ja)}" loading="lazy">` : ''}</div>
+      const imageClass = ['wt-1692','wt-1138'].includes(p.id) ? ' edge-risk' : '';
+      return `<article class="home-v2-product" data-product-id="${escapeHtml(p.id)}">
+        <div class="home-v2-product-image${imageClass}">${image ? `<img src="./${escapeHtml(image)}" alt="${escapeHtml(p.product_name_ja)}" loading="lazy">` : ''}</div>
         <div class="home-v2-product-body">
           <span class="home-v2-product-brand">${escapeHtml(p.brand)}</span>
           <h3>${escapeHtml(p.product_name_ja)}</h3>
