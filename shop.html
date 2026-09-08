@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="KISARAGIの商品案内と注文審査デモ。20歳以上の方のみご利用いただけます。">
+  <meta name="theme-color" content="#152018">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>KISARAGI | 商品案内</title>
+  <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./shop.css">
+  <link rel="stylesheet" href="./shop-polish.css">
+  <script defer src="./world-tobacco-japan.js"></script>
+  <script defer src="./catalog-core.js"></script>
+  <script defer src="./shop.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalog">商品一覧へ移動</a>
+  <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
+    <section class="age-card">
+      <p class="overline">KISARAGI</p>
+      <h1 id="ageGateTitle">20歳以上の方のみ<br>ご利用いただけます</h1>
+      <p>本ページは日本国内の成人向け商品案内です。商品選択後も、実運用では年齢・本人・販売条件の確認が必要です。</p>
+      <p class="warning">未成年者の喫煙は法律で禁じられています。</p>
+      <div class="age-actions">
+        <button class="button primary" id="enterSite">20歳以上です</button>
+        <a class="button quiet" id="leaveSite" href="https://www.google.com/">退出する</a>
+      </div>
+      <small>このページは注文経路の機能検証です。決済・注文確定・配送は行いません。</small>
+    </section>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="KISARAGI 商品案内トップ"><span class="brand-mark" aria-hidden="true">K</span><span>KISARAGI</span></a>
+    <nav aria-label="メインナビゲーション">
+      <a href="#catalog">商品案内</a>
+      <a href="#guide">利用案内</a>
+      <a href="./index.html">会社情報</a>
+    </nav>
+    <button class="cart-toggle" id="openCart" type="button" aria-haspopup="dialog">選択リスト <b id="cartCount">0</b></button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="overline">ADULT TOBACCO INFORMATION</p>
+        <h1>選ぶ前に、<br><em>確かめる。</em></h1>
+        <p>品名・画像・参考価格を整理し、選択後は必要な確認へ進む入口です。</p>
+        <div class="hero-actions"><a class="button primary" href="#catalog">商品を見る</a><a class="text-link" href="#guide">利用条件を確認</a></div>
+      </div>
+      <figure class="hero-image"><img src="./assets/catalog/products/ua-terea-riviera-pearl.jpg" alt="顧客提供の加熱式たばこ製品パッケージ写真"><figcaption>掲載画像は確認済みの提供資料を使用</figcaption></figure>
+    </section>
+
+    <section class="notice" aria-label="利用条件"><strong>20歳以上限定</strong><span>選択リストは審査前の確認用です。注文は確定しません。</span></section>
+
+    <section class="catalog section" id="catalog" aria-labelledby="catalogTitle">
+      <div class="section-heading"><p class="overline">PRODUCT DIRECTORY</p><h2 id="catalogTitle">商品案内</h2><p>掲載情報と参考価格を確認するための商品ディレクトリです。</p></div>
+      <div class="filters" aria-label="商品検索">
+        <label class="search"><span>商品名・ブランド・品番</span><input id="searchInput" type="search" placeholder="例：キャメル、TEREA"></label>
+        <fieldset><legend>カテゴリー</legend><div class="filter-options" id="categoryFilters"></div></fieldset>
+      </div>
+      <p class="result-count" id="resultCount" aria-live="polite"></p>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <p class="catalog-note">参考価格・在庫・販売可否は実運用前に事業者が確認する項目です。掲載時点で未確認の画像や商品は購入対象にしません。</p>
+    </section>
+
+    <section class="guide section" id="guide" aria-labelledby="guideTitle">
+      <div class="section-heading"><p class="overline">HOW IT WORKS</p><h2 id="guideTitle">ご利用前の確認</h2></div>
+      <div class="guide-grid">
+        <article><span>1</span><h3>年齢を確認</h3><p>成人であることを確認して商品案内を閲覧します。</p></article>
+        <article><span>2</span><h3>商品を選択</h3><p>価格と掲載状況を確認し、選択リストへ入れます。</p></article>
+        <article><span>3</span><h3>事業者が審査</h3><p>実運用では販売許可、本人確認、配送条件を満たした後に進みます。</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">K</span><span>KISARAGI</span></a><p>機能検証用の商品案内です。実販売・決済・配送は行いません。</p><a href="./index.html">東隅 会社情報</a></footer>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+  <aside class="cart-panel" id="cartPanel" aria-label="選択リスト" aria-hidden="true">
+    <div class="panel-head"><h2>選択リスト</h2><button class="icon-button" id="closeCart" type="button">閉じる</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-total"><span>参考合計</span><strong id="cartTotal">¥0</strong></div>
+    <button class="button primary full" id="openReview" type="button">審査内容を確認</button>
+    <p class="panel-note">ここでは注文は送信されません。実運用前に本人確認、支払い、配送、返品の条件を接続します。</p>
+  </aside>
+  <div class="review-modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="reviewTitle" aria-hidden="true">
+    <section class="review-card"><button class="icon-button close-review" type="button">閉じる</button><p class="overline">REVIEW DEMO</p><h2 id="reviewTitle">審査内容の確認</h2><div id="reviewSummary"></div><p>このデモでは氏名、住所、決済情報を収集・送信しません。実販売を開始する前に、事業者情報・年齢確認・決済・配送条件を確認します。</p><button class="button primary full" id="closeReview" type="button">確認しました</button></section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

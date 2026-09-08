@@ -34,12 +34,16 @@
 ## 本地运行
 
 ```bash
-python3 -m http.server 4173 --directory .
+python3 -m http.server 4173 --bind 127.0.0.1 --directory .
 ```
 
 浏览器打开 `http://127.0.0.1:4173/`。
 
 ## 交付验收
+
+以下原有通过记录属于历史记录，并非对当前 HEAD 的重新验收。当前入口未加载旧 `app.js`，其语法检查不能证明当前页面行为。`deployment-receipt.html` 仍依赖旧图片方案、固定数量和旧 SHA，仅保留作历史工具，不得作为当前交付判定。
+
+2026-09-07 新增通用安全回归：`node tests/service-worker-cache-isolation.mjs`。验证 Service Worker 更新仅清理本应用版本缓存，保留当前缓存及同源其他应用缓存。该检查不代表浏览器、真机或整站验收。
 
 - `node --check app.js`：通过
 - `node tests/canonical-catalog.mjs`：canonical catalog、Asset Registry、缺图清单、价格保留和黑边显示元数据检查

@@ -1,223 +1,27 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>KISARAGI — 日本たばこ商品庫</title>
-  <meta name="description" content="日本たばこ57参照SKUとユーザー提供商品を、画像・価格・仕様・出典から確認できる20歳以上向け調査デモ。実販売は行いません。">
-  <meta name="theme-color" content="#f4f1ea">
-  <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260905-uiux-audit">
-  <script defer src="./sprite-loader.js?v=20260905-uiux-audit"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="合同会社 東隅の会社紹介と公開資料について。">
+<meta name="theme-color" content="#f4f1ea">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>東隅 — 会社案内</title>
+<link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="stylesheet" href="./company.css">
+<script defer src="./company.js"></script>
 </head>
 <body>
-  <div class="age" id="age">
-    <div class="age-card">
-      <span class="kicker">KISARAGI / 20+ RESEARCH ARCHIVE</span>
-      <h2>20歳以上の方のみ<br>ご覧いただけます。</h2>
-      <p>成人向け商品の調査用デモです。未成年者の喫煙は法律で禁じられています。本サイトでは販売・決済を行いません。</p>
-      <div class="age-actions">
-        <button id="enter" type="button">20歳以上です</button>
-        <a href="https://www.google.com/">退出する</a>
-      </div>
-    </div>
-  </div>
-
-  <header>
-    <a class="brand" href="#top">
-      <span class="tougu-mark"><img src="./assets/tougu-mark.svg" alt="東隅"></span>
-      <span>KISARAGI<small>RESEARCH ARCHIVE</small></span>
-    </a>
-    <nav aria-label="メインナビゲーション">
-      <a href="#jp-sku-catalog">品項</a>
-      <a href="#categories">品類</a>
-      <a href="#graph">ブランド関係</a>
-      <a href="#guide">ガイド</a>
-      <a href="#about">東隅</a>
-    </nav>
-    <a class="header-cta" href="#jp-sku-catalog">83品項を見る</a>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <span class="kicker">CURATED IN JAPAN · RESEARCH DEMO</span>
-        <h1>名前だけでは、<br><i>わからない。</i></h1>
-        <p class="lead">日本市場のたばこを、商品画像・価格・仕様・出典から整理する。売るためではなく、正確に知るための静かな商品庫。</p>
-        <div class="actions">
-          <a class="primary" href="#jp-sku-catalog">83品項を見る <span>↓</span></a>
-          <a class="secondary" href="#guide">基礎知識を見る</a>
-        </div>
-        <div class="proof">
-          <span><b>83</b> 品項</span>
-          <span><b>13</b> ブランド</span>
-          <span><b>20+</b> 成人限定</span>
-          <span><b>0</b> 実販売</span>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <figure class="shot shot-a"><img src="./assets/catalog/products/wt-1117-camel-berry-5.jpg" alt="キャメルの実物資料"></figure>
-        <figure class="shot shot-b"><img src="./assets/catalog/image3.png" alt="セブンスターの実物資料"></figure>
-        <figure class="shot shot-c"><img src="./assets/catalog/products/wt-1116-camel-berry-8.jpg" alt="キャメルの実物資料"></figure>
-        <span class="visual-note">REAL OBJECT / SOURCE-LED</span>
-      </div>
-    </section>
-
-    <section class="statement">
-      <span>01 / FIRST PRINCIPLE</span>
-      <p>商品を「広告」ではなく、<strong>比較できる資料</strong>として見る。</p>
-    </section>
-
-    <section class="section category-section" id="categories">
-      <div class="section-head">
-        <div>
-          <span class="kicker">BROWSE BY CATEGORY</span>
-          <h2>まず、品類から<br>迷わず探す。</h2>
-        </div>
-        <p>現在の商品庫は日本たばこ57参照SKUと、ユーザーが提供した紙巻き・加熱式商品を同じカタログで収録しています。</p>
-      </div>
-      <div class="category-grid">
-        <a href="#jp-sku-catalog"><b>01</b><h3>日本の紙巻たばこ</h3><span>57 SKU →</span></a>
-        <a href="#jp-sku-catalog"><b>02</b><h3>加熱式たばこ</h3><span>19 品項 →</span></a>
-        <a href="#archive"><b>03</b><h3>葉巻・シガリロ</h3><span>REFERENCE →</span></a>
-        <a href="#archive"><b>04</b><h3>パイプたばこ</h3><span>REFERENCE →</span></a>
-        <a href="#archive"><b>05</b><h3>手巻きたばこ</h3><span>REFERENCE →</span></a>
-        <a href="#archive"><b>06</b><h3>喫煙具・関連資料</h3><span>REFERENCE →</span></a>
-      </div>
-    </section>
-
-    <section class="section" id="archive">
-      <div class="section-head">
-        <div>
-          <span class="kicker">THE ARCHIVE</span>
-          <h2>実物から、<br>静かに比較する。</h2>
-        </div>
-        <p>見た目、品類、仕様、出典。必要な情報だけを同じルールで並べ、探す時間と判断のノイズを減らします。</p>
-      </div>
-      <div class="archive-grid">
-        <article class="feature-card">
-          <img src="./assets/catalog/products/wt-1117-camel-berry-5.jpg" alt="キャメルの実物写真">
-          <div><span>ARCHIVE 001</span><h3>実物写真で確認</h3><p>パッケージや形状を、確認可能な資料から見る。</p></div>
-        </article>
-        <article class="feature-card">
-          <img src="./assets/catalog/image3.png" alt="セブンスターの実物写真">
-          <div><span>ARCHIVE 002</span><h3>品類で整理</h3><p>名称の違いを越えて、同じ分類軸で比較する。</p></div>
-        </article>
-        <article class="feature-card">
-          <img src="./assets/catalog/products/wt-1116-camel-berry-8.jpg" alt="キャメルの実物写真">
-          <div><span>ARCHIVE 003</span><h3>出典を残す</h3><p>掲載できない画像は転載せず、確認先を明示する。</p></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="value">
-      <div><span class="kicker">WHY KISARAGI</span><h2>探すだけでなく、<br>関係までわかる。</h2></div>
-      <div class="value-list">
-        <article><b>01</b><div><h3>品類から入る</h3><p>ブランド名を知らなくても種類から探索できます。</p></div></article>
-        <article><b>02</b><div><h3>同じ軸で比較する</h3><p>シリーズ、タイプ、仕様を共通の視点で整理します。</p></div></article>
-        <article><b>03</b><div><h3>出典まで辿れる</h3><p>確認元を資料の一部として扱い、判断の根拠を残します。</p></div></article>
-      </div>
-    </section>
-
-    <section class="section graph" id="graph">
-      <div class="section-head">
-        <div><span class="kicker">PRODUCT GRAPH</span><h2>ブランドから、<br>次の関係へ。</h2></div>
-        <p>商品を孤立したカードにせず、ブランド・シリーズ・タイプ・仕様・類似資料をひとつの関係として見るための構造です。</p>
-      </div>
-      <div class="graph-flow">
-        <article><span>BRAND</span><strong>ブランド</strong><small>MEVIUS / Seven Stars など</small></article><i>→</i>
-        <article><span>SERIES</span><strong>シリーズ</strong><small>系統・ライン</small></article><i>→</i>
-        <article><span>TYPE</span><strong>タイプ</strong><small>Regular / Menthol 等</small></article><i>→</i>
-        <article><span>SPEC</span><strong>仕様</strong><small>包装・数値・形状</small></article><i>→</i>
-        <article><span>RELATED</span><strong>関連資料</strong><small>類似品・出典</small></article>
-      </div>
-      <p class="graph-note">現在は情報設計プロトタイプ。資料追加に合わせて関係データを拡張します。</p>
-    </section>
-
-    <section class="section guide" id="guide">
-      <div class="section-head">
-        <div><span class="kicker">KISARAGI GUIDE</span><h2>知らない言葉を、<br>その場で理解する。</h2></div>
-        <p>商品を推薦するためではなく、分類や表示を正しく読むための基礎知識をまとめます。</p>
-      </div>
-      <div class="guide-grid">
-        <article><b>01</b><h3>紙巻たばことは？</h3><p>基本的な構造と分類の見方。</p></article>
-        <article><b>02</b><h3>加熱式と電子たばこの違い</h3><p>仕組みとカテゴリー上の違い。</p></article>
-        <article><b>03</b><h3>タール・ニコチンの見方</h3><p>表示される数値をどう読むか。</p></article>
-        <article><b>04</b><h3>葉巻とシガリロの違い</h3><p>形状・分類上の基本的な違い。</p></article>
-        <article><b>05</b><h3>メンソールとは？</h3><p>商品分類で使われる表現を整理。</p></article>
-        <article><b>06</b><h3>出典の読み方</h3><p>KISARAGIが情報確認元を残す理由。</p></article>
-      </div>
-    </section>
-
-    <section class="about section" id="about">
-      <div class="about-mark"><img src="./assets/tougu-mark.svg" alt="東隅"></div>
-      <div>
-        <span class="kicker">ABOUT KISARAGI / 東隅</span>
-        <h2>店頭の「わからない」を、<br>画面の中で減らしたい。</h2>
-        <p>KISARAGIは、商品名を並べるだけのカタログではありません。実物、分類、仕様、出典をひとつの視点で整理し、成人利用者や業務関係者が情報を確認しやすい体験を研究するプロトタイプです。</p>
-        <p>現在は調査デモとして公開しており、実際の商品販売、決済、配送、個人情報の保存は行っていません。</p>
-      </div>
-    </section>
-
-    <section class="contact section" id="contact">
-      <span class="kicker">CONTACT / BUSINESS INQUIRY</span>
-      <h2>資料提供・掲載内容・<br>業務利用について。</h2>
-      <p>掲載情報の訂正、権利に関するご連絡、店舗・卸売向けのデモ相談窓口は現在準備中です。</p>
-      <span class="contact-status">お問い合わせ窓口 準備中</span>
-    </section>
-  </main>
-
-  <footer>
-    <div class="brand">
-      <span class="tougu-mark"><img src="./assets/tougu-mark.svg" alt="東隅"></span>
-      <span>KISARAGI<small>RESEARCH ARCHIVE</small></span>
-    </div>
-    <p>20歳以上限定 · RESEARCH PROTOTYPE · NO REAL SALES</p>
-    <div><a href="#jp-sku-catalog">品項</a><a href="#categories">品類</a><a href="#guide">ガイド</a><a href="#top">TOP ↑</a></div>
-    <small>© 2026 KISARAGI. DEMO SITE.</small>
-  </footer>
-
-  <nav class="mobile-dock" aria-label="モバイルナビゲーション">
-    <a href="#top">TOP</a>
-    <a href="#jp-sku-catalog">品項</a>
-    <a href="#categories">品類</a>
-    <a href="#guide">ガイド</a>
-  </nav>
-
-  <script>
-    const gate = document.getElementById('age');
-    document.getElementById('enter').onclick = () => {
-      gate.classList.add('hide');
-      sessionStorage.setItem('k20', '1');
-    };
-    if (sessionStorage.getItem('k20') === '1') gate.classList.add('hide');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('in');
-      });
-    }, {threshold: .1});
-    document.querySelectorAll('.section,.statement,.value').forEach((element) => observer.observe(element));
-
-    const hero = document.querySelector('.hero');
-    const navigationObserver = new IntersectionObserver((entries) => {
-      document.body.classList.toggle('hero-in-view', entries.some((entry) => entry.isIntersecting));
-    }, {rootMargin: '-5% 0px -5%'});
-    if (hero) navigationObserver.observe(hero);
-
-    if ('caches' in window) {
-      caches.keys().then((keys) => Promise.all(
-        keys.filter((key) => key.startsWith('kisaragi-demo-')).map((key) => caches.delete(key))
-      ));
-    }
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js').catch(() => {});
-      });
-    }
-  </script>
-</body>
-</html>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="header"><a class="wordmark" href="#top" aria-label="東隅 トップ"><img src="./assets/tougu-mark.svg" width="44" height="44" alt=""><span>東隅<small>TOUGU</small></span></a><nav aria-label="メインナビゲーション"><a href="#about">私たちについて</a><a href="#information">会社情報</a><a href="#policy">公開方針</a><a href="./shop.html">商品案内</a></nav></header>
+<main id="main">
+<section class="hero" id="top"><div><p class="eyebrow">TOUGU / COMPANY PROFILE</p><h1>ひとつひとつを、<br><em>確かに。</em></h1><p class="intro">合同会社 東隅の会社案内。<br>会社の基本情報と、公開資料の取り扱いについてご案内します。</p><a class="primary" href="#information">会社情報を見る <span aria-hidden="true">↗</span></a></div><div class="seal" aria-hidden="true"><span class="seal-label">東隅 / TOUGU</span><img src="./assets/tougu-mark.svg" width="240" height="240" alt=""><span class="seal-bottom">COMPANY INFORMATION</span></div><div class="hero-bottom"><span>合同会社 東隅</span><span>会社案内・資料公開</span></div></section>
+<section class="section about" id="about"><p class="eyebrow">01 / ABOUT</p><div><h2>会社を知るための、<br>シンプルな窓口。</h2><p>このサイトは、東隅の基本情報を確認するための会社紹介ページです。公開内容をわかりやすく整理し、情報の性質と確認状況を明示します。</p><p class="note">商品販売、注文受付、決済、配送手続きは行っていません。</p></div></section>
+<section class="section" id="information"><div class="section-heading"><p class="eyebrow">02 / INFORMATION</p><h2>会社情報</h2></div><dl class="facts"><div><dt>会社名</dt><dd>合同会社 東隅</dd></div><div><dt>表記</dt><dd>東隅 / TOUGU</dd></div><div><dt>このサイトについて</dt><dd>会社紹介・一般情報の公開</dd></div><div><dt>お問い合わせ窓口</dt><dd>公開準備中<span class="sub">住所・連絡先は公開内容の確認後に掲載します。</span></dd></div></dl></section>
+<section class="section" id="policy"><div class="section-heading"><p class="eyebrow">03 / EDITORIAL POLICY</p><h2>公開する情報を、<br>丁寧に扱う。</h2></div><div class="cards"><article><span class="number">01</span><h3>確認した内容を掲載</h3><p>未確認の情報を確定事項として掲載せず、公開可能な情報を整理します。</p></article><article><span class="number">02</span><h3>資料と権利を尊重</h3><p>提供資料は公開範囲と利用条件を確認します。名刺や証明書の原本画像は、このページでは公開しません。</p></article><article><span class="number">03</span><h3>必要以上に集めない</h3><p>このページには会員登録や入力フォームがなく、氏名・住所・支払情報の入力を求めません。</p></article></div></section>
+<section class="section privacy" id="privacy"><p class="eyebrow">04 / PRIVACY & ACCESSIBILITY</p><div><h2>安心して閲覧するために。</h2><details><summary>閲覧時のデータについて</summary><p>このページは広告・アクセス解析用の外部スクリプトを読み込みません。配信事業者が接続に伴う技術情報を処理する場合があります。ブラウザは表示用ファイルを端末にキャッシュすることがあります。</p></details><details><summary>ページの操作について</summary><p>キーボードの Tab キーでリンクを移動できます。最初の「本文へ移動」から本文に進めます。文字サイズはブラウザの拡大機能で調整できます。</p></details></div></section>
+</main>
+<footer><a class="wordmark" href="#top">東隅 <small>TOUGU</small></a><p>会社案内 · 商品販売は行っていません</p><a href="#privacy">プライバシーについて</a><a href="#top">ページ上部へ ↑</a></footer>
+</body></html>
