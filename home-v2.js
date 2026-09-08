@@ -1,7 +1,6 @@
 (() => {
-  const yen = (value) => value == null ? '未登録' : `¥${Number(value).toLocaleString('ja-JP')}`;
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-
+  const yen = (value) => value == null ? '未登録' : `¥${Number(value).toLocaleString('ja-JP')}`;
   const waitForCatalog = (callback, attempts = 0) => {
     const data = globalThis.KISARAGI_CANONICAL_CATALOG;
     if (Array.isArray(data) && data.length) return callback(data, globalThis.KISARAGI_CATALOG_AUDIT || {});
@@ -10,77 +9,73 @@
 
   const boot = (data, audit) => {
     const main = document.querySelector('main#top');
-    if (!main || document.querySelector('.home-v2')) return;
+    if (!main || document.querySelector('.home-v3')) return;
 
-    const withImages = data.filter((p) => p.image || p.images?.length);
-    const homeImageBlacklist = new Set(['wt-1020']);
-    const preferred = withImages.filter((p) => !homeImageBlacklist.has(p.id) && ['キャメル','メビウス','ピース','TEREA'].includes(p.brand));
-    const picks = [...preferred, ...withImages.filter((p) => !homeImageBlacklist.has(p.id))]
-      .filter((p, i, arr) => arr.findIndex((x) => x.id === p.id) === i)
-      .slice(0, 5);
-    const hero = picks.find((p) => p.id === 'wt-1117') || picks[0];
-    const heroImage = hero?.image?.file_path || hero?.images?.[0]?.file_path || 'assets/catalog/products/wt-1117-camel-berry-5.jpg';
+    const total = audit.TOTAL_LOCAL_SKU ?? data.length;
     const brands = [...new Set(data.map((p) => p.brand).filter(Boolean))];
+    const countCategory = (category) => data.filter((p) => p.category === category).length;
+    const cigarettes = countCategory('CIGARETTES') + countCategory('JAPANESE_CIGARETTES');
+    const heated = countCategory('HEATED_TOBACCO_STICKS');
+    const devices = countCategory('HEATED_TOBACCO_DEVICES');
+    const homeImageBlacklist = new Set(['wt-1020']);
+    const picks = data.filter((p) => (p.image || p.images?.length) && !homeImageBlacklist.has(p.id)).slice(0, 6);
 
-    const productCard = (p) => {
+    const card = (p) => {
       const image = p.image?.file_path || p.images?.[0]?.file_path;
-      const imageClass = ['wt-1692','wt-1138'].includes(p.id) ? ' edge-risk' : '';
-      return `<article class="home-v2-product" data-product-id="${escapeHtml(p.id)}">
-        <div class="home-v2-product-image${imageClass}">${image ? `<img src="./${escapeHtml(image)}" alt="${escapeHtml(p.product_name_ja)}" loading="lazy">` : ''}</div>
-        <div class="home-v2-product-body">
-          <span class="home-v2-product-brand">${escapeHtml(p.brand)}</span>
-          <h3>${escapeHtml(p.product_name_ja)}</h3>
-          <div class="home-v2-product-price">${yen(p.price_jpy)}</div>
-          <button type="button" data-open-product="${escapeHtml(p.id)}">詳細を見る</button>
-        </div>
-      </article>`;
+      return `<button class="apple-product-card" type="button" data-open-product="${escapeHtml(p.id)}">
+        <span class="apple-product-stage">${image ? `<img src="./${escapeHtml(image)}" alt="" loading="lazy">` : ''}</span>
+        <span class="apple-product-brand">${escapeHtml(p.brand)}</span>
+        <strong>${escapeHtml(p.product_name_ja)}</strong>
+        <span class="apple-product-price">${yen(p.price_jpy)}</span>
+        <span class="apple-chevron" aria-hidden="true">›</span>
+      </button>`;
     };
 
     const section = document.createElement('section');
-    section.className = 'home-v2';
-    section.innerHTML = `<div class="home-v2-wrap">
-      <div class="home-v2-hero">
-        <div class="home-v2-copy">
-          <span class="eyebrow">KISARAGI / JAPAN TOBACCO ARCHIVE</span>
-          <h1>日本のたばこを、<br>もっと身近に。</h1>
-          <p>正確な情報で選べる、信頼のたばこ商品庫。商品・ブランド・画像・仕様・出典をひとつの場所で確認できます。</p>
-          <div class="home-v2-actions">
-            <a class="primary" href="#jp-sku-catalog">全ての商品を見る（${audit.TOTAL_LOCAL_SKU ?? data.length}） →</a>
-            <a class="secondary" href="#guide">基礎知識を見る</a>
+    section.className = 'home-v3';
+    section.innerHTML = `<div class="apple-home-wrap">
+      <section class="apple-hero" aria-labelledby="apple-hero-title">
+        <span class="apple-eyebrow">KISARAGI · PRODUCT ARCHIVE</span>
+        <h1 id="apple-hero-title">日本のたばこを、<br>もっと身近に。</h1>
+        <p>${total}の商品を、ブランド・価格・仕様から探す。広告ではなく、比較できる商品資料として。</p>
+        <label class="apple-search" aria-label="商品を検索">
+          <span aria-hidden="true">⌕</span>
+          <input type="search" inputmode="search" enterkeyhint="search" placeholder="商品名・ブランド・商品コード">
+        </label>
+        <div class="apple-quick-grid" aria-label="商品を探す">
+          <button type="button" data-cat="CIGARETTES"><span>紙巻たばこ</span><b>${cigarettes || '—'}</b><i>›</i></button>
+          <button type="button" data-cat="HEATED_TOBACCO_STICKS"><span>加熱式たばこ</span><b>${heated || '—'}</b><i>›</i></button>
+          <a href="#home-brands"><span>ブランド</span><b>${brands.length}</b><i>›</i></a>
+        </div>
+      </section>
+
+      <section class="apple-featured" aria-labelledby="featured-title">
+        <div class="apple-section-head"><div><span class="apple-eyebrow">DISCOVER</span><h2 id="featured-title">おすすめ</h2></div><a href="#jp-sku-catalog">すべて見る</a></div>
+        <div class="apple-product-rail">${picks.map(card).join('')}</div>
+      </section>
+
+      <section class="apple-disclosures" aria-label="さらに探す">
+        <details id="home-brands">
+          <summary><span><b>ブランドから探す</b><small>${brands.length}ブランドから選ぶ</small></span><i aria-hidden="true">＋</i></summary>
+          <div class="apple-disclosure-body apple-brand-grid">${brands.map((brand) => `<button type="button" data-brand="${escapeHtml(brand)}">${escapeHtml(brand)}<span>›</span></button>`).join('')}</div>
+        </details>
+        <details>
+          <summary><span><b>商品を比較する</b><small>価格・Tar・Nicotine・包装</small></span><i aria-hidden="true">＋</i></summary>
+          <div class="apple-disclosure-body apple-compare-links">
+            <button type="button" data-cat="CIGARETTES">紙巻たばこを比較 <span>›</span></button>
+            <a href="#jp-sku-catalog">全商品から検索 <span>›</span></a>
           </div>
-        </div>
-        <div class="home-v2-visual">
-          <div class="home-v2-visual-copy">TASTE<br>CULTURE<br>LIFESTYLE<small>商品を、広告ではなく資料として。</small></div>
-          <img src="./${escapeHtml(heroImage)}" alt="${escapeHtml(hero?.product_name_ja || '商品資料')}">
-        </div>
-      </div>
-
-      <div class="home-v2-stats">
-        <div><b>${audit.TOTAL_LOCAL_SKU ?? data.length}</b><span>商品</span></div>
-        <div><b>${brands.length}</b><span>ブランド</span></div>
-        <div><b>20+</b><span>成人限定</span></div>
-        <div><b>0</b><span>実販売</span></div>
-      </div>
-
-      <div class="home-v2-tools">
-        <label class="home-v2-search"><span>⌕</span><input type="search" placeholder="商品名・ブランド・商品コードで検索" aria-label="商品を検索"></label>
-        <button class="active" data-cat="ALL">全ての商品</button>
-        <button data-cat="CIGARETTES">紙巻たばこ</button>
-        <button data-cat="HEATED_TOBACCO_STICKS">加熱式たばこ</button>
-        <button data-cat="HEATED_TOBACCO_DEVICES">加熱式デバイス</button>
-      </div>
-
-      <div class="home-v2-section">
-        <div class="home-v2-section-head"><div><h2>おすすめ商品</h2><p>画像登録済みの商品からピックアップ</p></div><a href="#jp-sku-catalog">すべて見る →</a></div>
-        <div class="home-v2-products">${picks.map(productCard).join('')}</div>
-      </div>
-
-      <div class="home-v2-section">
-        <div class="home-v2-section-head"><div><h2>ブランドから探す</h2><p>商品庫に存在するブランドだけを表示</p></div></div>
-        <div class="home-v2-brands">${brands.map((brand) => `<button class="home-v2-brand" type="button" data-brand="${escapeHtml(brand)}">${escapeHtml(brand)}</button>`).join('')}</div>
-      </div>
+        </details>
+        <details>
+          <summary><span><b>基礎知識</b><small>分類や表示を正しく読む</small></span><i aria-hidden="true">＋</i></summary>
+          <div class="apple-disclosure-body apple-copy"><p>紙巻たばこ、加熱式、Tar・Nicotineなど、商品情報を読むための基礎をまとめています。</p><a href="#guide">ガイドを見る ›</a></div>
+        </details>
+        <details>
+          <summary><span><b>KISARAGIについて</b><small>出典・更新・商品庫について</small></span><i aria-hidden="true">＋</i></summary>
+          <div class="apple-disclosure-body apple-copy"><p>実物、分類、仕様、出典をひとつのルールで整理する20歳以上向け調査用商品庫です。販売・決済は行いません。</p><a href="#about">詳しく見る ›</a></div>
+        </details>
+      </section>
     </div>`;
-
     main.prepend(section);
 
     const jumpToCatalog = ({query = '', category = 'ALL', brand = null} = {}) => {
@@ -89,26 +84,27 @@
         const search = document.querySelector('#jp-sku-search-input');
         const categorySelect = document.querySelector('#jp-sku-category');
         if (search) { search.value = query; search.dispatchEvent(new Event('input', {bubbles:true})); }
-        if (categorySelect) { categorySelect.value = category; categorySelect.dispatchEvent(new Event('change', {bubbles:true})); }
-        if (brand) {
-          [...document.querySelectorAll('.jp-sku-brands button')].find((b) => b.textContent.trim() === brand)?.click();
+        if (categorySelect && [...categorySelect.options].some((o) => o.value === category)) {
+          categorySelect.value = category;
+          categorySelect.dispatchEvent(new Event('change', {bubbles:true}));
         }
-      }, 350);
+        if (brand) [...document.querySelectorAll('.jp-sku-brands button')].find((b) => b.textContent.trim() === brand)?.click();
+      }, 300);
     };
 
-    section.querySelector('.home-v2-search input').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') jumpToCatalog({query:e.currentTarget.value});
+    const homeSearch = section.querySelector('.apple-search input');
+    homeSearch.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && homeSearch.value.trim()) jumpToCatalog({query:homeSearch.value.trim()});
     });
-    section.querySelectorAll('[data-cat]').forEach((button) => button.addEventListener('click', () => jumpToCatalog({category:button.dataset.cat})));
-    section.querySelectorAll('[data-brand]').forEach((button) => button.addEventListener('click', () => jumpToCatalog({brand:button.dataset.brand})));
-    section.querySelectorAll('[data-open-product]').forEach((button) => button.addEventListener('click', () => {
-      const id = button.dataset.openProduct;
+    section.querySelectorAll('[data-cat]').forEach((el) => el.addEventListener('click', () => jumpToCatalog({category:el.dataset.cat})));
+    section.querySelectorAll('[data-brand]').forEach((el) => el.addEventListener('click', () => jumpToCatalog({brand:el.dataset.brand})));
+    section.querySelectorAll('[data-open-product]').forEach((el) => el.addEventListener('click', () => {
       location.hash = '#jp-sku-catalog';
       setTimeout(() => {
-        const card = document.querySelector(`.jp-sku-card[data-sku="${CSS.escape(id)}"]`);
-        card?.scrollIntoView({behavior:'smooth', block:'center'});
-        card?.querySelector('.jp-sku-detail-button')?.click();
-      }, 350);
+        const product = document.querySelector(`.jp-sku-card[data-sku="${CSS.escape(el.dataset.openProduct)}"]`);
+        product?.scrollIntoView({behavior:'smooth', block:'center'});
+        product?.querySelector('.jp-sku-detail-button')?.click();
+      }, 300);
     }));
   };
 
