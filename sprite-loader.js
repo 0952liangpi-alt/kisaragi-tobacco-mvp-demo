@@ -7,16 +7,23 @@
     document.head.appendChild(script);
   });
 
-  const loadCatalog = async () => {
+  const loadStylesheet = (href) => {
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = './world-tobacco-catalog.css?v=20260905-uiux-audit';
+    stylesheet.href = href;
     document.head.appendChild(stylesheet);
+  };
+
+  const loadCatalog = async () => {
+    loadStylesheet('./world-tobacco-catalog.css?v=20260907-filter-v2');
+    loadStylesheet('./product-detail.css?v=20260907-detail-v1');
 
     try {
       await loadScript('./world-tobacco-japan.js?v=20260905-user-audit');
       await loadScript('./catalog-core.js?v=20260905-image-closeout');
-      await loadScript('./world-tobacco-catalog-render.js?v=20260905-image-closeout');
+      await loadScript('./world-tobacco-catalog-render.js?v=20260907-filter-v2');
+      await loadScript('./product-detail.js?v=20260907-detail-v1');
+      await loadScript('./home-v2.js?v=20260908-apple-v1');
     } catch (error) {
       console.error('KISARAGI canonical catalog load failed', error);
     }

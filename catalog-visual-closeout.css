@@ -1,0 +1,42 @@
+/* Final visual QA from physical iPhone screenshots. No catalog data is changed. */
+
+/* 3-second hero: remove the low-resolution screenshot card from the first impression.
+   The right panel becomes a deliberate archive/index visual instead of a stretched product screenshot. */
+.home-v2-visual{isolation:isolate;background:linear-gradient(145deg,#2b1a12 0%,#4a2c1c 54%,#72503a 100%)}
+.home-v2-visual:before{inset:0;background:repeating-radial-gradient(ellipse at 82% 30%,rgba(255,255,255,.055) 0 1px,transparent 1px 17px);transform:none;opacity:.75}
+.home-v2-visual img{display:none!important}
+.home-v2-visual-copy{left:clamp(24px,5vw,58px);top:auto;bottom:clamp(28px,5vw,54px);font-size:clamp(32px,4.2vw,58px);line-height:.92;letter-spacing:-.02em;color:#fff8ef}
+.home-v2-visual-copy:before{content:'KISARAGI / PRODUCT INDEX';display:block;margin-bottom:24px;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Yu Gothic",sans-serif;font-size:10px;font-weight:800;letter-spacing:.18em;color:#d7b99f}
+.home-v2-visual-copy small{max-width:260px;margin-top:22px;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Yu Gothic",sans-serif;font-size:12px;line-height:1.6;letter-spacing:.02em;color:#e3d4c8}
+.home-v2-visual:after{content:'01 — 83';position:absolute;right:28px;top:24px;z-index:2;font-family:Georgia,serif;font-size:13px;letter-spacing:.14em;color:#d7b99f}
+
+/* Catalog image stage: less dead white space, consistent visual weight across TEREA, IQOS and cigarettes. */
+.jp-sku-image{aspect-ratio:1/1.02;background:#faf9f6}
+.jp-sku-image-verified{justify-content:center}
+.jp-sku-image-verified img{max-width:90%;max-height:90%;margin:auto}
+.jp-sku-card{min-height:0}
+.jp-sku-body{padding-top:13px}
+
+/* Keep the fixed dock from covering the card action while browsing. */
+body.catalog-browsing .jp-sku-section{padding-bottom:150px}
+
+@media(max-width:900px){
+  .jp-sku-image{aspect-ratio:1/1.03}
+  .jp-sku-grid{align-items:start}
+  .jp-sku-card{height:auto}
+  .jp-sku-source{min-height:38px}
+}
+
+@media(max-width:560px){
+  .home-v2-hero{overflow:hidden}
+  .home-v2-visual{min-height:205px}
+  .home-v2-visual-copy{left:22px;bottom:24px;font-size:31px}
+  .home-v2-visual-copy:before{margin-bottom:15px;font-size:8px}
+  .home-v2-visual-copy small{margin-top:14px;font-size:10px}
+  .home-v2-visual:after{right:20px;top:18px;font-size:10px}
+  .jp-sku-image{aspect-ratio:1/1.04}
+  .jp-sku-image-verified{padding:8px}
+  .jp-sku-image-verified img{max-width:88%;max-height:88%}
+  .jp-sku-body{padding:10px 10px 12px}
+  .jp-sku-source{margin-top:9px;padding-top:8px}
+}
