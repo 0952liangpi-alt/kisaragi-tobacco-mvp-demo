@@ -1,17 +1,29 @@
-/* Remove unwanted outer screenshot/matte borders without altering the tobacco pack itself. */
-.home-v2-product-image{background:#f7f4ee;padding:8px}
+/* Display-only cleanup. Original product assets remain untouched. */
+.home-v2-product-image{background:#faf8f4;padding:12px;overflow:hidden}
 .home-v2-product-image img{width:100%;height:100%;object-fit:contain;clip-path:inset(3%);transform:scale(1.065);transform-origin:center;transition:transform .18s ease}
 .home-v2-product:hover .home-v2-product-image img{transform:scale(1.075)}
 
-/* Canonical catalog: trim only the outermost matte on ordinary verified assets.
-   Assets explicitly tagged has-side-matte keep their existing SKU-specific crop. */
-.jp-sku-image-verified:not(.has-side-matte){padding:4px;background:#fff}
-.jp-sku-image-verified:not(.has-side-matte) img{clip-path:inset(2%);transform:scale(1.042);transform-origin:center}
+/* Ordinary verified assets only need a light outer trim. */
+.jp-sku-image-verified:not(.has-side-matte){padding:8px;background:#fff}
+.jp-sku-image-verified:not(.has-side-matte) img{clip-path:inset(2.5%);transform:scale(1.055);transform-origin:center}
 
-/* Product detail uses a lighter crop so the full pack remains readable. */
-.jp-product-detail-image img{clip-path:inset(1.5%);transform:scale(1.032);transform-origin:center}
+/* User screenshots tagged SIDE_MATTE_30PX contain dark frame lines on more than one edge.
+   Crop the outer screenshot frame on all four sides, not just left/right. */
+.jp-sku-image-verified.has-side-matte{padding:8px;background:#fff;overflow:hidden}
+.jp-sku-image-verified.has-side-matte img{clip-path:inset(7% 6% 8%);transform:scale(1.16);transform-origin:center;object-fit:contain}
+
+/* The licensed historical Seven Stars image exposes cigarettes above the pack and is not
+   suitable for the clean catalog presentation. Keep the canonical binding intact but do
+   not present the unsuitable rendition as a polished product image. */
+.jp-sku-card[data-sku="wt-1020"] .jp-sku-image-verified{position:relative;background:#f7f5f1}
+.jp-sku-card[data-sku="wt-1020"] .jp-sku-image-verified img{opacity:0}
+.jp-sku-card[data-sku="wt-1020"] .jp-sku-image-verified:after{content:'画像差替え準備中';position:absolute;inset:0;display:grid;place-items:center;color:#8b8178;font-size:11px;letter-spacing:.04em}
+
+/* Product detail keeps a lighter trim so package information remains readable. */
+.jp-product-detail-image img{clip-path:inset(2%);transform:scale(1.045);transform-origin:center}
 
 @media(max-width:560px){
   .home-v2-product-image img{clip-path:inset(3.5%);transform:scale(1.075)}
-  .jp-sku-image-verified:not(.has-side-matte) img{clip-path:inset(2.5%);transform:scale(1.052)}
+  .jp-sku-image-verified:not(.has-side-matte) img{clip-path:inset(3%);transform:scale(1.065)}
+  .jp-sku-image-verified.has-side-matte img{clip-path:inset(8% 7% 9%);transform:scale(1.19)}
 }
