@@ -1,0 +1,18 @@
+{
+  "name": "東隅 — 会社案内",
+  "short_name": "東隅",
+  "lang": "ja-JP",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f1ea",
+  "theme_color": "#f4f1ea",
+  "description": "合同会社 東隅の会社案内",
+  "icons": [
+    {
+      "src": "./assets/tougu-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+/* UI/UX closeout: normalize product stage, reduce page weight, and keep navigation out of content. */
+.home-v2-product-image{height:clamp(220px,24vw,300px);aspect-ratio:auto;padding:22px;background:#faf8f4}
+.home-v2-product-image img{width:auto;height:auto;max-width:78%;max-height:88%;margin:auto;object-fit:contain}
+.home-v2-product-image.edge-risk img{width:auto;height:auto;max-width:86%;max-height:96%;clip-path:inset(4% 4% 7%);transform:scale(1.04)}
+.home-v2-product{display:flex;flex-direction:column}
+.home-v2-product-body{display:flex;flex:1;flex-direction:column}
+.home-v2-product-price{margin-top:auto}
+.home-v2-section{margin:26px 0}
+.home-v2-tools{margin:16px 0 22px}
+.home-v2-brands{padding-bottom:4px}
+
+@media(max-width:1100px){
+  .home-v2-products{padding-right:10vw;scroll-padding-inline:0 10vw}
+  .home-v2-product{flex-basis:clamp(230px,35vw,310px)}
+  .home-v2-product-image{height:250px}
+}
+
+@media(min-width:561px) and (max-width:900px){
+  .mobile-dock{left:50%;right:auto;width:min(560px,72vw);transform:translateX(-50%);bottom:18px;height:54px;border-radius:16px;opacity:.96}
+  .home-v2-wrap{padding-inline:24px}
+}
+
+@media(max-width:560px){
+  .home-v2-wrap{padding-top:12px}
+  .home-v2-copy{padding:24px 20px 20px}
+  .home-v2-copy h1{font-size:39px}
+  .home-v2-visual{min-height:220px}
+  .home-v2-stats div{padding-block:10px}
+  .home-v2-tools{margin:12px 0 20px}
+  .home-v2-section{margin:23px 0}
+  .home-v2-products{padding-right:18vw;scroll-padding-right:18vw}
+  .home-v2-product{flex-basis:78%}
+  .home-v2-product-image{height:245px;padding:20px}
+  .home-v2-product-image img{max-width:76%;max-height:88%}
+  .home-v2-product-body{padding:12px}
+  .home-v2-product h3{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Yu Gothic",sans-serif;font-size:14px;line-height:1.5}
+  .home-v2-section-head h2{font-size:24px}
+}

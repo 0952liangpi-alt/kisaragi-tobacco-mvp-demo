@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 860" role="img" aria-labelledby="title desc">
+  <title id="title">Nami Classic original demo pack</title>
+  <desc id="desc">Original fictional tobacco package mockup for a demo website.</desc>
+  <rect width="600" height="860" rx="18" fill="#1b1a19"/>
+  <rect x="18" y="18" width="564" height="824" rx="10" fill="none" stroke="#b69255" stroke-width="10"/>
+  <text x="50" y="100" font-family="sans-serif" font-size="28" letter-spacing="10" fill="#b69255">NAMI</text>
+  <path d="M96 390c110-130 298-130 408 0-110 130-298 130-408 0Z" fill="none" stroke="#b69255" stroke-width="4"/>
+  <text x="300" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="68" fill="#f7f1e6">CLASSIC</text>
+  <text x="300" y="585" text-anchor="middle" font-family="sans-serif" font-size="22" letter-spacing="5" fill="#b69255">FICTIONAL DEMO / 20</text>
+  <text x="300" y="790" text-anchor="middle" font-family="sans-serif" font-size="18" letter-spacing="4" fill="#f7f1e6">ORIGINAL MOCKUP</text>
+</svg>

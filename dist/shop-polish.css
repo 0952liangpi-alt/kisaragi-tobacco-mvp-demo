@@ -1,0 +1,28 @@
+/* Final visual refinements for the independent KISARAGI shop demo. */
+.guide-grid { grid-template-columns: 1.45fr 1fr; }
+.guide-grid article:last-child { grid-column: 1 / -1; max-width: 48rem; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #edf3ec;
+    --ink-soft: #27342a;
+    --paper: #131914;
+    --surface: #1a231d;
+    --line: #435447;
+    --muted: #bdc9be;
+    --accent: #8cc69a;
+    --accent-hover: #addbb7;
+    --warm: #e0cc80;
+    --danger: #f29a90;
+  }
+  body { background: var(--paper); color: var(--ink); }
+  .site-header { background: color-mix(in srgb, var(--paper) 92%, transparent); }
+  .product-card, .cart-panel, .review-sheet, .age-card { box-shadow: 0 18px 50px rgba(0, 0, 0, .34); }
+  .field input, .field select { background: #202a22; color: var(--ink); }
+  .product-image, .hero-image { background: #263128; }
+  .catalog-note, .section-heading p, .guide-grid p { color: var(--muted); }
+}
+
+@media (max-width: 760px) {
+  .guide-grid article:last-child { grid-column: auto; max-width: none; }
+}

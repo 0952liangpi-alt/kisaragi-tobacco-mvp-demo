@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Kisaragi">
+  <rect width="512" height="512" rx="112" fill="#12100e"/>
+  <circle cx="256" cy="256" r="168" fill="#d4af37"/>
+  <path d="M180 150h52v88l84-88h66l-101 105 111 107h-70l-90-88v88h-52z" fill="#12100e"/>
+</svg>

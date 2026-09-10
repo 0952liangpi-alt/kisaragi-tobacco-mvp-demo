@@ -1,0 +1,12 @@
+/* Physical iPhone typography correction for the floating dock. */
+.mobile-dock a{
+  font-size:13px!important;
+  font-weight:700!important;
+  letter-spacing:-.01em;
+  line-height:1.15;
+  min-height:48px;
+}
+@media(max-width:560px){
+  .mobile-dock{height:64px!important}
+  .mobile-dock a{font-size:13.5px!important;min-width:70px;padding:7px 8px}
+}

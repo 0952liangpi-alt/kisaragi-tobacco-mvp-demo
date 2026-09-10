@@ -1,0 +1,301 @@
+.hero {
+  min-height: 620px;
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  background: #ebe4d9;
+}
+
+.age {
+  overflow-y: auto;
+}
+
+.hero-copy,
+.hero-visual {
+  visibility: visible;
+}
+
+.hero-visual {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  background: #d9d2c8;
+}
+
+.shot {
+  background: #fff;
+}
+
+.shot img {
+  object-fit: contain;
+}
+
+.shot-a {
+  inset: 7% 15% 7% 8%;
+}
+
+.shot-b {
+  width: 29%;
+  height: 34%;
+  right: 3%;
+  top: 7%;
+}
+
+.shot-c {
+  width: 32%;
+  height: 26%;
+  left: 2%;
+  bottom: 5%;
+}
+
+.category-grid a {
+  min-height: 172px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px;
+  color: #24180f;
+  background: #fff;
+  border: 1px solid #e2d8ca;
+  border-radius: 8px;
+}
+
+.category-grid a:nth-child(2n) {
+  background: #eef1ef;
+}
+
+.category-grid a:nth-child(3n) {
+  background: #ece8e1;
+}
+
+.category-grid a h3 {
+  margin: auto 0 10px;
+}
+
+.category-grid a span {
+  font-size: 10px;
+}
+
+.guide-grid article {
+  border-radius: 8px;
+}
+
+.about-mark {
+  position: relative;
+  overflow: hidden;
+  background: #e8dfd2;
+  box-shadow: 0 14px 38px rgba(62, 40, 19, .09);
+}
+
+.about-mark img {
+  width: 58%;
+  height: 58%;
+  object-fit: contain;
+}
+
+.value-list {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.contact-status {
+  display: inline-flex;
+  margin: 25px auto 0;
+  padding: 13px 18px;
+  color: #6f6257;
+  background: #ece5da;
+  border: 1px solid #ddd2c3;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.kicker,
+.brand span:not(.tougu-mark),
+.visual-note {
+  letter-spacing: 0;
+}
+
+header .brand {
+  min-height: 44px;
+}
+
+footer a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+    margin: 10px 12px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    padding: 52px 25px 40px;
+  }
+
+  .hero-visual {
+    min-height: 390px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .category-grid a {
+    min-height: 150px;
+  }
+
+  .value-list {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-mark {
+    min-height: 260px;
+  }
+
+  .mobile-dock {
+    left: 18px;
+    right: 18px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    height: 50px;
+    border-radius: 8px;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  .mobile-dock a {
+    display: flex;
+    min-width: 44px;
+    height: 100%;
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body.hero-in-view .mobile-dock {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(calc(100% + 24px));
+  }
+}
+
+@media (max-width: 520px) {
+  header {
+    height: 62px;
+  }
+
+  .hero-copy h1 {
+    font-size: 48px;
+  }
+
+  .hero-visual {
+    min-height: 320px;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .actions .primary,
+  .actions .secondary {
+    min-width: 0;
+    padding-inline: 12px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .section {
+    margin-inline: 0;
+    padding: 58px 14px;
+  }
+
+  .section-head h2,
+  .value h2,
+  .about h2,
+  .contact h2 {
+    font-size: 34px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .category-grid a {
+    min-width: 0;
+    min-height: 138px;
+    padding: 16px;
+  }
+
+  .category-grid a h3 {
+    overflow-wrap: anywhere;
+    font-size: 14px;
+  }
+
+  .guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guide-grid article {
+    min-width: 0;
+    min-height: 168px;
+  }
+
+  .guide-grid article h3 {
+    overflow-wrap: anywhere;
+    font-size: 14px;
+  }
+
+  .mobile-dock {
+    height: 46px;
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 520px), (max-height: 760px) {
+  .age {
+    place-items: start center;
+  }
+
+  .age-card {
+    width: 100%;
+    margin: auto 0;
+    padding: 30px 28px;
+    border-radius: 14px;
+  }
+
+  .age-card h2 {
+    margin: 18px 0;
+    font-size: 30px;
+    line-height: 1.42;
+    white-space: nowrap;
+  }
+
+  .age-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .age-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 22px;
+  }
+
+  .age-actions button,
+  .age-actions a {
+    min-width: 0;
+    min-height: 48px;
+    padding: 12px 10px;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
