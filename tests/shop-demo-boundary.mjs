@@ -11,6 +11,8 @@ assert.ok(html.includes('id="applicationForm"') && !html.includes('id="applicati
 assert.ok(html.includes('テスト値だけを使用してください') && html.includes('autocomplete="off"'), 'the demo must warn against real personal data and disable form autofill');
 assert.ok(html.includes('カード番号・本人確認書類は入力、保存、送信されません'), 'the no-payment/no-identity-document boundary must be disclosed');
 assert.ok(html.includes('注文確定・決済・配送依頼も開始されません'), 'the no-transaction boundary must be disclosed');
+assert.ok(html.includes('id="commerceStatusTitle"') && html.includes('支払い・注文・配送'), 'the storefront must visibly distinguish payment, order, and fulfillment stages');
+assert.ok(html.includes('現在は決済事業者への接続・カード情報入力・請求を行いません') && html.includes('現在は住所の保存、配送会社への依頼、出荷を行いません'), 'visible commerce stages must remain explicitly disabled');
 assert.ok(script.includes('event.preventDefault()'), 'the preview handler must prevent browser form submission');
 assert.ok(script.includes("scrollTop=0"), 'opening the preview must reset its internal scroll position');
 assert.ok(script.includes('保存・送信されません'), 'the preview confirmation must disclose no persistence or transmission');

@@ -73,6 +73,16 @@
         <article><span>3</span><h3>事業者が審査</h3><p>実運用では販売許可、本人確認、配送条件を満たした後に進みます。</p></article>
       </div>
     </section>
+
+    <section class="commerce-status section" aria-labelledby="commerceStatusTitle">
+      <div class="section-heading"><p class="overline">ORDER OPERATIONS / WORK</p><h2 id="commerceStatusTitle">支払い・注文・配送</h2><p>販売資格を持つ事業者向けに、各工程の前台表示とシステム接続状態を整理しています。</p></div>
+      <div class="commerce-status-grid">
+        <article><span class="status-pill">システム接続待ち</span><h3>支払い</h3><p>クレジットカード、コンビニ払い、振込、代金引換の選択肢を表示します。現在は決済事業者への接続・カード情報入力・請求を行いません。</p><small>表示のみ：決済バックエンドは未接続</small></article>
+        <article><span class="status-pill">システム接続待ち</span><h3>注文確定</h3><p>選択内容と参考合計を確認できます。現在は注文番号の発行、在庫引当、購入契約の成立を行いません。</p><small>表示のみ：注文管理バックエンドは未接続</small></article>
+        <article><span class="status-pill">システム接続待ち</span><h3>配送</h3><p>年齢確認付き配送などの希望を確認できます。現在は住所の保存、配送会社への依頼、出荷を行いません。</p><small>表示のみ：配送連携バックエンドは未接続</small></article>
+      </div>
+      <p class="commerce-status-note">この Work 版はフロントエンド表示のみです。個人情報、支払い情報、注文情報、配送情報は保存・送信されません。</p>
+    </section>
   </main>
 
   <footer><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">K</span><span>KISARAGI 2 · WORK</span></a><p>Work サンドボックスの商品案内です。実販売・決済・配送は行いません。</p><a href="./index.html">東隅 会社情報</a></footer>
