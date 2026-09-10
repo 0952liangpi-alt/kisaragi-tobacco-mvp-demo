@@ -74,15 +74,6 @@
       </div>
     </section>
 
-    <section class="commerce-status section" aria-labelledby="commerceStatusTitle">
-      <div class="section-heading"><p class="overline">ORDER OPERATIONS / WORK</p><h2 id="commerceStatusTitle">支払い・注文・配送</h2><p>販売資格を持つ事業者向けに、各工程の前台表示とシステム接続状態を整理しています。</p></div>
-      <div class="commerce-status-grid">
-        <article><span class="status-pill">システム接続待ち</span><h3>支払い</h3><p>クレジットカード、コンビニ払い、振込、代金引換の選択肢を表示します。現在は決済事業者への接続・カード情報入力・請求を行いません。</p><small>表示のみ：決済バックエンドは未接続</small></article>
-        <article><span class="status-pill">システム接続待ち</span><h3>注文確定</h3><p>選択内容と参考合計を確認できます。現在は注文番号の発行、在庫引当、購入契約の成立を行いません。</p><small>表示のみ：注文管理バックエンドは未接続</small></article>
-        <article><span class="status-pill">システム接続待ち</span><h3>配送</h3><p>年齢確認付き配送などの希望を確認できます。現在は住所の保存、配送会社への依頼、出荷を行いません。</p><small>表示のみ：配送連携バックエンドは未接続</small></article>
-      </div>
-      <p class="commerce-status-note">この Work 版はフロントエンド表示のみです。個人情報、支払い情報、注文情報、配送情報は保存・送信されません。</p>
-    </section>
   </main>
 
   <footer><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">K</span><span>KISARAGI 2 · WORK</span></a><p>Work サンドボックスの商品案内です。実販売・決済・配送は行いません。</p><a href="./index.html">東隅 会社情報</a></footer>
@@ -102,19 +93,20 @@
   <div class="application-modal" id="applicationModal" role="dialog" aria-modal="true" aria-labelledby="applicationTitle" aria-hidden="true">
     <section class="application-card">
       <button class="icon-button close-application" type="button">閉じる</button>
-      <p class="overline">APPLICATION FLOW / STEP 1 OF 3</p>
-      <h2 id="applicationTitle">申込内容を、整える。</h2>
-      <p class="application-lead">選択した商品、配送希望、支払い希望を確認するための同一ページ内の準備画面です。</p>
+      <p class="overline">ORDER FLOW / FRONTEND PREVIEW</p>
+      <h2 id="applicationTitle">注文内容を、確認する。</h2>
+      <ol class="order-steps" aria-label="注文フロー"><li class="is-current"><span>1</span>商品</li><li><span>2</span>配送</li><li><span>3</span>支払い</li><li><span>4</span>確認</li></ol>
+      <p class="application-lead">商品、配送先、支払い方法を1つの注文画面で確認できます。</p>
       <p class="application-note">これは機能検証用のデモです。氏名・住所などの実情報は入力せず、テスト値だけを使用してください。入力内容はこの画面内で確認するだけで、保存・送信されません。</p>
       <div id="applicationItems" class="application-items"></div>
       <form id="applicationForm" class="application-form" autocomplete="off" novalidate>
         <div class="application-grid"><label>氏名（テスト入力）<input name="nameKanji" autocomplete="off" placeholder="例：テスト 太郎" required></label><label>フリガナ（テスト入力）<input name="nameKana" autocomplete="off" placeholder="例：テスト タロウ" required></label></div>
         <div class="application-grid"><label>郵便番号（テスト入力）<input name="postalCode" inputmode="numeric" autocomplete="off" placeholder="000-0000" required></label><label>都道府県（テスト入力）<input name="prefecture" autocomplete="off" placeholder="テスト県" required></label></div>
         <label>市区町村・番地（テスト入力）<input name="addressLine" autocomplete="off" placeholder="テスト市 1-1" required></label>
-        <fieldset><legend>配送希望</legend><div class="application-choices"><label><input type="radio" name="delivery" value="年齢確認付き配送" checked><span><b>年齢確認付き配送</b><small>配送契約後に有効化</small></span></label><label><input type="radio" name="delivery" value="通常配送"><span><b>通常配送</b><small>対象商品・地域を確認</small></span></label></div></fieldset>
-        <fieldset><legend>支払い希望</legend><div class="application-choices"><label><input type="radio" name="payment" value="クレジットカード" checked><span><b>クレジットカード</b><small>加盟店審査・接続後に有効化</small></span></label><label><input type="radio" name="payment" value="コンビニ払い"><span><b>コンビニ払い</b><small>決済事業者との契約後に案内</small></span></label><label><input type="radio" name="payment" value="銀行振込"><span><b>銀行振込</b><small>審査後に振込先を案内</small></span></label><label><input type="radio" name="payment" value="代金引換"><span><b>代金引換</b><small>配送条件を確認</small></span></label></div></fieldset>
+        <fieldset><legend>配送方法</legend><div class="application-choices"><label><input type="radio" name="delivery" value="年齢確認付き配送" checked><span><b>年齢確認付き配送</b><small>配送先・受渡条件を確認する表示です</small></span></label><label><input type="radio" name="delivery" value="通常配送"><span><b>通常配送</b><small>対象商品・地域を確認する表示です</small></span></label></div></fieldset>
+        <fieldset><legend>支払い方法</legend><div class="application-choices"><label><input type="radio" name="payment" value="クレジットカード" checked><span><b>クレジットカード</b><small>外部決済画面へは遷移しません</small></span></label><label><input type="radio" name="payment" value="コンビニ払い"><span><b>コンビニ払い</b><small>払込票は発行しません</small></span></label><label><input type="radio" name="payment" value="銀行振込"><span><b>銀行振込</b><small>振込先は表示しません</small></span></label><label><input type="radio" name="payment" value="代金引換"><span><b>代金引換</b><small>配送依頼は作成しません</small></span></label></div></fieldset>
         <label class="application-consent"><input type="checkbox" name="adultConsent" required><span>私は20歳以上であり、未成年者の喫煙は法律で禁じられていることを確認しました。</span></label>
-        <button class="button primary full" type="submit">申込内容を確認する</button>
+        <button class="button primary full" type="submit">注文内容を確認する</button>
         <p id="applicationStatus" class="application-status" role="status"></p>
       </form>
       <p class="application-note">カード番号・本人確認書類は入力、保存、送信されません。注文確定・決済・配送依頼も開始されません。</p>
