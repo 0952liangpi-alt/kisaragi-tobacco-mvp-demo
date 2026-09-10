@@ -10,6 +10,7 @@
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./shop.css">
   <link rel="stylesheet" href="./shop-polish.css">
+  <link rel="stylesheet" href="./shop-flow.css">
   <script defer src="./world-tobacco-japan.js"></script>
   <script defer src="./catalog-core.js"></script>
   <script defer src="./shop.js"></script>
@@ -81,12 +82,33 @@
     <div class="panel-head"><h2>選択リスト</h2><button class="icon-button" id="closeCart" type="button">閉じる</button></div>
     <div id="cartItems" class="cart-items"></div>
     <div class="cart-total"><span>参考合計</span><strong id="cartTotal">¥0</strong></div>
-    <a class="button primary full" id="startCheckout" href="./checkout.html">申込内容を入力する</a>
+    <button class="button primary full" id="startApplication" type="button">申込内容を入力する</button>
     <button class="button quiet full" id="openReview" type="button">選択内容を確認</button>
     <p class="panel-note">申込内容は事業者の確認へ進む準備です。ここでは決済・注文確定・配送依頼は行いません。</p>
   </aside>
   <div class="review-modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="reviewTitle" aria-hidden="true">
     <section class="review-card"><button class="icon-button close-review" type="button">閉じる</button><p class="overline">REVIEW DEMO</p><h2 id="reviewTitle">審査内容の確認</h2><div id="reviewSummary"></div><p>このデモでは氏名、住所、決済情報を収集・送信しません。実販売を開始する前に、事業者情報・年齢確認・決済・配送条件を確認します。</p><button class="button primary full" id="closeReview" type="button">確認しました</button></section>
+  </div>
+  <div class="application-modal" id="applicationModal" role="dialog" aria-modal="true" aria-labelledby="applicationTitle" aria-hidden="true">
+    <section class="application-card">
+      <button class="icon-button close-application" type="button">閉じる</button>
+      <p class="overline">APPLICATION FLOW / STEP 1 OF 3</p>
+      <h2 id="applicationTitle">申込内容を、整える。</h2>
+      <p class="application-lead">選択した商品、配送希望、支払い希望を確認するための同一ページ内の準備画面です。</p>
+      <p class="application-note">これは機能検証用のデモです。氏名・住所などの実情報は入力せず、テスト値だけを使用してください。入力内容はこの画面内で確認するだけで、保存・送信されません。</p>
+      <div id="applicationItems" class="application-items"></div>
+      <form id="applicationForm" class="application-form" autocomplete="off" novalidate>
+        <div class="application-grid"><label>氏名（テスト入力）<input name="nameKanji" autocomplete="off" placeholder="例：テスト 太郎" required></label><label>フリガナ（テスト入力）<input name="nameKana" autocomplete="off" placeholder="例：テスト タロウ" required></label></div>
+        <div class="application-grid"><label>郵便番号（テスト入力）<input name="postalCode" inputmode="numeric" autocomplete="off" placeholder="000-0000" required></label><label>都道府県（テスト入力）<input name="prefecture" autocomplete="off" placeholder="テスト県" required></label></div>
+        <label>市区町村・番地（テスト入力）<input name="addressLine" autocomplete="off" placeholder="テスト市 1-1" required></label>
+        <fieldset><legend>配送希望</legend><div class="application-choices"><label><input type="radio" name="delivery" value="年齢確認付き配送" checked><span><b>年齢確認付き配送</b><small>配送契約後に有効化</small></span></label><label><input type="radio" name="delivery" value="通常配送"><span><b>通常配送</b><small>対象商品・地域を確認</small></span></label></div></fieldset>
+        <fieldset><legend>支払い希望</legend><div class="application-choices"><label><input type="radio" name="payment" value="クレジットカード" checked><span><b>クレジットカード</b><small>加盟店審査・接続後に有効化</small></span></label><label><input type="radio" name="payment" value="コンビニ払い"><span><b>コンビニ払い</b><small>決済事業者との契約後に案内</small></span></label><label><input type="radio" name="payment" value="銀行振込"><span><b>銀行振込</b><small>審査後に振込先を案内</small></span></label><label><input type="radio" name="payment" value="代金引換"><span><b>代金引換</b><small>配送条件を確認</small></span></label></div></fieldset>
+        <label class="application-consent"><input type="checkbox" name="adultConsent" required><span>私は20歳以上であり、未成年者の喫煙は法律で禁じられていることを確認しました。</span></label>
+        <button class="button primary full" type="submit">申込内容を確認する</button>
+        <p id="applicationStatus" class="application-status" role="status"></p>
+      </form>
+      <p class="application-note">カード番号・本人確認書類は入力、保存、送信されません。注文確定・決済・配送依頼も開始されません。</p>
+    </section>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>

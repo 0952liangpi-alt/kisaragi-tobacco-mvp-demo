@@ -92,9 +92,10 @@ const index = read('index.html');
 const loader = read('sprite-loader.js');
 const imageLayer = read('image-layer.css');
 const renderer = read('world-tobacco-catalog-render.js');
+const luxuryHome = read('luxury-home.js');
 
-assert.ok(index.includes('href="#jp-sku-catalog">品項</a>'), 'the product navigation must target the canonical catalog');
-assert.ok(index.includes('83品項を見る'), 'the main CTA must open the canonical catalog');
+assert.ok(index.includes('href="#jp-sku-catalog">商品</a>'), 'the Japanese product navigation must target the canonical catalog');
+assert.ok(luxuryHome.includes('href="#jp-sku-catalog"'), 'the rendered home CTA must open the canonical catalog');
 assert.ok(renderer.includes('product.images?.length'), 'cards must render every per-SKU file from the Asset Registry');
 assert.ok(!renderer.includes('data:image'), 'cards must not transport product images as inline Base64');
 assert.ok(!loader.includes('pack.part01') && !loader.includes('user-sprite36'), 'runtime must not depend on broken image packs');
