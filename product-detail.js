@@ -7,6 +7,9 @@
     CIGARETTES: '紙巻たばこ',
     HEATED_TOBACCO_STICKS: '加熱式たばこ',
     HEATED_TOBACCO_DEVICES: '加熱式デバイス',
+    HEATED_TOBACCO_CAPSULES: '加熱式たばこカプセル',
+    SMOKELESS_TOBACCO: '無煙たばこ',
+    CIGARS: '葉巻たばこ',
     JAPANESE_CIGARETTES: '日本の紙巻たばこ',
   });
   const statusLabels = Object.freeze({
@@ -55,15 +58,20 @@
               ${metaRow('品類', categoryLabels[product.category] || product.category)}
               ${metaRow('商品コード', product.product_code || product.sku)}
               ${metaRow('System Code', product.system_code)}
-              ${metaRow('包装', product.pack_size != null ? `${product.pack_size}本` : null)}
+              ${metaRow('包装', product.pack_size != null ? `${product.pack_size}${product.pack_unit || '本'}` : null)}
               ${metaRow('Tar', product.tar_mg != null ? `${product.tar_mg}mg` : null)}
               ${metaRow('Nicotine', product.nicotine_mg != null ? `${product.nicotine_mg}mg` : null)}
+              ${metaRow('JT 定価（2025-10-01 時点）', product.historical_list_price_jpy != null ? yen(product.historical_list_price_jpy) : null)}
+              ${metaRow('JT カタログ掲載ページ', product.manufacturer_pdf_page)}
               ${metaRow('原産国', product.origin_country && product.origin_country !== 'UNKNOWN' ? product.origin_country : null)}
               ${metaRow('状態', statusLabels[product.status] || '確認待ち')}
             </dl>
             <div class="jp-product-detail-source">
               ${product.source_url ? `<a href="${escapeHtml(product.source_url)}" target="_blank" rel="noopener noreferrer">商品情報の出典を開く ↗</a>` : '<span>ユーザー提供資料</span>'}
             </div>
+            ${product.status !== 'PRICE_CONFLICT'
+              ? `<a class="jp-product-detail-shop" href="./shop.html?sku=${encodeURIComponent(product.id)}#catalog">商品案内で選択する →</a>`
+              : ''}
           </div>
         </div>
         ${related.length ? `<div class="jp-product-related"><h3>同じブランドの商品</h3><div>${related.map((item) => `<button type="button" data-related-id="${escapeHtml(item.id)}"><span>${escapeHtml(item.product_name_ja)}</span><b>${yen(item.price_jpy)}</b></button>`).join('')}</div></div>` : ''}

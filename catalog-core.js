@@ -1,13 +1,63 @@
 (() => {
   const references = globalThis.KISARAGI_JAPAN_SKUS || [];
+  const jtProducts = globalThis.KISARAGI_JT_2025_SKUS || [];
+  const jtSource = globalThis.KISARAGI_JT_2025_SOURCE || null;
+  const tsnProducts = globalThis.KISARAGI_TSN_2026_SKUS || [];
+  const tsnSource = globalThis.KISARAGI_TSN_2026_SOURCE || null;
+  const goodsProducts = globalThis.KISARAGI_TSN_GOODS_2026_SKUS || [];
+  const goodsSources = globalThis.KISARAGI_TSN_GOODS_2026_SOURCE || {};
+  const liveOverrides = globalThis.KISARAGI_LIVE_OVERRIDES || {};
+  const liveApiBase = globalThis.KISARAGI_LIVE_CONFIG?.apiBase || null;
+  const jtByCode = new Map(jtProducts.map((product) => [product.code, product]));
+  if (jtByCode.size !== jtProducts.length) throw new Error('Duplicate JT manufacturer product code');
+  const tsnByCode = new Map(tsnProducts.map((product) => [product.code, product]));
+  if (tsnByCode.size !== tsnProducts.length) throw new Error('Duplicate TSN product code');
+  const goodsCodes = new Set(goodsProducts.map((product) => product.code));
+  if (goodsCodes.size !== goodsProducts.length) throw new Error('Duplicate TSN goods product code');
+  const referenceCodes = new Set(references.map((product) => product.code));
+  const existingCodes = new Set([...referenceCodes, ...jtProducts.map((product) => product.code)]);
+  if (goodsProducts.some((product) => existingCodes.has(product.code) || tsnByCode.has(product.code))) {
+    throw new Error('TSN goods product code overlaps an existing SKU');
+  }
 
   const sources = Object.freeze({
+    ADMIN_UPLOAD: Object.freeze({id: 'ADMIN_UPLOAD', priority: 120}),
     USER_UPLOAD: Object.freeze({id: 'USER_UPLOAD', priority: 100}),
     LOCAL_VERIFIED_IMAGE: Object.freeze({id: 'LOCAL_VERIFIED_IMAGE', priority: 80}),
     WORLD_TOBACCO: Object.freeze({
       id: 'WORLD_TOBACCO',
       priority: 60,
       url: 'https://www.world-tobacco.jp/view/category/ct5',
+    }),
+    JT_CATALOG_2025_10: Object.freeze({
+      id: 'JT_CATALOG_2025_10',
+      priority: 65,
+      url: jtSource?.source_url || null,
+      price_as_of: jtSource?.price_as_of || null,
+      pdf_sha256: jtSource?.pdf_sha256 || null,
+      image_permission_basis: jtSource?.image_permission_basis || null,
+    }),
+    TSN_IMPORT_2026_04: Object.freeze({
+      id: 'TSN_IMPORT_2026_04',
+      priority: 64,
+      url: tsnSource?.source_url || null,
+      price_as_of: tsnSource?.price_as_of || null,
+      pdf_sha256: tsnSource?.pdf_sha256 || null,
+      image_permission_basis: tsnSource?.image_permission_basis || null,
+    }),
+    TSN_SMOKING_GOODS_2026: Object.freeze({
+      id: 'TSN_SMOKING_GOODS_2026',
+      priority: 64,
+      url: goodsSources.SMOKING_GOODS?.source_url || null,
+      pdf_sha256: goodsSources.SMOKING_GOODS?.pdf_sha256 || null,
+      identity_status: goodsSources.SMOKING_GOODS?.identity_status || null,
+    }),
+    TSN_LIGHTERS_2026: Object.freeze({
+      id: 'TSN_LIGHTERS_2026',
+      priority: 64,
+      url: goodsSources.LIGHTERS?.source_url || null,
+      pdf_sha256: goodsSources.LIGHTERS?.pdf_sha256 || null,
+      identity_status: goodsSources.LIGHTERS?.identity_status || null,
     }),
     CLUB_JT: Object.freeze({id: 'CLUB_JT', priority: 70}),
     OTHER_APPROVED_SOURCE: Object.freeze({id: 'OTHER_APPROVED_SOURCE', priority: 50}),
@@ -71,7 +121,7 @@
     ...details,
   });
 
-  const assets = [
+  const existingAssets = [
     userAsset('ua-terea-silver-blue', 'ua-terea-silver-blue', 'ua-terea-silver-blue.jpg'),
     userAsset('ua-terea-cyan', 'ua-terea-cyan', 'ua-terea-cyan.jpg'),
     userAsset('ua-terea-purple', 'ua-terea-purple', 'ua-terea-purple.jpg'),
@@ -134,6 +184,72 @@
     },
   ].map((asset) => Object.freeze(asset));
 
+  const existingBoundSkus = new Set(existingAssets.filter((asset) => asset.file_path).map((asset) => asset.sku));
+  const referenceIdsByCode = new Map(references.map((reference) => [reference.code, reference.id]));
+  const jtImageAssets = jtProducts.filter((product) => product.image_asset).map((product) => {
+    const sku = referenceIdsByCode.get(product.code) || `jt-${product.code}`;
+    if (existingBoundSkus.has(sku)) throw new Error(`JT image would replace an existing asset: ${sku}`);
+    return Object.freeze({
+      asset_id: `jt2025-${product.code}`,
+      sku,
+      file_path: product.image_asset.file_path,
+      sha256: product.image_asset.sha256,
+      width: product.image_asset.width,
+      height: product.image_asset.height,
+      pdf_object_id: product.image_asset.pdf_object_id,
+      pdf_page: product.pdf_page,
+      source: 'JT_CATALOG_2025_10',
+      source_url: jtSource?.source_url || null,
+      status: 'APPROVED_EXTERNAL_SOURCE',
+      price_preserved: false,
+    });
+  });
+  const boundSkusBeforeTsn = new Set([...existingAssets, ...jtImageAssets].map((asset) => asset.sku));
+  const tsnImageAssets = tsnProducts.filter((product) => product.image_asset).map((product) => {
+    const sku = referenceIdsByCode.get(product.code) || (jtByCode.has(product.code) ? `jt-${product.code}` : `tsn-${product.code}`);
+    if (boundSkusBeforeTsn.has(sku)) throw new Error(`TSN image would replace an existing asset: ${sku}`);
+    return Object.freeze({
+      asset_id: `tsn2026-${product.code}`,
+      sku,
+      file_path: product.image_asset.file_path,
+      sha256: product.image_asset.sha256,
+      width: product.image_asset.width,
+      height: product.image_asset.height,
+      pdf_page: product.pdf_page,
+      source: 'TSN_IMPORT_2026_04',
+      source_url: tsnSource?.source_url || null,
+      status: 'APPROVED_EXTERNAL_SOURCE',
+      price_preserved: false,
+    });
+  });
+  const validLiveIds = new Set([
+    ...references.map((product) => product.id),
+    ...userProducts.map((product) => product.id),
+    ...jtProducts.filter((product) => !referenceCodes.has(product.code)).map((product) => `jt-${product.code}`),
+    ...tsnProducts.filter((product) => !existingCodes.has(product.code)).map((product) => `tsn-${product.code}`),
+    ...goodsProducts.map((product) => `tsn-goods-${product.code}`),
+  ]);
+  const liveImageAssets = Object.entries(liveOverrides).flatMap(([sku, override]) => {
+    if (!validLiveIds.has(sku) || !override || !override.image || !liveApiBase) return [];
+    const image = override.image;
+    let url;
+    try { url = new URL(image.url); } catch { return []; }
+    if (url.origin !== new URL(liveApiBase).origin || !url.pathname.startsWith(`/media/${sku}/`)) return [];
+    if (!/^[a-f0-9]{64}$/.test(image.sha256) || !Number.isInteger(image.width) || !Number.isInteger(image.height)) return [];
+    return [Object.freeze({
+      asset_id: `admin-${sku}-${image.sha256}`,
+      sku,
+      file_path: url.href,
+      sha256: image.sha256,
+      width: image.width,
+      height: image.height,
+      source: 'ADMIN_UPLOAD',
+      status: 'ADMIN_UPLOADED_IMAGE',
+      price_preserved: false,
+    })];
+  });
+  const assets = [...existingAssets, ...jtImageAssets, ...tsnImageAssets, ...liveImageAssets];
+
   const ambiguousAssets = Object.freeze([
     Object.freeze({
       asset_id: 'ua-nas-organic-mint-a',
@@ -156,6 +272,13 @@
       status: 'CONFLICT_REVIEW',
       reason: 'Exact SKU is ambiguous.',
     }),
+    ...tsnProducts.filter((product) => product.image_match_status === 'DUPLICATE_IMAGE_REVIEW').map((product) => Object.freeze({
+      asset_id: `tsn2026-review-${product.code}`,
+      sku_candidates: [`tsn-${product.code}`],
+      source: 'TSN_IMPORT_2026_04',
+      status: 'CONFLICT_REVIEW',
+      reason: 'The PDF image has the same hash as another product code; it is not bound to multiple SKUs.',
+    })),
   ]);
 
   const assetsBySku = new Map();
@@ -181,6 +304,7 @@
   const productImages = (sku) => Object.freeze((assetsBySku.get(sku) || []).map(imageRecord));
 
   const referenceProducts = references.map((reference) => {
+    const jtProduct = jtByCode.get(reference.code) || null;
     const images = productImages(reference.id);
     const image = images[0] || null;
     const primaryAsset = (assetsBySku.get(reference.id) || [])[0] || null;
@@ -203,9 +327,15 @@
       product_name_en: null,
       price_jpy: reference.price ?? null,
       reference_shop_price_jpy: reference.shopPrice ?? null,
-      pack_size: reference.packCount ?? null,
-      tar_mg: reference.tar ?? null,
-      nicotine_mg: reference.nicotine ?? null,
+      pack_size: reference.packCount ?? jtProduct?.pack_size ?? null,
+      pack_unit: jtProduct?.pack_unit || '本',
+      tar_mg: reference.tar ?? jtProduct?.tar_mg ?? null,
+      nicotine_mg: reference.nicotine ?? jtProduct?.nicotine_mg ?? null,
+      manufacturer_name_ja: jtProduct?.name || null,
+      historical_list_price_jpy: jtProduct?.historical_list_price_jpy ?? null,
+      historical_price_as_of: jtProduct ? jtSource?.price_as_of : null,
+      manufacturer_pdf_page: jtProduct?.pdf_page ?? null,
+      manufacturer_source_url: jtProduct ? jtSource?.source_url : null,
       product_code: reference.code ?? null,
       system_code: reference.systemCode ?? null,
       image,
@@ -216,6 +346,45 @@
       availability: reference.soldOut ? 'SOLD_OUT' : 'UNKNOWN',
       status: priceConflict ? 'PRICE_CONFLICT' : (image ? 'IMAGE_BOUND' : 'CATALOG_ONLY'),
       notes: null,
+    });
+  });
+
+  const jtOnlyProducts = jtProducts.filter((product) => !referenceCodes.has(product.code)).map((product) => {
+    const id = `jt-${product.code}`;
+    const images = productImages(id);
+    const image = images[0] || null;
+    const primaryAsset = (assetsBySku.get(id) || [])[0] || null;
+    return Object.freeze({
+      id,
+      sku: product.code,
+      category: product.category,
+      subcategory: 'JT_2025_REFERENCE',
+      origin_country: 'UNKNOWN',
+      brand: product.brand,
+      series: null,
+      variant: null,
+      product_name_ja: product.name,
+      product_name_en: null,
+      price_jpy: null,
+      reference_shop_price_jpy: null,
+      historical_list_price_jpy: product.historical_list_price_jpy,
+      historical_price_as_of: jtSource?.price_as_of || null,
+      manufacturer_pdf_page: product.pdf_page,
+      manufacturer_source_url: jtSource?.source_url || null,
+      pack_size: product.pack_size,
+      pack_unit: product.pack_unit,
+      tar_mg: product.tar_mg,
+      nicotine_mg: product.nicotine_mg,
+      product_code: product.code,
+      system_code: null,
+      image,
+      images,
+      image_source: primaryAsset?.source || null,
+      source_url: jtSource?.source_url || null,
+      source_checked_at: '2026-09-20',
+      availability: 'UNKNOWN',
+      status: image ? 'IMAGE_BOUND' : 'CATALOG_ONLY',
+      notes: 'JT 2025-10 manufacturer catalog; current price and availability not verified.',
     });
   });
 
@@ -251,7 +420,116 @@
     });
   });
 
-  const canonical = Object.freeze([...referenceProducts, ...uploadedProducts]);
+  const tsnOnlyProducts = tsnProducts.filter((product) => !existingCodes.has(product.code)).map((product) => {
+    const id = `tsn-${product.code}`;
+    const images = productImages(id);
+    const image = images[0] || null;
+    return Object.freeze({
+      id,
+      sku: product.code,
+      category: product.category,
+      subcategory: 'TSN_2026_REFERENCE',
+      origin_country: 'UNKNOWN',
+      brand: product.brand,
+      series: null,
+      variant: null,
+      product_name_ja: product.name,
+      product_name_en: null,
+      price_jpy: null,
+      reference_shop_price_jpy: null,
+      historical_list_price_jpy: product.historical_list_price_jpy,
+      historical_price_as_of: tsnSource?.price_as_of || null,
+      manufacturer_name_ja: product.manufacturer,
+      manufacturer_pdf_page: product.pdf_page,
+      manufacturer_source_url: tsnSource?.source_url || null,
+      pack_size: product.pack_size,
+      pack_unit: product.pack_unit,
+      tar_mg: product.tar_mg,
+      nicotine_mg: product.nicotine_mg,
+      product_code: product.code,
+      system_code: null,
+      image,
+      images,
+      image_source: image ? 'TSN_IMPORT_2026_04' : null,
+      source_url: tsnSource?.source_url || null,
+      source_checked_at: '2026-09-20',
+      availability: 'UNKNOWN',
+      status: image ? 'IMAGE_BOUND' : (product.image_match_status || 'CATALOG_ONLY'),
+      notes: 'TSN 2026-05-21 catalog; current price and availability not verified.',
+    });
+  });
+
+  const goodsOnlyProducts = goodsProducts.map((product) => {
+    const source = goodsSources[product.source_id];
+    if (!source || product.match_status !== 'IDENTITY_PENDING') {
+      throw new Error(`Unverified TSN goods record: ${product.code}`);
+    }
+    return Object.freeze({
+      id: `tsn-goods-${product.code}`,
+      sku: product.code,
+      category: product.category,
+      subcategory: `TSN_${product.source_id}_2026_REFERENCE`,
+      origin_country: 'UNKNOWN',
+      brand: 'UNKNOWN',
+      series: null,
+      variant: null,
+      product_name_ja: product.ocr_name_candidate || product.name,
+      product_name_en: null,
+      product_name_ocr_candidate: product.ocr_name_candidate,
+      ocr_name_confidence: product.ocr_name_confidence,
+      ocr_list_price_candidate_jpy: product.ocr_list_price_candidate_jpy,
+      price_jpy: null,
+      reference_shop_price_jpy: null,
+      historical_list_price_jpy: product.ocr_list_price_candidate_jpy,
+      historical_price_as_of: '2026',
+      manufacturer_pdf_page: product.pdf_page,
+      manufacturer_source_url: source.source_url,
+      pack_size: null,
+      pack_unit: null,
+      tar_mg: null,
+      nicotine_mg: null,
+      product_code: product.code,
+      system_code: null,
+      image: null,
+      images: Object.freeze([]),
+      image_source: null,
+      source_url: source.source_url,
+      source_checked_at: '2026-09-20',
+      availability: 'UNKNOWN',
+      status: 'IDENTITY_PENDING',
+      notes: '2026 catalog OCR name and price are displayed as source candidates, not current sales terms.',
+    });
+  });
+
+  const canonical = Object.freeze([
+    ...referenceProducts, ...uploadedProducts, ...jtOnlyProducts, ...tsnOnlyProducts, ...goodsOnlyProducts,
+  ].map((product) => {
+    const override = liveOverrides[product.id];
+    if (!override || typeof override !== 'object') return product;
+    const editedName = typeof override.product_name_ja === 'string' && override.product_name_ja.trim().length > 0
+      ? override.product_name_ja.trim() : null;
+    const hasPrice = Object.hasOwn(override, 'price_jpy') && (
+      override.price_jpy === null || (Number.isInteger(override.price_jpy) && override.price_jpy >= 0)
+    );
+    const price = hasPrice ? override.price_jpy : product.price_jpy;
+    const images = productImages(product.id);
+    const image = images[0] || null;
+    const priceConflict = images.some((item) => item.observed_price_jpy != null && price != null && item.observed_price_jpy !== price);
+    let status = product.status;
+    if (priceConflict || status === 'PRICE_CONFLICT') status = 'PRICE_CONFLICT';
+    else if (status === 'IDENTITY_PENDING' && editedName) status = image ? 'IMAGE_BOUND' : 'CATALOG_ONLY';
+    else if (status === 'CATALOG_ONLY' && image) status = 'IMAGE_BOUND';
+    return Object.freeze({
+      ...product,
+      product_name_ja: editedName || product.product_name_ja,
+      price_jpy: price,
+      price_source: hasPrice ? 'ADMIN' : null,
+      image,
+      images,
+      image_source: (assetsBySku.get(product.id) || [])[0]?.source || null,
+      status,
+    });
+  }));
 
   const ids = new Set();
   const duplicateIds = [];
@@ -261,10 +539,12 @@
   });
 
   const completeSku = canonical.filter((product) => (
+    product.status === 'IMAGE_BOUND' &&
     product.image &&
     product.price_jpy != null &&
     product.product_code &&
     product.brand &&
+    product.brand !== 'UNKNOWN' &&
     product.product_name_ja
   )).length;
   const imageBound = canonical.filter((product) => product.image).length;
@@ -304,8 +584,25 @@
   }, {}));
 
   const audit = Object.freeze({
-    TOTAL_REFERENCE_SKU: references.length,
+    TOTAL_REFERENCE_SKU: references.length + jtOnlyProducts.length + tsnOnlyProducts.length + goodsOnlyProducts.length,
     TOTAL_LOCAL_SKU: canonical.length,
+    TOTAL_JT_2025_SKU: jtProducts.length,
+    JT_MATCHED_EXISTING: jtProducts.length - jtOnlyProducts.length,
+    JT_ADDED: jtOnlyProducts.length,
+    JT_HISTORICAL_PRICE_DIFFERENCES: referenceProducts.filter((product) => (
+      product.historical_list_price_jpy != null &&
+      product.price_jpy != null &&
+      product.historical_list_price_jpy !== product.price_jpy
+    )).length,
+    TOTAL_TSN_2026_SKU: tsnProducts.length,
+    TSN_MATCHED_EXISTING: tsnProducts.length - tsnOnlyProducts.length,
+    TSN_ADDED: tsnOnlyProducts.length,
+    TOTAL_TSN_GOODS_2026_SKU: goodsProducts.length,
+    TSN_GOODS_BY_CATEGORY: Object.freeze(goodsOnlyProducts.reduce((counts, product) => {
+      counts[product.category] = (counts[product.category] || 0) + 1;
+      return counts;
+    }, {})),
+    IDENTITY_PENDING: canonical.filter((product) => product.status === 'IDENTITY_PENDING').length,
     TOTAL_ASSETS: assets.length,
     TOTAL_UPLOAD_ASSETS: assets.filter((asset) => asset.source === 'USER_UPLOAD').length,
     TOTAL_UPLOAD_PRODUCTS: new Set(assets.filter((asset) => asset.source === 'USER_UPLOAD').map((asset) => asset.sku)).size,
@@ -324,8 +621,14 @@
       'RYO',
       'CIGARS',
       'PIPE_TOBACCO',
+      'CUT_TOBACCO',
+      'SMOKELESS_TOBACCO',
       'HEATED_TOBACCO_STICKS',
       'HEATED_TOBACCO_DEVICES',
+      'ROLLING_ACCESSORIES',
+      'PIPE_ACCESSORIES',
+      'ASHTRAYS',
+      'LIGHTERS',
     ],
   });
 

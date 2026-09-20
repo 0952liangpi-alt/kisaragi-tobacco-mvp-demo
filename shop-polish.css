@@ -1,6 +1,13 @@
-/* Final visual refinements for the independent KISARAGI shop demo. */
+/* Shared-site catalog refinements. */
 .guide-grid { grid-template-columns: 1.45fr 1fr; }
 .guide-grid article:last-child { grid-column: 1 / -1; max-width: 48rem; }
+.product-grid.is-single { grid-template-columns: minmax(0, min(100%, 420px)); border: 0; background: transparent; }
+.product-image-link { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #edf0ea; }
+.product-image-link .product-image { position: absolute; inset: .75rem; display: block; width: calc(100% - 1.5rem); height: calc(100% - 1.5rem); aspect-ratio: auto; padding: 0; background: transparent; object-fit: contain; }
+.product-image-link:focus-visible { outline: 3px solid #b38c17; outline-offset: 3px; }
+.hero-actions .text-link { min-height: 44px; display: inline-flex; align-items: center; }
+.catalog-more:not([hidden]) { display:flex; margin:24px auto 0; min-height:48px; }
+.catalog-more[hidden] { display:none; }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -19,10 +26,17 @@
   .site-header { background: color-mix(in srgb, var(--paper) 92%, transparent); }
   .product-card, .cart-panel, .review-sheet, .age-card { box-shadow: 0 18px 50px rgba(0, 0, 0, .34); }
   .field input, .field select { background: #202a22; color: var(--ink); }
-  .product-image, .hero-image { background: #263128; }
+  .product-image, .product-image-link, .hero-image { background: #263128; }
   .catalog-note, .section-heading p, .guide-grid p { color: var(--muted); }
 }
 
 @media (max-width: 760px) {
+  .site-header { flex-wrap:wrap; gap:0 .5rem; padding-block:.4rem; }
+  .site-header nav { order:3; display:flex; width:100%; gap:1rem; overflow-x:auto; overscroll-behavior-inline:contain; scrollbar-width:none; }
+  .site-header nav::-webkit-scrollbar { display:none; }
+  .site-header nav a { display:inline-flex; flex:0 0 auto; align-items:center; min-height:40px; white-space:nowrap; }
+  #catalog, #guide { scroll-margin-top:120px; }
   .guide-grid article:last-child { grid-column: auto; max-width: none; }
+  .product-image-link, .product-empty { aspect-ratio: 4 / 5; }
+  .product-image-link .product-image { inset: .5rem; width: calc(100% - 1rem); height: calc(100% - 1rem); }
 }

@@ -18,9 +18,20 @@
     const brands = ['ALL', ...new Set(data.map((product) => product.brand).filter(Boolean))];
     const categoryLabels = Object.freeze({
       CIGARETTES: '紙巻たばこ',
+      IMPORTED_CIGARETTES: '輸入紙巻たばこ',
+      CIGARS: '葉巻たばこ',
+      RYO: '手巻たばこ',
+      PIPE_TOBACCO: 'パイプたばこ',
+      CUT_TOBACCO: '刻みたばこ',
       HEATED_TOBACCO_STICKS: '加熱式たばこ',
+      HEATED_TOBACCO_CAPSULES: '加熱式たばこカプセル',
       HEATED_TOBACCO_DEVICES: '加熱式デバイス',
+      SMOKELESS_TOBACCO: '無煙たばこ',
       JAPANESE_CIGARETTES: '日本の紙巻たばこ',
+      ROLLING_ACCESSORIES: '手巻き喫煙具',
+      PIPE_ACCESSORIES: 'パイプ用品',
+      ASHTRAYS: '携帯灰皿',
+      LIGHTERS: 'ライター',
     });
     const categories = [...new Set(data.map((product) => product.category).filter(Boolean))];
     const section = document.createElement('section');
@@ -34,7 +45,7 @@
             <span class="jp-sku-kicker">CANONICAL PRODUCT CATALOG</span>
             <h2>商品庫<br>${audit.TOTAL_LOCAL_SKU ?? data.length}品項。</h2>
           </div>
-          <p>参照SKUとユーザー提供画像を、同じ唯一の商品データから表示しています。型番を特定できない商品は確認待ちのまま掲載します。</p>
+          <p>JTたばこ、TSN取扱たばこ、喫煙商品、ライターを同じ商品データで整理しています。商品名や価格を照合中の品目は確認待ちとして掲載します。</p>
         </div>
         <div class="jp-sku-summary" aria-label="商品庫の収録状況">
           <span><b>${audit.TOTAL_REFERENCE_SKU ?? 0}</b> 参照SKU</span>
@@ -43,7 +54,8 @@
           <span><b>${audit.TOTAL_UPLOAD_ASSETS ?? 0}</b> ユーザー画像</span>
           <span><b>${audit.IMAGE_BOUND ?? 0}</b> 画像登録</span>
           <span><b>${audit.MISSING_IMAGE ?? 0}</b> 画像未登録</span>
-          <span><b>${audit.CONFLICTS ?? 0}</b> 確認待ち</span>
+          <span><b>${audit.IDENTITY_PENDING ?? 0}</b> 商品名確認待ち</span>
+          <span><b>${audit.CONFLICTS ?? 0}</b> 画像照合競合</span>
         </div>
         <div class="jp-sku-controls" aria-label="商品絞り込み">
           <div class="jp-sku-search">
@@ -70,6 +82,7 @@
         <div class="jp-sku-brands" role="toolbar" aria-label="ブランドで絞り込む"></div>
         <p class="jp-sku-result" aria-live="polite"></p>
         <div class="jp-sku-grid"></div>
+        <button class="jp-sku-more" type="button" hidden>さらに表示</button>
         <p class="jp-sku-note">掲載情報は調査用資料です。販売、決済、在庫保証は行いません。</p>
       </div>`;
     anchor.insertAdjacentElement('afterend', section);
@@ -81,10 +94,12 @@
     const resetButton = section.querySelector('.jp-sku-reset');
     const grid = section.querySelector('.jp-sku-grid');
     const result = section.querySelector('.jp-sku-result');
+    const moreButton = section.querySelector('.jp-sku-more');
+    const pageSize = 24;
     const yen = (value) => value == null ? '未登録' : `¥${Number(value).toLocaleString('ja-JP')}`;
     const statusLabels = Object.freeze({
       PRICE_CONFLICT: '価格確認待ち',
-      IDENTITY_PENDING: '商品名確認待ち',
+      IDENTITY_PENDING: '資料転記・現行未確認',
       IMAGE_BOUND: '画像登録済み',
       CATALOG_ONLY: '画像未登録',
     });
@@ -103,15 +118,15 @@
       return `
         <div class="jp-sku-images ${images.length > 1 ? 'is-gallery' : ''}">
           ${images.map((image, index) => {
-            const path = escapeHtml(image.file_path);
+            const path = escapeHtml(/^https?:\/\//.test(image.file_path) ? image.file_path : `./${image.file_path}`);
             const cropClass = image.display_crop === 'SIDE_MATTE_30PX' ? ' has-side-matte' : '';
             const preservedPrice = image.observed_price_jpy != null
               ? `<span class="jp-sku-image-label">画像内の表示価格 ${yen(image.observed_price_jpy)}</span>`
               : (image.price_preserved ? '<span class="jp-sku-image-label">画像内の価格表示あり</span>' : '');
             const suffix = images.length > 1 ? ` ${index + 1}/${images.length}` : '';
             return `
-              <a class="jp-sku-image jp-sku-image-verified${cropClass}" href="./${path}" target="_blank" rel="noopener" aria-label="${name}${suffix}の画像を原寸で見る">
-                <img src="./${path}" alt="${name}${suffix}" loading="lazy" width="900" height="1200">
+              <a class="jp-sku-image jp-sku-image-verified${cropClass}" href="${path}" target="_blank" rel="noopener" aria-label="${name}${suffix}の画像を原寸で見る">
+                <img src="${path}" alt="${name}${suffix}" loading="lazy" width="900" height="1200">
                 ${preservedPrice}
               </a>`;
           }).join('')}
@@ -119,7 +134,9 @@
     };
 
     let activeBrand = 'ALL';
-    const draw = () => {
+    let visibleCount = pageSize;
+    const draw = (keepVisibleCount = false) => {
+      if (keepVisibleCount !== true) visibleCount = pageSize;
       const query = normalize(search.value);
       const activeCategory = categorySelect.value;
       const imageFilter = imageSelect.value;
@@ -147,17 +164,21 @@
       const categoryLabel = activeCategory === 'ALL' ? '' : ` / ${categoryLabels[activeCategory] || activeCategory}`;
       const imageLabel = imageFilter === 'BOUND' ? ' / 画像登録済み' : imageFilter === 'MISSING' ? ' / 画像未登録' : '';
       const queryLabel = search.value.trim() ? ` / 「${search.value.trim()}」` : '';
-      result.textContent = `${brandLabel}${categoryLabel}${imageLabel}${queryLabel} / ${items.length}品項`;
-      grid.innerHTML = items.length ? items.map((product) => `
+      const shownCount = Math.min(items.length, visibleCount);
+      result.textContent = `${brandLabel}${categoryLabel}${imageLabel}${queryLabel} / ${items.length}品項中${shownCount}件表示`;
+      moreButton.hidden = shownCount >= items.length;
+      moreButton.textContent = `さらに${Math.min(pageSize, items.length - shownCount)}件表示`;
+      grid.innerHTML = items.length ? items.slice(0, shownCount).map((product) => `
         <article class="jp-sku-card ${product.status === 'PRICE_CONFLICT' ? 'has-conflict' : ''}" data-sku="${escapeHtml(product.id)}">
           ${imageMarkup(product)}
           <div class="jp-sku-body">
-            <span class="jp-sku-brand">${escapeHtml(product.brand)}</span>
+            <span class="jp-sku-brand">${escapeHtml(product.brand === 'UNKNOWN' ? 'ブランド確認中' : product.brand)}</span>
             <h3>${escapeHtml(product.product_name_ja)}</h3>
             <div class="jp-sku-meta">
               <span>税込価格<b>${yen(product.price_jpy)}</b></span>
               <span>商品コード<b>${escapeHtml(product.product_code || '未登録')}</b></span>
-              ${product.pack_size != null ? `<span>包装<b>${product.pack_size}本</b></span>` : ''}
+              ${product.historical_list_price_jpy != null ? `<span>資料価格（${escapeHtml(product.historical_price_as_of || '日付未確認')}・現行未確認）<b>${yen(product.historical_list_price_jpy)}</b></span>` : ''}
+              ${product.pack_size != null ? `<span>包装<b>${product.pack_size}${escapeHtml(product.pack_unit || '本')}</b></span>` : ''}
               ${product.tar_mg != null ? `<span>Tar<b>${product.tar_mg}mg</b></span>` : ''}
               ${product.nicotine_mg != null ? `<span>Nicotine<b>${product.nicotine_mg}mg</b></span>` : ''}
             </div>
@@ -199,6 +220,10 @@
     search.addEventListener('input', draw);
     categorySelect.addEventListener('change', draw);
     imageSelect.addEventListener('change', draw);
+    moreButton.addEventListener('click', () => {
+      visibleCount += pageSize;
+      draw(true);
+    });
     resetButton.addEventListener('click', () => {
       search.value = '';
       categorySelect.value = 'ALL';

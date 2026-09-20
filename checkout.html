@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="KISARAGIの注文申込準備ページ。決済・注文確定・配送依頼は行いません。">
   <meta name="theme-color" content="#121212">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>KISARAGI | 申込内容の入力</title>
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./checkout.css">
   <script defer src="./world-tobacco-japan.js"></script>
-  <script defer src="./catalog-core.js"></script>
-  <script defer src="./checkout.js"></script>
+  <script defer src="./jt-catalog-2025.js"></script>
+  <script defer src="./tsn-imported-catalog-2026.js"></script>
+  <script defer src="./tsn-goods-catalog-2026.js"></script>
+  <script defer src="./catalog-live-config.js"></script>
+  <script defer src="./catalog-live-loader.js"></script>
+  <script defer src="./catalog-page-loader.js?v=20260921-site-merge3"></script>
 </head>
-<body>
+<body data-catalog-page="checkout">
   <a class="skip-link" href="#checkout">申込内容の入力へ移動</a>
   <header class="site-header">
     <a class="brand" href="./index.html" aria-label="KISARAGI トップ"><span class="brand-mark" aria-hidden="true">K</span><span>KISARAGI</span></a>

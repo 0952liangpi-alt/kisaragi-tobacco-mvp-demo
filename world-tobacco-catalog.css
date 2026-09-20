@@ -29,6 +29,8 @@
 .jp-sku-brands button { min-height:44px; flex:0 0 auto; padding:9px 13px; color:#2b211b; background:#fff; border:1px solid #d9cec0; border-radius:8px; font:inherit; font-size:12px; white-space:nowrap; }
 .jp-sku-brands button.active { color:#fff; background:#2f1f17; border-color:#2f1f17; }
 .jp-sku-result { margin:4px 0 12px; color:#75695f; font-size:12px; }
+.jp-sku-more:not([hidden]) { display:block; min-height:48px; margin:24px auto 0; padding:10px 24px; color:#fff; background:#2f1f17; border:1px solid #2f1f17; border-radius:8px; font:inherit; font-size:13px; font-weight:700; cursor:pointer; }
+.jp-sku-more:focus-visible { outline:3px solid #b38c17; outline-offset:3px; }
 
 .jp-sku-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
 .jp-sku-empty { grid-column:1/-1; margin:0; padding:28px 16px; color:#75695f; background:#fff; border:1px solid #e1d8cd; border-radius:8px; font-size:13px; line-height:1.7; text-align:center; }

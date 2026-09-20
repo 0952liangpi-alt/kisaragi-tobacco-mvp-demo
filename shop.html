@@ -3,40 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="KISARAGI 2 · WORK の商品案内とサンドボックス注文導線。20歳以上の方のみご利用いただけます。">
+  <meta name="description" content="KISARAGIの商品案内。資料商品庫と同じ商品データを使う20歳以上向けサンドボックスです。">
   <meta name="theme-color" content="#152018">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>KISARAGI 2 · WORK | 商品案内</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>KISARAGI | 商品案内</title>
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./shop.css">
-  <link rel="stylesheet" href="./shop-polish.css">
+  <link rel="stylesheet" href="./shop-polish.css?v=20260921-site-merge4">
   <link rel="stylesheet" href="./shop-flow.css">
   <script defer src="./world-tobacco-japan.js"></script>
-  <script defer src="./catalog-core.js"></script>
-  <script defer src="./shop.js"></script>
+  <script defer src="./jt-catalog-2025.js"></script>
+  <script defer src="./tsn-imported-catalog-2026.js"></script>
+  <script defer src="./tsn-goods-catalog-2026.js"></script>
+  <script defer src="./catalog-live-config.js"></script>
+  <script defer src="./catalog-live-loader.js"></script>
+  <script defer src="./catalog-page-loader.js?v=20260921-site-merge3"></script>
 </head>
-<body>
+<body data-catalog-page="shop">
   <a class="skip-link" href="#catalog">商品一覧へ移動</a>
   <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
     <section class="age-card">
-      <p class="overline">KISARAGI 2 · WORK / SANDBOX</p>
+      <p class="overline">KISARAGI / 20+ SANDBOX</p>
       <h1 id="ageGateTitle">20歳以上の方のみ<br>ご利用いただけます</h1>
-      <p>本ページは日本国内の成人向け商品案内です。Work 版では注文導線のみ検証し、決済・注文確定・配送は有効化しません。</p>
+      <p>本ページは日本国内の成人向け商品案内です。選択・注文確認はサンドボックスで、決済・注文確定・配送は有効化しません。</p>
       <p class="warning">未成年者の喫煙は法律で禁じられています。</p>
       <div class="age-actions">
         <button class="button primary" id="enterSite">20歳以上です</button>
         <a class="button quiet" id="leaveSite" href="https://www.google.com/">退出する</a>
       </div>
-      <small>このページは Work サンドボックスです。実決済・注文確定・配送は行いません。</small>
+      <small>実決済・注文確定・配送は行いません。</small>
     </section>
   </div>
 
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="KISARAGI 2 Work 商品案内トップ"><span class="brand-mark" aria-hidden="true">K</span><span>KISARAGI 2 · WORK</span></a>
+    <a class="brand" href="./index.html" aria-label="KISARAGI ホーム"><span class="brand-mark" aria-hidden="true">K</span><span>KISARAGI</span></a>
     <nav aria-label="メインナビゲーション">
-      <a href="#catalog">商品案内</a>
+      <a href="./index.html">ホーム</a>
+      <a href="#catalog" aria-current="page">商品案内</a>
+      <a href="./index.html#jp-sku-catalog">資料商品庫</a>
       <a href="#guide">利用案内</a>
-      <a href="./index.html">会社情報</a>
     </nav>
     <button class="cart-toggle" id="openCart" type="button" aria-haspopup="dialog">選択リスト <b id="cartCount">0</b></button>
   </header>
@@ -47,7 +52,7 @@
         <p class="overline">ADULT TOBACCO INFORMATION</p>
         <h1>選ぶ前に、<br><em>確かめる。</em></h1>
         <p>品名・画像・参考価格を整理し、選択後は必要な確認へ進む入口です。</p>
-        <div class="hero-actions"><a class="button primary" href="#catalog">商品を見る</a><a class="text-link" href="#guide">利用条件を確認</a></div>
+        <div class="hero-actions"><a class="button primary" href="#catalog">商品を見る</a><a class="text-link" href="./index.html#jp-sku-catalog">資料商品庫</a></div>
       </div>
       <figure class="hero-image"><img src="./assets/catalog/products/ua-terea-riviera-pearl.jpg" alt="顧客提供の加熱式たばこ製品パッケージ写真"><figcaption>掲載画像の状態は商品ごとに表示しています</figcaption></figure>
     </section>
@@ -62,7 +67,8 @@
       </div>
       <p class="result-count" id="resultCount" aria-live="polite"></p>
       <div class="product-grid" id="productGrid" aria-live="polite"></div>
-      <p class="catalog-note">画像・参考価格・在庫の状態は商品ごとに表示しています。確認中の商品も選択リストへ追加して、事業者への確認内容としてまとめられます。</p>
+      <button class="button quiet catalog-more" id="loadMoreProducts" type="button" hidden>さらに表示</button>
+      <p class="catalog-note">資料から自動読取した名称・価格は資料値です。現在の販売価格や在庫を示すものではありません。</p>
     </section>
 
     <section class="guide section" id="guide" aria-labelledby="guideTitle">
@@ -76,7 +82,7 @@
 
   </main>
 
-  <footer><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">K</span><span>KISARAGI 2 · WORK</span></a><p>Work サンドボックスの商品案内です。実販売・決済・配送は行いません。</p><a href="./index.html">東隅 会社情報</a></footer>
+  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true">K</span><span>KISARAGI</span></a><p>20歳以上向けの商品案内です。実販売・決済・配送は行いません。</p><a href="./index.html#jp-sku-catalog">資料商品庫を見る</a><a data-catalog-admin hidden>商品管理</a></footer>
 
   <div class="backdrop" id="backdrop" hidden></div>
   <aside class="cart-panel" id="cartPanel" aria-label="選択リスト" aria-hidden="true">

@@ -21,6 +21,7 @@ const shouldWrite = args.includes('--write');
 const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp']);
 
 await import(new URL('../world-tobacco-japan.js', import.meta.url));
+await import(new URL('../jt-catalog-2025.js', import.meta.url));
 await import(new URL('../catalog-core.js', import.meta.url));
 
 const catalog = globalThis.KISARAGI_CANONICAL_CATALOG;
