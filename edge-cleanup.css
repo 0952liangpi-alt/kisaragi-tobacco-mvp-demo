@@ -13,7 +13,7 @@
 .jp-sku-card[data-sku="wt-1020"] .jp-sku-image-verified:after{content:'画像差替え準備中';position:absolute;inset:0;display:grid;place-items:center;color:#8b8178;font-size:11px;letter-spacing:.04em}
 
 .jp-product-detail-image{overflow:hidden}
-.jp-product-detail-image img{clip-path:inset(4%);transform:scale(1.09);transform-origin:center}
+.jp-product-detail-image img{min-height:0!important;clip-path:inset(4%);transform:scale(1.09);transform-origin:center}
 
 @media(max-width:560px){
   .jp-sku-image-verified img{clip-path:inset(9% 8% 10%)!important;transform:scale(1.24)!important}

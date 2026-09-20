@@ -47,6 +47,7 @@ const requiredChecks = [
   ['detail image hash cache version', productDetail, 'image.sha256.slice(0, 12)'],
   ['extracted JT packs are not cropped', edgeCleanup, '.jp-sku-image-verified img[src*="-jt-2025.jpg"]'],
   ['extracted PDF packs retain their full frame', edgeCleanup, 'clip-path:none!important;transform:none!important'],
+  ['detail pack can shrink within the gallery', edgeCleanup, '.jp-product-detail-image img{min-height:0!important;'],
   ['shop included in offline shell', serviceWorker, "'./shop.html'"],
   ['navigation bypasses stale HTTP cache', serviceWorker, "cache:freshPage?'no-store':'default'"],
   ['visible home navigation', luxuryHome, 'class="luxury-links"'],
