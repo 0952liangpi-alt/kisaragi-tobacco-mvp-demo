@@ -48,6 +48,7 @@ const requiredChecks = [
   ['extracted JT packs are not cropped', edgeCleanup, '.jp-sku-image-verified img[src*="-jt-2025.jpg"]'],
   ['extracted PDF packs retain their full frame', edgeCleanup, 'clip-path:none!important;transform:none!important'],
   ['shop included in offline shell', serviceWorker, "'./shop.html'"],
+  ['navigation bypasses stale HTTP cache', serviceWorker, "cache:freshPage?'no-store':'default'"],
   ['visible home navigation', luxuryHome, 'class="luxury-links"'],
   ['home navigation to shop', luxuryHome, 'href="./shop.html#catalog"'],
   ['home guide link to visible shop guide', luxuryHome, 'href="./shop.html#guide"'],
