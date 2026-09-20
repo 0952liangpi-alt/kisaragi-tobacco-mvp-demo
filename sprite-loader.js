@@ -29,7 +29,7 @@
       await loadScript('./catalog-core.js?v=20260921-jt-color1');
       await loadScript('./world-tobacco-catalog-render.js?v=20260921-jt-color1');
       await loadScript('./product-detail.js?v=20260921-jt-color1');
-      loadStylesheet('./luxury-home.css?v=20260921-color-fidelity1');
+      loadStylesheet('./luxury-home.css?v=20260921-home-gates1');
       await loadScript('./luxury-home.js?v=20260920-site-merge');
     } catch (error) {
       console.error('KISARAGI canonical catalog load failed', error);
