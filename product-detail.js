@@ -121,6 +121,15 @@
     dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
     dialog.addEventListener('close', () => document.body.classList.remove('product-detail-open'));
     document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && dialog.open) dialog.close(); });
+    const linkedSku = new URLSearchParams(window.location.search).get('sku');
+    const linkedProduct = linkedSku && catalog.find((item) => item.id === linkedSku);
+    if (linkedProduct) {
+      const gate = document.getElementById('age');
+      const openLinked = () => { if (!gate || gate.classList.contains('hide')) openProduct(linkedProduct); };
+      if (gate && !gate.classList.contains('hide')) {
+        gate.querySelector('#enter')?.addEventListener('click', () => window.setTimeout(openLinked, 0), {once: true});
+      } else openLinked();
+    }
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(mount, 0));

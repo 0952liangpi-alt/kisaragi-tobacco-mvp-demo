@@ -13,6 +13,22 @@
 .hero-actions .text-link { min-height: 44px; display: inline-flex; align-items: center; }
 .catalog-more:not([hidden]) { display:flex; margin:24px auto 0; min-height:48px; }
 .catalog-more[hidden] { display:none; }
+.filters { grid-template-columns: minmax(220px, 1.2fr) repeat(3, minmax(150px, 1fr)); align-items: end; }
+.filters .group-filter { grid-column: 1 / -1; }
+.filters .filter-select { min-width: 0; }
+.filters .filter-select[hidden] { display: none; }
+.filter-select select { width: 100%; min-height: 46px; padding: .65rem .7rem; border: 1px solid var(--line); border-radius: 7px; background: #fff; color: var(--ink); font: inherit; font-size: .84rem; }
+.filter-reset { min-height: 46px; padding: .55rem .8rem; border: 1px solid var(--line); border-radius: 7px; background: #fff; color: var(--ink); font: inherit; font-size: .8rem; font-weight: 700; cursor: pointer; }
+.filter-reset:hover { border-color: var(--accent); }
+.product-meta { line-height: 1.45; }
+.product-code, .product-specs { overflow-wrap: anywhere; }
+.product-specs { margin: 0; color: var(--muted); font-size: .7rem; line-height: 1.5; }
+.product-status { margin: 0; color: var(--danger); font-size: .68rem; }
+.product-actions { display: grid; grid-template-columns: 1fr auto; gap: .5rem; align-items: stretch; margin-top: .3rem; }
+.product-detail-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; border: 1px solid var(--line); border-radius: 7px; padding: .45rem .6rem; color: var(--ink); text-align: center; text-decoration: none; font-size: .72rem; font-weight: 700; }
+.product-detail-link:hover { border-color: var(--accent); color: var(--accent); }
+.product-image-link .product-image { filter: none; mix-blend-mode: normal; }
+.filter-select select:focus-visible, .filter-reset:focus-visible, .product-detail-link:focus-visible { outline: 3px solid #b38c17; outline-offset: 3px; }
 
 @media (max-width: 760px) {
   .site-header { flex-wrap:wrap; gap:0 .5rem; padding-block:.4rem; }
@@ -23,4 +39,10 @@
   .guide-grid article:last-child { grid-column: auto; max-width: none; }
   .product-image-link, .product-empty { aspect-ratio: 4 / 5; }
   .product-image-link .product-image { inset: .5rem; width: calc(100% - 1rem); height: calc(100% - 1rem); }
+  .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; margin-top: 1.5rem; }
+  .filters .search, .filters .group-filter, .filters #deviceFilterWrap, .filter-reset { grid-column: 1 / -1; }
+  .filters .filter-options { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .25rem; }
+  .filters .filter-options button { flex: 0 0 auto; min-height: 42px; border-radius: 7px; }
+  .product-actions { grid-template-columns: 1fr; }
+  .product-detail-link, .product-actions .add-button { min-height: 42px; }
 }

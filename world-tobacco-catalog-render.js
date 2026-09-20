@@ -239,6 +239,9 @@
       search.focus();
     });
 
+    const linkedSku = new URLSearchParams(window.location.search).get('sku');
+    const linkedProduct = linkedSku && data.find((product) => product.id === linkedSku);
+    if (linkedProduct) search.value = linkedProduct.sku || linkedProduct.product_code || linkedProduct.product_name_ja;
     draw();
     const dockVisibilityObserver = new IntersectionObserver((entries) => {
       const catalogVisible = entries.some((entry) => entry.isIntersecting);

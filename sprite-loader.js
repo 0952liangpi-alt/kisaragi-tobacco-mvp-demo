@@ -27,8 +27,8 @@
       await loadScript('./catalog-live-loader.js?v=20260920-live-v1');
       await globalThis.KISARAGI_LOAD_LIVE_OVERRIDES();
       await loadScript('./catalog-core.js?v=20260921-jt-color1');
-      await loadScript('./world-tobacco-catalog-render.js?v=20260921-price-context1');
-      await loadScript('./product-detail.js?v=20260921-price-context1');
+      await loadScript('./world-tobacco-catalog-render.js?v=20260921-facets1');
+      await loadScript('./product-detail.js?v=20260921-facets1');
       loadStylesheet('./luxury-home.css?v=20260921-home-gates1');
       await loadScript('./luxury-home.js?v=20260920-site-merge');
     } catch (error) {

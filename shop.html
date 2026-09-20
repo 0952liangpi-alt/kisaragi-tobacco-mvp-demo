@@ -9,7 +9,7 @@
   <title>KISARAGI | 商品案内</title>
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./shop.css">
-  <link rel="stylesheet" href="./shop-polish.css?v=20260921-color-fidelity1">
+  <link rel="stylesheet" href="./shop-polish.css?v=20260921-facets1">
   <link rel="stylesheet" href="./shop-flow.css">
   <script defer src="./world-tobacco-japan.js"></script>
   <script defer src="./jt-catalog-2025.js?v=20260921-jt-color1"></script>
@@ -17,7 +17,7 @@
   <script defer src="./tsn-goods-catalog-2026.js"></script>
   <script defer src="./catalog-live-config.js"></script>
   <script defer src="./catalog-live-loader.js"></script>
-  <script defer src="./catalog-page-loader.js?v=20260921-home-gates1"></script>
+  <script defer src="./catalog-page-loader.js?v=20260921-facets1"></script>
 </head>
 <body data-catalog-page="shop">
   <a class="skip-link" href="#catalog">商品一覧へ移動</a>
@@ -63,12 +63,16 @@
       <div class="section-heading"><p class="overline">PRODUCT DIRECTORY</p><h2 id="catalogTitle">商品案内</h2><p>掲載情報と参考価格を確認するための商品ディレクトリです。</p></div>
       <div class="filters" aria-label="商品検索">
         <label class="search"><span>商品名・ブランド・品番</span><input id="searchInput" type="search" placeholder="例：キャメル、TEREA"></label>
-        <fieldset><legend>カテゴリー</legend><div class="filter-options" id="categoryFilters"></div></fieldset>
+        <fieldset class="group-filter"><legend>商品区分</legend><div class="filter-options" id="groupFilters"></div></fieldset>
+        <label class="filter-select"><span>品類</span><select id="categoryFilter"></select></label>
+        <label class="filter-select"><span>ブランド</span><select id="brandFilter"></select></label>
+        <label class="filter-select" id="deviceFilterWrap" hidden><span>対応機種（商品名に明記）</span><select id="deviceFilter"></select></label>
+        <button class="filter-reset" id="resetFilters" type="button">条件をクリア</button>
       </div>
       <p class="result-count" id="resultCount" aria-live="polite"></p>
       <div class="product-grid" id="productGrid" aria-live="polite"></div>
       <button class="button quiet catalog-more" id="loadMoreProducts" type="button" hidden>さらに表示</button>
-      <p class="catalog-note">資料から自動読取した名称・価格は資料値です。現在の販売価格や在庫を示すものではありません。</p>
+      <p class="catalog-note">商品案内は選択用、資料商品庫は出典・詳細の確認用です。資料から自動読取した名称・価格は資料値で、現在の販売価格や在庫を示すものではありません。</p>
     </section>
 
     <section class="guide section" id="guide" aria-labelledby="guideTitle">

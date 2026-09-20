@@ -45,7 +45,7 @@ const requiredChecks = [
   ['shop product images preserve their source colors', shopPolish, 'object-fit: contain;'],
   ['shop keeps neutral product surfaces on dark-mode devices', shopPolish, ':root { color-scheme: light; }'],
   ['shop hero photo has no dark overlay', shopPolish, '.hero-image::after { display: none; }'],
-  ['shop loader cache version', shop, 'catalog-page-loader.js?v=20260921-home-gates1'],
+  ['shop loader cache version', shop, 'catalog-page-loader.js?v=20260921-facets1'],
   ['shop image hash cache version', shopScript, 'asset.sha256.slice(0, 12)'],
   ['archive image hash cache version', renderer, 'image.sha256.slice(0, 12)'],
   ['detail image hash cache version', productDetail, 'image.sha256.slice(0, 12)'],
