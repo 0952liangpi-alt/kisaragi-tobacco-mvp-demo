@@ -2,7 +2,7 @@
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;',
   })[character]);
-  const yen = (value) => value == null ? '未登録' : `¥${Number(value).toLocaleString('ja-JP')}`;
+  const yen = (value) => value == null ? '価格未確認' : `¥${Number(value).toLocaleString('ja-JP')}`;
   const categoryLabels = Object.freeze({
     CIGARETTES: '紙巻たばこ',
     HEATED_TOBACCO_STICKS: '加熱式たばこ',
@@ -11,6 +11,14 @@
     SMOKELESS_TOBACCO: '無煙たばこ',
     CIGARS: '葉巻たばこ',
     JAPANESE_CIGARETTES: '日本の紙巻たばこ',
+    IMPORTED_CIGARETTES: '輸入紙巻たばこ',
+    RYO: '手巻たばこ',
+    PIPE_TOBACCO: 'パイプたばこ',
+    CUT_TOBACCO: '刻みたばこ',
+    ROLLING_ACCESSORIES: '手巻き喫煙具',
+    PIPE_ACCESSORIES: 'パイプ用品',
+    ASHTRAYS: '携帯灰皿',
+    LIGHTERS: 'ライター',
   });
   const statusLabels = Object.freeze({
     PRICE_CONFLICT: '価格確認待ち',
@@ -49,13 +57,20 @@
 
     const openProduct = (product) => {
       const related = catalog.filter((item) => item.id !== product.id && item.brand === product.brand).slice(0, 4);
+      const priceSourceDate = escapeHtml(product.historical_price_as_of || '日付未確認');
+      const historicalPriceLabel = product.ocr_list_price_candidate_jpy != null ? '資料価格候補' : '資料掲載価格';
+      const sourceLinks = [
+        product.source_url ? `<a href="${escapeHtml(product.source_url)}" target="_blank" rel="noopener noreferrer">商品情報の出典を開く ↗</a>` : '',
+        product.manufacturer_source_url && product.manufacturer_source_url !== product.source_url
+          ? `<a href="${escapeHtml(product.manufacturer_source_url)}" target="_blank" rel="noopener noreferrer">メーカー資料を開く ↗</a>` : '',
+      ].filter(Boolean).join('');
       content.innerHTML = `
         <div class="jp-product-detail-grid">
           <div>${imageBlock(product)}</div>
           <div class="jp-product-detail-copy">
-            <span class="jp-product-detail-kicker">${escapeHtml(product.brand || '未登録')}</span>
+            <span class="jp-product-detail-kicker">${escapeHtml(product.brand && product.brand !== 'UNKNOWN' ? product.brand : 'ブランド確認中')}</span>
             <h2 id="jp-product-detail-title">${escapeHtml(product.product_name_ja || '商品名未登録')}</h2>
-            <p class="jp-product-detail-price">${yen(product.price_jpy)}</p>
+            <p class="jp-product-detail-price"><small>参考税込価格</small><b>${product.price_jpy == null ? '未確認' : yen(product.price_jpy)}</b></p>
             <dl class="jp-product-detail-meta">
               ${metaRow('品類', categoryLabels[product.category] || product.category)}
               ${metaRow('商品コード', product.product_code || product.sku)}
@@ -63,13 +78,13 @@
               ${metaRow('包装', product.pack_size != null ? `${product.pack_size}${product.pack_unit || '本'}` : null)}
               ${metaRow('Tar', product.tar_mg != null ? `${product.tar_mg}mg` : null)}
               ${metaRow('Nicotine', product.nicotine_mg != null ? `${product.nicotine_mg}mg` : null)}
-              ${metaRow('JT 定価（2025-10-01 時点）', product.historical_list_price_jpy != null ? yen(product.historical_list_price_jpy) : null)}
-              ${metaRow('JT カタログ掲載ページ', product.manufacturer_pdf_page)}
+              ${metaRow(`${historicalPriceLabel}（${priceSourceDate}・現行未確認）`, product.historical_list_price_jpy != null ? yen(product.historical_list_price_jpy) : null)}
+              ${metaRow('資料掲載ページ', product.manufacturer_pdf_page)}
               ${metaRow('原産国', product.origin_country && product.origin_country !== 'UNKNOWN' ? product.origin_country : null)}
               ${metaRow('状態', statusLabels[product.status] || '確認待ち')}
             </dl>
             <div class="jp-product-detail-source">
-              ${product.source_url ? `<a href="${escapeHtml(product.source_url)}" target="_blank" rel="noopener noreferrer">商品情報の出典を開く ↗</a>` : '<span>ユーザー提供資料</span>'}
+              ${sourceLinks || '<span>ユーザー提供資料</span>'}
             </div>
             ${product.status !== 'PRICE_CONFLICT'
               ? `<a class="jp-product-detail-shop" href="./shop.html?sku=${encodeURIComponent(product.id)}#catalog">商品案内で選択する →</a>`

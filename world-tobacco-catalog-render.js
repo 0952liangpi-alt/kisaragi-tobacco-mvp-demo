@@ -177,9 +177,9 @@
             <span class="jp-sku-brand">${escapeHtml(product.brand === 'UNKNOWN' ? 'ブランド確認中' : product.brand)}</span>
             <h3>${escapeHtml(product.product_name_ja)}</h3>
             <div class="jp-sku-meta">
-              <span>税込価格<b>${yen(product.price_jpy)}</b></span>
+              <span>参考税込価格<b>${product.price_jpy == null ? '未確認' : yen(product.price_jpy)}</b></span>
               <span>商品コード<b>${escapeHtml(product.product_code || '未登録')}</b></span>
-              ${product.historical_list_price_jpy != null ? `<span>資料価格（${escapeHtml(product.historical_price_as_of || '日付未確認')}・現行未確認）<b>${yen(product.historical_list_price_jpy)}</b></span>` : ''}
+              ${product.historical_list_price_jpy != null ? `<span>${product.ocr_list_price_candidate_jpy != null ? '資料価格候補' : '資料掲載価格'}（${escapeHtml(product.historical_price_as_of || '日付未確認')}・現行未確認）<b>${yen(product.historical_list_price_jpy)}</b></span>` : ''}
               ${product.pack_size != null ? `<span>包装<b>${product.pack_size}${escapeHtml(product.pack_unit || '本')}</b></span>` : ''}
               ${product.tar_mg != null ? `<span>Tar<b>${product.tar_mg}mg</b></span>` : ''}
               ${product.nicotine_mg != null ? `<span>Nicotine<b>${product.nicotine_mg}mg</b></span>` : ''}

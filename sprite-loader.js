@@ -16,7 +16,7 @@
 
   const loadCatalog = async () => {
     loadStylesheet('./world-tobacco-catalog.css?v=20260921-site-merge3');
-    loadStylesheet('./product-detail.css?v=20260907-detail-v1');
+    loadStylesheet('./product-detail.css?v=20260921-price-context1');
 
     try {
       await loadScript('./world-tobacco-japan.js?v=20260905-user-audit');
@@ -27,8 +27,8 @@
       await loadScript('./catalog-live-loader.js?v=20260920-live-v1');
       await globalThis.KISARAGI_LOAD_LIVE_OVERRIDES();
       await loadScript('./catalog-core.js?v=20260921-jt-color1');
-      await loadScript('./world-tobacco-catalog-render.js?v=20260921-jt-color1');
-      await loadScript('./product-detail.js?v=20260921-jt-color1');
+      await loadScript('./world-tobacco-catalog-render.js?v=20260921-price-context1');
+      await loadScript('./product-detail.js?v=20260921-price-context1');
       loadStylesheet('./luxury-home.css?v=20260921-home-gates1');
       await loadScript('./luxury-home.js?v=20260920-site-merge');
     } catch (error) {

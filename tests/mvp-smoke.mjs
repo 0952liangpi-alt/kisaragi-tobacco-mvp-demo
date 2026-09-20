@@ -66,6 +66,12 @@ const requiredChecks = [
   ['catalog search', renderer, 'type="search"'],
   ['localized image load fallback', renderer, '画像を読み込めません'],
   ['localized missing image state', renderer, '画像未登録'],
+  ['catalog distinguishes unverified reference price', renderer, "参考税込価格<b>${product.price_jpy == null ? '未確認'"],
+  ['catalog labels OCR prices as candidates', renderer, "product.ocr_list_price_candidate_jpy != null ? '資料価格候補'"],
+  ['detail uses source-specific price date', productDetail, 'product.historical_price_as_of'],
+  ['detail uses neutral source-page label', productDetail, "metaRow('資料掲載ページ',"],
+  ['detail offers manufacturer source when distinct', productDetail, 'product.manufacturer_source_url !== product.source_url'],
+  ['detail localizes unknown brand', productDetail, "product.brand !== 'UNKNOWN' ? product.brand : 'ブランド確認中'"],
   ['localized identity state', renderer, "IDENTITY_PENDING: '資料転記・現行未確認'"],
   ['mobile two-column catalog', catalogCss, /grid-template-columns\s*:\s*repeat\(2\s*,\s*minmax\(0\s*,\s*1fr\)\)/],
   ['contained product images', catalogCss, /object-fit\s*:\s*contain/],
@@ -109,7 +115,8 @@ assert.ok(!html.includes('assets/catalog/image5.jpg'), 'rejected Mevius photo mu
 assert.ok(!html.includes('contact@example.jp'), 'the public page must not expose a placeholder contact address');
 assert.ok(html.includes('お問い合わせ窓口 準備中'), 'an unavailable contact channel must be represented truthfully');
 assert.ok(!serviceWorker.includes('wt-1034-peace-10.jpg'), 'rejected photo 1 must not be cached');
+assert.ok(!productDetail.includes('JT 定価（2025-10-01 時点）'), 'all catalog sources must not be attributed to JT');
 assert.ok(!renderer.includes('data:image'), 'product cards must use per-SKU files');
 assert.ok(manifest.icons.length > 0, 'PWA manifest needs an icon');
 
-console.log(`MVP smoke: PASS (${requiredChecks.length + 15} assertions)`);
+console.log(`MVP smoke: PASS (${requiredChecks.length + 16} assertions)`);
