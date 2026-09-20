@@ -118,7 +118,9 @@
       return `
         <div class="jp-sku-images ${images.length > 1 ? 'is-gallery' : ''}">
           ${images.map((image, index) => {
-            const path = escapeHtml(/^https?:\/\//.test(image.file_path) ? image.file_path : `./${image.file_path}`);
+            const sourcePath = /^https?:\/\//.test(image.file_path) ? image.file_path : `./${image.file_path}`;
+            const version = /^[a-f0-9]{64}$/i.test(image.sha256 || '') ? image.sha256.slice(0, 12) : null;
+            const path = escapeHtml(version ? `${sourcePath}${sourcePath.includes('?') ? '&' : '?'}v=${version}` : sourcePath);
             const cropClass = image.display_crop === 'SIDE_MATTE_30PX' ? ' has-side-matte' : '';
             const preservedPrice = image.observed_price_jpy != null
               ? `<span class="jp-sku-image-label">画像内の表示価格 ${yen(image.observed_price_jpy)}</span>`

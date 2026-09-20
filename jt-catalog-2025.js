@@ -21,7 +21,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 4,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1060-jt-2025.jpg",
-      "sha256": "ab804945d8fe7f88721e85a72ac1c219a3ca9170ce2fc9392361627fdfbccd04",
+      "sha256": "3da4e93b202f41d50a91fc80e29e08bba3a3e821ef7c63e262d72b0d66f1a18d",
       "width": 257,
       "height": 402,
       "pdf_object_id": 62
@@ -40,7 +40,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 4,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1061-jt-2025.jpg",
-      "sha256": "03217f9353864a94ce9b6f0f8eb374bd01d0d13fed59c696a1b3df677b89f0e3",
+      "sha256": "5088b28fc8c97c3e6f2e388b993e1687986cb5ee8ba0be342c676d27f65c5be9",
       "width": 261,
       "height": 418,
       "pdf_object_id": 63
@@ -59,7 +59,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 4,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1023-jt-2025.jpg",
-      "sha256": "c07801dff1ef2ed156315f66bb080d4474fcaa8c91d8534ea6caca2f7610597b",
+      "sha256": "e5c0e6e44807ff214d38d2e2a39c7d5d354734e3e720781af4eaa967b82b8ff2",
       "width": 258,
       "height": 402,
       "pdf_object_id": 68
@@ -78,7 +78,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 4,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1286-jt-2025.jpg",
-      "sha256": "046d1f067947f97c60836772b817b860bfe95b60b906163fe89165bf837490c2",
+      "sha256": "af7ca7b42b66d0dae13b801f5e835acbdd7f28df20e2605a25bb2ef0ec16f561",
       "width": 261,
       "height": 418,
       "pdf_object_id": 69
@@ -97,7 +97,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 4,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1381-jt-2025.jpg",
-      "sha256": "a3f4686506c2e79168813208bd9272cabf2587cff52967d3af8bc7d1f3935872",
+      "sha256": "410e242d576ec7b109ec5d0ada43d234b3b2ecbcfcdf24c5842f70b03775392b",
       "width": 261,
       "height": 479,
       "pdf_object_id": 67
@@ -128,7 +128,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 4,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1299-jt-2025.jpg",
-      "sha256": "18a3a8701e3c7a57432b1e5b769330347a9f15adb314a1367d7826ba50700c8d",
+      "sha256": "e21675319dfeb4e07c7a1a20f76787e5fbee40eec2452afe00ecd1d1010818cd",
       "width": 261,
       "height": 418,
       "pdf_object_id": 65
@@ -147,7 +147,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 4,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1424-jt-2025.jpg",
-      "sha256": "56934a9f42f478baa1014dfc0021fb3fd6c4b4310490f40d1d0d72a6740a252d",
+      "sha256": "ae36bdf49c0bcf89fe125d872cd1bade021a1e6b9a7aa30cd96dd0cad04eaef0",
       "width": 261,
       "height": 479,
       "pdf_object_id": 66
@@ -166,7 +166,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 5,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1223-jt-2025.jpg",
-      "sha256": "50831d8a44a00d6f01f7b84ef5b8e748db1abaddfa7118da4c87ca22c2da77eb",
+      "sha256": "3ba96e2defaabdbaafe61078ac682f703cbe011ea62461aa83afa42acbf8bb44",
       "width": 260,
       "height": 406,
       "pdf_object_id": 98
@@ -185,7 +185,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 5,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1296-jt-2025.jpg",
-      "sha256": "25f1b9662693d1754616d9f5e4b683b4b60877ac4a7f0c71d9d8d35bb9f8f570",
+      "sha256": "3388d314297d91d1711e45312ca68b4b1fc4cb398fe93fa9e32dd96fe05d8469",
       "width": 261,
       "height": 418,
       "pdf_object_id": 99
@@ -204,7 +204,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 5,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1462-jt-2025.jpg",
-      "sha256": "0e22d484aaf15a452e4d6877bf765ef6d09910ea09da634d1976ffb2d7f9b38d",
+      "sha256": "f1afccb7efb04bd691fc6833a2ccc226acdaa8548c7999cfa18f4625353ad884",
       "width": 261,
       "height": 479,
       "pdf_object_id": 100
@@ -223,7 +223,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 5,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1355-jt-2025.jpg",
-      "sha256": "056aa1a7d329bd0b92117bfd16cf24ca0450f6c5f9c91f5b8bd5fa66bc6af5d5",
+      "sha256": "5c47c7ee42a0f8b7870404fc75918db4d0a556b4a8d95775ecae53d35bd45c5c",
       "width": 261,
       "height": 407,
       "pdf_object_id": 101
@@ -242,7 +242,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 5,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1310-jt-2025.jpg",
-      "sha256": "703ad55865299c9ae36f1de0c00a938907e03391d704d2f9df8e63b22d1e4a7c",
+      "sha256": "78c7546c5c6eb4ca159d46cdfb3e2a09da6511eb3107f59eb25e5adce9ee6e67",
       "width": 261,
       "height": 420,
       "pdf_object_id": 94
@@ -261,7 +261,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 5,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1329-jt-2025.jpg",
-      "sha256": "908d7cb0f4b3e172987d62696b72f2d5317ccdb7b250ec176861916d00068015",
+      "sha256": "5b459a824734821390efda845d0b7fd5437c1217de00a392a66909f06c53a3d9",
       "width": 261,
       "height": 479,
       "pdf_object_id": 95
@@ -280,7 +280,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 5,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1372-jt-2025.jpg",
-      "sha256": "3625e6353c90dab4371a591a9e5e0ac6c51ed45b0c7cb731bb993749c95aaa75",
+      "sha256": "7ec0dc4b8ac92182fb15c4593f76a159dd9ee22dd76d501a1c90223badc287fb",
       "width": 261,
       "height": 407,
       "pdf_object_id": 96
@@ -299,7 +299,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 5,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1356-jt-2025.jpg",
-      "sha256": "e7c1109a8bc93d8042297ea43b7223ca51123852854a100f08d764c682e87041",
+      "sha256": "aa425bed63cd47141fc574d0e1f408c29527188da699da37e6d903523875315d",
       "width": 261,
       "height": 418,
       "pdf_object_id": 97
@@ -318,7 +318,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 6,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1343-jt-2025.jpg",
-      "sha256": "48127f89b356b8cdf17b26d34f06405f2c3a915c1332ecd7769239b92417d303",
+      "sha256": "9713f0af7ae0220af2e9aa786cef419e90e855be1c9a67f189abcdda4a51b525",
       "width": 261,
       "height": 479,
       "pdf_object_id": 143
@@ -337,7 +337,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 6,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1734-jt-2025.jpg",
-      "sha256": "6dd39d2bbcd163de8cf0ba399ebeecaa52c1c45b0e90efe1340a2593cd9b547c",
+      "sha256": "824d54db80f99301f2f349d0f9051ac635bb14adc835ad317605718faea2792f",
       "width": 261,
       "height": 480,
       "pdf_object_id": 149
@@ -356,7 +356,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 6,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1693-jt-2025.jpg",
-      "sha256": "0de00d0866926370e516151c46a6b27e873f19828a520b934a49217b0486082a",
+      "sha256": "3717b6cfdc729f39671eee3a664b97d3fa7d05bf16c03f3d25f388649a5189eb",
       "width": 261,
       "height": 418,
       "pdf_object_id": 148
@@ -375,7 +375,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 6,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1688-jt-2025.jpg",
-      "sha256": "5f22432541fda590f1f7ec35116c270fbd016d33f1e176c2cc2e1bad2965f8c3",
+      "sha256": "7ead137f147e2bf2db85d2f934da1cb1387e12fc1b2474a59585d9302bc1112e",
       "width": 261,
       "height": 418,
       "pdf_object_id": 144
@@ -394,7 +394,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 6,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1706-jt-2025.jpg",
-      "sha256": "439d617ab4f44440efa65dae1d53074691182f6cf29ed847a0bbe2782ae50b81",
+      "sha256": "ec46bd1c1f39583eaa86115b9a1cf4783dc07b0aafd314c0d032f033e023291b",
       "width": 261,
       "height": 418,
       "pdf_object_id": 146
@@ -425,7 +425,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 6,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1705-jt-2025.jpg",
-      "sha256": "f3bdfc83d9db846d2460cc63660b61b33dffe160af7d66974de91a4f8eaafd82",
+      "sha256": "4b21701236ebe84f03cccbaacec0960f7a0bd13d4e6b87d181bf0ae6cf8acddb",
       "width": 261,
       "height": 479,
       "pdf_object_id": 147
@@ -444,7 +444,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 7,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1506-jt-2025.jpg",
-      "sha256": "0274777b315e44eea66b2803b4486524ce6be2cf5b533ded922bbd3f7f500bf7",
+      "sha256": "2e57bf2039a8c92c41f88d7786723489e6630111f2344141775e05713bedfc11",
       "width": 261,
       "height": 420,
       "pdf_object_id": 166
@@ -463,7 +463,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 7,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1507-jt-2025.jpg",
-      "sha256": "9c795f9697e14961b915beb89678a189c63ecd92e52b50b117733279871c6826",
+      "sha256": "2b2901bcb9c57fb37e35a1f09acc3bd37b61a16634fad7293e2e6e0e3c8653e8",
       "width": 261,
       "height": 420,
       "pdf_object_id": 167
@@ -482,7 +482,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 7,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1412-jt-2025.jpg",
-      "sha256": "4c269dcc2ab8108652c00120f65b40ac4002f8c018fa69074f34489b5fed363e",
+      "sha256": "fbc1aa29fdcc6e1fc0c7482f9cfdd573cc760e550b9c921ffada7f1a328ee7a0",
       "width": 261,
       "height": 485,
       "pdf_object_id": 169
@@ -501,7 +501,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 7,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1508-jt-2025.jpg",
-      "sha256": "12fcc57c1454fb515d92aa61737819d5e89511a9a6e590c039a20ae045b60f28",
+      "sha256": "de4f56f5f2f8929ac843cedfc9640797744902f75a5f10a875fcbb928dd69b0b",
       "width": 261,
       "height": 485,
       "pdf_object_id": 171
@@ -520,7 +520,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 7,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1397-jt-2025.jpg",
-      "sha256": "1d094127af08840c10fb408ff964474daa7e2638dd269a5e1ed5b3f1e74ac4e1",
+      "sha256": "c7c2c8d7cb0723a088a74c1b5a4bb4a22da565712d36de2c3a0f94793185ba10",
       "width": 261,
       "height": 420,
       "pdf_object_id": 168
@@ -539,7 +539,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 7,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1440-jt-2025.jpg",
-      "sha256": "0810851f27ef8c9d7d4a5ee68df2bb0b18f14e4a50a57f00f065bda3944861da",
+      "sha256": "333ba282e859e390a43bbe5caba05da1c8283117958297fd3edc61246c9e9733",
       "width": 261,
       "height": 420,
       "pdf_object_id": 170
@@ -558,7 +558,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 7,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1441-jt-2025.jpg",
-      "sha256": "386e24a621aa2e14dfcfe6376eeb1b2d325ff214585bd7301faf363f58bb2c97",
+      "sha256": "55ed0e36e7428322e177dd2c1c5a5b4a08e85e62b2e4f80970bd437c4f08ac45",
       "width": 261,
       "height": 485,
       "pdf_object_id": 172
@@ -577,7 +577,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 8,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1964-jt-2025.jpg",
-      "sha256": "4f3b81bc7a12ea39a6ad858a662eb5475d6b61ac793d2d4b3f59675b9bf8e088",
+      "sha256": "ff385d07bce3b054d3f002713f246a7baf01188bce9890fe90f24c82e79c6b43",
       "width": 261,
       "height": 420,
       "pdf_object_id": 187
@@ -596,7 +596,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 8,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1965-jt-2025.jpg",
-      "sha256": "b98ee64f01a7c954beae44c0eea684a866300bdbb6997093301bf9406e9f0ae8",
+      "sha256": "df9e2cc652bf493c5c4bef3ff89d766b5c380e0a38cba1c61b778d6e1fd7e57c",
       "width": 261,
       "height": 420,
       "pdf_object_id": 188
@@ -615,7 +615,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 8,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1966-jt-2025.jpg",
-      "sha256": "6564bd4379110f42491f4eb5bf453f46ada7c4bdd5a608c5b490516a29fb6272",
+      "sha256": "a8df03c544859793ff7a7ef39a3df58254918fbdaa154c3639a0b15aa1d61838",
       "width": 261,
       "height": 485,
       "pdf_object_id": 189
@@ -634,7 +634,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 9,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1063-jt-2025.jpg",
-      "sha256": "0604f30b811492a4c1fe825995914c92f405cb54f663dfba0b60fbafcf7e3c64",
+      "sha256": "14d545307b89f667d2a2bd2d960052f1b1b0da0e7ee58805af6057e0135175f8",
       "width": 261,
       "height": 479,
       "pdf_object_id": 225
@@ -653,7 +653,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 9,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1064-jt-2025.jpg",
-      "sha256": "cadce10f53ce3762e5f778d718427642b0dba60aa8de24cd0d2b96afd64d5a53",
+      "sha256": "98723734e67a2920feaac0a2a26528ad593c131ccbe583d7f165405900c244bc",
       "width": 261,
       "height": 479,
       "pdf_object_id": 224
@@ -672,7 +672,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 9,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1087-jt-2025.jpg",
-      "sha256": "d8fce3b94b25cacb29ea73971da84206a891ffafe777ad0f9511cca2d688036c",
+      "sha256": "69b2998df584d51eeb9e8a8b9e591b5cabe9191157731eb10a5d014457a2e167",
       "width": 261,
       "height": 479,
       "pdf_object_id": 222
@@ -691,7 +691,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 9,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1065-jt-2025.jpg",
-      "sha256": "1743c51e0bd967711be0b0c33c9e80e037d1330f00fb9a54af6a593ee18ca4e4",
+      "sha256": "cc7ea06bf0c683937c19f64db2e5ff65548ffaffa771d8d940dead99f9d54e6f",
       "width": 261,
       "height": 479,
       "pdf_object_id": 223
@@ -710,7 +710,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 9,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1041-jt-2025.jpg",
-      "sha256": "29bede47b10967a6d964338ae35de62670581babf7b5312e0df1c9db60998c8b",
+      "sha256": "61294d7313ec7d3a6d21b95cb84bd45ec3f8283b038e9382cdab588361303067",
       "width": 261,
       "height": 479,
       "pdf_object_id": 228
@@ -729,7 +729,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 9,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1042-jt-2025.jpg",
-      "sha256": "16079dd1d4bec3451af31d97ca43f6ce7f50269b8b355c44324d1256ca3f1816",
+      "sha256": "29bf438da15f61476083d84b08cae2ac2ad61f7b19dad552bc4b5e7182c321e1",
       "width": 261,
       "height": 479,
       "pdf_object_id": 227
@@ -748,7 +748,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 9,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1088-jt-2025.jpg",
-      "sha256": "212a8b0dfa1392e249233f7023e51c235d5e76894803a622c4133b69a4baad8f",
+      "sha256": "1a7ce6a5efed2ca6418d93f01869eacceeb94b057d0742bf8084791e851143a6",
       "width": 261,
       "height": 479,
       "pdf_object_id": 226
@@ -779,7 +779,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 10,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1312-jt-2025.jpg",
-      "sha256": "10a6c4fbf8284ba2e4a35bea4cdebee7d4f0a30dcde3597df43b9f9c2d03d0ad",
+      "sha256": "589df1c14b10c8c5eaf8e6b3f8c1f80e13eee4a599b3e91b4e5737df01ea2e6e",
       "width": 261,
       "height": 422,
       "pdf_object_id": 250
@@ -798,7 +798,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 10,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1244-jt-2025.jpg",
-      "sha256": "e72f807ed893b1c551751c5138e3451d74cfbddaf68f1312dabab60287c60b9b",
+      "sha256": "795d3bb8820bbbf428778cd137f8f9bd2fff9a77ac07a666bfc1c03f86276062",
       "width": 261,
       "height": 422,
       "pdf_object_id": 253
@@ -817,7 +817,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 10,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1422-jt-2025.jpg",
-      "sha256": "e3da2db92e5d2947a31643fb3dd2b35e78045a3b5d46e8558cc2a98781b3acd1",
+      "sha256": "bcb1176c0002c4b2a527ae1484ae591c9a3bd423da3377efc95f27406bc9a57d",
       "width": 261,
       "height": 422,
       "pdf_object_id": 254
@@ -836,7 +836,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 10,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1624-jt-2025.jpg",
-      "sha256": "0ae5b0a5792959977ae69dd7e6a4b7aca1cd56cd582f5051e64792d41eda8b3f",
+      "sha256": "d5779e0beb2bee68427e5e414253ecac72db7e8771aa72d07eef9fe8b871ec96",
       "width": 261,
       "height": 422,
       "pdf_object_id": 252
@@ -855,7 +855,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 10,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1143-jt-2025.jpg",
-      "sha256": "eeae2bd43197e67c42ffcba594d8ae066936f6d42bb8cc987a5c8fbe22fda59e",
+      "sha256": "1e0c08a9de83fc79674f4823d638a607708adb2c4c75b8123b6aa54bf5280505",
       "width": 261,
       "height": 426,
       "pdf_object_id": 249
@@ -874,7 +874,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 11,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1200-jt-2025.jpg",
-      "sha256": "a643abe9bfa2ab137885fc8d0ab5d9e96956ebf6f2fbc9243f7ea6af8b08e308",
+      "sha256": "3243c1e37516cefc6d03c9b5e8498ac7259c1a30bf3205110f018519948fea35",
       "width": 259,
       "height": 455,
       "pdf_object_id": 294
@@ -893,7 +893,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 11,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1278-jt-2025.jpg",
-      "sha256": "52ceb7e5b6a3ab26eb766c96a921dd2027076dcef4857cf29209f98d40f90148",
+      "sha256": "ca0b09a492cc16dfdc0759930f66c83fa2d603821a8b76624df3e48c9cf8638d",
       "width": 260,
       "height": 406,
       "pdf_object_id": 290
@@ -912,7 +912,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 11,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1315-jt-2025.jpg",
-      "sha256": "0df5a187b84decd136b474688f25120cb5ab2c424cce7621787ee96875cfdcf1",
+      "sha256": "eacae87f803149f152e409c70b27281466278d25b43fbf4ac6199eea87de9520",
       "width": 260,
       "height": 406,
       "pdf_object_id": 289
@@ -931,7 +931,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 11,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1334-jt-2025.jpg",
-      "sha256": "fe1cb36291fbcaaf1439dc2045e1cfa15d0fe5be65cfc5502bc0ac29ef7e45f2",
+      "sha256": "4f100a4638e2cb47747368777f29f8ef3a80641f3d511c5f78e5596d28bf3752",
       "width": 262,
       "height": 468,
       "pdf_object_id": 288
@@ -950,7 +950,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 11,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1197-jt-2025.jpg",
-      "sha256": "37d3682c8ab43f89e2207e7500535b9e4da52b35d542cfedc683387bc3f73dca",
+      "sha256": "827b12a3d57ac11b978cff46f17f1a79492024a034b24a74d62bed507b25d132",
       "width": 260,
       "height": 406,
       "pdf_object_id": 287
@@ -969,7 +969,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 11,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1245-jt-2025.jpg",
-      "sha256": "6621059d9ed42212d029ce9afb11940b7ae0c33024faa04ad097558dbb3684ed",
+      "sha256": "1db16f6a2e1c3c80cae5e021bcb734e65954b085d3381ba8f1cfccadfc1bb6d6",
       "width": 260,
       "height": 406,
       "pdf_object_id": 291
@@ -988,7 +988,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 11,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1469-jt-2025.jpg",
-      "sha256": "bcb6d63f2bd3ab7e8e35de5404a57bbbb67d2858759676345cba5d709c1ba169",
+      "sha256": "60aa2f10b0a368f9fcf661b3e699c51d4cdc1290a84a130ea1c6e75894612ee1",
       "width": 260,
       "height": 465,
       "pdf_object_id": 292
@@ -1007,7 +1007,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 11,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1470-jt-2025.jpg",
-      "sha256": "12cf61969ca0c2fd8be719b740e0e3c5d2f5650c827084e0411ad4d9931cc1b9",
+      "sha256": "f2a781000e382838042499006e774d93bf989b33bae72bdc71d70065d0f09815",
       "width": 269,
       "height": 420,
       "pdf_object_id": 293
@@ -1026,7 +1026,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 12,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1016-jt-2025.jpg",
-      "sha256": "0fc23006d72aa663f362fa7575063368b710bc4a5881729f22b4f7e99fb99745",
+      "sha256": "7d713cc390879d99ca1b11944f9ef5186d71e9e8c015be3dacda133b12aecd05",
       "width": 210,
       "height": 342,
       "pdf_object_id": 319
@@ -1045,7 +1045,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 12,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1267-jt-2025.jpg",
-      "sha256": "d3152965d2881448b851bf42f742c0aeec2f01f151b48539b701f360efad74e9",
+      "sha256": "c57aa7afd075eb954527462249d0fc82e1daa043bb85e67a4504e74586282c2f",
       "width": 211,
       "height": 343,
       "pdf_object_id": 321
@@ -1064,7 +1064,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 12,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1415-jt-2025.jpg",
-      "sha256": "9405d9e592b75bc4fc738e07d9e05b47dbaccdf2b5078009ba14dcde911972e7",
+      "sha256": "2eb938da3386220840d35c57a52847d091b57373855cd0130c73ef58473e8a3d",
       "width": 210,
       "height": 343,
       "pdf_object_id": 320
@@ -1083,7 +1083,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 12,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1035-jt-2025.jpg",
-      "sha256": "0029f9c5670cad8d39fd915ebbaa665bcd7bec785adbb49451a9efc66124d496",
+      "sha256": "8af1147a2e0bf34f056b0d7c40570b3e6e6556cf8c47ae4222c75f53a53c9da8",
       "width": 279,
       "height": 377,
       "pdf_object_id": 322
@@ -1102,7 +1102,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 12,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1034-jt-2025.jpg",
-      "sha256": "4af4e7c28d59661c06f1bf66b146abaf19b12b4ee3b52e6235c49e994ea6be09",
+      "sha256": "8af92d0d4e70e7e837e306950621b15e17eb30b80abec2e787996041d2ae0d9c",
       "width": 205,
       "height": 334,
       "pdf_object_id": 324
@@ -1121,7 +1121,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 12,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1018-jt-2025.jpg",
-      "sha256": "63cc39be04c540788dfc5388568f770891fef2c48b30ef79f1293315e5f61fb2",
+      "sha256": "20d300fea95da8472afbcf857dd7c31c1381fc989da57c8751810f744e6b1418",
       "width": 266,
       "height": 415,
       "pdf_object_id": 323
@@ -1140,7 +1140,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 12,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1264-jt-2025.jpg",
-      "sha256": "d774ba7bcbef745c1bc579d4d6072b8dbe0c0c0e316e4101143e9e35839c678f",
+      "sha256": "64bf66cc83495cb67430579f5ac4042ad22a50d8ce02e502e30dbdee31c5d60a",
       "width": 262,
       "height": 417,
       "pdf_object_id": 325
@@ -1159,7 +1159,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 12,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1333-jt-2025.jpg",
-      "sha256": "8366fe90cd7ac4c7a807bb3ec9d99305ad7e06bbbb243e88816099297a19a64f",
+      "sha256": "26bc59299df460d11e0be709e54d7f52664d7a5e728a8f6cdff39826ca0fc5b1",
       "width": 265,
       "height": 421,
       "pdf_object_id": 326
@@ -1178,7 +1178,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 13,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1609-jt-2025.jpg",
-      "sha256": "e9efd6f20a0cd8439ad2652c16c7ae297d90231b9f67bd6cd8d1bae94462b32a",
+      "sha256": "d48e5f679b14e7609cfa4ae028be18c3a48302326733c8554f39b16a85df7580",
       "width": 291,
       "height": 359,
       "pdf_object_id": 350
@@ -1197,7 +1197,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 13,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1919-jt-2025.jpg",
-      "sha256": "6e35fc03a019a313d9959b9dde9acce4dbc9cb43fb0b13b499515be5c1025a21",
+      "sha256": "588f53d2b8cc83cf72da72a1b490160a09e6d98ecb6f9fb9e274f9c5fae79120",
       "width": 261,
       "height": 414,
       "pdf_object_id": 351
@@ -1216,7 +1216,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 13,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1642-jt-2025.jpg",
-      "sha256": "2bee258a3c7d2703bfa11b62a34b060f09046803576fb55f964095ccc4b3c661",
+      "sha256": "bea672acd03330f3a4703e84a5a2be327e73454e617ba2b22494492a37640a3b",
       "width": 262,
       "height": 425,
       "pdf_object_id": 349
@@ -1235,7 +1235,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 13,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1112-jt-2025.jpg",
-      "sha256": "7582458dfca930ced8be232fa11b643812a7aa7179507cdb0eb8bedbdde25717",
+      "sha256": "0a699ca6541b1c3f98c998cc6add81f1186fdf62360186b1ed2483096b4ebfce",
       "width": 262,
       "height": 425,
       "pdf_object_id": 348
@@ -1254,7 +1254,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 13,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1643-jt-2025.jpg",
-      "sha256": "1474c1093b33e59a8c9a4a40e7754d429b256489a5c4a4a552f9505a443c4a63",
+      "sha256": "e2b1b1f3f9d50214e61d999d3b357e7180c45a38f3edfb7d512c658ba0956cce",
       "width": 262,
       "height": 425,
       "pdf_object_id": 355
@@ -1273,7 +1273,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 13,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1113-jt-2025.jpg",
-      "sha256": "28bed14d2e022d5695b5aec9b53f1e97324dec047488657a581482312346f1f4",
+      "sha256": "a98d509e3a1715c78b6df88f1f4187d9b29364658686f98ac53c351cf8061983",
       "width": 262,
       "height": 425,
       "pdf_object_id": 353
@@ -1292,7 +1292,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 13,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1644-jt-2025.jpg",
-      "sha256": "d08983842f9c02d0fa5724b9492649390e3075266dd12b7632a7fee3974a6d83",
+      "sha256": "ddb48ce7967633806a8a939a806f2346869ac26bbb45b310d4da10c9cf1d404b",
       "width": 262,
       "height": 425,
       "pdf_object_id": 354
@@ -1311,7 +1311,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 13,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1174-jt-2025.jpg",
-      "sha256": "31bd942439577ac7aa181da510d792015e8a3261e2b8b2cd0b1330e847eb9a8a",
+      "sha256": "2258ab0ab01b7d823bd30451b4f666a01f8f9a4e6ada99909cbadbd39e3c49a0",
       "width": 259,
       "height": 482,
       "pdf_object_id": 352
@@ -1330,7 +1330,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 14,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1115-jt-2025.jpg",
-      "sha256": "b736cb62a858f804e66a632a9357519333aac83316eeb515554775067db602c6",
+      "sha256": "e7f87e675c8d55d1fbc7973ace00248f6071cefbf6dcdb43c1146fa7102f01b2",
       "width": 265,
       "height": 430,
       "pdf_object_id": 368
@@ -1349,7 +1349,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 14,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1175-jt-2025.jpg",
-      "sha256": "498eaaeee60dc2f6af9f9750fcdb63c6a3e09a671cf614fb3c00159511e4c636",
+      "sha256": "8bd9b4d9b1fb5fe29af1d360baa1d84cf9df8f5ff35cff8b9bae8da3c1a68897",
       "width": 259,
       "height": 482,
       "pdf_object_id": 369
@@ -1392,7 +1392,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 14,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1058-jt-2025.jpg",
-      "sha256": "0bbd45adf880cc7768216476e8637b1c536660c2ab462ddfd44405c587768ac6",
+      "sha256": "64630d7cf2194781ceb26cdbeb9c7fc5d2bd2683b981ff3257b597743ee886f5",
       "width": 261,
       "height": 485,
       "pdf_object_id": 374
@@ -1411,7 +1411,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 14,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1527-jt-2025.jpg",
-      "sha256": "1bdd179e1f29e63ce91c6154f277794e2e546c79c2e784fe306699a665829aae",
+      "sha256": "a1fb1052af4d376dc861e93b142836b582ba1b821dcbfb6f45c968350d9e9b70",
       "width": 261,
       "height": 426,
       "pdf_object_id": 372
@@ -1430,7 +1430,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 14,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1528-jt-2025.jpg",
-      "sha256": "912d722aec8773270a109d7444d6fe6551767292986ea476a8da693b050a82d9",
+      "sha256": "8e3e9d487c817e9ce02643de71b41eef3a5d293bad9528bcbfac1c0ab5fcd6ad",
       "width": 261,
       "height": 426,
       "pdf_object_id": 376
@@ -1449,7 +1449,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 14,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1279-jt-2025.jpg",
-      "sha256": "e3c5bd40a09e55d320afc4c9c3b6cc5aae9dabfe2fddf4c7ec30120af715cb80",
+      "sha256": "0748259b39352b0a98b9b50ec374ad8309c919dbefc0a7b0c6aac6f9b571fbc6",
       "width": 256,
       "height": 465,
       "pdf_object_id": 370
@@ -1468,7 +1468,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 15,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1366-jt-2025.jpg",
-      "sha256": "40f881c4656032ceea9b0b087870f9a699efd19a30aa699f59f275028a52186b",
+      "sha256": "043a455e781b0efc4c768b7578bcba4b1e5890b5b6c988405284fff3187ba989",
       "width": 256,
       "height": 465,
       "pdf_object_id": 396
@@ -1487,7 +1487,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 15,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1457-jt-2025.jpg",
-      "sha256": "fa49daebb52b9cdb30aa5c805b2dfe0e1c9ad9e26c691f16f8de7f50122b49ce",
+      "sha256": "49ce056c1298522f94c87c36528545cd1c2104576056cf520acb9e1f7486c49f",
       "width": 261,
       "height": 479,
       "pdf_object_id": 398
@@ -1506,7 +1506,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 15,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1458-jt-2025.jpg",
-      "sha256": "03b478e575ac9917af8ad4382680ef4d356ab66061ba42d42079bd2928c9ff55",
+      "sha256": "192b295deb569b3106d30c5faf8bf9937f90476243e254e210d86646fcd4177b",
       "width": 261,
       "height": 479,
       "pdf_object_id": 400
@@ -1525,7 +1525,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 15,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1027-jt-2025.jpg",
-      "sha256": "62ff03b0e203f6697b613187073d28092df43dc028ace40006d895bb0a784945",
+      "sha256": "6af61e15a13696e82961d1606689ac253fc56a9d432d2d8919ca06d2b4fc19e0",
       "width": 270,
       "height": 422,
       "pdf_object_id": 401
@@ -1544,7 +1544,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 15,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1392-jt-2025.jpg",
-      "sha256": "aea931dbf568e5eebaa0893d918315faa19479c4ff53387895bc0e1437f0246c",
+      "sha256": "75bdaeaaa80d1b3fa519e58b5a868e558cefdb5a632e0e22b3d874ccd617b740",
       "width": 269,
       "height": 420,
       "pdf_object_id": 402
@@ -1563,7 +1563,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 16,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1600-jt-2025.jpg",
-      "sha256": "86f589059eebd188027a2bb9c996f78ed9c1d0dd36882ca5da094e3b8e242cd9",
+      "sha256": "ccf2832971c7a971c19f737ca22682d3223e8593ce742d7b473e89457864aa1e",
       "width": 264,
       "height": 427,
       "pdf_object_id": 413
@@ -1582,7 +1582,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 16,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1601-jt-2025.jpg",
-      "sha256": "b954703249685067bd57983309ca21a20aca1f43a6839d5ce1f002edda67307e",
+      "sha256": "ccc5f3c71dcf056a04db6d3615c3a2dc0615057e3fb737351cf52e75dfd860e4",
       "width": 263,
       "height": 427,
       "pdf_object_id": 414
@@ -1601,7 +1601,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 16,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1610-jt-2025.jpg",
-      "sha256": "d844f4cadaa0bc8c95565c549b836fc02ca66dba62e81d5b74eb39f7bbad98fc",
+      "sha256": "2a5846c74e617f2ba0d68c00e625c496fb6eb1c8b3f4faf97b6f3f348e7bab9c",
       "width": 263,
       "height": 427,
       "pdf_object_id": 415
@@ -1620,7 +1620,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 16,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1614-jt-2025.jpg",
-      "sha256": "f6ee2fba97eb3d88831b15072433348636f53ecd97770e10bb80ae2c1c12af0f",
+      "sha256": "cc99396ead13fd6b4a68d72348868fe506494dbdd4a8d5e8941127fb37bd0fbb",
       "width": 264,
       "height": 428,
       "pdf_object_id": 416
@@ -1639,7 +1639,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 16,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1523-jt-2025.jpg",
-      "sha256": "86f81ff872599e63c6a010ba2cf20ae4df722555b71b963d4b9ab1709092832d",
+      "sha256": "b016b9a7026fb1a01433bdd9debaca0524ff9475c1bf0a6971f77e68a40e9876",
       "width": 263,
       "height": 427,
       "pdf_object_id": 417
@@ -1658,7 +1658,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 16,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1524-jt-2025.jpg",
-      "sha256": "e33ea781d495107a6a48740a29810dadeefc96b70b512b7c0538698194205db0",
+      "sha256": "857a178c73609ca41b1d041216e773e1bcc787615d8f274171b65ccdbfb42309",
       "width": 263,
       "height": 427,
       "pdf_object_id": 418
@@ -1677,7 +1677,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 16,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1525-jt-2025.jpg",
-      "sha256": "4a470163d82a1266f84206ab264f48eeb43d0a8fb63f4999e1382ac096759be9",
+      "sha256": "5008b52b4296d88e191b7824b6cbec91fa5c96ceb405d322210da0411d45ab90",
       "width": 263,
       "height": 427,
       "pdf_object_id": 419
@@ -1696,7 +1696,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 17,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1032-jt-2025.jpg",
-      "sha256": "ce6104fa6b7420c6401d08b0646909479a21bfc3184f4f9edd121cc074e4f187",
+      "sha256": "46bb9d256648f49ec0b7819d85d25ba2eb1a5bfcd7035a33dfdfd6a99e696bb2",
       "width": 260,
       "height": 408,
       "pdf_object_id": 454
@@ -1715,7 +1715,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 17,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1970-jt-2025.jpg",
-      "sha256": "289308c6f581f4b282b7a9d50252d107b1526170e7411ee52bab3b7f28f5290b",
+      "sha256": "c023db268bf198954e5a3be81a3f9cbfff1b918e7007330c6602ddfe70058f33",
       "width": 260,
       "height": 408,
       "pdf_object_id": 452
@@ -1734,7 +1734,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 17,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1971-jt-2025.jpg",
-      "sha256": "6d0d8abb4e408007fc8ac55f5be723cb81f95530d756cc529bc9b8bc9fb9d843",
+      "sha256": "54b460ca81499987a19d06ad31737d7512bf5955fca2232025444f5a5a4b163e",
       "width": 260,
       "height": 408,
       "pdf_object_id": 456
@@ -1753,7 +1753,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 17,
     "image_asset": {
       "file_path": "assets/catalog/products/wt-1487-jt-2025.jpg",
-      "sha256": "b67e512510955bbbb08d6d18f43f1300efa58b631a580e3f2b175eada6429606",
+      "sha256": "9716d406d0c6d853de61164543038a66bf84f1a9dd852d7c9295571fa5432e1b",
       "width": 256,
       "height": 497,
       "pdf_object_id": 450
@@ -1772,7 +1772,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 17,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1446-jt-2025.jpg",
-      "sha256": "b40280913b83d9e6cc76b39d1a93c936ed96acd6ebca36d1f18e6140677041c9",
+      "sha256": "2b23e0753c9f51a29df1c8f9dd3d4026a0c8e09702546ac707edd72b550b27f2",
       "width": 257,
       "height": 498,
       "pdf_object_id": 457
@@ -1791,7 +1791,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 17,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1613-jt-2025.jpg",
-      "sha256": "e28c9a3f5582440088504a4d202b1bf1bbba4f6121c4b6585f40cb50574fcd2a",
+      "sha256": "33a341080721d0c768016e1725d90d08a71246a5d22b36de89f3cad0088956d9",
       "width": 274,
       "height": 497,
       "pdf_object_id": 458
@@ -1810,7 +1810,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 17,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1379-jt-2025.jpg",
-      "sha256": "4600b8102793ef4f1fa9be8dca8bb3df2e9d03373b2c4911aa35ec80904364c9",
+      "sha256": "28b4f291a9f0bfc130e65fbaa001f67080d66f44fff4e1eb99c2a6c60bdfacdb",
       "width": 256,
       "height": 497,
       "pdf_object_id": 459
@@ -1829,7 +1829,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 18,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1992-jt-2025.jpg",
-      "sha256": "571d31132719a83cbdf292797ec05e79bce7175aa8b8bbbac6b3ef5404441af6",
+      "sha256": "3e29c27db6f987a168801e06a0590c8e38d0894625d11fb3228be63b78fb24b0",
       "width": 262,
       "height": 377,
       "pdf_object_id": 483
@@ -1848,7 +1848,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 18,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1993-jt-2025.jpg",
-      "sha256": "f677e9e4b66cb81957c6816817425e326b7f50273992fc24ff00bf4c6c0b4b70",
+      "sha256": "6140dc8db25e11c01a7ff687ab4119330af132d451c1106bb599ccfe70a66802",
       "width": 263,
       "height": 356,
       "pdf_object_id": 484
@@ -1867,7 +1867,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 18,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1994-jt-2025.jpg",
-      "sha256": "04dfc9012b15479276cf324a38bb4241109c27bd26edde8d7a35cacda7dc7e2e",
+      "sha256": "d79f4915cb90ef0d1b2e7b6c891a360272aaa5c2ef1593799085193f011b1abd",
       "width": 262,
       "height": 355,
       "pdf_object_id": 485
@@ -1886,7 +1886,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 18,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1995-jt-2025.jpg",
-      "sha256": "26efd7cc7f3e45575da0c330b1636acbeb8ce75d6e68bb51dad6f2859fb3ab63",
+      "sha256": "9555784f0700c6b99968c20de440fc1dd52050ae9359d2560f5ddcb013ec1cb6",
       "width": 262,
       "height": 355,
       "pdf_object_id": 486
@@ -1905,7 +1905,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 18,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1996-jt-2025.jpg",
-      "sha256": "11b5d05374c3dbefe0d9a1beb504c84f5665d063e9218c4b1522dc29fc764e8d",
+      "sha256": "1475845aedc5333ab38c7df023500ce8f03773bf4a679f5d2a87bb0a020b17e7",
       "width": 262,
       "height": 359,
       "pdf_object_id": 487
@@ -1924,7 +1924,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 18,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1874-jt-2025.jpg",
-      "sha256": "a2620bd2d004d7cc8ca31d0fb35e75607320c81f2524299e991be725a2c8ec2a",
+      "sha256": "4f842d8450023af620d64b74759a9d6d7df8bb93330dd4d6f7e1bc128b6cdcbc",
       "width": 261,
       "height": 334,
       "pdf_object_id": 488
@@ -1943,7 +1943,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 18,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1875-jt-2025.jpg",
-      "sha256": "58727f9366675e4aeb5493d14c904b4b289a3ca5c3d44e96b7c139d6e4965fa3",
+      "sha256": "8e9d2a1de1b270b08c9b17cdfba3266ffb42afedd84a24312a8e603f515d7362",
       "width": 263,
       "height": 338,
       "pdf_object_id": 489
@@ -1962,7 +1962,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 18,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1621-jt-2025.jpg",
-      "sha256": "b486a0940e06ee8af687c1e7dd550dbb3ccc782a3c5310c01a49e6e143700e55",
+      "sha256": "778d22adc54fb9f9e3badd7a5adeff13ffed07f7414d084ea9addca2bfdd58cb",
       "width": 265,
       "height": 339,
       "pdf_object_id": 490
@@ -1981,7 +1981,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 19,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1615-jt-2025.jpg",
-      "sha256": "96cfc886f9f8986d19d3f3da4f1d73ba790d9927fe1911e383b0212e05004867",
+      "sha256": "79da1368d3df930bd418c0b8927336a17ea9350db3b9fec54f6d24fe910085ac",
       "width": 265,
       "height": 339,
       "pdf_object_id": 516
@@ -2000,7 +2000,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 19,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1877-jt-2025.jpg",
-      "sha256": "aae53cf4d0fa48a1604884314f32d270f0fb845210d3e7619be9cc4a94ba89f4",
+      "sha256": "b67dfd7e55e74d7762592250a34cd29a23f8746e608e7725bc72257e7ad1935a",
       "width": 266,
       "height": 339,
       "pdf_object_id": 515
@@ -2019,7 +2019,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 19,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1876-jt-2025.jpg",
-      "sha256": "5003e50804588642ff9082f7b1317ef8679be577cb7f7c0ba1fd023fe3f24fb5",
+      "sha256": "62977b46ce578e075c9f5d547e1b6a06417331b951725c3b9b83d780eab395f6",
       "width": 266,
       "height": 340,
       "pdf_object_id": 514
@@ -2038,7 +2038,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 19,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1620-jt-2025.jpg",
-      "sha256": "fc3a04ee6e2a65368936b51ecd38f9a8a657e17701c09a12c6aed046a75775cb",
+      "sha256": "63b4bc93c486605189f3ce5b99488682acf77f79c79727e03ef27a06aaf70da5",
       "width": 259,
       "height": 333,
       "pdf_object_id": 517
@@ -2057,7 +2057,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 19,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1878-jt-2025.jpg",
-      "sha256": "48a848f690350b7fe368a074706e824cd14f0fc01ad98b060a8888604be067bb",
+      "sha256": "6786454bad4611429de51dece2fab917d8785b8eb9fb89702c3d0b218eabc0d6",
       "width": 267,
       "height": 343,
       "pdf_object_id": 519
@@ -2076,7 +2076,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 19,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1879-jt-2025.jpg",
-      "sha256": "2e0604e82f1e511ee5d7b14c19ffb4a24faaa23d5a5d64fa58c1d9b995557c1b",
+      "sha256": "f5759229d0931f11d1ad6fcbac5c4ed3d0aab0ef87806b2851a54ab10fc997e4",
       "width": 269,
       "height": 343,
       "pdf_object_id": 522
@@ -2095,7 +2095,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 19,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1880-jt-2025.jpg",
-      "sha256": "6b0b3b8039f0f53e4dbd82a8c708c8c59bd7ce31668d2e9a266efb7a2a81560c",
+      "sha256": "3986b8ebb8512d96e6afd35e4a66cbd7fc6ae9b9c541e0d42024d7042bb9490a",
       "width": 269,
       "height": 344,
       "pdf_object_id": 520
@@ -2114,7 +2114,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 19,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1881-jt-2025.jpg",
-      "sha256": "7667883435dd7161d40a9c6883e02ca7e9726ac3921d13b0cb62609c2480623e",
+      "sha256": "e82ab89681c33051c9d76802836fc75b1fb049294bca810bfac63c770238ba49",
       "width": 269,
       "height": 344,
       "pdf_object_id": 521
@@ -2133,7 +2133,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 20,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1247-jt-2025.jpg",
-      "sha256": "05238794f9f5a22c00580c4eaeb25beca9963fd31f8eccbfe085f60182ef7939",
+      "sha256": "13581c55a1e4a4e436cbd167a2101ee0bdac4f55c1739e33ebd42dfc373c4cf8",
       "width": 265,
       "height": 338,
       "pdf_object_id": 546
@@ -2152,7 +2152,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 20,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1182-jt-2025.jpg",
-      "sha256": "9bc83b725f1b60c69bdd15b1c39b343aba4573a4242fc9794d27c41371f38e1e",
+      "sha256": "00d972ffba8a71b33204e0fc26c811b62ca3faefd4343b253eb4e50d7318c672",
       "width": 283,
       "height": 367,
       "pdf_object_id": 547
@@ -2171,7 +2171,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 20,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1183-jt-2025.jpg",
-      "sha256": "8febd72bf345490008e245014264241d7f5a005443dbcfbf2bc0206b7b217506",
+      "sha256": "1dc2bc174cf2e38369dedaf7c004cff557ecd4b5145bf66daf3b614585a73b09",
       "width": 261,
       "height": 480,
       "pdf_object_id": 553
@@ -2190,7 +2190,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 20,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1184-jt-2025.jpg",
-      "sha256": "c52790667799ee18d1092d49acb4c4b2dec62d4b2fb8b40a38dec233e249fb82",
+      "sha256": "149b93410e03706104f77b81a9d6b1567c699099e2c14d2e85a9bf0b82608fb9",
       "width": 283,
       "height": 367,
       "pdf_object_id": 548
@@ -2209,7 +2209,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 20,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1249-jt-2025.jpg",
-      "sha256": "76f904a7845b82a4ca25d62d638a5f8a4927617958c09e258a0bbab3746f5ed6",
+      "sha256": "96b987afcc1421d2248255c0907bd551948f3c6347420ae4e231a1fddd6b235c",
       "width": 261,
       "height": 338,
       "pdf_object_id": 549
@@ -2228,7 +2228,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 20,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1188-jt-2025.jpg",
-      "sha256": "92a941955d74dc1df7cd13f22f70fed2e4deb994f4ffdae60863430a73b4f8dc",
+      "sha256": "b59bb7b7126e9d6a88351c6ae80fd8248d8a209a25382092bef021e0ad3302dc",
       "width": 283,
       "height": 368,
       "pdf_object_id": 550
@@ -2247,7 +2247,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 20,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1189-jt-2025.jpg",
-      "sha256": "74b96347915f923aad1cf1e93376c29f6eda450d02916365185ff7e7758fc271",
+      "sha256": "a8c58c527d14ec13b595c2e7b40adc61d71607e84b33b340935f3f17bfad135b",
       "width": 283,
       "height": 368,
       "pdf_object_id": 551
@@ -2266,7 +2266,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 20,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1434-jt-2025.jpg",
-      "sha256": "1fdbd6753e52f38eab784be25172c70d5a03faff175533396c38d682dcf3d7d6",
+      "sha256": "b6d0b0b14649fe2e02b07ece77a0072d366b659d6c1d81532aa12bce75b0821a",
       "width": 261,
       "height": 338,
       "pdf_object_id": 552
@@ -2285,7 +2285,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 21,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1274-jt-2025.jpg",
-      "sha256": "d9badcea4bc7f69fa0eb808d8e3532ba822370dee7c4f8d4ec3bd682f17c53a0",
+      "sha256": "66b2a7b0930ee430d77aba4289a523024b96ca5f3d488b0f5f8969fe0ad602ed",
       "width": 261,
       "height": 456,
       "pdf_object_id": 572
@@ -2304,7 +2304,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 21,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1416-jt-2025.jpg",
-      "sha256": "1df9bd05115a897b804465427eef7104253450d8b02dd9884ed234d38acaae6a",
+      "sha256": "021ab170bbe04f54b82dda5a4a1b3a85b13bd427246b2453e909990c032675f2",
       "width": 261,
       "height": 456,
       "pdf_object_id": 573
@@ -2323,7 +2323,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 21,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1256-jt-2025.jpg",
-      "sha256": "9fb8782c40a5debf97fc61d3efdc0b525dd92cd9e82bcf1ccf31d8454c38fbd1",
+      "sha256": "267779d481bd04392fce124efb4c6c6163951505113601dd455466ad7c066ddf",
       "width": 261,
       "height": 456,
       "pdf_object_id": 574
@@ -2342,7 +2342,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 21,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1778-jt-2025.jpg",
-      "sha256": "b032b7e4c75a6b59fc16fd23c9f949f4d19b8a34780bc150d2db89f951ae94c2",
+      "sha256": "7ff71633f1d2d510dd85ddaa7427e01877fac711a19f0e60d565379387fd676d",
       "width": 261,
       "height": 456,
       "pdf_object_id": 571
@@ -2361,7 +2361,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 21,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-1563-jt-2025.jpg",
-      "sha256": "e4bebe4fe5470c39597ff9ac651e913a775e01e455c0234a24c4689626ec6502",
+      "sha256": "133bad850d8b433e7079b9146bc6146fe068c394a4c42e8a936e2f45e7cef509",
       "width": 261,
       "height": 456,
       "pdf_object_id": 570
@@ -2380,7 +2380,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 22,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-3438-jt-2025.jpg",
-      "sha256": "3c88b2d7a7fc2cb9d5ca4ff93b6a45ce679257867da486dc1146d17a1a550f03",
+      "sha256": "a99cf5bf473a2f926de1052f417182370b45ab35f58ab9f6f930f0bfe40af846",
       "width": 308,
       "height": 318,
       "pdf_object_id": 586
@@ -2399,7 +2399,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 22,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-2377-jt-2025.jpg",
-      "sha256": "eb3fd5e63052aa9addb5684ac754c5141033a310c56e2babbd3af845f15a025f",
+      "sha256": "ab8e81a4a9dffd832f2089a19da4792aaa4b3a056cf276a3900effe5f1b6f4c5",
       "width": 284,
       "height": 284,
       "pdf_object_id": 588
@@ -2418,7 +2418,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 22,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-3440-jt-2025.jpg",
-      "sha256": "3374564c72cd3bd58b62af9c179e0d393c8b8972fb0f334cf19524ab35fe20f9",
+      "sha256": "19c5d111c2118aa2ac4a36262e4a0bd8e57d2e99a1930e00e1e8719a2836efb1",
       "width": 308,
       "height": 318,
       "pdf_object_id": 594
@@ -2437,7 +2437,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 22,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-3442-jt-2025.jpg",
-      "sha256": "2cf042da7ca5d4d36a2fe5a3e08ef97262b8e052a6ae6add8068ac5bc085d411",
+      "sha256": "46424de61bcbade40949fea71e39f5cf68f0450735a9a3f384f7fca7a8f906af",
       "width": 308,
       "height": 312,
       "pdf_object_id": 591
@@ -2456,7 +2456,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 22,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-3441-jt-2025.jpg",
-      "sha256": "baf943ded1cebf97f4a39f8c558b03d6a3a960e6d1cfff97bdbc0e50a7c28329",
+      "sha256": "5edd925653ade22bcb2d37bf20e9f09c67b6092664db82d7d0d40c46f319ede1",
       "width": 308,
       "height": 312,
       "pdf_object_id": 595
@@ -2475,7 +2475,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 22,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-3443-jt-2025.jpg",
-      "sha256": "19f84ab5b3f8aa2425818f4dd942b2708d35821cb5dc3afdd25fc709276f9b74",
+      "sha256": "59a6676b3a4a0c5e23b9aaca490e87fde0a60ef61883ac7da3b500b60cecb098",
       "width": 308,
       "height": 312,
       "pdf_object_id": 593
@@ -2494,7 +2494,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 22,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-3439-jt-2025.jpg",
-      "sha256": "a3b894930b7421087a50415b4edb6d70e5aef79b61890524927476ba177c325a",
+      "sha256": "9fc5449fff764cff5977dd5d04ee1f76c59c7d91cb26f31d46ee4ed20232493d",
       "width": 308,
       "height": 318,
       "pdf_object_id": 592
@@ -2513,7 +2513,7 @@ globalThis.KISARAGI_JT_2025_SKUS = Object.freeze([
     "pdf_page": 22,
     "image_asset": {
       "file_path": "assets/catalog/products/jt-2376-jt-2025.jpg",
-      "sha256": "818048968e036d88442199dcfc309032a1b636275848dc367f244e30229478d9",
+      "sha256": "f8d96b41a500b21ac23e416c8ff3b007db3a8d9d25a7702e4f3edc1757e1a296",
       "width": 284,
       "height": 285,
       "pdf_object_id": 590

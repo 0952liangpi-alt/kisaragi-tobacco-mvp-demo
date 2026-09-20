@@ -295,6 +295,7 @@
   const imageRecord = (asset) => Object.freeze({
     asset_id: asset.asset_id,
     file_path: asset.file_path,
+    sha256: asset.sha256 || null,
     status: asset.status,
     observed_price_jpy: asset.observed_price_jpy ?? null,
     price_preserved: asset.price_preserved,

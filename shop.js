@@ -14,7 +14,12 @@
   };
   const catalog = () => (globalThis.KISARAGI_CANONICAL_CATALOG || []).filter((item) => item.status !== 'PRICE_CONFLICT');
   const key = 'kisaragi-shop-demo-cart-v1';
-  const imageFor = (item) => item.images?.[0]?.file_path || item.image?.file_path || null;
+  const imageFor = (item) => {
+    const asset = item.images?.[0] || item.image;
+    if (!asset?.file_path) return null;
+    const version = /^[a-f0-9]{64}$/i.test(asset.sha256 || '') ? asset.sha256.slice(0, 12) : null;
+    return version ? `${asset.file_path}${asset.file_path.includes('?') ? '&' : '?'}v=${version}` : asset.file_path;
+  };
   const categoryLabels = {CIGARETTES:'紙巻きたばこ',IMPORTED_CIGARETTES:'輸入紙巻きたばこ',CIGARS:'葉巻たばこ',RYO:'手巻きたばこ',PIPE_TOBACCO:'パイプたばこ',CUT_TOBACCO:'刻みたばこ',HEATED_TOBACCO_STICKS:'加熱式たばこスティック',HEATED_TOBACCO_CAPSULES:'加熱式たばこカプセル',HEATED_TOBACCO_DEVICES:'加熱式たばこデバイス',SMOKELESS_TOBACCO:'無煙たばこ',SMOKING_ACCESSORIES:'喫煙用品',ROLLING_ACCESSORIES:'手巻き喫煙具',PIPE_ACCESSORIES:'パイプ用品',ASHTRAYS:'携帯灰皿',LIGHTERS:'ライター'};
   const readableCategory = (item) => categoryLabels[item.category] || item.category?.replaceAll('_',' ') || '商品';
   function toast(message){const el=$('#toast');el.textContent=message;el.classList.add('show');window.setTimeout(()=>el.classList.remove('show'),2200)}

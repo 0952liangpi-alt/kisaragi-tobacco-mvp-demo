@@ -6,6 +6,7 @@ const read = (path) => readFileSync(new URL(path, root), 'utf8');
 const html = read('index.html');
 const shop = read('shop.html');
 const shopScript = read('shop.js');
+const jtImporter = read('scripts/import-jt-2025.py');
 const shopPolish = read('shop-polish.css');
 const baseCss = read('styles-base.css');
 const imageCss = read('image-layer.css');
@@ -38,7 +39,9 @@ const requiredChecks = [
   ['shop product images preserve their source colors', shopPolish, 'object-fit: contain;'],
   ['shop keeps neutral product surfaces on dark-mode devices', shopPolish, ':root { color-scheme: light; }'],
   ['shop hero photo has no dark overlay', shopPolish, '.hero-image::after { display: none; }'],
-  ['shop loader cache version', shop, 'catalog-page-loader.js?v=20260921-site-merge3'],
+  ['shop loader cache version', shop, 'catalog-page-loader.js?v=20260921-jt-color1'],
+  ['shop image hash cache version', shopScript, 'asset.sha256.slice(0, 12)'],
+  ['archive image hash cache version', renderer, 'image.sha256.slice(0, 12)'],
   ['shop included in offline shell', serviceWorker, "'./shop.html'"],
   ['visible home navigation', luxuryHome, 'class="luxury-links"'],
   ['home navigation to shop', luxuryHome, 'href="./shop.html#catalog"'],
@@ -85,6 +88,7 @@ assert.ok(luxuryCss.includes('body:has(.luxury-home)>header') && !luxuryCss.incl
 assert.ok(!loader.includes('pack.part01') && !loader.includes('user-sprite36'), 'runtime must not load broken Base64 assets');
 assert.ok(!shopPolish.includes('prefers-color-scheme: dark'), 'device dark mode must not darken the catalog');
 assert.ok(!/filter:\s*(?:saturate|brightness)/.test(luxuryCss), 'homepage media must not recolor the source image');
+assert.ok(jtImporter.includes('"pdfimages", "-png"') && !jtImporter.includes('get_rawdata()'), 'JT CMYK images must use PDF-aware color decoding');
 assert.ok(!imageCss.includes('home-sprite'), 'homepage must not use the screenshot sprite');
 assert.ok(!html.includes('assets/catalog/image2.jpg'), 'rejected photo 1 must not render on the page');
 assert.ok(!html.includes('assets/catalog/image5.jpg'), 'rejected Mevius photo must not render on the page');
@@ -94,4 +98,4 @@ assert.ok(!serviceWorker.includes('wt-1034-peace-10.jpg'), 'rejected photo 1 mus
 assert.ok(!renderer.includes('data:image'), 'product cards must use per-SKU files');
 assert.ok(manifest.icons.length > 0, 'PWA manifest needs an icon');
 
-console.log(`MVP smoke: PASS (${requiredChecks.length + 14} assertions)`);
+console.log(`MVP smoke: PASS (${requiredChecks.length + 15} assertions)`);

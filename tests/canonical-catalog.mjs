@@ -140,6 +140,8 @@ assert.equal(new Set(jtImages.map((asset) => asset.pdf_object_id)).size, 129);
 for (const asset of jtImages) {
   const bytes = readFileSync(new URL(asset.file_path, root));
   assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256);
+  assert.equal(catalog.find((product) => product.id === asset.sku)?.image?.sha256, asset.sha256,
+    `${asset.sku} must expose its current image hash to renderers for cache-safe URLs`);
   assert.ok(asset.width >= 200 && asset.height >= 280);
   assert.equal(asset.status, 'APPROVED_EXTERNAL_SOURCE');
 }

@@ -8,7 +8,7 @@
   });
   (async () => {
     await globalThis.KISARAGI_LOAD_LIVE_OVERRIDES();
-    await load('./catalog-core.js');
-    await load(document.body.dataset.catalogPage === 'checkout' ? './checkout.js' : './shop.js?v=20260921-site-merge3');
+    await load('./catalog-core.js?v=20260921-jt-color1');
+    await load(document.body.dataset.catalogPage === 'checkout' ? './checkout.js' : './shop.js?v=20260921-jt-color1');
   })().catch((error) => console.error('KISARAGI catalog page load failed', error));
 })();

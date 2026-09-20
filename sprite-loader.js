@@ -20,14 +20,14 @@
 
     try {
       await loadScript('./world-tobacco-japan.js?v=20260905-user-audit');
-      await loadScript('./jt-catalog-2025.js?v=20260920-jt-import');
+      await loadScript('./jt-catalog-2025.js?v=20260921-jt-color1');
       await loadScript('./tsn-imported-catalog-2026.js?v=20260920-tsn-import');
       await loadScript('./tsn-goods-catalog-2026.js?v=20260920-tsn-goods');
       await loadScript('./catalog-live-config.js?v=20260920-live-v1');
       await loadScript('./catalog-live-loader.js?v=20260920-live-v1');
       await globalThis.KISARAGI_LOAD_LIVE_OVERRIDES();
-      await loadScript('./catalog-core.js?v=20260905-image-closeout');
-      await loadScript('./world-tobacco-catalog-render.js?v=20260921-site-merge3');
+      await loadScript('./catalog-core.js?v=20260921-jt-color1');
+      await loadScript('./world-tobacco-catalog-render.js?v=20260921-jt-color1');
       await loadScript('./product-detail.js?v=20260907-detail-v1');
       loadStylesheet('./luxury-home.css?v=20260921-color-fidelity1');
       await loadScript('./luxury-home.js?v=20260920-site-merge');

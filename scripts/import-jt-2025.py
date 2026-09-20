@@ -9,6 +9,7 @@ import re
 import subprocess
 import unicodedata
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import pdfplumber
 from PIL import Image
@@ -115,7 +116,9 @@ def existing_bindings(repo_root):
         "process.stdout.write(JSON.stringify({"
         "referenceIds:Object.fromEntries(KISARAGI_JAPAN_SKUS.map(x=>[x.code,x.id])),"
         "boundSkus:KISARAGI_ASSET_REGISTRY.filter(x=>x.file_path&&x.source!=="
-        "'JT_CATALOG_2025_10').map(x=>x.sku)"
+        "'JT_CATALOG_2025_10').map(x=>x.sku),"
+        "jtAssets:Object.fromEntries(KISARAGI_JT_2025_SKUS.filter(x=>x.image_asset)"
+        ".map(x=>[x.code,x.image_asset]))"
         "}));"
     )
     result = subprocess.run(
@@ -136,15 +139,50 @@ def image_code(page_number, image, codes):
     return matches[0]["text"]
 
 
+def decoded_pdf_images(pdf_path, image_streams, directory):
+    listing = subprocess.run(
+        ["pdfimages", "-list", str(pdf_path)], check=True, capture_output=True, text=True,
+    ).stdout
+    by_object = {}
+    for line in listing.splitlines():
+        columns = line.split()
+        if len(columns) < 11 or columns[2] != "image":
+            continue
+        key = (int(columns[0]), int(columns[10]))
+        if key in by_object:
+            raise ValueError(f"Duplicate PDF image object: {key}")
+        by_object[key] = (int(columns[1]), int(columns[3]), int(columns[4]))
+
+    prefix = directory / "jt-image"
+    subprocess.run(["pdfimages", "-png", str(pdf_path), str(prefix)], check=True)
+    decoded = {}
+    for code, source in image_streams.items():
+        key = (source["pdf_page"], source["stream"].objid)
+        if key not in by_object:
+            raise ValueError(f"PDF image object for {code} was not decoded: {key}")
+        number, width, height = by_object[key]
+        if (width, height) != source["srcsize"]:
+            raise ValueError(f"PDF image dimensions changed for {code}: {(width, height)}")
+        path = directory / f"jt-image-{number:03d}.png"
+        if not path.is_file():
+            raise ValueError(f"Decoded PDF image is missing for {code}: {path}")
+        decoded[code] = path
+    return decoded
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("pdf", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--asset-dir", type=Path)
     parser.add_argument("--client-authorized-images", action="store_true")
+    parser.add_argument("--repair-color", action="store_true")
+    parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     if bool(args.asset_dir) != args.client_authorized_images:
         raise ValueError("Image extraction requires --asset-dir and --client-authorized-images together")
+    if args.repair_color and not args.client_authorized_images:
+        raise ValueError("Color repair requires authorized image extraction")
     digest = hashlib.sha256(args.pdf.read_bytes()).hexdigest()
     if digest != EXPECTED_SHA256:
         raise ValueError(f"Unexpected PDF SHA-256: {digest}")
@@ -170,7 +208,11 @@ def main():
                     code = image_code(page_index + 1, image, codes)
                     if code in image_streams:
                         raise ValueError(f"Duplicate PDF image for product code {code}")
-                    image_streams[code] = image["stream"]
+                    image_streams[code] = {
+                        "stream": image["stream"],
+                        "pdf_page": page_index + 1,
+                        "srcsize": image["srcsize"],
+                    }
 
     if len(products) != 134 or len({product["code"] for product in products}) != 134:
         raise ValueError(f"Expected 134 unique products, got {len(products)}")
@@ -192,39 +234,51 @@ def main():
             for path in asset_dir.iterdir() if path.is_file()
         }
         new_hashes = set()
-        for product in products:
-            code = product["code"]
-            sku = reference_ids.get(code, f"jt-{code}")
-            if sku in bound_skus:
-                continue
-            stream = image_streams[code]
-            with Image.open(io.BytesIO(stream.get_rawdata())) as source:
-                source.load()
-                image = source.convert("RGB")
-            width, height = image.size
-            if width < 200 or height < 280:
-                raise ValueError(f"Image for {code} is below the quality floor: {image.size}")
-            encoded = io.BytesIO()
-            image.save(encoded, format="JPEG", quality=94, subsampling=0, optimize=True)
-            data = encoded.getvalue()
-            image_hash = hashlib.sha256(data).hexdigest()
-            filename = f"{sku}-jt-2025.jpg"
-            path = asset_dir / filename
-            if image_hash in new_hashes:
-                raise ValueError(f"Duplicate output image hash for {code}")
-            if image_hash in existing_hashes and existing_hashes[image_hash] != path:
-                raise ValueError(f"Image for {code} duplicates {existing_hashes[image_hash]}")
-            if path.exists() and path.read_bytes() != data:
-                raise ValueError(f"Existing image differs from source: {path}")
-            new_hashes.add(image_hash)
-            product["image_asset"] = {
-                "file_path": f"assets/catalog/products/{filename}",
-                "sha256": image_hash,
-                "width": width,
-                "height": height,
-                "pdf_object_id": stream.objid,
-            }
-            pending_files.append((path, data))
+        with TemporaryDirectory(prefix="kisaragi-jt-images-") as temporary:
+            decoded = decoded_pdf_images(args.pdf, image_streams, Path(temporary))
+            for product in products:
+                code = product["code"]
+                sku = reference_ids.get(code, f"jt-{code}")
+                if sku in bound_skus:
+                    continue
+                source = image_streams[code]
+                with Image.open(decoded[code]) as source_image:
+                    source_image.load()
+                    image = source_image.convert("RGB")
+                width, height = image.size
+                if (width, height) != source["srcsize"] or width < 200 or height < 280:
+                    raise ValueError(f"Image dimensions for {code} are invalid: {image.size}")
+                encoded = io.BytesIO()
+                image.save(encoded, format="JPEG", quality=94, subsampling=0, optimize=True)
+                data = encoded.getvalue()
+                image_hash = hashlib.sha256(data).hexdigest()
+                filename = f"{sku}-jt-2025.jpg"
+                path = asset_dir / filename
+                if image_hash in new_hashes:
+                    raise ValueError(f"Duplicate output image hash for {code}")
+                if image_hash in existing_hashes and existing_hashes[image_hash] != path:
+                    raise ValueError(f"Image for {code} duplicates {existing_hashes[image_hash]}")
+                if path.exists() and path.read_bytes() != data:
+                    previous = binding["jtAssets"].get(code)
+                    current_hash = hashlib.sha256(path.read_bytes()).hexdigest()
+                    if not args.repair_color or not previous or (
+                        previous["file_path"] != f"assets/catalog/products/{filename}"
+                        or previous["sha256"] != current_hash
+                        or previous["pdf_object_id"] != source["stream"].objid
+                    ):
+                        raise ValueError(f"Existing image differs from reviewed JT binding: {path}")
+                elif args.repair_color and not path.exists():
+                    raise ValueError(f"Reviewed JT image is missing: {path}")
+                new_hashes.add(image_hash)
+                product["image_asset"] = {
+                    "file_path": f"assets/catalog/products/{filename}",
+                    "sha256": image_hash,
+                    "width": width,
+                    "height": height,
+                    "pdf_object_id": source["stream"].objid,
+                }
+                if not path.exists() or path.read_bytes() != data:
+                    pending_files.append((path, data))
     metadata = {
         "source_id": "JT_CATALOG_2025_10",
         "source_url": SOURCE_URL,
@@ -245,9 +299,11 @@ def main():
         + json.dumps(products, ensure_ascii=False, indent=2)
         + ".map((product) => Object.freeze(product)));\n"
     )
+    if args.dry_run:
+        print(f"Validated {len(products)} JT products and {len(pending_files)} color repairs; no files written")
+        return
     for path, data in pending_files:
-        if not path.exists():
-            path.write_bytes(data)
+        path.write_bytes(data)
     temporary_output = args.output.with_suffix(args.output.suffix + ".tmp")
     temporary_output.write_text(output, encoding="utf-8")
     temporary_output.replace(args.output)
