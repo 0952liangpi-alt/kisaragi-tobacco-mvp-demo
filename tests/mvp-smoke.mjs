@@ -6,10 +6,12 @@ const read = (path) => readFileSync(new URL(path, root), 'utf8');
 const html = read('index.html');
 const shop = read('shop.html');
 const shopScript = read('shop.js');
+const productDetail = read('product-detail.js');
 const jtImporter = read('scripts/import-jt-2025.py');
 const shopPolish = read('shop-polish.css');
 const baseCss = read('styles-base.css');
 const imageCss = read('image-layer.css');
+const edgeCleanup = read('edge-cleanup.css');
 const catalogCss = read('world-tobacco-catalog.css');
 const loader = read('sprite-loader.js');
 const renderer = read('world-tobacco-catalog-render.js');
@@ -42,6 +44,9 @@ const requiredChecks = [
   ['shop loader cache version', shop, 'catalog-page-loader.js?v=20260921-jt-color1'],
   ['shop image hash cache version', shopScript, 'asset.sha256.slice(0, 12)'],
   ['archive image hash cache version', renderer, 'image.sha256.slice(0, 12)'],
+  ['detail image hash cache version', productDetail, 'image.sha256.slice(0, 12)'],
+  ['extracted JT packs are not cropped', edgeCleanup, '.jp-sku-image-verified img[src*="-jt-2025.jpg"]'],
+  ['extracted PDF packs retain their full frame', edgeCleanup, 'clip-path:none!important;transform:none!important'],
   ['shop included in offline shell', serviceWorker, "'./shop.html'"],
   ['visible home navigation', luxuryHome, 'class="luxury-links"'],
   ['home navigation to shop', luxuryHome, 'href="./shop.html#catalog"'],

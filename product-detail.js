@@ -37,7 +37,9 @@
       const images = product.images?.length ? product.images : (product.image ? [product.image] : []);
       if (!images.length) return '<div class="jp-product-detail-image is-missing">画像未登録</div>';
       return `<div class="jp-product-detail-gallery">${images.map((image, index) => {
-        const path = escapeHtml(image.file_path);
+        const version = /^[a-f0-9]{64}$/i.test(image.sha256 || '') ? image.sha256.slice(0, 12) : null;
+        const sourcePath = version ? `${image.file_path}${image.file_path.includes('?') ? '&' : '?'}v=${version}` : image.file_path;
+        const path = escapeHtml(sourcePath);
         const suffix = images.length > 1 ? ` ${index + 1}/${images.length}` : '';
         return `<a class="jp-product-detail-image" href="./${path}" target="_blank" rel="noopener"><img src="./${path}" alt="${escapeHtml(product.product_name_ja)}${suffix}"></a>`;
       }).join('')}</div>`;

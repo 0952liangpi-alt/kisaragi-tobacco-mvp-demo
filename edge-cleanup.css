@@ -19,3 +19,9 @@
   .jp-sku-image-verified img{clip-path:inset(9% 8% 10%)!important;transform:scale(1.24)!important}
   .jp-sku-image-verified.has-side-matte img{clip-path:inset(11% 10% 12%)!important;transform:scale(1.31)!important}
 }
+
+/* Individually extracted PDF packs have no screenshot frame to trim. */
+.jp-sku-image-verified img[src*="-jt-2025.jpg"],
+.jp-sku-image-verified img[src*="-2026.jpg"],
+.jp-product-detail-image img[src*="-jt-2025.jpg"],
+.jp-product-detail-image img[src*="-2026.jpg"]{clip-path:none!important;transform:none!important}
