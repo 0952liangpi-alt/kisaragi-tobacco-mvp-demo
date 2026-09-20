@@ -1,7 +1,7 @@
 (() => {
   const $ = (selector) => document.querySelector(selector);
   const pageSize = 24;
-  const state = {group:'all', category:'all', brand:'all', device:'all', query:'', cart:[], visibleCount:pageSize};
+  const state = {group:'all', category:'all', brand:'all', device:'all', sort:'source', query:'', cart:[], visibleCount:pageSize};
   const yen = (amount) => `¥${Number(amount || 0).toLocaleString('ja-JP')}`;
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[character]));
   const currentPrice = (item) => item.price_jpy ?? item.price ?? null;
@@ -31,6 +31,7 @@
   const groupLabels = {all:'すべて', cigarettes:'紙巻き', heated:'加熱式', other:'その他たばこ', goods:'喫煙具'};
   const groupFor = (category) => Object.keys(categoryGroups).find((group) => categoryGroups[group].includes(category)) || 'other';
   const normalize = (value) => String(value ?? '').normalize('NFKC').toLocaleLowerCase('ja').replace(/\s+/g, '');
+  const collator = new Intl.Collator('ja', {numeric:true, sensitivity:'base'});
   const deviceFor = (item) => {
     if (!['HEATED_TOBACCO_STICKS', 'HEATED_TOBACCO_CAPSULES'].includes(item.category)) return null;
     const name = normalize(item.product_name_ja);
@@ -57,21 +58,35 @@
   function restore(){try{const ids=JSON.parse(localStorage.getItem(key)||'[]');state.cart=ids.map((id)=>catalog().find((item)=>item.id===id)).filter(Boolean)}catch{state.cart=[]}}
   function matching(){
     const query=normalize(state.query);
-    return visibleCatalog().filter((item)=>{
+    const items=visibleCatalog().filter((item)=>{
       const text=normalize([item.brand,item.product_name_ja,item.sku,item.product_code,item.system_code].filter(Boolean).join(' '));
       return (state.category==='all'||item.category===state.category)
         && (state.brand==='all'||item.brand===state.brand)
         && (state.device==='all'||deviceFor(item)===state.device)
         && (!query||text.includes(query));
     });
+    if (state.sort==='source') return items;
+    const valueFor=state.sort==='name'
+      ? (item)=>item.product_name_ja||item.name||''
+      : (item)=>item.product_code||item.sku||'';
+    return items.sort((a,b)=>Number(a.status==='IDENTITY_PENDING')-Number(b.status==='IDENTITY_PENDING')
+      ||collator.compare(valueFor(a),valueFor(b))||collator.compare(a.id,b.id));
   }
   function renderFilters(){
     const host=$('#groupFilters');
     host.replaceChildren();
+    const groupCounts=Object.fromEntries(Object.keys(groupLabels).map((group)=>[group,0]));
+    const allItems=catalog();
+    groupCounts.all=allItems.length;
+    allItems.forEach((item)=>{groupCounts[groupFor(item.category)]++});
     Object.entries(groupLabels).forEach(([value,label])=>{
       const button=document.createElement('button');
       button.type='button';
-      button.textContent=label;
+      const count=document.createElement('span');
+      count.className='filter-count';
+      count.textContent=String(groupCounts[value]);
+      button.append(document.createTextNode(label),count);
+      button.setAttribute('aria-label',`${label} ${groupCounts[value]}件`);
       button.setAttribute('aria-pressed',String(value===state.group));
       button.addEventListener('click',()=>{state.group=value;state.category='all';state.brand='all';state.device='all';renderFilters();renderProducts()});
       host.append(button);
@@ -122,7 +137,7 @@
   let releaseGateLock=null;
   function lockAge(){const gate=$('#ageGate');const background=[...document.body.children].filter((element)=>element!==gate&&element.tagName!=='SCRIPT');background.forEach((element)=>{element.dataset.agePreviousAria=element.getAttribute('aria-hidden')||'';element.setAttribute('aria-hidden','true');element.setAttribute('inert','')});document.body.style.overflow='hidden';const focusable=()=>[...gate.querySelectorAll('button,[href]')].filter((element)=>!element.hidden);const trap=(event)=>{if(event.key!=='Tab')return;const items=focusable();if(!items.length)return;const first=items[0];const last=items[items.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}};gate.addEventListener('keydown',trap);window.setTimeout(()=>focusable()[0]?.focus(),0);releaseGateLock=()=>{gate.removeEventListener('keydown',trap);background.forEach((element)=>{const previous=element.dataset.agePreviousAria;if(previous)element.setAttribute('aria-hidden',previous);else element.removeAttribute('aria-hidden');element.removeAttribute('inert');delete element.dataset.agePreviousAria});document.body.style.overflow='';releaseGateLock=null}}
   function releaseAge(){releaseGateLock?.();sessionStorage.setItem('kisaragi-age-verified','1');$('#ageGate').hidden=true;if(location.hash==='#guide')requestAnimationFrame(()=>$('#guide').scrollIntoView({block:'start'}))}
-  function init(){restore();const linkedSku=new URLSearchParams(location.search).get('sku');const linkedProduct=linkedSku&&catalog().find((item)=>item.id===linkedSku);if(linkedProduct){state.group=groupFor(linkedProduct.category);state.query=linkedProduct.product_code||linkedProduct.sku||linkedProduct.product_name_ja;$('#searchInput').value=state.query}renderFilters();renderProducts();renderCart();$('#searchInput').addEventListener('input',(event)=>{state.query=event.target.value;renderProducts()});$('#categoryFilter').addEventListener('change',(event)=>{state.category=event.target.value;state.brand='all';state.device='all';renderFilters();renderProducts()});$('#brandFilter').addEventListener('change',(event)=>{state.brand=event.target.value;state.device='all';renderFilters();renderProducts()});$('#deviceFilter').addEventListener('change',(event)=>{state.device=event.target.value;renderProducts()});$('#resetFilters').addEventListener('click',()=>{state.group='all';state.category='all';state.brand='all';state.device='all';state.query='';$('#searchInput').value='';renderFilters();renderProducts();$('#searchInput').focus()});$('#loadMoreProducts').addEventListener('click',()=>{state.visibleCount+=pageSize;renderProducts(true)});$('#openCart').addEventListener('click',openCart);$('#closeCart').addEventListener('click',closeCart);$('#backdrop').addEventListener('click',closeCart);$('#openReview').addEventListener('click',openReview);$('.close-review').addEventListener('click',closeReview);$('#closeReview').addEventListener('click',closeReview);$('#startApplication').addEventListener('click',openApplication);$('.close-application').addEventListener('click',closeApplication);$('#applicationForm').addEventListener('submit',previewApplication);$('#enterSite').addEventListener('click',releaseAge);if(sessionStorage.getItem('kisaragi-age-verified')==='1')releaseAge();else lockAge()}
+  function init(){restore();const linkedSku=new URLSearchParams(location.search).get('sku');const linkedProduct=linkedSku&&catalog().find((item)=>item.id===linkedSku);if(linkedProduct){state.group=groupFor(linkedProduct.category);state.query=linkedProduct.product_code||linkedProduct.sku||linkedProduct.product_name_ja;$('#searchInput').value=state.query}renderFilters();renderProducts();renderCart();$('#searchInput').addEventListener('input',(event)=>{state.query=event.target.value;renderProducts()});$('#categoryFilter').addEventListener('change',(event)=>{state.category=event.target.value;state.brand='all';state.device='all';renderFilters();renderProducts()});$('#brandFilter').addEventListener('change',(event)=>{state.brand=event.target.value;state.device='all';renderFilters();renderProducts()});$('#deviceFilter').addEventListener('change',(event)=>{state.device=event.target.value;renderProducts()});$('#sortOrder').addEventListener('change',(event)=>{state.sort=event.target.value;renderProducts()});$('#resetFilters').addEventListener('click',()=>{state.group='all';state.category='all';state.brand='all';state.device='all';state.sort='source';state.query='';$('#searchInput').value='';$('#sortOrder').value='source';renderFilters();renderProducts();$('#searchInput').focus()});$('#loadMoreProducts').addEventListener('click',()=>{state.visibleCount+=pageSize;renderProducts(true)});$('#openCart').addEventListener('click',openCart);$('#closeCart').addEventListener('click',closeCart);$('#backdrop').addEventListener('click',closeCart);$('#openReview').addEventListener('click',openReview);$('.close-review').addEventListener('click',closeReview);$('#closeReview').addEventListener('click',closeReview);$('#startApplication').addEventListener('click',openApplication);$('.close-application').addEventListener('click',closeApplication);$('#applicationForm').addEventListener('submit',previewApplication);$('#enterSite').addEventListener('click',releaseAge);if(sessionStorage.getItem('kisaragi-age-verified')==='1')releaseAge();else lockAge()}
   if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', init);
   else init();
 })();

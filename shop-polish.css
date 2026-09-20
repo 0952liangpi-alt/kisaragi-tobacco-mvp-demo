@@ -20,6 +20,13 @@
 .filter-select select { width: 100%; min-height: 46px; padding: .65rem .7rem; border: 1px solid var(--line); border-radius: 7px; background: #fff; color: var(--ink); font: inherit; font-size: .84rem; }
 .filter-reset { min-height: 46px; padding: .55rem .8rem; border: 1px solid var(--line); border-radius: 7px; background: #fff; color: var(--ink); font: inherit; font-size: .8rem; font-weight: 700; cursor: pointer; }
 .filter-reset:hover { border-color: var(--accent); }
+.filter-options .filter-count { display: inline-block; margin-left: .45rem; color: var(--muted); font-size: .67rem; font-variant-numeric: tabular-nums; }
+.filter-options button[aria-pressed="true"] .filter-count { color: inherit; }
+.catalog-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .7rem 1rem; margin: 1.25rem auto .8rem; }
+.catalog-toolbar .result-count { margin: 0; }
+.catalog-sort { display: inline-flex; align-items: center; gap: .55rem; color: var(--muted); font-size: .78rem; white-space: nowrap; }
+.catalog-sort select { min-height: 42px; padding: .5rem .65rem; border: 1px solid var(--line); border-radius: 7px; background: #fff; color: var(--ink); font: inherit; }
+.catalog-sort select:focus-visible { outline: 3px solid #b38c17; outline-offset: 3px; }
 .product-meta { line-height: 1.45; }
 .product-code, .product-specs { overflow-wrap: anywhere; }
 .product-specs { margin: 0; color: var(--muted); font-size: .7rem; line-height: 1.5; }
