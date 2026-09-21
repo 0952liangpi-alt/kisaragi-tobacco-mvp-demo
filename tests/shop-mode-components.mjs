@@ -15,6 +15,6 @@ assert.ok(css.includes('env(safe-area-inset-bottom, 0px)'), 'mobile dock must re
 assert.ok(script.includes('textContent'), 'citation fields must be written as text, not untrusted HTML');
 assert.ok(!script.includes('ekyc_stage_token_'), 'the public catalog must not claim staged eKYC success');
 assert.ok(!script.includes('submitOrderAndPayment'), 'the public catalog must not expose a fake payment API');
-assert.ok(!html.includes('href="./checkout.html"'), 'the public catalog must not link to a live checkout route');
+assert.ok(html.includes('href="./checkout.html"'), 'the public catalog must link to the bounded logistics preview');
 
 console.log('Shop mode components: PASS');
