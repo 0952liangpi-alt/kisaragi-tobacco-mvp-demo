@@ -2,24 +2,25 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="description" content="KISARAGIの商品案内。資料商品庫と同じ商品データを使う20歳以上向けサンドボックスです。">
   <meta name="theme-color" content="#152018">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>KISARAGI | 商品案内</title>
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./shop.css">
-  <link rel="stylesheet" href="./shop-polish.css?v=20260921-catalog-sort1">
+  <link rel="stylesheet" href="./shop-polish.css?v=20260921-catalog-mode1">
   <link rel="stylesheet" href="./shop-flow.css">
+  <link rel="stylesheet" href="./kisaragi-components.css?v=20260921-catalog-mode1">
   <script defer src="./world-tobacco-japan.js"></script>
   <script defer src="./jt-catalog-2025.js?v=20260921-jt-color1"></script>
   <script defer src="./tsn-imported-catalog-2026.js"></script>
   <script defer src="./tsn-goods-catalog-2026.js"></script>
   <script defer src="./catalog-live-config.js"></script>
   <script defer src="./catalog-live-loader.js"></script>
-  <script defer src="./catalog-page-loader.js?v=20260921-catalog-sort1"></script>
+  <script defer src="./catalog-page-loader.js?v=20260921-catalog-mode1"></script>
 </head>
-<body data-catalog-page="shop">
+<body data-catalog-page="shop" data-kisaragi-mode="shop">
   <a class="skip-link" href="#catalog">商品一覧へ移動</a>
   <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
     <section class="age-card">
@@ -43,6 +44,10 @@
       <a href="./index.html#jp-sku-catalog">資料商品庫</a>
       <a href="#guide">利用案内</a>
     </nav>
+    <div class="mode-switch-group" role="group" aria-label="表示モード">
+      <button class="mode-switch-btn" type="button" data-mode-target="shop" aria-pressed="true">商品</button>
+      <button class="mode-switch-btn" type="button" data-mode-target="archive" aria-pressed="false">資料</button>
+    </div>
     <button class="cart-toggle" id="openCart" type="button" aria-haspopup="dialog">選択リスト <b id="cartCount">0</b></button>
   </header>
 
@@ -89,6 +94,13 @@
 
   </main>
 
+  <nav class="mobile-dock" aria-label="モバイルナビゲーション">
+    <a href="./index.html">ホーム</a>
+    <button type="button" data-mode-target="shop" aria-pressed="true">商品</button>
+    <button type="button" data-mode-target="archive" aria-pressed="false">資料</button>
+    <button id="mobileOpenCart" type="button">選択 <span class="mobile-cart-count" id="mobileCartCount">0</span></button>
+  </nav>
+
   <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true">K</span><span>KISARAGI</span></a><p>20歳以上向けの商品案内です。実販売・決済・配送は行いません。</p><a href="./index.html#jp-sku-catalog">資料商品庫を見る</a><a data-catalog-admin hidden>商品管理</a></footer>
 
   <div class="backdrop" id="backdrop" hidden></div>
@@ -123,6 +135,15 @@
         <p id="applicationStatus" class="application-status" role="status"></p>
       </form>
       <p class="application-note">カード番号・本人確認書類は入力、保存、送信されません。注文確定・決済・配送依頼も開始されません。</p>
+    </section>
+  </div>
+  <div class="kisaragi-popover-backdrop" id="citationModal" role="dialog" aria-modal="true" aria-labelledby="citationTitle" aria-hidden="true">
+    <section class="kisaragi-popover-card">
+      <button type="button" class="kisaragi-popover-close" id="closeCitation">閉じる</button>
+      <span class="kisaragi-popover-eyebrow">KISARAGI ARCHIVE / SOURCE</span>
+      <h2 class="kisaragi-popover-title" id="citationTitle"></h2>
+      <dl class="kisaragi-popover-body" id="citationBody"></dl>
+      <a class="citation-source-link" id="citationSourceLink" target="_blank" rel="noopener noreferrer">資料掲載ページを開く</a>
     </section>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>

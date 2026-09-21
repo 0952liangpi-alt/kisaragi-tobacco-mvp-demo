@@ -1,0 +1,225 @@
+/* Shared catalog mode, citation dialog, and mobile dock components. */
+.mode-switch-group {
+  display: inline-flex;
+  flex: 0 0 auto;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.mode-switch-btn {
+  min-height: 34px;
+  padding: 5px 11px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font: 700 .7rem inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mode-switch-btn[aria-pressed="true"] {
+  background: var(--ink);
+  color: #fff;
+}
+
+.citation-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: .45rem .6rem;
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--accent);
+  font: 700 .72rem inherit;
+  cursor: pointer;
+}
+
+body[data-kisaragi-mode="archive"] .add-button {
+  display: none;
+}
+
+body[data-kisaragi-mode="archive"] .citation-button {
+  display: inline-flex;
+}
+
+.kisaragi-popover-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgb(13 20 15 / .76);
+  backdrop-filter: blur(9px);
+}
+
+.kisaragi-popover-backdrop[aria-hidden="true"] {
+  display: none;
+}
+
+.kisaragi-popover-card {
+  position: relative;
+  width: min(520px, 100%);
+  max-height: min(680px, calc(100dvh - 32px));
+  overflow: auto;
+  padding: clamp(1.4rem, 5vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 24px 70px rgb(0 0 0 / .3);
+}
+
+.kisaragi-popover-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 .72rem inherit;
+  cursor: pointer;
+}
+
+.kisaragi-popover-eyebrow {
+  display: block;
+  margin: 0 3rem 6px 0;
+  color: var(--accent);
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.kisaragi-popover-title {
+  margin: 0 3rem 1rem 0;
+  font-family: Georgia, "Yu Mincho", serif;
+  font-size: clamp(1.35rem, 4vw, 1.8rem);
+  line-height: 1.35;
+}
+
+.kisaragi-popover-body {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.citation-row {
+  display: grid;
+  grid-template-columns: minmax(7rem, .8fr) minmax(0, 1.4fr);
+  gap: 1rem;
+  padding: .75rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: .8rem;
+}
+
+.citation-row dt {
+  color: var(--muted);
+}
+
+.citation-row dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+
+.citation-source-link {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: var(--accent);
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.mobile-dock {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  body[data-catalog-page="shop"] {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .site-header .mode-switch-group {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .site-header .cart-toggle {
+    order: 1;
+  }
+
+  .mobile-dock {
+    position: fixed;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    left: 12px;
+    z-index: 35;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    min-height: 56px;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / .14);
+    border-radius: 12px;
+    background: rgb(21 32 24 / .96);
+    box-shadow: 0 12px 30px rgb(0 0 0 / .24);
+    backdrop-filter: blur(12px);
+  }
+
+  .mobile-dock a,
+  .mobile-dock button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: .5rem .25rem;
+    border: 0;
+    background: transparent;
+    color: #dce4da;
+    font: 700 .68rem inherit;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .mobile-dock button[aria-pressed="true"] {
+    background: var(--warm);
+    color: var(--ink);
+  }
+
+  .mobile-dock .mobile-cart-count {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.15rem;
+    height: 1.15rem;
+    margin-left: .2rem;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    font-size: .62rem;
+  }
+
+  .citation-row {
+    grid-template-columns: 1fr;
+    gap: .2rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-header .mode-switch-group {
+    order: 3;
+    width: 100%;
+    margin-top: .4rem;
+  }
+
+  .site-header .mode-switch-btn {
+    flex: 1;
+  }
+}

@@ -9,6 +9,7 @@ const shopScript = read('shop.js');
 const productDetail = read('product-detail.js');
 const jtImporter = read('scripts/import-jt-2025.py');
 const shopPolish = read('shop-polish.css');
+const shopComponents = read('kisaragi-components.css');
 const baseCss = read('styles-base.css');
 const imageCss = read('image-layer.css');
 const edgeCleanup = read('edge-cleanup.css');
@@ -45,7 +46,11 @@ const requiredChecks = [
   ['shop product images preserve their source colors', shopPolish, 'object-fit: contain;'],
   ['shop keeps neutral product surfaces on dark-mode devices', shopPolish, ':root { color-scheme: light; }'],
   ['shop hero photo has no dark overlay', shopPolish, '.hero-image::after { display: none; }'],
-  ['shop loader cache version', shop, 'catalog-page-loader.js?v=20260921-catalog-sort1'],
+  ['shop loader cache version', shop, 'catalog-page-loader.js?v=20260921-catalog-mode1'],
+  ['shop mode controls', shop, 'data-mode-target="archive"'],
+  ['shop citation dialog', shop, 'id="citationModal"'],
+  ['shop mobile safe-area dock', shopComponents, 'env(safe-area-inset-bottom, 0px)'],
+  ['shop archive mode hides selection action', shopComponents, 'body[data-kisaragi-mode="archive"] .add-button'],
   ['shop sort control', shop, 'id="sortOrder"'],
   ['unmatched OCR names follow known products when sorted', shopScript, "a.status==='IDENTITY_PENDING'"],
   ['shop image hash cache version', shopScript, 'asset.sha256.slice(0, 12)'],
