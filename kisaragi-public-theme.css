@@ -1,0 +1,240 @@
+/* Shared public-facing KISARAGI surface. Product media always keeps source color. */
+:root {
+  color-scheme: dark;
+  --ink: #f1f1ee;
+  --ink-soft: #25231e;
+  --paper: #121212;
+  --surface: #1b1b1a;
+  --line: #505156;
+  --muted: #b7b8ba;
+  --accent: #c8b78b;
+  --accent-hover: #e2d29f;
+  --warm: #c8b78b;
+  --danger: #e7a39c;
+}
+
+body[data-catalog-page="shop"],
+body[data-catalog-page="checkout"] {
+  background: radial-gradient(circle at 82% 15%, #292825 0, transparent 28%), var(--paper);
+  color: var(--ink);
+}
+
+.site-header {
+  border-color: var(--line);
+  background: rgb(18 18 18 / .94);
+}
+
+.brand-copy {
+  display: grid;
+  line-height: 1.05;
+}
+
+.brand-copy small {
+  margin-top: .25rem;
+  color: var(--muted);
+  font-size: .52rem;
+  font-weight: 500;
+  letter-spacing: .11em;
+}
+
+.brand-mark {
+  overflow: hidden;
+  border: 1px solid var(--accent);
+  background: transparent;
+}
+
+.brand-mark img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: none;
+}
+
+.site-header nav a,
+.text-link,
+footer > a:not(.brand),
+.back-link {
+  color: var(--muted);
+}
+
+.site-header nav a:hover,
+.text-link:hover,
+footer > a:not(.brand):hover,
+.back-link:hover {
+  color: var(--accent);
+}
+
+.cart-toggle,
+.icon-button {
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.cart-toggle b {
+  background: var(--accent);
+  color: #121212;
+}
+
+.mode-switch-group,
+.mode-switch-btn,
+.search input,
+.filter-select select,
+.filter-reset,
+.filter-options button,
+.button.quiet {
+  border-color: var(--line);
+  background: #171717;
+  color: var(--ink);
+}
+
+.mode-switch-btn[aria-pressed="true"],
+.filter-options button[aria-pressed="true"],
+.button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #121212;
+}
+
+.button.primary:hover {
+  background: var(--accent-hover);
+}
+
+.hero h1,
+.section-heading h2,
+.age-card h1,
+.review-card h2,
+.intro h1 {
+  font-family: "Noto Serif JP", Georgia, "Yu Mincho", serif;
+  letter-spacing: 0;
+}
+
+.hero-image,
+.hero-image figcaption,
+.product-image-link,
+.product-empty {
+  background: #f4f1e9;
+}
+
+.hero-image figcaption,
+.product-empty {
+  color: #57534b;
+}
+
+.hero-image img,
+.product-image-link .product-image,
+.product-image {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+.notice {
+  border-color: #4c473b;
+  background: #1c1b18;
+  color: var(--muted);
+}
+
+.catalog,
+.product-card,
+.age-card,
+.review-card,
+.cart-panel,
+.kisaragi-popover-card {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.product-grid {
+  border-color: var(--line);
+  background: var(--line);
+}
+
+.product-detail-link,
+.add-button,
+.citation-button {
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.product-detail-link:hover,
+.add-button:hover,
+.citation-button:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #121212;
+}
+
+.product-meta,
+.price,
+.overline,
+.eyebrow {
+  color: var(--accent);
+}
+
+.quantity-control button {
+  background: #171717;
+  color: var(--ink);
+}
+
+.quantity-control button:hover {
+  background: #29261f;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  background: #0e0e0e;
+  color: var(--muted);
+}
+
+footer .brand-mark {
+  background: transparent;
+}
+
+.age-gate,
+.review-modal,
+.kisaragi-popover-backdrop {
+  background: rgb(0 0 0 / .82);
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    min-height: 64px;
+    flex-wrap: nowrap;
+    gap: .65rem;
+    padding: .55rem 1rem;
+  }
+
+  .site-header nav,
+  .site-header .mode-switch-group {
+    display: none !important;
+  }
+
+  .site-header .cart-toggle {
+    order: initial;
+    margin-left: auto;
+  }
+
+  .brand-copy small {
+    display: none;
+  }
+
+  .mobile-dock {
+    border-color: rgb(255 255 255 / .14);
+    background: rgb(20 20 20 / .96);
+  }
+
+  .mobile-dock a,
+  .mobile-dock button {
+    color: var(--muted);
+  }
+
+  .mobile-dock button[aria-pressed="true"] {
+    background: var(--accent);
+    color: #121212;
+  }
+
+  #catalog,
+  #guide {
+    scroll-margin-top: 72px;
+  }
+}

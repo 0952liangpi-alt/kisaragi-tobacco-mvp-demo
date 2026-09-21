@@ -21,14 +21,13 @@ assert.equal(logistics.getAvailableDeliveryDates(new Date(2026, 8, 21)).length, 
 assert.equal(logistics.validateAddress({recipientName:'テスト 太郎', phone:'090-1234-5678', postalCode:'100-0001', prefecture:'東京都', addressLine:'千代田区千代田'}).valid, true, 'valid Japanese preview address must pass');
 assert.equal(logistics.validateAddress({recipientName:'テスト 太郎', phone:'090-1234-5678', postalCode:'100-01', prefecture:'東京都', addressLine:'千代田区千代田'}).valid, false, 'invalid postal code must fail');
 
-assert.ok(html.includes('id="shippingMethods"') && html.includes('id="shippingTotal"') && html.includes('id="estimatedGrandTotal"'), 'shipping selection and quote output are required');
-assert.ok(html.includes('id="trackingForm"') && html.includes('物流API未接続'), 'tracking integration reservation must disclose its disconnected state');
-assert.ok(html.includes('実際の氏名・住所・証明書・カード番号・追跡番号は入力しないでください'), 'the preview must warn against real personal, identity, and payment data');
-assert.ok(html.includes('公的証明書による年齢確認と購入者本人の同一性確認が別途必要'), 'the preview must disclose the later identity and age gate');
-assert.ok(script.includes('event.preventDefault()'), 'forms must remain local previews');
+assert.ok(!html.includes('id="shippingMethods"') && !html.includes('id="trackingForm"'), 'shipping and tracking controls must stay out of the public selection page until connected');
+assert.ok(!/<(?:form|input|select)\b/i.test(html), 'the public selection page must not collect personal or logistics data');
+assert.ok(html.includes('会員・年齢確認') && html.includes('配送先・お支払い'), 'the future customer flow must remain visible as read-only next steps');
+assert.ok(!html.includes('logistics-core.js'), 'the public selection page must not load the provisional logistics module');
 assert.ok(!script.includes('fetch(') && !script.includes('XMLHttpRequest') && !script.includes('navigator.sendBeacon'), 'checkout must not transmit address or tracking data');
 assert.ok(!core.includes('submitOrderAndPayment') && !core.includes('mockTracking') && !core.includes('pdfUrl'), 'logistics core must not fake orders, tracking, or labels');
 assert.ok(!core.includes('subtotal >= 15000'), 'free-shipping logic must not be present');
 assert.ok(worker.includes("'./checkout.html'") && worker.includes("'./logistics-core.js'"), 'offline shell must include the logistics preview assets');
 
-console.log('Logistics preview: PASS (quote, address, date/time, tracking seam; no network or fake fulfillment)');
+console.log('Logistics contract: PASS (internal quote seam retained; no public form, tracking control, network, or fake fulfillment)');

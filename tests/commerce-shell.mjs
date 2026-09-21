@@ -53,18 +53,18 @@ commerce.writeCart([{id:'sku-1',quantity:2}], storage);
 assert.deepEqual(JSON.parse(JSON.stringify(commerce.readCart(storage))), [{id:'sku-1',quantity:2}], 'cart storage round-trip must preserve quantity');
 assert.equal(commerce.quantityCount([{id:'sku-1',quantity:2},{id:'sku-2',quantity:3}]), 5, 'cart count must count units');
 
-assert.ok(shopHtml.includes('id="commerceStatusGrid"') && checkoutHtml.includes('id="checkoutModuleStatus"'), 'status boards must exist on shop and checkout pages');
-assert.ok(checkoutHtml.includes('id="commerceStages"'), 'checkout must show the five-stage purchase flow');
-assert.ok(checkoutHtml.includes('会員ログイン（未接続）') && checkoutHtml.includes('eKYC 年齢確認（未接続）'), 'member and eKYC modules must be visible and disabled');
-assert.ok(checkoutHtml.includes('注文を確定する（未接続）') && /注文を確定する（未接続）<\/button>/.test(checkoutHtml), 'order confirmation must be visible as disconnected');
-assert.ok((checkoutHtml.match(/type="button" disabled/g) || []).length >= 3, 'disconnected actions must use disabled buttons');
+assert.ok(!shopHtml.includes('id="commerceStatusGrid"') && !checkoutHtml.includes('id="checkoutModuleStatus"'), 'internal module status boards must stay out of the public pages');
+assert.ok(!checkoutHtml.includes('id="commerceStages"'), 'the public selection page must not expose the internal purchase stage map');
+assert.ok(checkoutHtml.includes('id="selectionItems"') && checkoutHtml.includes('ご注文までの流れ'), 'checkout must present the saved selection and customer-facing next steps');
+assert.ok(checkoutHtml.includes('オンライン注文は準備中') && /オンライン注文は準備中<\/button>/.test(checkoutHtml), 'the future order action must remain visibly disabled');
+assert.ok(!/<(?:form|input|select)\b/i.test(checkoutHtml), 'the public selection page must not accept personal, shipping, or payment data');
 assert.ok(shopScript.includes('quantity-plus') && shopScript.includes('quantity-minus') && shopScript.includes('removeFromCart'), 'cart must expose quantity and remove controls');
-assert.ok(checkoutScript.includes('Number(currentPrice(line.item) ?? 0) * line.quantity'), 'checkout totals must multiply price by quantity');
-assert.ok(worker.includes("'./commerce-core.js'") && worker.includes('commerce-core|logistics-core'), 'offline shell and runtime freshness policy must include commerce core');
+assert.ok(checkoutScript.includes('knownSubtotal += Number(price) * quantity'), 'selection totals must multiply price by quantity');
+assert.ok(worker.includes("'./commerce-core.js'") && worker.includes("'./kisaragi-public-theme.css'"), 'offline shell must include commerce core and the shared public theme');
 
 for (const [name, source] of [['shop', shopScript], ['checkout', checkoutScript], ['commerce core', core]]) {
   assert.ok(!source.includes('fetch(') && !source.includes('XMLHttpRequest') && !source.includes('navigator.sendBeacon'), `${name} must not transmit commerce or identity data`);
   assert.ok(!source.includes('submitOrderAndPayment') && !source.includes('ekyc_stage_token_') && !source.includes('orderId:'), `${name} must not fake a connected order or eKYC result`);
 }
 
-console.log('Commerce shell: PASS (9 modules, cart migration and quantity, disconnected identity/payment/order boundary)');
+console.log('Commerce shell: PASS (9-module internal contract, quantity-aware selection list, no public data-entry facade)');

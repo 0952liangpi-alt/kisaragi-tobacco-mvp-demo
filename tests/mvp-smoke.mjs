@@ -10,6 +10,7 @@ const productDetail = read('product-detail.js');
 const jtImporter = read('scripts/import-jt-2025.py');
 const shopPolish = read('shop-polish.css');
 const shopComponents = read('kisaragi-components.css');
+const publicTheme = read('kisaragi-public-theme.css');
 const baseCss = read('styles-base.css');
 const imageCss = read('image-layer.css');
 const edgeCleanup = read('edge-cleanup.css');
@@ -29,7 +30,7 @@ const requiredChecks = [
   ['home age gate restores background interaction', html, 'element.inert=inert'],
   ['adult confirmation', html, 'id="enter"'],
   ['underage notice', html, '未成年者の喫煙は法律で禁じられています'],
-  ['no-sales disclosure', html, '本サイトでは販売・決済を行いません'],
+  ['future-order disclosure', html, 'オンライン注文機能は現在準備中です'],
   ['mobile viewport fit', html, 'viewport-fit=cover'],
   ['Apple web app metadata', html, 'apple-mobile-web-app-capable'],
   ['canonical catalog navigation', html, 'href="#jp-sku-catalog">資料商品庫</a>'],
@@ -42,9 +43,9 @@ const requiredChecks = [
   ['archive incremental display', renderer, 'items.slice(0, shownCount)'],
   ['shop incremental display', shopScript, 'items.slice(0,shownCount)'],
   ['shop load-more control', shop, 'id="loadMoreProducts"'],
-  ['mobile cross-page navigation', shopPolish, '.site-header nav { order:3; display:flex;'],
+  ['mobile header removes duplicate navigation', publicTheme, '.site-header nav,'],
   ['shop product images preserve their source colors', shopPolish, 'object-fit: contain;'],
-  ['shop keeps neutral product surfaces on dark-mode devices', shopPolish, ':root { color-scheme: light; }'],
+  ['shop uses the shared dark client theme', publicTheme, 'color-scheme: dark;'],
   ['shop hero photo has no dark overlay', shopPolish, '.hero-image::after { display: none; }'],
   ['shop loader cache version', shop, 'catalog-page-loader.js?v=20260922-commerce1'],
   ['shop mode controls', shop, 'data-mode-target="archive"'],
@@ -52,7 +53,7 @@ const requiredChecks = [
   ['shop mobile safe-area dock', shopComponents, 'env(safe-area-inset-bottom, 0px)'],
   ['shop archive mode hides selection action', shopComponents, 'body[data-kisaragi-mode="archive"] .add-button'],
   ['shop sort control', shop, 'id="sortOrder"'],
-  ['unmatched OCR names follow known products when sorted', shopScript, "a.status==='IDENTITY_PENDING'"],
+  ['image-bound products lead the default catalog', shopScript, 'Number(!imageFor(a))-Number(!imageFor(b))'],
   ['shop image hash cache version', shopScript, 'asset.sha256.slice(0, 12)'],
   ['archive image hash cache version', renderer, 'image.sha256.slice(0, 12)'],
   ['detail image hash cache version', productDetail, 'image.sha256.slice(0, 12)'],
@@ -110,6 +111,8 @@ for (const [name, source, expected] of requiredChecks) {
 }
 
 assert.ok(!html.includes('data-add=') && !html.includes('checkout'), 'public page must not expose purchase controls');
+assert.ok(!html.includes('data-catalog-admin') && !shop.includes('data-catalog-admin'), 'public pages must not expose the local management entry');
+assert.ok(!shop.includes('commerceStatusGrid'), 'public shop must not expose the internal module status board');
 assert.ok(!html.includes('独立 Work 版') && !shop.includes('Work 版'), 'the two pages must not describe themselves as separate sites');
 assert.ok(luxuryCss.includes('body:has(.luxury-home)>header') && !luxuryCss.includes('body:has(.luxury-home) header,'), 'luxury styling must not hide its own header');
 assert.ok(!loader.includes('pack.part01') && !loader.includes('user-sprite36'), 'runtime must not load broken Base64 assets');
@@ -126,4 +129,4 @@ assert.ok(!productDetail.includes('JT 定価（2025-10-01 時点）'), 'all cata
 assert.ok(!renderer.includes('data:image'), 'product cards must use per-SKU files');
 assert.ok(manifest.icons.length > 0, 'PWA manifest needs an icon');
 
-console.log(`MVP smoke: PASS (${requiredChecks.length + 16} assertions)`);
+console.log(`MVP smoke: PASS (${requiredChecks.length + 18} assertions)`);
