@@ -23,7 +23,7 @@ assert.equal(logistics.validateAddress({recipientName:'テスト 太郎', phone:
 
 assert.ok(html.includes('id="shippingMethods"') && html.includes('id="shippingTotal"') && html.includes('id="estimatedGrandTotal"'), 'shipping selection and quote output are required');
 assert.ok(html.includes('id="trackingForm"') && html.includes('物流API未接続'), 'tracking integration reservation must disclose its disconnected state');
-assert.ok(html.includes('実際の氏名・住所・追跡番号は入力しないでください'), 'the preview must warn against real personal data');
+assert.ok(html.includes('実際の氏名・住所・証明書・カード番号・追跡番号は入力しないでください'), 'the preview must warn against real personal, identity, and payment data');
 assert.ok(html.includes('公的証明書による年齢確認と購入者本人の同一性確認が別途必要'), 'the preview must disclose the later identity and age gate');
 assert.ok(script.includes('event.preventDefault()'), 'forms must remain local previews');
 assert.ok(!script.includes('fetch(') && !script.includes('XMLHttpRequest') && !script.includes('navigator.sendBeacon'), 'checkout must not transmit address or tracking data');

@@ -4,8 +4,8 @@
   const $ = (selector) => document.querySelector(selector);
   const yen = (amount) => `¥${Number(amount || 0).toLocaleString('ja-JP')}`;
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[character]));
-  const cartKey = 'kisaragi-shop-demo-cart-v1';
   const catalog = () => (globalThis.KISARAGI_CANONICAL_CATALOG || []).filter((item) => item.status !== 'PRICE_CONFLICT');
+  const commerce = () => globalThis.KISARAGI_COMMERCE;
   const logistics = () => globalThis.KISARAGI_LOGISTICS;
   const paymentLabels = {card:'クレジットカード（希望）', konbini:'コンビニ払い（希望）', bank:'銀行振込（希望）', cod:'代金引換（希望）'};
   let items = [];
@@ -13,18 +13,38 @@
 
   const currentPrice = (item) => item.price_jpy ?? item.price ?? null;
   const subtotalState = () => ({
-    knownSubtotal:items.reduce((sum, item) => sum + Number(currentPrice(item) ?? 0), 0),
-    hasUnknownPrice:items.some((item) => currentPrice(item) === null)
+    knownSubtotal:items.reduce((sum, line) => sum + Number(currentPrice(line.item) ?? 0) * line.quantity, 0),
+    hasUnknownPrice:items.some((line) => currentPrice(line.item) === null)
   });
   const amountWithUnknown = (amount, hasUnknownPrice) => hasUnknownPrice ? `${yen(amount)} + 価格未登録` : yen(amount);
 
   function restore() {
-    try {
-      const ids = JSON.parse(localStorage.getItem(cartKey) || '[]');
-      items = ids.map((id) => catalog().find((item) => item.id === id)).filter(Boolean);
-    } catch {
-      items = [];
-    }
+    items = commerce().readCart()
+      .map((line) => ({item:catalog().find((item) => item.id === line.id), quantity:line.quantity}))
+      .filter((line) => line.item);
+  }
+
+  function renderCommerceStages() {
+    const host = $('#commerceStages');
+    host.replaceChildren();
+    commerce().stages.forEach((stage, index) => {
+      const item = document.createElement('li');
+      item.dataset.status = stage.status;
+      item.innerHTML = `<span>${index + 1}</span><b>${escapeHtml(stage.label)}</b><small>${stage.status === 'READY_LOCAL' ? '端末内' : stage.status === 'PREVIEW_ONLY' ? '試算のみ' : '未接続'}</small>`;
+      host.append(item);
+    });
+  }
+
+  function renderModuleStatus() {
+    const host = $('#checkoutModuleStatus');
+    host.replaceChildren();
+    commerce().modules.forEach((module) => {
+      const card = document.createElement('article');
+      card.className = 'commerce-status-card';
+      card.dataset.status = module.status;
+      card.innerHTML = `<div><h3>${escapeHtml(module.name)}</h3><span>${escapeHtml(module.statusLabel)}</span></div><p>${escapeHtml(module.description)}</p>`;
+      host.append(card);
+    });
   }
 
   function selectedMethodId() {
@@ -43,16 +63,17 @@
     if (!items.length) {
       const empty = document.createElement('p');
       empty.className = 'empty';
-      empty.textContent = '選択リストに商品がありません。商品案内から追加してください。';
+      empty.textContent = 'カートに商品がありません。商品案内から追加してください。';
       host.append(empty);
     } else {
-      items.forEach((item) => {
+      items.forEach(({item, quantity}) => {
         const line = document.createElement('article');
         line.className = 'selection-line';
         const name = item.product_name_ja || item.name || '商品名未登録';
         const code = item.product_code || item.sku || '品番未登録';
         const price = currentPrice(item);
-        line.innerHTML = `<p><b>${escapeHtml(name)}</b></p><small>${escapeHtml(code)}</small><strong>${price === null ? '価格未登録' : yen(price)}</strong>`;
+        const lineTotal = price === null ? '価格未登録' : yen(Number(price) * quantity);
+        line.innerHTML = `<p><b>${escapeHtml(name)}</b></p><small>${escapeHtml(code)} / 数量 ${quantity}</small><strong>${lineTotal}${price === null || quantity === 1 ? '' : `（${yen(price)} × ${quantity}）`}</strong>`;
         host.append(line);
       });
     }
@@ -174,6 +195,7 @@
     const slot = logistics().timeSlots.find((entry) => entry.id === data.get('deliveryTime')) || logistics().timeSlots[0];
     const fullAddress = `〒${address.postalCode} ${address.prefecture}${address.addressLine}${building ? ` ${building}` : ''}`;
     const details = [
+      ['カート', `${commerce().quantityCount(items.map((line) => ({id:line.item.id, quantity:line.quantity})))}点`],
       ['氏名', address.recipientName],
       ['フリガナ', data.get('nameKana')],
       ['配送先', fullAddress],
@@ -185,7 +207,7 @@
     $('#confirmationBody').innerHTML = `<div class="confirmation-list">${details.map(([label, value]) => `<p><b>${escapeHtml(label)}</b><br>${escapeHtml(value)}</p>`).join('')}</div>`;
     lastFocus = document.activeElement;
     $('#confirmation').hidden = false;
-    $('#closeConfirmation').focus();
+    $('#confirmationTitle').focus();
   }
 
   function closeConfirmation() {
@@ -218,11 +240,13 @@
   }
 
   function init() {
-    if (!logistics()) {
-      console.error('KISARAGI logistics configuration failed to load');
+    if (!commerce() || !logistics()) {
+      console.error('KISARAGI commerce or logistics configuration failed to load');
       return;
     }
     restore();
+    renderCommerceStages();
+    renderModuleStatus();
     renderShippingMethods();
     renderDeliveryPreferences();
     renderIntegrationStatus();

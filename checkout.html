@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="KISARAGIの注文申込準備ページ。決済・注文確定・配送依頼は行いません。">
+  <meta name="description" content="KISARAGIの購入手続き機能プレビュー。カートと配送試算以外の会員、eKYC、決済、注文確定は未接続です。">
   <meta name="theme-color" content="#121212">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>KISARAGI | 申込内容の入力</title>
+  <title>KISARAGI | 購入手続きプレビュー</title>
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./checkout.css">
   <script defer src="./world-tobacco-japan.js"></script>
@@ -15,8 +15,9 @@
   <script defer src="./tsn-goods-catalog-2026.js"></script>
   <script defer src="./catalog-live-config.js"></script>
   <script defer src="./catalog-live-loader.js"></script>
+  <script defer src="./commerce-core.js?v=20260922-commerce1"></script>
   <script defer src="./logistics-core.js?v=20260921-logistics1"></script>
-  <script defer src="./catalog-page-loader.js?v=20260921-logistics1"></script>
+  <script defer src="./catalog-page-loader.js?v=20260922-commerce1"></script>
 </head>
 <body data-catalog-page="checkout">
   <a class="skip-link" href="#checkout">申込内容の入力へ移動</a>
@@ -27,15 +28,32 @@
 
   <main id="checkout">
     <section class="intro">
-      <p class="eyebrow">LOGISTICS PREVIEW / STEP 1 OF 3</p>
-      <h1>配送条件を、<br><em>確かめる。</em></h1>
-      <p>選択した商品、配送先、配送方法と概算送料をまとめる確認画面です。</p>
+      <p class="eyebrow">COMMERCE SYSTEM / FUNCTION PREVIEW</p>
+      <h1>購入の流れを、<br><em>確かめる。</em></h1>
+      <p>正式なオンライン販売に必要な機能を同じ流れで表示し、現在利用できる範囲と未接続の範囲を分けて確認できます。</p>
     </section>
 
-    <div class="notice"><strong>重要</strong><span>このページは物流機能の準備版です。実際の氏名・住所・追跡番号は入力しないでください。入力内容は保存・送信されず、注文・決済・配送依頼も開始されません。</span></div>
+    <nav class="checkout-stages" aria-label="購入手続きの接続状況"><ol id="commerceStages"></ol></nav>
+
+    <div class="notice"><strong>重要</strong><span>これは機能構成のプレビューです。実際の氏名・住所・証明書・カード番号・追跡番号は入力しないでください。入力内容は保存・送信されず、会員登録、eKYC、決済、注文確定、配送依頼も開始されません。</span></div>
+
+    <section class="system-overview" aria-labelledby="systemOverviewTitle">
+      <div class="section-heading"><p class="eyebrow">SYSTEM STATUS</p><h2 id="systemOverviewTitle">販売機能の接続状況</h2></div>
+      <div id="checkoutModuleStatus" class="commerce-status-grid"></div>
+      <p class="system-note">「端末内で利用可」と「試算のみ」はブラウザ内のプレビューです。「未接続」の機能は操作できず、外部サービスへの通信も行いません。</p>
+    </section>
 
     <section class="checkout-grid" aria-label="申込内容">
       <form id="applicationForm" class="application-card" autocomplete="off" novalidate>
+        <section class="identity-preview" aria-labelledby="identityTitle">
+          <div class="card-heading"><p class="eyebrow">MEMBER / AGE VERIFICATION</p><h2 id="identityTitle">会員・年齢確認</h2></div>
+          <div class="disabled-module-actions">
+            <button type="button" disabled>会員ログイン（未接続）</button>
+            <button type="button" disabled>eKYC 年齢確認（未接続）</button>
+          </div>
+          <p class="field-note">ログイン情報や本人確認書類は受け付けません。接続後は購入前に会員認証と年齢・本人確認を完了する設計です。</p>
+        </section>
+
         <div class="card-heading"><p class="eyebrow">CUSTOMER DETAILS</p><h2>お客様情報</h2></div>
         <div class="field-grid two"><label>氏名（漢字）<input name="nameKanji" autocomplete="off" placeholder="例：テスト 太郎" required></label><label>フリガナ（カタカナ）<input name="nameKana" autocomplete="off" placeholder="例：テスト タロウ" required></label></div>
         <div class="field-grid two"><label>メールアドレス<input name="email" type="email" autocomplete="off" placeholder="test@example.invalid" required></label><label>電話番号<input name="phone" inputmode="tel" autocomplete="off" placeholder="090-0000-0000" required></label></div>
@@ -52,22 +70,22 @@
         <div class="field-grid two"><label>お届け希望日<select name="deliveryDate" id="deliveryDate"></select></label><label>希望時間帯<select name="deliveryTime" id="deliveryTime"></select></label></div>
         <p class="field-note">希望日の確約や集荷依頼は行いません。実運用時は契約済み配送会社の回答を正とします。</p>
 
-        <div class="card-heading payment-heading"><p class="eyebrow">PAYMENT PREFERENCE</p><h2>支払い希望</h2></div>
+        <div class="card-heading payment-heading"><p class="eyebrow">PAYMENT PREFERENCE / NOT CONNECTED</p><h2>支払い希望 <span class="inline-status">未接続</span></h2></div>
         <fieldset><legend>希望する支払い方法</legend><div class="choice-grid payment-choices"><label><input type="radio" name="payment" value="card" checked><span><b>クレジットカード</b><small>加盟店審査・決済接続後に有効化</small></span></label><label><input type="radio" name="payment" value="konbini"><span><b>コンビニ払い</b><small>決済事業者の契約後に案内</small></span></label><label><input type="radio" name="payment" value="bank"><span><b>銀行振込</b><small>審査後に振込先を案内</small></span></label><label><input type="radio" name="payment" value="cod"><span><b>代金引換</b><small>配送会社・商品条件を確認</small></span></label></div></fieldset>
         <label class="consent"><input type="checkbox" name="adultConsent" required><span>私は20歳以上です。実際の通信販売では、公的証明書による年齢確認と購入者本人の同一性確認が別途必要であることを理解しました。</span></label>
-        <button class="primary-button" type="submit">配送・申込プレビューを作成する</button>
+        <button class="primary-button" type="submit">購入手続きプレビューを作成する</button>
         <p class="submit-note">画面内に確認内容を表示するだけです。サーバー送信、本人確認、決済、配送依頼は行いません。</p>
       </form>
 
       <aside class="summary-stack">
-        <section class="summary-card" aria-labelledby="summaryTitle"><p class="eyebrow">YOUR SELECTION</p><h2 id="summaryTitle">選択内容</h2><div id="selectionItems" class="selection-items"></div><dl class="quote-lines"><div><dt>商品小計</dt><dd id="selectionTotal">¥0</dd></div><div><dt>概算送料</dt><dd id="shippingTotal">¥0</dd></div><div class="grand-total"><dt>概算合計</dt><dd id="estimatedGrandTotal">¥0</dd></div></dl><p class="summary-note">価格未登録の商品は合計に含めません。送料は購入者負担を前提とした試算で、正式な運賃ではありません。</p><a class="outline-button wide" href="./shop.html">商品を追加・変更する</a></section>
+        <section class="summary-card" aria-labelledby="summaryTitle"><p class="eyebrow">YOUR CART / LOCAL ONLY</p><h2 id="summaryTitle">カート</h2><div id="selectionItems" class="selection-items"></div><dl class="quote-lines"><div><dt>商品小計</dt><dd id="selectionTotal">¥0</dd></div><div><dt>概算送料</dt><dd id="shippingTotal">¥0</dd></div><div class="grand-total"><dt>概算合計</dt><dd id="estimatedGrandTotal">¥0</dd></div></dl><p class="summary-note">数量と概算小計はこの端末内だけで保持します。価格未登録の商品は合計に含めず、送料は正式な運賃ではありません。</p><a class="outline-button wide" href="./shop.html">カートの商品を変更する</a></section>
         <section class="integration-card" aria-labelledby="trackingTitle"><p class="eyebrow">TRACKING RESERVATION</p><h2 id="trackingTitle">物流接続状況</h2><div id="integrationStatus" class="integration-status"></div><form id="trackingForm" autocomplete="off"><label>テスト追跡番号<input name="trackingNumber" placeholder="接続後に利用可能" autocomplete="off"></label><button class="outline-button wide" type="submit">接続状態を確認する</button></form><p id="trackingStatus" class="tracking-status" role="status">現在は物流API未接続です。追跡結果は表示しません。</p></section>
       </aside>
     </section>
   </main>
 
   <div id="confirmation" class="confirmation" role="dialog" aria-modal="true" aria-labelledby="confirmationTitle" hidden>
-    <section class="confirmation-card"><p class="eyebrow">LOGISTICS PREVIEW</p><h2 id="confirmationTitle">配送プレビューを作成しました</h2><div id="confirmationBody"></div><p>これは画面上の確認です。情報はサーバーへ送信されず、注文番号・運送状・追跡番号は発行されません。</p><button id="closeConfirmation" class="primary-button" type="button">入力内容に戻る</button></section>
+    <section class="confirmation-card"><p class="eyebrow">ORDER REVIEW / NOT CONNECTED</p><h2 id="confirmationTitle" tabindex="-1">購入手続きプレビューを作成しました</h2><div id="confirmationBody"></div><p>これは画面上の確認です。情報はサーバーへ送信されず、注文番号・決済・運送状・追跡番号・確認メールは発行されません。</p><button class="disabled-order-button" type="button" disabled>注文を確定する（未接続）</button><button id="closeConfirmation" class="primary-button" type="button">入力内容に戻る</button></section>
   </div>
 </body>
 </html>
