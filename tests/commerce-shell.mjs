@@ -56,7 +56,10 @@ assert.equal(commerce.quantityCount([{id:'sku-1',quantity:2},{id:'sku-2',quantit
 assert.ok(!shopHtml.includes('id="commerceStatusGrid"') && !checkoutHtml.includes('id="checkoutModuleStatus"'), 'internal module status boards must stay out of the public pages');
 assert.ok(!checkoutHtml.includes('id="commerceStages"'), 'the public selection page must not expose the internal purchase stage map');
 assert.ok(checkoutHtml.includes('id="selectionItems"') && checkoutHtml.includes('ご注文までの流れ'), 'checkout must present the saved selection and customer-facing next steps');
-assert.ok(checkoutHtml.includes('オンライン注文は準備中') && /オンライン注文は準備中<\/button>/.test(checkoutHtml), 'the future order action must remain visibly disabled');
+assert.ok(checkoutHtml.includes('オンライン注文の受付は準備中です') && /注文手続きは準備中<\/button>/.test(checkoutHtml), 'the future order action must remain visibly disabled');
+for (const label of ['会員・ログイン','eKYC・年齢確認','在庫・最終価格確認','配送・受取方法','お支払い','注文内容の確認・確定','注文履歴・お知らせ','配送状況・追跡']) {
+  assert.ok(checkoutHtml.includes(label), `checkout must expose the customer-facing ${label} module`);
+}
 assert.ok(!/<(?:form|input|select)\b/i.test(checkoutHtml), 'the public selection page must not accept personal, shipping, or payment data');
 assert.ok(shopScript.includes('quantity-plus') && shopScript.includes('quantity-minus') && shopScript.includes('removeFromCart'), 'cart must expose quantity and remove controls');
 assert.ok(checkoutScript.includes('knownSubtotal += Number(price) * quantity'), 'selection totals must multiply price by quantity');
