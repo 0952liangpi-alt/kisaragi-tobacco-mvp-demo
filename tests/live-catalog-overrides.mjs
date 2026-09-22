@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {createContext, runInContext} from 'node:vm';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const liveConfig = readFileSync(join(root, 'catalog-live-config.js'), 'utf8');
 const files = [
   'world-tobacco-japan.js', 'jt-catalog-2025.js', 'tsn-imported-catalog-2026.js',
   'tsn-goods-catalog-2026.js', 'catalog-core.js',
@@ -42,4 +43,5 @@ assert.equal(rejected.KISARAGI_CATALOG_AUDIT.TOTAL_ASSETS, baseline.KISARAGI_CAT
 const conflict = catalogFor({'wt-1117': {price_jpy: 580}});
 assert.equal(conflict.KISARAGI_CANONICAL_CATALOG.find((product) => product.id === 'wt-1117').status, 'PRICE_CONFLICT');
 assert.equal(conflict.KISARAGI_CATALOG_AUDIT.CONFLICTS, baseline.KISARAGI_CATALOG_AUDIT.CONFLICTS + 1);
+assert.ok(liveConfig.includes("location.port === '8766'"), 'the local admin API must only attach to the designated public preview port');
 console.log('Live catalog overrides: PASS (single catalog, image priority, origin guard, price conflict)');

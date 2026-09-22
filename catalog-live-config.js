@@ -1,5 +1,5 @@
 (() => {
-  const local = ['127.0.0.1', 'localhost'].includes(location.hostname);
+  const local = ['127.0.0.1', 'localhost'].includes(location.hostname) && location.port === '8766';
   // Set these to the protected cloud service origin when it is deployed.
   const cloudApiBase = null;
   const cloudAdminUrl = null;

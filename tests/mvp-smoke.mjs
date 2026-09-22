@@ -20,6 +20,7 @@ const renderer = read('world-tobacco-catalog-render.js');
 const luxuryHome = read('luxury-home.js');
 const luxuryCss = read('luxury-home.css');
 const serviceWorker = read('service-worker.js');
+const unifiedShell = read('unified-site-shell.css');
 const manifest = JSON.parse(read('manifest.webmanifest'));
 
 const requiredChecks = [
@@ -33,12 +34,12 @@ const requiredChecks = [
   ['future-order disclosure', html, 'オンライン注文機能は現在準備中です'],
   ['mobile viewport fit', html, 'viewport-fit=cover'],
   ['Apple web app metadata', html, 'apple-mobile-web-app-capable'],
-  ['canonical catalog navigation', html, 'href="#jp-sku-catalog">資料庫</a>'],
+  ['canonical catalog navigation', html, 'href="./index.html#jp-sku-catalog">資料庫</a>'],
   ['shop navigation from home', html, 'href="./shop.html#catalog">商品案内</a>'],
-  ['order-function navigation from home', html, 'href="./checkout.html#orderFunctions">注文機能一覧</a>'],
+  ['order-function navigation from home', html, 'href="./checkout.html#orderFunctions">注文機能</a>'],
   ['home navigation from shop', shop, 'href="./index.html">ホーム</a>'],
   ['archive navigation from shop', shop, 'href="./index.html#jp-sku-catalog">資料庫</a>'],
-  ['order-function navigation from shop', shop, 'href="./checkout.html#orderFunctions">注文機能一覧</a>'],
+  ['order-function navigation from shop', shop, 'href="./checkout.html#orderFunctions">注文機能</a>'],
   ['shared age session on home', html, "sessionStorage.setItem(ageKey,'1')"],
   ['shared age session on shop', shopScript, "sessionStorage.setItem('kisaragi-age-verified','1')"],
   ['canonical catalog primary CTA', luxuryHome, 'href="#jp-sku-catalog"'],
@@ -64,7 +65,7 @@ const requiredChecks = [
   ['detail pack can shrink within the gallery', edgeCleanup, '.jp-product-detail-image img{min-height:0!important;'],
   ['shop included in offline shell', serviceWorker, "'./shop.html'"],
   ['navigation bypasses stale HTTP cache', serviceWorker, "cache:freshPage?'no-store':'default'"],
-  ['visible home navigation', luxuryHome, 'class="luxury-links"'],
+  ['visible home navigation', luxuryHome, 'class="luxury-links unified-site-nav"'],
   ['home navigation to shop', luxuryHome, 'href="./shop.html#catalog"'],
   ['home trust link', luxuryHome, 'href="./trust.html"'],
   ['home feature path links to order functions', luxuryHome, 'href="./checkout.html#orderFunctions"><b>注文機能一覧</b>'],
@@ -91,11 +92,11 @@ const requiredChecks = [
   ['retired horizontal brand toolbar', renderer, /brandSelect\.addEventListener\('change'/],
   ['mobile catalog bottom clearance', catalogCss, /padding\s*:\s*48px 12px 104px/],
   ['mobile dock', html, 'aria-label="モバイルナビゲーション"'],
-  ['home dock trust target', html, 'href="./trust.html">運営情報</a>'],
-  ['home dock remains visible on phones', luxuryCss, 'body:has(.luxury-home) .mobile-dock{display:flex!important'],
+  ['home dock trust target', html, 'href="./trust.html">運営</a>'],
+  ['home dock remains visible on phones', unifiedShell, '.unified-mobile-dock'],
   ['shop guide hash scrolls after catalog render', shopScript, "if(location.hash==='#guide')requestAnimationFrame"],
-  ['mobile dock safe area', imageCss, 'env(safe-area-inset-bottom)'],
-  ['hero dock clearance', imageCss, 'body.hero-in-view .mobile-dock'],
+  ['mobile dock safe area', unifiedShell, 'env(safe-area-inset-bottom, 0px)'],
+  ['five-column mobile dock', unifiedShell, 'grid-template-columns: repeat(5, minmax(0, 1fr))'],
   ['mobile CTA no-wrap', imageCss, 'white-space: nowrap'],
   ['short-screen age gate', imageCss, '@media (max-width: 520px), (max-height: 760px)'],
   ['age gate scroll fallback', imageCss, 'overflow-y: auto'],

@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="luxury-scrim" aria-hidden="true"></div><div class="luxury-gradient" aria-hidden="true"></div>
-        <header class="luxury-nav"><a class="luxury-brand" href="./index.html">KISARAGI<small>JAPAN TOBACCO CATALOG</small></a><nav class="luxury-links" aria-label="メインナビゲーション"><a href="./shop.html#catalog">商品案内</a><a href="#jp-sku-catalog">資料庫</a><a href="./checkout.html#orderFunctions">注文機能一覧</a><a href="./trust.html">運営情報</a></nav></header>
+        <header class="luxury-nav"><a class="luxury-brand" href="./index.html">KISARAGI<small>JAPAN TOBACCO CATALOG</small></a><nav class="luxury-links unified-site-nav" aria-label="メインナビゲーション"><a href="./index.html" aria-current="page">ホーム</a><a href="./shop.html#catalog">商品案内</a><a href="./index.html#jp-sku-catalog">資料庫</a><a href="./checkout.html#orderFunctions">注文機能</a><a href="./trust.html">運営・取引</a></nav></header>
         <div class="luxury-content"><div class="luxury-copy"><p class="luxury-eyebrow">日本たばこ商品庫 / ${total} 品項</p><h1 id="luxury-title"><span>日本のたばこを、</span><span>選ぶ前に確かめる。</span></h1><p class="luxury-lead">品名、画像、参考価格、出典をひとつの画面で確認できます。オンライン注文機能は現在準備中です。</p><a class="luxury-cta" href="./shop.html#catalog"><span>商品を探す</span></a></div></div>
         <div class="luxury-floor"><span class="luxury-scroll" aria-hidden="true"><i></i>MORE</span><a class="luxury-text-link" href="#jp-sku-catalog">${total} 品項を資料庫で探す</a></div>
       </section>

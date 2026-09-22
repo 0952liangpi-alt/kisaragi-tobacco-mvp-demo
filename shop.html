@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="./shop-flow.css">
   <link rel="stylesheet" href="./kisaragi-components.css?v=20260922-order-nav1">
   <link rel="stylesheet" href="./kisaragi-public-theme.css?v=20260922-client1">
+  <link rel="stylesheet" href="./unified-site-shell.css?v=20260922-unified1">
   <script defer src="./world-tobacco-japan.js"></script>
   <script defer src="./jt-catalog-2025.js?v=20260921-jt-color1"></script>
   <script defer src="./tsn-imported-catalog-2026.js"></script>
@@ -40,12 +41,12 @@
 
   <header class="site-header">
     <a class="brand" href="./index.html" aria-label="KISARAGI ホーム"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a>
-    <nav aria-label="メインナビゲーション">
+    <nav class="unified-site-nav" aria-label="メインナビゲーション">
       <a href="./index.html">ホーム</a>
       <a href="#catalog" aria-current="page">商品案内</a>
       <a href="./index.html#jp-sku-catalog">資料庫</a>
-      <a href="./checkout.html#orderFunctions">注文機能一覧</a>
-      <a href="#guide">利用案内</a>
+      <a href="./checkout.html#orderFunctions">注文機能</a>
+      <a href="./trust.html">運営・取引</a>
     </nav>
     <div class="mode-switch-group" role="group" aria-label="表示モード">
       <button class="mode-switch-btn" type="button" data-mode-target="shop" aria-pressed="true">商品を選ぶ</button>
@@ -97,12 +98,12 @@
 
   </main>
 
-  <nav class="mobile-dock" aria-label="モバイルナビゲーション">
+  <nav class="unified-mobile-dock" aria-label="モバイルナビゲーション">
     <a href="./index.html">ホーム</a>
-    <button type="button" data-mode-target="shop" aria-pressed="true">商品</button>
-    <button type="button" data-mode-target="archive" aria-pressed="false">出典</button>
-    <a href="./checkout.html#orderFunctions">注文一覧</a>
-    <button id="mobileOpenCart" type="button">選択 <span class="mobile-cart-count" id="mobileCartCount">0</span></button>
+    <a href="./shop.html#catalog" aria-current="page">商品</a>
+    <a href="./index.html#jp-sku-catalog">資料庫</a>
+    <a href="./checkout.html#orderFunctions">注文</a>
+    <a href="./trust.html">運営</a>
   </nav>
 
   <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上向けの商品案内です。オンライン注文機能は現在準備中です。</p><div class="footer-links"><a href="./checkout.html#orderFunctions">注文機能一覧</a><a href="./trust.html">運営・取引情報</a></div></footer>

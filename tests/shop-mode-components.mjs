@@ -9,8 +9,8 @@ const css = read('kisaragi-components.css');
 const publicTheme = read('kisaragi-public-theme.css');
 
 assert.ok(html.includes('data-kisaragi-mode="shop"'), 'shop mode must be explicit on first render');
-assert.equal((html.match(/data-mode-target="shop"/g) || []).length, 2, 'desktop and mobile shop controls are required');
-assert.equal((html.match(/data-mode-target="archive"/g) || []).length, 2, 'desktop and mobile archive controls are required');
+assert.equal((html.match(/data-mode-target="shop"/g) || []).length, 1, 'the desktop shop control is required');
+assert.equal((html.match(/data-mode-target="archive"/g) || []).length, 1, 'the desktop archive control is required');
 assert.ok(html.includes('aria-labelledby="citationTitle"'), 'citation dialog must have an accessible name');
 assert.ok(css.includes('env(safe-area-inset-bottom, 0px)'), 'mobile dock must respect the iPhone safe area');
 assert.ok(script.includes('textContent'), 'citation fields must be written as text, not untrusted HTML');
