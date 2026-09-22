@@ -342,6 +342,21 @@ main {
   gap: 1rem;
 }
 
+.module-disclosure {
+  display: none;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  padding: .45rem .7rem;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: .68rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.module-content { display: contents; }
+
 .module-number {
   color: var(--gold);
   font: 700 .68rem ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -365,7 +380,7 @@ main {
   letter-spacing: 0;
 }
 
-.function-module > p {
+.function-module .module-content > p {
   min-height: 3.4rem;
   margin: 0 0 1rem;
   color: var(--muted);
@@ -463,9 +478,19 @@ button:focus-visible {
   .function-grid,
   .order-gate { grid-template-columns: 1fr; }
   .directory-heading { gap: .8rem; }
-  .function-module > p { min-height: 0; }
+  .function-rail { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; overflow: visible; padding-bottom: .5rem; }
+  .function-rail a { min-width: 0; padding: .55rem .25rem; text-align: center; white-space: normal; }
+  .module-disclosure { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; }
+  .function-module.is-collapsed { padding-block: .9rem; }
+  .function-module.is-collapsed h3 { margin-bottom: 0; }
+  .function-module.is-collapsed .module-content { display: none; }
+  .function-module .module-content > p { min-height: 0; }
   .function-module dl div { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
   footer { grid-template-columns: 1fr; gap: .8rem; }
+}
+
+@media (max-width: 420px) {
+  .function-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -190,6 +190,21 @@ footer .brand-mark {
   background: transparent;
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .65rem 1rem;
+}
+
+.footer-links a {
+  color: var(--ink);
+  font-size: .76rem;
+  text-decoration: none;
+}
+
+.footer-links a:hover { color: var(--accent); }
+
 .age-gate,
 .review-modal,
 .kisaragi-popover-backdrop {
@@ -237,4 +252,6 @@ footer .brand-mark {
   #guide {
     scroll-margin-top: 72px;
   }
+
+  .footer-links { justify-content: flex-start; }
 }

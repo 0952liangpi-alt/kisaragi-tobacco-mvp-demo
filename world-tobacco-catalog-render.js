@@ -70,6 +70,12 @@
             </select>
           </div>
           <div class="jp-sku-select">
+            <label for="jp-sku-brand">ブランド</label>
+            <select id="jp-sku-brand">
+              ${brands.map((brand) => `<option value="${escapeHtml(brand)}">${brand === 'ALL' ? 'すべてのブランド' : escapeHtml(brand === 'UNKNOWN' ? 'ブランド未登録' : brand)}</option>`).join('')}
+            </select>
+          </div>
+          <div class="jp-sku-select">
             <label for="jp-sku-image-filter">画像</label>
             <select id="jp-sku-image-filter">
               <option value="ALL">すべて</option>
@@ -79,7 +85,6 @@
           </div>
           <button class="jp-sku-reset" type="button">条件をクリア</button>
         </div>
-        <div class="jp-sku-brands" role="toolbar" aria-label="ブランドで絞り込む"></div>
         <p class="jp-sku-result" aria-live="polite"></p>
         <div class="jp-sku-grid"></div>
         <button class="jp-sku-more" type="button" hidden>さらに表示</button>
@@ -87,9 +92,9 @@
       </div>`;
     anchor.insertAdjacentElement('afterend', section);
 
-    const tabs = section.querySelector('.jp-sku-brands');
     const search = section.querySelector('#jp-sku-search-input');
     const categorySelect = section.querySelector('#jp-sku-category');
+    const brandSelect = section.querySelector('#jp-sku-brand');
     const imageSelect = section.querySelector('#jp-sku-image-filter');
     const resetButton = section.querySelector('.jp-sku-reset');
     const grid = section.querySelector('.jp-sku-grid');
@@ -135,11 +140,11 @@
         </div>`;
     };
 
-    let activeBrand = 'ALL';
     let visibleCount = pageSize;
     const draw = (keepVisibleCount = false) => {
       if (keepVisibleCount !== true) visibleCount = pageSize;
       const query = normalize(search.value);
+      const activeBrand = brandSelect.value;
       const activeCategory = categorySelect.value;
       const imageFilter = imageSelect.value;
       const filtered = data.filter((product) => {
@@ -201,26 +206,9 @@
       });
     };
 
-    brands.forEach((brand, index) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.textContent = brand === 'ALL' ? 'すべて' : brand;
-      button.className = index === 0 ? 'active' : '';
-      button.setAttribute('aria-pressed', String(index === 0));
-      button.addEventListener('click', () => {
-        activeBrand = brand;
-        tabs.querySelectorAll('button').forEach((tab) => {
-          const active = tab === button;
-          tab.classList.toggle('active', active);
-          tab.setAttribute('aria-pressed', String(active));
-        });
-        draw();
-      });
-      tabs.appendChild(button);
-    });
-
     search.addEventListener('input', draw);
     categorySelect.addEventListener('change', draw);
+    brandSelect.addEventListener('change', draw);
     imageSelect.addEventListener('change', draw);
     moreButton.addEventListener('click', () => {
       visibleCount += pageSize;
@@ -229,12 +217,8 @@
     resetButton.addEventListener('click', () => {
       search.value = '';
       categorySelect.value = 'ALL';
+      brandSelect.value = 'ALL';
       imageSelect.value = 'ALL';
-      activeBrand = 'ALL';
-      tabs.querySelectorAll('button').forEach((tab, index) => {
-        tab.classList.toggle('active', index === 0);
-        tab.setAttribute('aria-pressed', String(index === 0));
-      });
       draw();
       search.focus();
     });

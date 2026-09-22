@@ -195,7 +195,7 @@ const imageLayer = read('image-layer.css');
 const renderer = read('world-tobacco-catalog-render.js');
 const luxuryHome = read('luxury-home.js');
 
-assert.ok(index.includes('href="#jp-sku-catalog">資料商品庫</a>'), 'the source archive navigation must target the canonical catalog');
+assert.ok(index.includes('href="#jp-sku-catalog">資料庫</a>'), 'the source archive navigation must target the canonical catalog');
 assert.ok(luxuryHome.includes('href="#jp-sku-catalog"'), 'the rendered home CTA must open the canonical catalog');
 assert.ok(renderer.includes('product.images?.length'), 'cards must render every per-SKU file from the Asset Registry');
 assert.ok(!renderer.includes('data:image'), 'cards must not transport product images as inline Base64');

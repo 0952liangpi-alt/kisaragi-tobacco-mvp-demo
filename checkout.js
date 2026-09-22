@@ -55,12 +55,67 @@
       : yen(knownSubtotal);
   }
 
+  function enhanceOrderModules() {
+    const compact = window.matchMedia('(max-width: 760px)').matches;
+    document.querySelectorAll('.function-module').forEach((module, index) => {
+      const heading = module.querySelector('h3');
+      const top = module.querySelector('.module-top');
+      if (!heading || !top) return;
+
+      const content = document.createElement('div');
+      content.className = 'module-content';
+      content.id = `${module.id}-content`;
+      let sibling = heading.nextSibling;
+      while (sibling) {
+        const next = sibling.nextSibling;
+        content.append(sibling);
+        sibling = next;
+      }
+      module.append(content);
+
+      const disclosure = document.createElement('button');
+      disclosure.type = 'button';
+      disclosure.className = 'module-disclosure';
+      disclosure.setAttribute('aria-controls', content.id);
+      const setExpanded = (expanded) => {
+        module.classList.toggle('is-collapsed', !expanded);
+        disclosure.setAttribute('aria-expanded', String(expanded));
+        disclosure.textContent = expanded ? '閉じる' : '詳細';
+      };
+      disclosure.addEventListener('click', () => setExpanded(disclosure.getAttribute('aria-expanded') !== 'true'));
+      top.append(disclosure);
+      setExpanded(!compact || index === 0);
+    });
+
+    const revealHashTarget = () => {
+      const target = location.hash && document.querySelector(location.hash);
+      if (!target?.classList.contains('function-module')) return;
+      const disclosure = target.querySelector('.module-disclosure');
+      target.classList.remove('is-collapsed');
+      disclosure?.setAttribute('aria-expanded', 'true');
+      if (disclosure) disclosure.textContent = '閉じる';
+    };
+    document.querySelector('.function-rail')?.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) return;
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target?.classList.contains('function-module')) return;
+      target.classList.remove('is-collapsed');
+      const disclosure = target.querySelector('.module-disclosure');
+      disclosure?.setAttribute('aria-expanded', 'true');
+      if (disclosure) disclosure.textContent = '閉じる';
+    });
+    revealHashTarget();
+    window.addEventListener('hashchange', revealHashTarget);
+  }
+
   function init() {
     if (!commerce()) {
       console.error('KISARAGI commerce configuration failed to load');
       return;
     }
     render();
+    enhanceOrderModules();
   }
 
   if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', init);
