@@ -35,8 +35,10 @@ const requiredChecks = [
   ['Apple web app metadata', html, 'apple-mobile-web-app-capable'],
   ['canonical catalog navigation', html, 'href="#jp-sku-catalog">資料商品庫</a>'],
   ['shop navigation from home', html, 'href="./shop.html#catalog">商品案内</a>'],
+  ['order-function navigation from home', html, 'href="./checkout.html#orderFunctions">注文機能</a>'],
   ['home navigation from shop', shop, 'href="./index.html">ホーム</a>'],
   ['archive navigation from shop', shop, 'href="./index.html#jp-sku-catalog">資料商品庫</a>'],
+  ['order-function navigation from shop', shop, 'href="./checkout.html#orderFunctions">注文機能</a>'],
   ['shared age session on home', html, "sessionStorage.setItem(ageKey,'1')"],
   ['shared age session on shop', shopScript, "sessionStorage.setItem('kisaragi-age-verified','1')"],
   ['canonical catalog primary CTA', luxuryHome, 'href="#jp-sku-catalog"'],
@@ -65,6 +67,7 @@ const requiredChecks = [
   ['visible home navigation', luxuryHome, 'class="luxury-links"'],
   ['home navigation to shop', luxuryHome, 'href="./shop.html#catalog"'],
   ['home guide link to visible shop guide', luxuryHome, 'href="./shop.html#guide"'],
+  ['home feature path links to order functions', luxuryHome, 'href="./checkout.html#orderFunctions"><b>注文機能を見る</b>'],
   ['mobile shop link to source archive', shop, 'href="./index.html#jp-sku-catalog">資料商品庫</a>'],
   ['canonical catalog loader', loader, "loadScript('./catalog-core.js"],
   ['canonical renderer', loader, "loadScript('./world-tobacco-catalog-render.js"],
@@ -110,7 +113,7 @@ for (const [name, source, expected] of requiredChecks) {
   assert.ok(matches, `${name} is missing`);
 }
 
-assert.ok(!html.includes('data-add=') && !html.includes('checkout'), 'public page must not expose purchase controls');
+assert.ok(!html.includes('data-add=') && !html.includes('submitOrderAndPayment'), 'public page must not expose active purchase controls');
 assert.ok(!html.includes('data-catalog-admin') && !shop.includes('data-catalog-admin'), 'public pages must not expose the local management entry');
 assert.ok(!shop.includes('commerceStatusGrid'), 'public shop must not expose the internal module status board');
 assert.ok(!html.includes('独立 Work 版') && !shop.includes('Work 版'), 'the two pages must not describe themselves as separate sites');

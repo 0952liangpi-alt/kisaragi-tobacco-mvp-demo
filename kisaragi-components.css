@@ -163,7 +163,7 @@ body[data-kisaragi-mode="archive"] .citation-button {
     left: 12px;
     z-index: 35;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     min-height: 56px;
     overflow: hidden;
     border: 1px solid rgb(255 255 255 / .14);
@@ -183,7 +183,7 @@ body[data-kisaragi-mode="archive"] .citation-button {
     border: 0;
     background: transparent;
     color: #dce4da;
-    font: 700 .68rem inherit;
+    font: 700 .64rem inherit;
     text-align: center;
     text-decoration: none;
     cursor: pointer;

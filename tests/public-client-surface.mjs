@@ -21,6 +21,9 @@ for (const id of ['memberModule','ageModule','inventoryModule','deliveryModule',
   assert.ok(pages['checkout.html'].includes(`id="${id}"`), `checkout must show the ${id} customer module`);
 }
 assert.equal((pages['checkout.html'].match(/class="module-button" type="button" disabled/g) || []).length, 8, 'all protected order modules must remain visibly disabled');
+for (const path of ['index.html','shop.html']) {
+  assert.ok(pages[path].includes('href="./checkout.html#orderFunctions"'), `${path} must expose the published order-function route`);
+}
 assert.ok(pages['shop.html'].includes('kisaragi-public-theme.css') && pages['checkout.html'].includes('kisaragi-public-theme.css'), 'shop and checkout must share the client theme');
 assert.ok(theme.includes('filter: none !important') && theme.includes('mix-blend-mode: normal !important'), 'product media must preserve source color');
 assert.ok(theme.includes('.site-header .mode-switch-group') && theme.includes('display: none !important'), 'mobile header must not duplicate navigation controls');
