@@ -409,18 +409,22 @@ main {
   text-align: right;
 }
 
-.module-button,
-.disabled-order-button {
+.module-unavailable,
+.order-unavailable {
+  display: grid;
+  place-items: center;
   width: 100%;
   min-height: 44px;
   border: 1px solid #3f4043;
+  margin: 0;
   background: #202020;
   color: #86878a;
-  font: 800 .72rem inherit;
-  cursor: not-allowed;
+  font-size: .72rem;
+  font-weight: 800;
+  text-align: center;
 }
 
-.module-button { margin-top: 1rem; }
+.module-unavailable { margin-top: 1rem; }
 
 .order-gate {
   display: grid;

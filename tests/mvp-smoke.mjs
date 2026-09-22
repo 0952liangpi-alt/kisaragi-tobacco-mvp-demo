@@ -68,7 +68,7 @@ const requiredChecks = [
   ['visible home navigation', luxuryHome, 'class="luxury-links unified-site-nav"'],
   ['home navigation to shop', luxuryHome, 'href="./shop.html#catalog"'],
   ['home trust link', luxuryHome, 'href="./trust.html"'],
-  ['home feature path links to order functions', luxuryHome, 'href="./checkout.html#orderFunctions"><b>注文機能一覧</b>'],
+  ['home feature path links to order status', luxuryHome, 'href="./checkout.html#orderFunctions"><b>注文接続状況</b>'],
   ['mobile shop link to source archive', shop, 'href="./index.html#jp-sku-catalog">資料庫</a>'],
   ['canonical catalog loader', loader, "loadScript('./catalog-core.js"],
   ['canonical renderer', loader, "loadScript('./world-tobacco-catalog-render.js"],
@@ -115,7 +115,7 @@ for (const [name, source, expected] of requiredChecks) {
 }
 
 assert.ok(!html.includes('data-add=') && !html.includes('submitOrderAndPayment'), 'public page must not expose active purchase controls');
-assert.ok(!html.includes('data-catalog-admin') && !shop.includes('data-catalog-admin'), 'public pages must not expose the local management entry');
+assert.ok(!html.includes('data-catalog-admin') && !shop.includes('data-catalog-admin'), 'public pages must not dynamically reveal an unprobed local management service');
 assert.ok(!shop.includes('commerceStatusGrid'), 'public shop must not expose the internal module status board');
 assert.ok(!html.includes('独立 Work 版') && !shop.includes('Work 版'), 'the two pages must not describe themselves as separate sites');
 assert.ok(luxuryCss.includes('body:has(.luxury-home)>header') && !luxuryCss.includes('body:has(.luxury-home) header,'), 'luxury styling must not hide its own header');

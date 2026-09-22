@@ -1,12 +1,12 @@
 {
-  "name": "東隅 — 会社案内",
-  "short_name": "東隅",
+  "name": "KISARAGI — 日本たばこ商品庫",
+  "short_name": "KISARAGI",
   "lang": "ja-JP",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f4f1ea",
-  "theme_color": "#f4f1ea",
-  "description": "合同会社 東隅の会社案内",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "description": "KISARAGIの商品案内、資料庫、選択リスト",
   "icons": [
     {
       "src": "./assets/tougu-mark.svg",

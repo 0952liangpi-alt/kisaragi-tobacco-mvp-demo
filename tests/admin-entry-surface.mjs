@@ -1,0 +1,46 @@
+import {readFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+
+const root = new URL('../', import.meta.url);
+const read = (path) => readFileSync(new URL(path, root), 'utf8');
+const publicPages = ['index.html', 'shop.html', 'checkout.html', 'trust.html'];
+
+for (const page of publicPages) {
+  const html = read(page);
+  assert.ok(html.includes('href="./admin/"'), `${page} must link to the same-site admin route`);
+  assert.ok(!html.includes('127.0.0.1:8767/admin'), `${page} must not expose a phone-breaking loopback admin link`);
+}
+
+const home = read('luxury-home.js');
+assert.ok(home.includes('href="./admin/"') && home.includes('<b>商品管理</b>'), 'the generated homepage must expose the integrated admin route');
+
+const trust = read('trust.html');
+assert.ok(trust.includes('id="admin-entry"') && trust.includes('公開クラウド管理</dt><dd>未接続'), 'operations page must state the cloud admin boundary');
+
+const admin = read('admin/index.html');
+assert.ok(admin.includes('id="connectionPanel"') && admin.includes('id="loginForm" class="login-panel" autocomplete="off" hidden'), 'admin page must gate login behind service verification');
+assert.ok(admin.includes('autocomplete="username" hidden'), 'admin login must expose a hidden username field to password managers');
+assert.ok(admin.includes('id="logout"') && admin.includes('ログアウト'), 'the real admin session must expose logout');
+assert.ok(admin.indexOf('../catalog-live-config.js') < admin.indexOf('./admin.js'), 'admin config must load before the admin controller');
+
+const adminScript = read('admin/admin.js');
+for (const marker of ['KISARAGI_CATALOG_ADMIN', 'catalog.read', 'product.update', 'image.upload']) {
+  assert.ok(adminScript.includes(marker), `admin controller must validate ${marker}`);
+}
+assert.ok(adminScript.includes("if (!apiBase)") && adminScript.includes("'クラウド管理は未接続です'"), 'public admin must fail closed when no data service is configured');
+assert.ok(adminScript.includes("credentials: 'include'"), 'protected local admin requests must carry the HttpOnly session cookie');
+assert.ok(adminScript.includes('AbortSignal.timeout(requestTimeoutMs)'), 'admin API requests must have a bounded timeout');
+
+const loader = read('catalog-live-loader.js');
+assert.ok(!loader.includes('data-catalog-admin'), 'catalog loading must not reveal an admin link without service health proof');
+
+const worker = read('service-worker.js');
+for (const asset of ["'./admin/'", "'./admin/admin.css'", "'./admin/admin.js'", "'./admin-entry.css'"]) {
+  assert.ok(worker.includes(asset), `service worker must include ${asset}`);
+}
+assert.ok(worker.includes('admin\\/admin'), 'admin runtime assets must bypass stale cache');
+
+const detail = read('product-detail.js');
+assert.ok(detail.includes('/^https?:\\/\\//.test(sourcePath)'), 'product details must preserve absolute uploaded image URLs');
+
+console.log('Admin integration: PASS (one-site route, fail-closed public state, health-gated real local editor)');

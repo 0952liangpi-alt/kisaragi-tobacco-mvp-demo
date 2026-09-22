@@ -1,0 +1,221 @@
+(() => {
+  const $ = (selector) => document.querySelector(selector);
+  const config = globalThis.KISARAGI_LIVE_CONFIG || {};
+  const directLocal = location.hostname === '127.0.0.1' && location.port === '8767'
+    ? location.origin : null;
+  const apiBase = typeof config.apiBase === 'string' ? config.apiBase.replace(/\/$/, '') : directLocal;
+  const requestTimeoutMs = 2500;
+  let revision = 0;
+  let products = [];
+  let selected = null;
+  let previewUrl = null;
+  const status = (message, error = false) => {
+    $('#status').textContent = message;
+    $('#status').classList.toggle('error', error);
+  };
+  async function request(path, options = {}) {
+    if (!apiBase) throw new Error('管理データサービスは接続されていません');
+    const signal = options.signal || globalThis.AbortSignal.timeout(requestTimeoutMs);
+    let response;
+    let data;
+    try {
+      response = await fetch(`${apiBase}${path}`, {
+        cache: 'no-store',
+        credentials: 'include',
+        ...options,
+        signal,
+        headers: {'X-Kisaragi-Admin': '1', ...(options.headers || {})},
+      });
+      data = await response.json();
+    } catch (error) {
+      if (error?.name === 'AbortError' || error?.name === 'TimeoutError') {
+        throw new Error('管理サービスの応答がタイムアウトしました');
+      }
+      throw error;
+    }
+    if (!response.ok) {
+      const error = new Error(data.error || `HTTP ${response.status}`);
+      error.status = response.status;
+      throw error;
+    }
+    return data;
+  }
+  function showConnectionState(state, title, message) {
+    const panel = $('#connectionPanel');
+    panel.hidden = false;
+    panel.dataset.state = state;
+    panel.querySelector('h1').textContent = title;
+    $('#connectionMessage').textContent = message;
+    $('#loginForm').hidden = true;
+    $('#editor').hidden = true;
+  }
+  function showLogin() {
+    $('#connectionPanel').hidden = true;
+    $('#loginForm').hidden = false;
+    $('#editor').hidden = true;
+  }
+  function showEditor() {
+    $('#connectionPanel').hidden = true;
+    $('#loginForm').hidden = true;
+    $('#editor').hidden = false;
+  }
+  function failClosed(error) {
+    showConnectionState(
+      'offline',
+      '管理サービスに接続できません',
+      'この端末では管理サービスが起動していません。接続が確認できるまで、ログインと編集機能は表示しません。',
+    );
+    status(error.message, true);
+  }
+  function choose(product) {
+    selected = product;
+    $('#detail').hidden = false;
+    $('#selectionCode').textContent = product.code;
+    $('#selectionCategory').textContent = product.category;
+    $('#productName').value = product.product_name_ja || product.name;
+    $('#price').value = product.price_jpy ?? '';
+    $('#imageFile').value = '';
+    $('#packageConfirm').checked = false;
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    previewUrl = null;
+    const image = product.image?.url || product.image_url;
+    $('#preview').hidden = !image;
+    if (image) $('#preview').src = image;
+    draw();
+  }
+  function draw() {
+    const host = $('#results');
+    host.replaceChildren();
+    for (const product of products) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'result';
+      button.setAttribute('role', 'option');
+      button.setAttribute('aria-selected', String(selected?.id === product.id));
+      const name = document.createElement('strong');
+      name.textContent = product.product_name_ja || product.name;
+      const code = document.createElement('small');
+      code.textContent = `${product.code} · ${product.category}`;
+      button.append(name, code);
+      button.addEventListener('click', () => choose(product));
+      host.append(button);
+    }
+    $('#count').textContent = `${products.length} 件`;
+  }
+  async function search() {
+    const query = encodeURIComponent($('#search').value.trim());
+    const data = await request(`/admin/api/products?q=${query}`);
+    revision = data.revision;
+    products = data.products;
+    if (selected) selected = products.find((item) => item.id === selected.id) || null;
+    if (!selected) $('#detail').hidden = true;
+    draw();
+  }
+  $('#loginForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    try {
+      await request('/admin/api/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({password: $('#password').value}),
+      });
+      $('#password').value = '';
+      await search();
+      showEditor();
+      status('ログインしました');
+    } catch (error) {
+      if (error.status === 401) {
+        showLogin();
+        status('管理パスワードが正しくありません', true);
+      } else {
+        failClosed(error);
+      }
+    }
+  });
+  $('#logout').addEventListener('click', async () => {
+    try {
+      await request('/admin/api/logout', {method: 'POST'});
+      selected = null;
+      products = [];
+      $('#detail').hidden = true;
+      draw();
+      showLogin();
+      status('ログアウトしました');
+    } catch (error) { failClosed(error); }
+  });
+  $('#search').addEventListener('input', () => search().catch(failClosed));
+  $('#productForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!selected) return;
+    const priceText = $('#price').value.trim();
+    const price_jpy = priceText === '' ? null : Number(priceText);
+    if (price_jpy !== null && (!Number.isInteger(price_jpy) || price_jpy < 0)) return status('価格は0以上の整数で入力してください', true);
+    try {
+      const data = await request(`/admin/api/products/${selected.id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json', 'If-Match': String(revision)},
+        body: JSON.stringify({product_name_ja: $('#productName').value.trim(), price_jpy}),
+      });
+      revision = data.revision;
+      selected = {...selected, ...data.product};
+      products = products.map((item) => item.id === selected.id ? selected : item);
+      draw();
+      status('商品情報を保存しました。商品ページを再読み込みすると反映されます。');
+    } catch (error) { status(error.message, true); }
+  });
+  $('#imageFile').addEventListener('change', () => {
+    const file = $('#imageFile').files[0];
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    previewUrl = file ? URL.createObjectURL(file) : null;
+    $('#preview').hidden = !previewUrl;
+    if (previewUrl) $('#preview').src = previewUrl;
+  });
+  $('#imageForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const file = $('#imageFile').files[0];
+    if (!selected || !file || !$('#packageConfirm').checked) return;
+    try {
+      const data = await request(`/admin/api/products/${selected.id}/image`, {
+        method: 'PUT',
+        headers: {'Content-Type': file.type, 'If-Match': String(revision)},
+        body: file,
+      });
+      revision = data.revision;
+      selected = {...selected, image: data.image};
+      products = products.map((item) => item.id === selected.id ? selected : item);
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrl = null;
+      $('#preview').src = data.image.url;
+      $('#imageFile').value = '';
+      $('#packageConfirm').checked = false;
+      status('画像を登録しました。商品ページを再読み込みすると反映されます。');
+    } catch (error) { status(error.message, true); }
+  });
+  async function boot() {
+    if (!apiBase) {
+      showConnectionState(
+        'not-connected',
+        'クラウド管理は未接続です',
+        'この公開サイトでは、商品名・価格・画像を全訪問者へ反映する保護されたデータサービスをまだ接続していません。操作できないログイン画面は表示しません。',
+      );
+      return;
+    }
+    try {
+      const capabilities = await request('/admin/api/capabilities');
+      const required = ['catalog.read', 'product.update', 'image.upload'];
+      if (capabilities.service !== 'KISARAGI_CATALOG_ADMIN' || capabilities.status !== 'ready' ||
+          !required.every((capability) => capabilities.capabilities?.includes(capability))) {
+        throw new Error('管理サービスの機能確認に失敗しました');
+      }
+      const session = await request('/admin/api/session');
+      if (!session.authenticated) {
+        showLogin();
+        return;
+      }
+      await search();
+      showEditor();
+      status('管理サービスに接続しました');
+    } catch (error) { failClosed(error); }
+  }
+  boot();
+})();

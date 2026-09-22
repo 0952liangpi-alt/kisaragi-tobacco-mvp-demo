@@ -25,13 +25,13 @@ runInNewContext(source, {
 handlers.activate({ waitUntil(promise) { pending = promise; } });
 await pending;
 assert.deepEqual(deleted, ['kisaragi-demo-v18-old'], 'Activation must retain the current cache and unrelated same-origin caches');
-for (const file of ['shop.js', 'checkout.js']) {
+for (const file of ['shop.js', 'checkout.js', 'admin/admin.js']) {
   const request = { method: 'GET', url: `http://127.0.0.1:8766/${file}`, destination: 'script' };
   let response;
   handlers.fetch({ request, respondWith(promise) { response = promise; } });
   assert.equal((await response).ok, true, `${file} should come from the network`);
 }
-assert.deepEqual(fetched.map((item) => item.cache), ['no-store', 'no-store']);
+assert.deepEqual(fetched.map((item) => item.cache), ['no-store', 'no-store', 'no-store']);
 for (const [file, destination, mode] of [
   ['shop.html', 'document', 'navigate'], ['styles.css', 'style', 'cors'], ['pack.jpg', 'image', 'cors'],
 ]) {
@@ -41,6 +41,6 @@ for (const [file, destination, mode] of [
   assert.equal((await response).ok, true, `${file} should come from the network`);
 }
 assert.deepEqual(fetched.map((item) => item.cache),
-  ['no-store', 'no-store', 'no-store', 'no-store', 'default'],
+  ['no-store', 'no-store', 'no-store', 'no-store', 'no-store', 'default'],
   'navigation and styles must bypass HTTP cache while versioned images retain normal caching');
 console.log('PASS: current and unrelated caches preserved; obsolete application cache removed');

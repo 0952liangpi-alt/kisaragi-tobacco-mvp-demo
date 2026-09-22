@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="KISARAGIの商品名、表示価格、商品画像を管理する運営者向け画面です。">
+  <meta name="theme-color" content="#15322c">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: http://127.0.0.1:8766 http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>KISARAGI 商品管理</title>
+  <link rel="icon" href="../assets/tougu-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./admin.css?v=20260922-admin1">
+  <script defer src="../catalog-live-config.js?v=20260922-admin1"></script>
+  <script defer src="./admin.js?v=20260922-admin1"></script>
+</head>
+<body>
+  <header><a class="admin-brand" href="../index.html"><strong>KISARAGI</strong><span>商品管理</span></a><nav aria-label="管理画面ナビゲーション"><a href="../shop.html#catalog">商品案内</a><a href="../trust.html#admin-entry">接続状況</a></nav></header>
+  <main>
+    <section id="connectionPanel" class="connection-panel" role="status" aria-live="polite">
+      <p class="eyebrow">ADMIN SERVICE STATUS</p>
+      <h1>管理サービスを確認しています</h1>
+      <p id="connectionMessage">商品データサービスへの接続状態を確認しています。</p>
+      <a href="../trust.html#admin-entry">運営・取引情報で現在の状態を確認</a>
+    </section>
+    <form id="loginForm" class="login-panel" autocomplete="off" hidden>
+      <h1>管理者ログイン</h1>
+      <input type="text" name="username" value="kisaragi-admin" autocomplete="username" hidden>
+      <label>管理パスワード<input id="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit">ログイン</button>
+    </form>
+    <section id="editor" hidden>
+      <div class="editor-heading">
+        <h1>商品を編集</h1>
+        <button id="logout" class="button-secondary" type="button">ログアウト</button>
+      </div>
+      <label class="search">商品名・品番で検索<input id="search" type="search" placeholder="品番または商品名" autocomplete="off"></label>
+      <p id="count" aria-live="polite"></p>
+      <div class="workspace">
+        <div id="results" class="results" role="listbox" aria-label="検索結果"></div>
+        <div id="detail" class="detail" hidden>
+          <p id="selectionCode" class="code"></p>
+          <p id="selectionCategory" class="category"></p>
+          <form id="productForm">
+            <label>表示する商品名<input id="productName" name="productName" maxlength="160" required></label>
+            <label>現在の表示価格（円）<input id="price" name="price" type="number" min="0" max="10000000" step="1" inputmode="numeric" placeholder="未設定"></label>
+            <button type="submit">変更を保存</button>
+          </form>
+          <form id="imageForm">
+            <label>商品画像（JPEG / PNG）<input id="imageFile" type="file" accept="image/jpeg,image/png" required></label>
+            <label class="confirm"><input id="packageConfirm" type="checkbox" required>この品番の商品写真であり、ページ全体のスクリーンショットではないことを確認</label>
+            <div class="image-preview"><img id="preview" alt="選択商品の画像プレビュー" hidden></div>
+            <button type="submit">画像を登録</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <p id="status" role="status" aria-live="polite"></p>
+    <noscript><p class="noscript">商品管理にはJavaScriptが必要です。</p></noscript>
+  </main>
+</body>
+</html>

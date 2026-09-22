@@ -37,7 +37,7 @@ assert.ok(css.includes('env(safe-area-inset-bottom, 0px)'), 'mobile navigation m
 assert.ok(css.includes('white-space: nowrap'), 'mobile labels must remain legible without wrapping');
 
 const worker = read('service-worker.js');
-assert.ok(worker.includes('kisaragi-demo-v47-unified-site-shell'), 'the service worker cache must advance for the unified shell');
+assert.ok(worker.includes('kisaragi-demo-v48-admin-integration'), 'the service worker cache must advance for the admin integration');
 assert.ok(worker.includes("'./unified-site-shell.css'"), 'the shared shell must be available offline');
 assert.ok(worker.includes('unified-site-shell|sprite-loader'), 'the shared shell must bypass stale runtime cache');
 

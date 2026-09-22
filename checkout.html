@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="KISARAGIで選んだ商品の確認と、会員・年齢確認、配送、支払い、注文、追跡までの機能をご案内します。">
+  <meta name="description" content="KISARAGIで選んだ商品の確認と、会員・年齢確認、配送、支払い、注文、追跡サービスの現在の接続状況です。">
   <meta name="theme-color" content="#121212">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>KISARAGI | 選択リストと注文機能</title>
@@ -61,8 +61,8 @@
 
     <section class="function-directory" id="orderFunctions" aria-labelledby="functionDirectoryTitle">
       <div class="directory-heading">
-        <div><p class="eyebrow">ONLINE ORDER FUNCTIONS</p><h2 id="functionDirectoryTitle">オンライン注文機能</h2></div>
-        <p>正式サービスで利用する機能をすべて表示しています。現在利用できるのは商品案内と選択リストです。</p>
+        <div><p class="eyebrow">ONLINE SERVICE STATUS</p><h2 id="functionDirectoryTitle">正式サービス接続状況</h2></div>
+        <p>正式販売に必要な外部サービスの接続状況です。現在利用できるのは商品案内と、この端末内の選択リストだけです。</p>
       </div>
 
       <nav class="function-rail" aria-label="注文機能一覧">
@@ -82,7 +82,7 @@
           <h3>会員・ログイン</h3>
           <p>注文者情報と購入履歴を安全に管理するための会員機能です。</p>
           <dl><div><dt>会員登録</dt><dd>受付開始後</dd></div><div><dt>ログイン</dt><dd>受付開始後</dd></div><div><dt>購入履歴</dt><dd>注文受付後に表示</dd></div></dl>
-          <button class="module-button" type="button" disabled>会員機能は準備中</button>
+          <p class="module-unavailable" role="status">会員サービス：未接続</p>
         </article>
 
         <article class="function-module" id="ageModule">
@@ -90,7 +90,7 @@
           <h3>eKYC・年齢確認</h3>
           <p>20歳以上であることを確認し、確認結果を注文手続きに連携する機能です。</p>
           <dl><div><dt>本人確認</dt><dd>受付開始後</dd></div><div><dt>年齢判定</dt><dd>20歳以上</dd></div><div><dt>確認書類</dt><dd>現在は受け付けません</dd></div></dl>
-          <button class="module-button" type="button" disabled>年齢確認は準備中</button>
+          <p class="module-unavailable" role="status">eKYCサービス：未接続</p>
         </article>
 
         <article class="function-module" id="inventoryModule">
@@ -98,7 +98,7 @@
           <h3>在庫・最終価格確認</h3>
           <p>注文前に在庫、購入可能数、正式な税込価格を確定する機能です。</p>
           <dl><div><dt>在庫状況</dt><dd>注文受付時に確認</dd></div><div><dt>購入上限</dt><dd>注文受付時に表示</dd></div><div><dt>最終価格</dt><dd>注文確認画面で確定</dd></div></dl>
-          <button class="module-button" type="button" disabled>在庫確認は準備中</button>
+          <p class="module-unavailable" role="status">在庫サービス：未接続</p>
         </article>
 
         <article class="function-module" id="deliveryModule">
@@ -106,7 +106,7 @@
           <h3>配送・受取方法</h3>
           <p>配送先、配送方法、希望日時、対面受取条件を指定する機能です。</p>
           <dl><div><dt>配送先</dt><dd>現在は入力できません</dd></div><div><dt>配送方法</dt><dd>受付開始後に選択</dd></div><div><dt>受取条件</dt><dd>対面・年齢確認を予定</dd></div></dl>
-          <button class="module-button" type="button" disabled>配送設定は準備中</button>
+          <p class="module-unavailable" role="status">配送サービス：未接続</p>
         </article>
 
         <article class="function-module" id="paymentModule">
@@ -114,7 +114,7 @@
           <h3>お支払い</h3>
           <p>利用可能な支払い方法を選び、安全な決済画面へ進むための機能です。</p>
           <dl><div><dt>支払い方法</dt><dd>受付開始時に表示</dd></div><div><dt>決済情報</dt><dd>現在は受け付けません</dd></div><div><dt>領収情報</dt><dd>注文確定後に表示</dd></div></dl>
-          <button class="module-button" type="button" disabled>支払い機能は準備中</button>
+          <p class="module-unavailable" role="status">決済サービス：未接続</p>
         </article>
 
         <article class="function-module" id="orderModule">
@@ -122,7 +122,7 @@
           <h3>注文内容の確認・確定</h3>
           <p>商品、数量、価格、配送先、支払い方法を確認して注文を確定する機能です。</p>
           <dl><div><dt>注文番号</dt><dd>現在は発行しません</dd></div><div><dt>注文確定</dt><dd>受付開始後</dd></div><div><dt>変更・取消</dt><dd>注文履歴から案内</dd></div></dl>
-          <button class="module-button" type="button" disabled>注文確定は準備中</button>
+          <p class="module-unavailable" role="status">注文サービス：未接続</p>
         </article>
 
         <article class="function-module" id="notificationModule">
@@ -130,7 +130,7 @@
           <h3>注文履歴・お知らせ</h3>
           <p>受付、確認、出荷などの更新と過去の注文を確認する機能です。</p>
           <dl><div><dt>注文履歴</dt><dd>注文受付後に表示</dd></div><div><dt>状態更新</dt><dd>会員画面で案内</dd></div><div><dt>問い合わせ</dt><dd>受付開始後</dd></div></dl>
-          <button class="module-button" type="button" disabled>履歴・通知は準備中</button>
+          <p class="module-unavailable" role="status">通知サービス：未接続</p>
         </article>
 
         <article class="function-module" id="trackingModule">
@@ -138,19 +138,19 @@
           <h3>配送状況・追跡</h3>
           <p>出荷後の配送会社、追跡番号、受取予定を確認する機能です。</p>
           <dl><div><dt>追跡番号</dt><dd>現在は発行しません</dd></div><div><dt>配送状況</dt><dd>出荷後に表示</dd></div><div><dt>受取予定</dt><dd>配送会社確定後に表示</dd></div></dl>
-          <button class="module-button" type="button" disabled>配送追跡は準備中</button>
+          <p class="module-unavailable" role="status">追跡サービス：未接続</p>
         </article>
       </div>
 
       <div class="order-gate" role="status">
         <div><b>オンライン注文の受付は準備中です</b><span>現在は個人情報、本人確認書類、配送先、決済情報を送信できません。</span></div>
-        <button class="disabled-order-button" type="button" disabled>注文手続きは準備中</button>
+        <span class="order-unavailable">注文受付：未接続</span>
       </div>
     </section>
   </main>
 
   <nav class="unified-mobile-dock" aria-label="モバイルナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品</a><a href="./index.html#jp-sku-catalog">資料庫</a><a href="./checkout.html#orderFunctions" aria-current="page">注文</a><a href="./trust.html">運営</a></nav>
 
-  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上限定 · 商品情報と選択リスト</p><div class="footer-links"><a href="./shop.html#catalog">商品案内へ戻る</a><a href="./trust.html">運営・取引情報</a></div></footer>
+  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上限定 · 商品情報と選択リスト</p><div class="footer-links"><a href="./shop.html#catalog">商品案内へ戻る</a><a href="./trust.html">運営・取引情報</a><a href="./admin/">商品管理</a></div></footer>
 </body>
 </html>

@@ -23,8 +23,9 @@ assert.equal(logistics.validateAddress({recipientName:'テスト 太郎', phone:
 
 assert.ok(!html.includes('id="shippingMethods"') && !html.includes('id="trackingForm"'), 'shipping and tracking controls must stay out of the public selection page until connected');
 assert.ok(!/<(?:form|input|select)\b/i.test(html), 'the public selection page must not collect personal or logistics data');
-assert.ok(html.includes('eKYC・年齢確認') && html.includes('配送・受取方法') && html.includes('配送状況・追跡'), 'identity, delivery, and tracking modules must remain visible as read-only customer functions');
+assert.ok(html.includes('eKYC・年齢確認') && html.includes('配送・受取方法') && html.includes('配送状況・追跡'), 'identity, delivery, and tracking connection states must remain visible');
 assert.ok(html.includes('現在は入力できません') && html.includes('現在は発行しません'), 'disconnected delivery and tracking modules must tell customers that data entry and IDs are unavailable');
+assert.ok(html.includes('配送サービス：未接続') && html.includes('追跡サービス：未接続'), 'delivery and tracking must be represented as disconnected status, not controls');
 assert.ok(!html.includes('logistics-core.js'), 'the public selection page must not load the provisional logistics module');
 assert.ok(!script.includes('fetch(') && !script.includes('XMLHttpRequest') && !script.includes('navigator.sendBeacon'), 'checkout must not transmit address or tracking data');
 assert.ok(!core.includes('submitOrderAndPayment') && !core.includes('mockTracking') && !core.includes('pdfUrl'), 'logistics core must not fake orders, tracking, or labels');
