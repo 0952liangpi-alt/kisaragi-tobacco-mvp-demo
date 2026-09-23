@@ -28,6 +28,10 @@ assert.ok(html.includes('現在は入力できません') && html.includes('現�
 assert.ok(html.includes('配送サービス：未接続') && html.includes('追跡サービス：未接続'), 'delivery and tracking must be represented as disconnected status, not controls');
 assert.ok(!html.includes('logistics-core.js'), 'the public selection page must not load the provisional logistics module');
 assert.ok(!script.includes('fetch(') && !script.includes('XMLHttpRequest') && !script.includes('navigator.sendBeacon'), 'checkout must not transmit address or tracking data');
+assert.ok(script.includes('if (activated && liveSession.authenticated)') && script.includes('live().checkoutOptions()'), 'delivery controls must require both activation and an authenticated protected session');
+assert.ok(script.includes('deliveryDates(policy)') && script.includes('policy.timeSlots.forEach'), 'activated checkout must derive delivery dates and time slots from the protected policy');
+assert.ok(script.includes('freeShippingThresholdJpy == null') && !script.includes('subtotal >= 15000'), 'checkout must apply only a configured carrier threshold');
+assert.ok(script.includes('対面受取') && script.includes('受取時年齢確認要') && script.includes('置き配不可'), 'activated checkout must show the confirmed tobacco-delivery conditions');
 assert.ok(!core.includes('submitOrderAndPayment') && !core.includes('mockTracking') && !core.includes('pdfUrl'), 'logistics core must not fake orders, tracking, or labels');
 assert.ok(!core.includes('subtotal >= 15000'), 'free-shipping logic must not be present');
 assert.ok(worker.includes("'./checkout.html'") && worker.includes("'./logistics-core.js'"), 'offline shell must include the logistics preview assets');

@@ -34,6 +34,8 @@
       priority: 65,
       url: jtSource?.source_url || null,
       price_as_of: jtSource?.price_as_of || null,
+      price_kind: jtSource?.official_catalog_price_type || 'FIXED_LIST_PRICE',
+      price_tax_mode: 'INCLUDED',
       pdf_sha256: jtSource?.pdf_sha256 || null,
       image_permission_basis: jtSource?.image_permission_basis || null,
     }),
@@ -42,6 +44,8 @@
       priority: 64,
       url: tsnSource?.source_url || null,
       price_as_of: tsnSource?.price_as_of || null,
+      price_kind: tsnSource?.official_catalog_price_type || 'CATALOG_LISTED_PRICE',
+      price_tax_mode: 'UNSPECIFIED',
       pdf_sha256: tsnSource?.pdf_sha256 || null,
       image_permission_basis: tsnSource?.image_permission_basis || null,
     }),
@@ -51,6 +55,10 @@
       url: goodsSources.SMOKING_GOODS?.source_url || null,
       pdf_sha256: goodsSources.SMOKING_GOODS?.pdf_sha256 || null,
       identity_status: goodsSources.SMOKING_GOODS?.identity_status || null,
+      price_kind: 'SUGGESTED_RETAIL_PRICE',
+      price_tax_mode: 'INCLUDED',
+      price_effective_from: goodsSources.SMOKING_GOODS?.price_effective_from || null,
+      price_effective_to: goodsSources.SMOKING_GOODS?.price_effective_to || null,
     }),
     TSN_LIGHTERS_2026: Object.freeze({
       id: 'TSN_LIGHTERS_2026',
@@ -58,10 +66,93 @@
       url: goodsSources.LIGHTERS?.source_url || null,
       pdf_sha256: goodsSources.LIGHTERS?.pdf_sha256 || null,
       identity_status: goodsSources.LIGHTERS?.identity_status || null,
+      price_kind: 'SUGGESTED_RETAIL_PRICE',
+      price_tax_mode: 'MIXED',
+      price_effective_from: goodsSources.LIGHTERS?.price_effective_from || null,
+      price_effective_to: goodsSources.LIGHTERS?.price_effective_to || null,
     }),
     CLUB_JT: Object.freeze({id: 'CLUB_JT', priority: 70}),
     OTHER_APPROVED_SOURCE: Object.freeze({id: 'OTHER_APPROVED_SOURCE', priority: 50}),
   });
+
+  const officialPriceFact = (product, sourceId, source, fallback = {}) => {
+    if (!product || !source) return null;
+    const amount = Number.isInteger(product.official_catalog_price_jpy)
+      ? product.official_catalog_price_jpy
+      : Number.isInteger(product.historical_list_price_jpy)
+        ? product.historical_list_price_jpy
+        : Number.isInteger(product.ocr_list_price_candidate_jpy)
+          ? product.ocr_list_price_candidate_jpy
+          : null;
+    const priceText = product.official_catalog_price_text || null;
+    const priceKind = product.official_catalog_price_type || fallback.priceKind || source.price_kind || null;
+    const openPrice = priceKind === 'OPEN_PRICE' || priceText === 'オープン価格';
+    if (amount == null && !openPrice) return null;
+    const taxIncluded = typeof product.official_catalog_price_tax_included === 'boolean'
+      ? product.official_catalog_price_tax_included
+      : fallback.taxIncluded;
+    const asOf = product.official_catalog_price_as_of || source.price_as_of || fallback.asOf || null;
+    const effectiveFrom = product.official_catalog_price_effective_from
+      || source.price_effective_from || fallback.effectiveFrom || null;
+    const effectiveTo = product.official_catalog_price_effective_to
+      || source.price_effective_to || fallback.effectiveTo || null;
+    return Object.freeze({
+      amount_jpy: amount,
+      price_text: openPrice ? 'オープン価格' : (priceText || null),
+      pricing_mode: openPrice ? 'OPEN_PRICE' : 'AMOUNT',
+      price_kind: openPrice ? 'OPEN_PRICE' : priceKind,
+      tax_mode: taxIncluded === true ? 'INCLUDED' : taxIncluded === false ? 'EXCLUDED' : 'UNSPECIFIED',
+      currency: 'JPY',
+      as_of: asOf,
+      effective_from: effectiveFrom,
+      effective_to: effectiveTo,
+      source_id: product.official_catalog_price_source_id || sourceId,
+      source_sha256: source.pdf_sha256 || null,
+      source_page: product.pdf_page ?? null,
+      source_product_code: product.code,
+      authority: 'OFFICIAL_CLIENT_CATALOG',
+      capture_status: product.official_catalog_price_extraction_status
+        || fallback.captureStatus || 'SOURCE_TEXT',
+      visibility: 'PUBLIC',
+    });
+  };
+
+  const priceFactsForCode = (code) => Object.freeze([
+    officialPriceFact(jtByCode.get(code), 'JT_CATALOG_2025_10', jtSource, {
+      priceKind: 'FIXED_LIST_PRICE', taxIncluded: true, asOf: '2025-10-01', captureStatus: 'SOURCE_TEXT',
+    }),
+    officialPriceFact(tsnByCode.get(code), 'TSN_IMPORT_2026_04', tsnSource, {
+      priceKind: 'CATALOG_LISTED_PRICE', taxIncluded: null, asOf: '2026-05-21', captureStatus: 'SOURCE_TEXT',
+    }),
+  ].filter(Boolean));
+
+  const officialPriceFields = (facts) => {
+    const evidence = Object.freeze([...facts].sort((left, right) => {
+      const leftDate = left.effective_from || left.as_of || '';
+      const rightDate = right.effective_from || right.as_of || '';
+      return rightDate.localeCompare(leftDate) || right.source_id.localeCompare(left.source_id);
+    }));
+    const primary = evidence[0] || null;
+    const taxIncluded = primary?.tax_mode === 'INCLUDED'
+      ? true : primary?.tax_mode === 'EXCLUDED' ? false : null;
+    return {
+      official_catalog_price_jpy: primary?.amount_jpy ?? null,
+      official_catalog_price_text: primary?.price_text || null,
+      official_catalog_price_kind: primary?.price_kind || null,
+      official_catalog_price_type: primary?.price_kind || null,
+      official_catalog_price_tax_included: taxIncluded,
+      official_catalog_price_tax_mode: primary?.tax_mode || null,
+      official_catalog_price_as_of: primary?.as_of || null,
+      official_catalog_price_valid_from: primary?.effective_from || null,
+      official_catalog_price_valid_until: primary?.effective_to || null,
+      official_catalog_price_effective_from: primary?.effective_from || null,
+      official_catalog_price_effective_to: primary?.effective_to || null,
+      official_catalog_price_source_id: primary?.source_id || null,
+      official_catalog_price_verification: primary?.capture_status || null,
+      official_catalog_price_extraction_status: primary?.capture_status || null,
+      official_catalog_price_evidence: evidence,
+    };
+  };
 
   const userProducts = [
     {id: 'ua-terea-silver-blue', brand: 'TEREA', name: 'TEREA for IQOS ILUMA（銀青系・商品名確認待ち）', category: 'HEATED_TOBACCO_STICKS', identity: 'IDENTITY_PENDING'},
@@ -306,6 +397,7 @@
 
   const referenceProducts = references.map((reference) => {
     const jtProduct = jtByCode.get(reference.code) || null;
+    const officialPrice = officialPriceFields(priceFactsForCode(reference.code));
     const images = productImages(reference.id);
     const image = images[0] || null;
     const primaryAsset = (assetsBySku.get(reference.id) || [])[0] || null;
@@ -328,6 +420,7 @@
       product_name_en: null,
       price_jpy: reference.price ?? null,
       reference_shop_price_jpy: reference.shopPrice ?? null,
+      ...officialPrice,
       pack_size: reference.packCount ?? jtProduct?.pack_size ?? null,
       pack_unit: jtProduct?.pack_unit || '本',
       tar_mg: reference.tar ?? jtProduct?.tar_mg ?? null,
@@ -352,6 +445,7 @@
 
   const jtOnlyProducts = jtProducts.filter((product) => !referenceCodes.has(product.code)).map((product) => {
     const id = `jt-${product.code}`;
+    const officialPrice = officialPriceFields(priceFactsForCode(product.code));
     const images = productImages(id);
     const image = images[0] || null;
     const primaryAsset = (assetsBySku.get(id) || [])[0] || null;
@@ -368,6 +462,7 @@
       product_name_en: null,
       price_jpy: null,
       reference_shop_price_jpy: null,
+      ...officialPrice,
       historical_list_price_jpy: product.historical_list_price_jpy,
       historical_price_as_of: jtSource?.price_as_of || null,
       manufacturer_pdf_page: product.pdf_page,
@@ -390,6 +485,7 @@
   });
 
   const uploadedProducts = userProducts.map((product) => {
+    const officialPrice = officialPriceFields(Object.freeze([]));
     const images = productImages(product.id);
     const image = images[0] || null;
     return Object.freeze({
@@ -405,6 +501,7 @@
       product_name_en: null,
       price_jpy: null,
       reference_shop_price_jpy: null,
+      ...officialPrice,
       pack_size: null,
       tar_mg: null,
       nicotine_mg: null,
@@ -423,6 +520,7 @@
 
   const tsnOnlyProducts = tsnProducts.filter((product) => !existingCodes.has(product.code)).map((product) => {
     const id = `tsn-${product.code}`;
+    const officialPrice = officialPriceFields(priceFactsForCode(product.code));
     const images = productImages(id);
     const image = images[0] || null;
     return Object.freeze({
@@ -438,6 +536,7 @@
       product_name_en: null,
       price_jpy: null,
       reference_shop_price_jpy: null,
+      ...officialPrice,
       historical_list_price_jpy: product.historical_list_price_jpy,
       historical_price_as_of: tsnSource?.price_as_of || null,
       manufacturer_name_ja: product.manufacturer,
@@ -465,6 +564,16 @@
     if (!source || product.match_status !== 'IDENTITY_PENDING') {
       throw new Error(`Unverified TSN goods record: ${product.code}`);
     }
+    const sourceId = product.source_id === 'LIGHTERS' ? 'TSN_LIGHTERS_2026' : 'TSN_SMOKING_GOODS_2026';
+    const officialPrice = officialPriceFields(Object.freeze([
+      officialPriceFact(product, sourceId, source, {
+        priceKind: 'SUGGESTED_RETAIL_PRICE',
+        taxIncluded: product.source_id === 'SMOKING_GOODS' ? true : null,
+        effectiveFrom: null,
+        effectiveTo: null,
+        captureStatus: product.source_id === 'LIGHTERS' ? 'SOURCE_REVIEWED' : 'OCR_EXTRACTED',
+      }),
+    ].filter(Boolean)));
     return Object.freeze({
       id: `tsn-goods-${product.code}`,
       sku: product.code,
@@ -481,6 +590,7 @@
       ocr_list_price_candidate_jpy: product.ocr_list_price_candidate_jpy,
       price_jpy: null,
       reference_shop_price_jpy: null,
+      ...officialPrice,
       historical_list_price_jpy: product.ocr_list_price_candidate_jpy,
       historical_price_as_of: '2026',
       manufacturer_pdf_page: product.pdf_page,
@@ -559,6 +669,23 @@
     'nicotine_mg',
   ].filter((key) => product[key] == null || product[key] === 'UNKNOWN').length, 0);
   const priceConflicts = canonical.filter((product) => product.status === 'PRICE_CONFLICT').length;
+  const officialPriceEvidenceCount = canonical.reduce(
+    (count, product) => count + product.official_catalog_price_evidence.length, 0,
+  );
+  const officialPriceTerms = canonical.filter((product) => product.official_catalog_price_evidence.length > 0);
+  const officialNumericPrices = officialPriceTerms.filter((product) => Number.isInteger(product.official_catalog_price_jpy));
+  const officialOpenPrices = officialPriceTerms.filter((product) => product.official_catalog_price_kind === 'OPEN_PRICE');
+  const officialPriceConflicts = canonical.filter((product) => {
+    const byPeriod = new Map();
+    for (const fact of product.official_catalog_price_evidence) {
+      const key = `${fact.effective_from || fact.as_of || 'UNKNOWN'}:${fact.effective_to || ''}`;
+      const value = fact.pricing_mode === 'OPEN_PRICE' ? 'OPEN_PRICE' : String(fact.amount_jpy);
+      const values = byPeriod.get(key) || new Set();
+      values.add(value);
+      byPeriod.set(key, values);
+    }
+    return [...byPeriod.values()].some((values) => values.size > 1);
+  });
   const missingImageManifest = Object.freeze(canonical
     .filter((product) => product.image == null || product.images.length === 0)
     .map((product) => Object.freeze({
@@ -604,6 +731,13 @@
       return counts;
     }, {})),
     IDENTITY_PENDING: canonical.filter((product) => product.status === 'IDENTITY_PENDING').length,
+    OFFICIAL_CATALOG_PRICE_SOURCE_ROWS: officialPriceEvidenceCount,
+    OFFICIAL_CATALOG_PRICE_TERMS: officialPriceTerms.length,
+    OFFICIAL_CATALOG_NUMERIC_PRICE: officialNumericPrices.length,
+    OFFICIAL_CATALOG_OPEN_PRICE: officialOpenPrices.length,
+    OFFICIAL_CATALOG_PRICE_MISSING: canonical.length - officialPriceTerms.length,
+    OFFICIAL_CATALOG_PRICE_CONFLICTS: officialPriceConflicts.length,
+    OFFICIAL_CATALOG_PRICE_COVERAGE_PERCENT: Number(((officialPriceTerms.length / canonical.length) * 100).toFixed(1)),
     TOTAL_ASSETS: assets.length,
     TOTAL_UPLOAD_ASSETS: assets.filter((asset) => asset.source === 'USER_UPLOAD').length,
     TOTAL_UPLOAD_PRODUCTS: new Set(assets.filter((asset) => asset.source === 'USER_UPLOAD').map((asset) => asset.sku)).size,

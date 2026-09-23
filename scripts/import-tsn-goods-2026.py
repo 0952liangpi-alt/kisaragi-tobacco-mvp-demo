@@ -19,6 +19,49 @@ PDFS = [
 CODE = re.compile(r"^[CD][0-9]{3}$")
 PRICE = re.compile(r"([0-9][0-9,]*)\s*円")
 SKIP_NAME = re.compile(r"^(?:商品コード|希望小売価格|お得意様|最少ご注文|REGULAR|KING|SLIM|フリー|スロー|巻紙|カートン)")
+OFFICIAL_SOURCE_IDS = {
+    "SMOKING_GOODS": "TSN_SMOKING_GOODS_2026",
+    "LIGHTERS": "TSN_LIGHTERS_2026",
+}
+
+# Reviewed directly against the retail-price rows in the four-page lighter PDF.
+# None means the published retail-price value is オープン価格. Wholesale unit
+# prices in adjacent rows are intentionally excluded from this public field.
+LIGHTER_RETAIL_PRICE_BY_CODE = {
+    "D028": 435,
+    "D026": None,
+    "D027": 250,
+    "D006": 132,
+    "D019": None,
+    "D014": 165,
+    "D005": None,
+    "D013": 171,
+    "D018": None,
+    "D012": None,
+    "D002": 120,
+    "D020": 154,
+    "D010": None,
+    "D001": 165,
+    "D025": None,
+    "D024": None,
+    "D015": None,
+    "D016": None,
+    "D008": 132,
+    "D021": None,
+    "D004": None,
+    "D003": None,
+    "D011": 132,
+    "D009": None,
+}
+
+# Page 1 is explicitly headed as period-limited merchandise and states this
+# availability window. The remaining lighter pages do not publish a validity
+# period, so their dates must stay unset.
+LIGHTER_LIMITED_PERIOD_BY_CODE = {
+    "D027": ("2026-04-01", "2026-12-31"),
+    "D028": ("2026-04-01", "2026-12-31"),
+    "D026": ("2026-04-01", "2026-12-31"),
+}
 
 
 def normalize(text):
@@ -74,6 +117,33 @@ def extract_product(lines, code_line, source_id, page):
     ]
     price_lines.sort(key=lambda item: abs(item["y"] - (y + 0.016)))
     listed_price = PRICE.search(price_lines[0]["text"]) if price_lines else None
+    if source_id == "LIGHTERS":
+        if code not in LIGHTER_RETAIL_PRICE_BY_CODE:
+            raise ValueError(f"Unreviewed lighter retail-price code: {code}")
+        official_price = LIGHTER_RETAIL_PRICE_BY_CODE[code]
+        official_price_text = (
+            f"{official_price:,}円" if official_price is not None else "オープン価格"
+        )
+        extraction_status = "SOURCE_REVIEWED"
+        effective_from, effective_to = LIGHTER_LIMITED_PERIOD_BY_CODE.get(
+            code, (None, None)
+        )
+        price_type = (
+            "SUGGESTED_RETAIL_PRICE" if official_price is not None else "OPEN_PRICE"
+        )
+        tax_included = True if official_price is not None else None
+        # Retain the legacy OCR candidate field, but never populate it from a
+        # lighter wholesale-price row.
+        legacy_ocr_price = None
+    else:
+        official_price = int(listed_price.group(1).replace(",", "")) if listed_price else None
+        official_price_text = f"{official_price:,}円" if official_price is not None else None
+        extraction_status = "OCR_EXTRACTED"
+        effective_from = None
+        effective_to = None
+        price_type = "SUGGESTED_RETAIL_PRICE"
+        tax_included = True
+        legacy_ocr_price = official_price
     category = category_for(source_id, code, page)
     return {
         "code": code,
@@ -83,7 +153,16 @@ def extract_product(lines, code_line, source_id, page):
         "source_id": source_id,
         "pdf_page": page,
         "ocr_name_candidate": name or None,
-        "ocr_list_price_candidate_jpy": int(listed_price.group(1).replace(",", "")) if listed_price else None,
+        "ocr_list_price_candidate_jpy": legacy_ocr_price,
+        "official_catalog_price_jpy": official_price,
+        "official_catalog_price_text": official_price_text,
+        "official_catalog_price_source_id": OFFICIAL_SOURCE_IDS[source_id],
+        "official_catalog_price_as_of": None,
+        "official_catalog_price_effective_from": effective_from,
+        "official_catalog_price_effective_to": effective_to,
+        "official_catalog_price_type": price_type,
+        "official_catalog_price_tax_included": tax_included,
+        "official_catalog_price_extraction_status": extraction_status,
         "ocr_name_confidence": round(min((item["confidence"] for item in names), default=0), 2),
         "match_status": "IDENTITY_PENDING",
     }
@@ -133,6 +212,18 @@ def main():
                               "sample": [item["code"] for item in page_products[:3]]})
     duplicates = sorted({product["code"] for product in products
                          if sum(item["code"] == product["code"] for item in products) > 1})
+    lighter_codes = {product["code"] for product in products if product["source_id"] == "LIGHTERS"}
+    if lighter_codes != set(LIGHTER_RETAIL_PRICE_BY_CODE):
+        missing = sorted(set(LIGHTER_RETAIL_PRICE_BY_CODE) - lighter_codes)
+        unexpected = sorted(lighter_codes - set(LIGHTER_RETAIL_PRICE_BY_CODE))
+        raise ValueError(f"Lighter price review map mismatch: missing={missing}, unexpected={unexpected}")
+    smoking_goods_without_price = [
+        product["code"] for product in products
+        if product["source_id"] == "SMOKING_GOODS"
+        and product["official_catalog_price_jpy"] is None
+    ]
+    if smoking_goods_without_price:
+        raise ValueError(f"Smoking-goods official retail prices missing: {smoking_goods_without_price}")
     questionable = [product for product in products
                     if not product["ocr_name_candidate"] or product["ocr_name_confidence"] < 0.5]
     print(json.dumps({"total": len(products), "pages": pages,
@@ -147,10 +238,21 @@ def main():
         return
     sources = {
         key: {
+            "source_id": OFFICIAL_SOURCE_IDS[key],
             "source_url": CATALOG_URL,
             "pdf_sha256": hashlib.sha256(pdf.read_bytes()).hexdigest(),
             "catalog_edition": "2026",
             "identity_status": "OCR_REVIEW_REQUIRED",
+            "official_catalog_price_type": "SUGGESTED_RETAIL_PRICE",
+            "official_catalog_price_tax_included": (
+                True if key == "SMOKING_GOODS" else None
+            ),
+            "official_catalog_price_as_of": None,
+            "official_catalog_price_effective_from": None,
+            "official_catalog_price_effective_to": None,
+            "official_catalog_price_extraction_status": (
+                "SOURCE_REVIEWED" if key == "LIGHTERS" else "OCR_EXTRACTED"
+            ),
             "image_permission_basis": "CLIENT_AUTHORIZATION_CONFIRMED_BY_USER_2026-09-20",
         }
         for key, pdf in pdfs.items()

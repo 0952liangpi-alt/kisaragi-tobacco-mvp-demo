@@ -8,12 +8,12 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: http://127.0.0.1:8766 http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767; object-src 'none'; base-uri 'self'; form-action 'self'">
   <title>KISARAGI 商品管理</title>
   <link rel="icon" href="../assets/tougu-mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./admin.css?v=20260922-admin1">
-  <script defer src="../catalog-live-config.js?v=20260922-admin1"></script>
-  <script defer src="./admin.js?v=20260922-admin1"></script>
+  <link rel="stylesheet" href="./admin.css?v=20260923-admin2">
+  <script defer src="../catalog-live-config.js?v=20260923-admin2"></script>
+  <script defer src="./admin.js?v=20260923-admin2"></script>
 </head>
 <body>
-  <header><a class="admin-brand" href="../index.html"><strong>KISARAGI</strong><span>商品管理</span></a><nav aria-label="管理画面ナビゲーション"><a href="../shop.html#catalog">商品案内</a><a href="../trust.html#admin-entry">接続状況</a></nav></header>
+  <header><a class="admin-brand" href="../index.html"><strong>KISARAGI</strong><span>商品管理</span></a><nav aria-label="管理画面ナビゲーション"><a href="../shop.html#catalog">商品案内</a><a href="./commerce.html">取引運用</a><a href="../trust.html#admin-entry">接続状況</a></nav></header>
   <main>
     <section id="connectionPanel" class="connection-panel" role="status" aria-live="polite">
       <p class="eyebrow">ADMIN SERVICE STATUS</p>
@@ -39,9 +39,23 @@
         <div id="detail" class="detail" hidden>
           <p id="selectionCode" class="code"></p>
           <p id="selectionCategory" class="category"></p>
+          <section class="official-price" aria-labelledby="officialPriceHeading">
+            <div class="official-price-heading">
+              <h2 id="officialPriceHeading">公式カタログ価格</h2>
+              <span>読取専用</span>
+            </div>
+            <p class="official-price-note">提供済みの公式PDFに掲載された価格情報です。現在の表示価格や注文・決済で使用する承認価格とは別に管理されます。</p>
+            <dl>
+              <div><dt>掲載価格</dt><dd id="officialCatalogPrice">未掲載</dd></div>
+              <div><dt>価格区分</dt><dd id="officialCatalogPriceType">―</dd></div>
+              <div><dt>出典</dt><dd id="officialCatalogPriceSource">―</dd></div>
+              <div><dt>基準日・有効期間</dt><dd id="officialCatalogPricePeriod">―</dd></div>
+              <div><dt>取得状態</dt><dd id="officialCatalogPriceStatus">―</dd></div>
+            </dl>
+          </section>
           <form id="productForm">
             <label>表示する商品名<input id="productName" name="productName" maxlength="160" required></label>
-            <label>現在の表示価格（円）<input id="price" name="price" type="number" min="0" max="10000000" step="1" inputmode="numeric" placeholder="未設定"></label>
+            <label>現在の表示価格（円）<input id="price" name="price" type="number" min="0" max="10000000" step="1" inputmode="numeric" placeholder="未設定"><small class="field-help">商品案内に表示する運営者設定価格です。保存しても注文・決済用価格として承認されません。</small></label>
             <button type="submit">変更を保存</button>
           </form>
           <form id="imageForm">

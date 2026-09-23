@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="description" content="KISARAGIの商品案内。資料庫と同じ商品データから、商品名、画像、参考価格と出典を確認できます。">
   <meta name="theme-color" content="#121212">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767 http://127.0.0.1:8769; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>KISARAGI | 商品案内</title>
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./shop.css">
@@ -21,6 +21,8 @@
   <script defer src="./catalog-live-config.js"></script>
   <script defer src="./catalog-live-loader.js"></script>
   <script defer src="./commerce-core.js?v=20260922-commerce1"></script>
+  <script defer src="./commerce-live-config.js?v=20260922-contract1"></script>
+  <script defer src="./commerce-live-client.js?v=20260922-contract1"></script>
   <script defer src="./catalog-page-loader.js?v=20260922-commerce1"></script>
 </head>
 <body data-catalog-page="shop" data-kisaragi-mode="shop">
@@ -46,6 +48,7 @@
       <a href="#catalog" aria-current="page">商品案内</a>
       <a href="./index.html#jp-sku-catalog">資料庫</a>
       <a href="./checkout.html#orderFunctions">注文機能</a>
+      <a href="./account.html">会員・注文</a>
       <a href="./trust.html">運営・取引</a>
     </nav>
     <div class="mode-switch-group" role="group" aria-label="表示モード">
@@ -54,6 +57,13 @@
     </div>
     <button class="cart-toggle" id="openCart" type="button" aria-haspopup="dialog">選択リスト <b id="cartCount">0</b></button>
   </header>
+
+  <section class="mobile-mode-bar" aria-label="商品表示モード">
+    <div class="mode-switch-group" role="group" aria-label="商品表示モード">
+      <button class="mode-switch-btn" type="button" data-mode-target="shop" aria-pressed="true">Shop</button>
+      <button class="mode-switch-btn" type="button" data-mode-target="archive" aria-pressed="false">Archive</button>
+    </div>
+  </section>
 
   <main id="top">
     <section class="hero">
@@ -101,20 +111,20 @@
   <nav class="unified-mobile-dock" aria-label="モバイルナビゲーション">
     <a href="./index.html">ホーム</a>
     <a href="./shop.html#catalog" aria-current="page">商品</a>
-    <a href="./index.html#jp-sku-catalog">資料庫</a>
-    <a href="./checkout.html#orderFunctions">注文</a>
+    <button id="mobileOpenCart" type="button" aria-haspopup="dialog">カート <span class="mobile-cart-count" id="mobileCartCount" aria-live="polite">0</span></button>
+    <a href="./account.html">会員</a>
     <a href="./trust.html">運営</a>
   </nav>
 
-  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上向けの商品案内です。オンライン注文機能は現在準備中です。</p><div class="footer-links"><a href="./checkout.html#orderFunctions">注文接続状況</a><a href="./trust.html">運営・取引情報</a><a href="./admin/">商品管理</a></div></footer>
+  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上向けの商品案内です。オンライン注文機能は現在準備中です。</p><div class="footer-links"><a href="./checkout.html#orderFunctions">注文接続状況</a><a href="./account.html">会員・注文</a><a href="./trust.html">運営・取引情報</a><a href="./admin/">商品管理</a></div></footer>
 
   <div class="backdrop" id="backdrop" hidden></div>
   <aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartPanelTitle" aria-hidden="true">
     <div class="panel-head"><h2 id="cartPanelTitle">選択リスト</h2><button class="icon-button" id="closeCart" type="button">閉じる</button></div>
     <div id="cartItems" class="cart-items"></div>
-    <div class="cart-total"><span>商品小計（参考）</span><strong id="cartTotal">¥0</strong></div>
+    <div class="cart-total"><span id="cartTotalLabel">商品小計（参考）</span><strong id="cartTotal">¥0</strong></div>
     <a class="button primary full" id="startApplication" href="./checkout.html">選択リストを確認する</a>
-    <p class="panel-note">数量と参考小計はこの端末内に保存します。オンライン注文機能は現在準備中です。</p>
+    <p class="panel-note" id="cartStorageNote">数量と参考小計はこの端末内に保存します。オンライン注文機能は現在準備中です。</p>
   </aside>
   <div class="kisaragi-popover-backdrop" id="citationModal" role="dialog" aria-modal="true" aria-labelledby="citationTitle" aria-hidden="true">
     <section class="kisaragi-popover-card">

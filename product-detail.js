@@ -3,6 +3,46 @@
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;',
   })[character]);
   const yen = (value) => value == null ? '価格未確認' : `¥${Number(value).toLocaleString('ja-JP')}`;
+  const officialPriceKindLabel = (kind) => ({
+    MANUFACTURER_LIST_PRICE_TAX_INCLUDED: 'メーカー定価',
+    MANUFACTURER_LIST_PRICE_TAX_INCLUSIVE: 'メーカー定価',
+    MANUFACTURER_LIST_PRICE: 'メーカー定価',
+    FIXED_LIST_PRICE: '定価',
+    CATALOG_RETAIL_PRICE: 'カタログ掲載小売価格',
+    CATALOG_PRICE: 'カタログ掲載価格',
+    CATALOG_LISTED_PRICE: 'カタログ掲載価格',
+    SUGGESTED_RETAIL_PRICE_TAX_INCLUDED: '希望小売価格',
+    SUGGESTED_RETAIL_PRICE_TAX_INCLUSIVE: '希望小売価格',
+    SUGGESTED_RETAIL_PRICE: '希望小売価格',
+    OPEN_PRICE: 'オープン価格',
+  })[String(kind || '').toUpperCase()] || '公式カタログ価格';
+  const officialPrice = (product) => {
+    const rawAmount = product.official_catalog_price_jpy;
+    const amount = rawAmount != null && Number.isFinite(Number(rawAmount)) ? Number(rawAmount) : null;
+    const kind = String(product.official_catalog_price_kind || product.official_catalog_price_type || '').toUpperCase();
+    const open = kind === 'OPEN_PRICE' || String(product.official_catalog_price_text || '').includes('オープン価格');
+    return {amount, open, kindLabel:officialPriceKindLabel(kind)};
+  };
+  const officialPriceStatus = (product) => product.official_catalog_price_verification || product.official_catalog_price_extraction_status || null;
+  const officialPricePeriod = (product) => [
+    product.official_catalog_price_valid_from || product.official_catalog_price_effective_from,
+    product.official_catalog_price_valid_until || product.official_catalog_price_effective_to,
+  ].filter(Boolean).join(' ～ ');
+  const officialPriceStatusLabel = (product) => ({
+    SOURCE_VERIFIED:'資料原文確認済み', SOURCE_REVIEWED:'資料原文確認済み', SOURCE_EXTRACTED:'資料原文抽出済み', SOURCE_TEXT:'資料原文抽出済み',
+    OCR_REVIEWED:'OCR確認済み', OCR_EXTRACTED:'公式PDFからOCR抽出済み', OCR_REVIEW_REQUIRED:'OCR確認待ち',
+  })[String(officialPriceStatus(product) || '').toUpperCase()] || officialPriceStatus(product) || null;
+  const publicPrice = (product) => {
+    if (product.price_jpy != null) return {text:yen(product.price_jpy), label:'管理者設定の表示価格', note:'注文時は承認済み販売価格をサーバーで再確認します'};
+    const official = officialPrice(product);
+    const tax = product.official_catalog_price_tax_included === true ? '税込' : product.official_catalog_price_tax_included === false ? '税別' : '税区分記載なし';
+    const extractionStatus = String(officialPriceStatus(product) || '').toUpperCase();
+    const sourceNote = extractionStatus === 'OCR_EXTRACTED'
+      ? '・公式PDF OCR抽出' : /OCR_REVIEW_REQUIRED|PENDING/.test(extractionStatus) ? '・OCR確認待ち' : '';
+    if (official.amount != null) return {text:yen(official.amount), label:`${official.kindLabel}（${tax}${sourceNote}）`, note:'参考情報・承認済み販売価格ではありません'};
+    if (official.open) return {text:'オープン価格', label:`${official.kindLabel}${sourceNote ? `（${sourceNote.slice(1)}）` : ''}`, note:'販売価格は事業者確認・承認後に確定します'};
+    return {text:'価格未登録', label:'販売価格未承認', note:'注文に使用できる価格は登録されていません'};
+  };
   const categoryLabels = Object.freeze({
     CIGARETTES: '紙巻たばこ',
     HEATED_TOBACCO_STICKS: '加熱式たばこ',
@@ -57,9 +97,26 @@
 
     const openProduct = (product) => {
       const related = catalog.filter((item) => item.id !== product.id && item.brand === product.brand).slice(0, 4);
-      const priceSourceDate = escapeHtml(product.historical_price_as_of || '日付未確認');
-      const historicalPriceLabel = product.ocr_list_price_candidate_jpy != null ? '資料価格候補' : '資料掲載価格';
+      const displayPrice = publicPrice(product);
+      const official = officialPrice(product);
+      const taxLabel = product.official_catalog_price_tax_included === true ? '税込' : product.official_catalog_price_tax_included === false ? '税別' : '税区分記載なし';
+      const validity = officialPricePeriod(product);
+      const evidenceValue = product.official_catalog_price_evidence;
+      const evidenceList = Array.isArray(evidenceValue) ? evidenceValue : (evidenceValue ? [evidenceValue] : []);
+      const evidence = evidenceList[0];
+      const evidencePage = evidence && typeof evidence === 'object'
+        ? evidence.source_page ?? evidence.page ?? evidence.pdf_page ?? evidence.catalog_page ?? product.manufacturer_pdf_page ?? product.pdf_page
+        : product.manufacturer_pdf_page ?? product.pdf_page;
+      const evidenceSummary = evidenceList.map((entry) => {
+        if (!entry || typeof entry !== 'object') return null;
+        const page = entry.source_page ?? entry.page ?? entry.pdf_page ?? entry.catalog_page;
+        return `${entry.source_id || '資料'}${page != null ? ` p.${page}` : ''}`;
+      }).filter(Boolean).join(' / ');
+      const sourceRegistry = Object.values(globalThis.KISARAGI_SOURCE_REGISTRY || {});
+      const officialSource = sourceRegistry.find((entry) => (entry.id || entry.source_id) === product.official_catalog_price_source_id);
+      const officialSourceUrl = officialSource?.url || officialSource?.source_url;
       const sourceLinks = [
+        officialSourceUrl ? `<a href="${escapeHtml(officialSourceUrl)}" target="_blank" rel="noopener noreferrer">価格資料の出典を開く ↗</a>` : '',
         product.source_url ? `<a href="${escapeHtml(product.source_url)}" target="_blank" rel="noopener noreferrer">商品情報の出典を開く ↗</a>` : '',
         product.manufacturer_source_url && product.manufacturer_source_url !== product.source_url
           ? `<a href="${escapeHtml(product.manufacturer_source_url)}" target="_blank" rel="noopener noreferrer">メーカー資料を開く ↗</a>` : '',
@@ -70,7 +127,7 @@
           <div class="jp-product-detail-copy">
             <span class="jp-product-detail-kicker">${escapeHtml(product.brand && product.brand !== 'UNKNOWN' ? product.brand : 'ブランド確認中')}</span>
             <h2 id="jp-product-detail-title">${escapeHtml(product.product_name_ja || '商品名未登録')}</h2>
-            <p class="jp-product-detail-price"><small>参考税込価格</small><b>${product.price_jpy == null ? '未確認' : yen(product.price_jpy)}</b></p>
+            <p class="jp-product-detail-price"><small>${escapeHtml(displayPrice.label)}</small><b>${escapeHtml(displayPrice.text)}</b><small>${escapeHtml(displayPrice.note)}</small></p>
             <dl class="jp-product-detail-meta">
               ${metaRow('品類', categoryLabels[product.category] || product.category)}
               ${metaRow('商品コード', product.product_code || product.sku)}
@@ -78,8 +135,15 @@
               ${metaRow('包装', product.pack_size != null ? `${product.pack_size}${product.pack_unit || '本'}` : null)}
               ${metaRow('Tar', product.tar_mg != null ? `${product.tar_mg}mg` : null)}
               ${metaRow('Nicotine', product.nicotine_mg != null ? `${product.nicotine_mg}mg` : null)}
-              ${metaRow(`${historicalPriceLabel}（${priceSourceDate}・現行未確認）`, product.historical_list_price_jpy != null ? yen(product.historical_list_price_jpy) : null)}
-              ${metaRow('資料掲載ページ', product.manufacturer_pdf_page)}
+              ${metaRow('公式カタログ価格', official.amount != null ? yen(official.amount) : official.open ? 'オープン価格' : null)}
+              ${metaRow('価格区分', product.official_catalog_price_kind || product.official_catalog_price_type ? `${official.kindLabel} / ${taxLabel}` : null)}
+              ${metaRow('価格基準日', product.official_catalog_price_as_of)}
+              ${metaRow('価格有効期間', validity)}
+              ${metaRow('価格資料', product.official_catalog_price_source_id)}
+              ${metaRow('価格掲載ページ', evidencePage)}
+              ${metaRow('価格根拠資料', evidenceSummary)}
+              ${metaRow('価格根拠件数', evidenceList.length > 1 ? `${evidenceList.length}件（新しい基準日を優先表示）` : null)}
+              ${metaRow('価格確認状態', officialPriceStatusLabel(product))}
               ${metaRow('原産国', product.origin_country && product.origin_country !== 'UNKNOWN' ? product.origin_country : null)}
               ${metaRow('状態', statusLabels[product.status] || '確認待ち')}
             </dl>
@@ -91,7 +155,7 @@
               : ''}
           </div>
         </div>
-        ${related.length ? `<div class="jp-product-related"><h3>同じブランドの商品</h3><div>${related.map((item) => `<button type="button" data-related-id="${escapeHtml(item.id)}"><span>${escapeHtml(item.product_name_ja)}</span><b>${yen(item.price_jpy)}</b></button>`).join('')}</div></div>` : ''}
+        ${related.length ? `<div class="jp-product-related"><h3>同じブランドの商品</h3><div>${related.map((item) => `<button type="button" data-related-id="${escapeHtml(item.id)}"><span>${escapeHtml(item.product_name_ja)}</span><b>${escapeHtml(publicPrice(item).text)}</b></button>`).join('')}</div></div>` : ''}
       `;
       if (!dialog.open) dialog.showModal();
       document.body.classList.add('product-detail-open');

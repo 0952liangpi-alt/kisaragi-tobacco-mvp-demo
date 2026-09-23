@@ -36,6 +36,9 @@ try {
     if (process.exitCode !== null || Date.now() > deadline) throw new Error(`Admin server failed: ${output}`);
     await new Promise((resolve) => setTimeout(resolve, 50));
   }
+  const canonicalAdminRoute = await fetch(`${origin}/admin`, {redirect: 'manual'});
+  assert.equal(canonicalAdminRoute.status, 308);
+  assert.equal(canonicalAdminRoute.headers.get('location'), '/admin/');
   const adminPage = await fetch(`${origin}/admin/`);
   assert.equal(adminPage.status, 200);
   const adminHtml = await adminPage.text();
@@ -117,6 +120,19 @@ try {
   assert.equal(list.status, 200);
   const items = await list.json();
   assert.equal(items.products.length, 1);
+  assert.equal(items.products[0].official_catalog_price_jpy, 110);
+  assert.equal(items.products[0].official_catalog_price_text, '110円');
+  assert.equal(items.products[0].official_catalog_price_source_id, 'TSN_SMOKING_GOODS_2026');
+  assert.equal(items.products[0].official_catalog_price_type, 'SUGGESTED_RETAIL_PRICE');
+  assert.equal(items.products[0].official_catalog_price_evidence[0].source_id, 'TSN_SMOKING_GOODS_2026');
+  assert.equal(items.products[0].official_catalog_price_evidence[0].source_page, 6);
+  const openPriceList = await fetch(`${origin}/admin/api/products?q=D019`, {headers: auth});
+  assert.equal(openPriceList.status, 200);
+  const openPriceItem = (await openPriceList.json()).products[0];
+  assert.equal(openPriceItem.official_catalog_price_jpy, null);
+  assert.equal(openPriceItem.official_catalog_price_text, 'オープン価格');
+  assert.equal(openPriceItem.official_catalog_price_type, 'OPEN_PRICE');
+  assert.equal(JSON.stringify(openPriceItem).includes('wholesale'), false, 'admin API must not expose wholesale-price data');
   const sku = items.products[0].id;
   const change = await fetch(`${origin}/admin/api/products/${sku}`, {
     method: 'PUT',
@@ -126,6 +142,12 @@ try {
   assert.equal(change.status, 200);
   const stored = JSON.parse(await readFile(join(dataDir, 'catalog-overrides.json'), 'utf8'));
   assert.equal(stored.products[sku].price_jpy, 580);
+  const forbiddenOfficialPriceChange = await fetch(`${origin}/admin/api/products/${sku}`, {
+    method: 'PUT',
+    headers: {...auth, 'Content-Type': 'application/json', 'If-Match': '1'},
+    body: JSON.stringify({official_catalog_price_jpy: 999}),
+  });
+  assert.equal(forbiddenOfficialPriceChange.status, 422, 'official catalog evidence must remain read-only');
   const stale = await fetch(`${origin}/admin/api/products/${sku}`, {
     method: 'PUT',
     headers: {...auth, 'Content-Type': 'application/json', 'If-Match': '0'},
