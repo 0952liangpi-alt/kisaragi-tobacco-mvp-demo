@@ -47,6 +47,7 @@
 .jp-sku-meta { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:auto; color:#786b60; font-size:11px; }
 .jp-sku-meta span,.jp-sku-meta b { min-width:0; overflow-wrap:anywhere; }
 .jp-sku-meta b { display:block; margin-top:2px; color:#251a13; font-size:13px; }
+.jp-sku-meta small { display:block; margin-top:3px; color:#8a7c71; font-size:10px; line-height:1.45; }
 .jp-sku-source { display:flex; min-height:44px; align-items:center; justify-content:space-between; gap:8px; margin-top:12px; padding-top:10px; color:#7f746a; border-top:1px solid #eee6dd; font-size:10px; }
 .jp-sku-source span { min-width:0; overflow-wrap:anywhere; }
 .jp-sku-source a { display:inline-flex; min-height:44px; align-items:center; flex:0 0 auto; color:inherit; text-decoration:underline; text-underline-offset:3px; }

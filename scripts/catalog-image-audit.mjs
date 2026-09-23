@@ -22,6 +22,8 @@ const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp']);
 
 await import(new URL('../world-tobacco-japan.js', import.meta.url));
 await import(new URL('../jt-catalog-2025.js', import.meta.url));
+await import(new URL('../tsn-imported-catalog-2026.js', import.meta.url));
+await import(new URL('../tsn-goods-catalog-2026.js', import.meta.url));
 await import(new URL('../catalog-core.js', import.meta.url));
 
 const catalog = globalThis.KISARAGI_CANONICAL_CATALOG;
@@ -220,6 +222,13 @@ console.log(JSON.stringify({
   COMPLETE_SKU: audit.COMPLETE_SKU,
   CONFLICTS: audit.CONFLICTS,
   COVERAGE_PERCENT: audit.COVERAGE_PERCENT,
+  OFFICIAL_CATALOG_PRICE_SOURCE_ROWS: audit.OFFICIAL_CATALOG_PRICE_SOURCE_ROWS,
+  OFFICIAL_CATALOG_PRICE_TERMS: audit.OFFICIAL_CATALOG_PRICE_TERMS,
+  OFFICIAL_CATALOG_NUMERIC_PRICE: audit.OFFICIAL_CATALOG_NUMERIC_PRICE,
+  OFFICIAL_CATALOG_OPEN_PRICE: audit.OFFICIAL_CATALOG_OPEN_PRICE,
+  OFFICIAL_CATALOG_PRICE_MISSING: audit.OFFICIAL_CATALOG_PRICE_MISSING,
+  OFFICIAL_CATALOG_PRICE_CONFLICTS: audit.OFFICIAL_CATALOG_PRICE_CONFLICTS,
+  OFFICIAL_CATALOG_PRICE_COVERAGE_PERCENT: audit.OFFICIAL_CATALOG_PRICE_COVERAGE_PERCENT,
   MISSING_IMAGE_BY_BRAND: audit.MISSING_IMAGE_BY_BRAND,
   UNBOUND_ASSET_REPORT: unboundReport.counts,
 }, null, 2));

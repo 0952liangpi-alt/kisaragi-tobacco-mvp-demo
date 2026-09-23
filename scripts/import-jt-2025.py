@@ -72,6 +72,7 @@ def extract_product(page, page_number, word):
     price = re.search(r"([0-9][0-9,]*)\s*円", body)
     if not price:
         raise ValueError(f"Missing historical price for {code}: {body}")
+    official_price = int(price.group(1).replace(",", ""))
     pack = re.search(r"([0-9]+)\s*本入", body)
     pack_unit = "本"
     if page_number == 21:
@@ -103,7 +104,17 @@ def extract_product(page, page_number, word):
         "pack_unit": pack_unit,
         "tar_mg": float(tar.group(1)) if tar else None,
         "nicotine_mg": float(nicotine.group(1)) if nicotine else None,
-        "historical_list_price_jpy": int(price.group(1).replace(",", "")),
+        # Compatibility field retained for existing catalog consumers.
+        "historical_list_price_jpy": official_price,
+        "official_catalog_price_jpy": official_price,
+        "official_catalog_price_text": f"{official_price:,}円",
+        "official_catalog_price_source_id": "JT_CATALOG_2025_10",
+        "official_catalog_price_as_of": "2025-10-01",
+        "official_catalog_price_effective_from": None,
+        "official_catalog_price_effective_to": None,
+        "official_catalog_price_type": "FIXED_LIST_PRICE",
+        "official_catalog_price_tax_included": True,
+        "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
         "pdf_page": page_number,
     }
 
@@ -284,6 +295,12 @@ def main():
         "source_url": SOURCE_URL,
         "pdf_sha256": digest,
         "price_as_of": "2025-10-01",
+        "official_catalog_price_type": "FIXED_LIST_PRICE",
+        "official_catalog_price_tax_included": True,
+        "official_catalog_price_as_of": "2025-10-01",
+        "official_catalog_price_effective_from": None,
+        "official_catalog_price_effective_to": None,
+        "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
         "scope": "JT products listed for Japan in the October 2025 manufacturer catalog",
         "image_permission_basis": (
             "CLIENT_AUTHORIZATION_CONFIRMED_BY_USER_2026-09-20"

@@ -3,12 +3,13 @@ import {strict as assert} from 'node:assert';
 
 const root = new URL('../', import.meta.url);
 const read = (path) => readFileSync(new URL(path, root), 'utf8');
-const pages = ['index.html', 'shop.html', 'checkout.html', 'trust.html'];
+const pages = ['index.html', 'shop.html', 'checkout.html', 'account.html', 'trust.html'];
 const canonicalRoutes = [
   './index.html',
   './shop.html#catalog',
   './index.html#jp-sku-catalog',
   './checkout.html#orderFunctions',
+  './account.html',
   './trust.html'
 ];
 
@@ -37,8 +38,11 @@ assert.ok(css.includes('env(safe-area-inset-bottom, 0px)'), 'mobile navigation m
 assert.ok(css.includes('white-space: nowrap'), 'mobile labels must remain legible without wrapping');
 
 const worker = read('service-worker.js');
-assert.ok(worker.includes('kisaragi-demo-v48-admin-integration'), 'the service worker cache must advance for the admin integration');
+assert.ok(worker.includes('kisaragi-demo-v55-private-retry-offline'), 'the service worker cache must advance for the private retry and offline bundle');
 assert.ok(worker.includes("'./unified-site-shell.css'"), 'the shared shell must be available offline');
+for (const asset of ["'./index-page.js'", "'./account.html'", "'./account.css'", "'./account.js'", "'./trust.js'", "'./commerce-live-config.js'", "'./commerce-live-client.js'"]) {
+  assert.ok(worker.includes(asset), `the contract-ready shell must include ${asset}`);
+}
 assert.ok(worker.includes('unified-site-shell|sprite-loader'), 'the shared shell must bypass stale runtime cache');
 
-console.log('Unified site navigation: PASS (four pages, two viewports, five canonical routes)');
+console.log('Unified site navigation: PASS (five pages, two viewports, six canonical routes)');

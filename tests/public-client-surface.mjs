@@ -33,5 +33,8 @@ assert.ok(theme.includes('filter: none !important') && theme.includes('mix-blend
 assert.ok(theme.includes('.site-header .mode-switch-group') && theme.includes('display: none !important'), 'mobile header must not duplicate navigation controls');
 assert.ok(shopScript.includes('Number(!imageFor(a))-Number(!imageFor(b))'), 'default catalog order must lead with products that have real images');
 assert.ok(!shopScript.includes('renderCommerceStatus'), 'public script must not render internal module state');
+assert.ok(pages['shop.html'].includes('commerce-live-config.js') && pages['shop.html'].includes('commerce-live-client.js'), 'shop must share the protected commerce client');
+assert.ok(shopScript.includes('live().isActivated(capabilities)') && shopScript.includes('live().setCartItem') && shopScript.includes('live().removeCartItem'), 'an activated member cart must use the protected server cart');
+assert.ok(shopScript.includes("if(!live()?.configured)return") && shopScript.includes('liveCart.connected=false'), 'shop must retain its local selection list when the protected API is unavailable');
 
 console.log('Public client surface: PASS (unified theme, image-first catalog, simplified mobile header, visible read-only order modules)');

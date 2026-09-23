@@ -32,6 +32,16 @@ const productMap = new Map(context.KISARAGI_CANONICAL_CATALOG.map((product) => [
   name: product.product_name_ja,
   category: product.category,
   price_jpy: product.price_jpy,
+  official_catalog_price_jpy: product.official_catalog_price_jpy ?? null,
+  official_catalog_price_text: product.official_catalog_price_text ?? null,
+  official_catalog_price_source_id: product.official_catalog_price_source_id ?? null,
+  official_catalog_price_as_of: product.official_catalog_price_as_of ?? null,
+  official_catalog_price_effective_from: product.official_catalog_price_effective_from ?? null,
+  official_catalog_price_effective_to: product.official_catalog_price_effective_to ?? null,
+  official_catalog_price_type: product.official_catalog_price_type ?? null,
+  official_catalog_price_tax_included: product.official_catalog_price_tax_included ?? null,
+  official_catalog_price_extraction_status: product.official_catalog_price_extraction_status ?? null,
+  official_catalog_price_evidence: product.official_catalog_price_evidence ?? null,
   image_url: product.image?.file_path ? `http://127.0.0.1:8766/${product.image.file_path}` : null,
 }]));
 const registeredHashes = new Map();
@@ -110,6 +120,16 @@ function validName(value) {
 function revisionMatches(req) {
   return req.headers['if-match'] === String(db.revision);
 }
+function editableProduct(product) {
+  const override = db.products[product.id];
+  if (!override) return {...product};
+  return {
+    ...product,
+    ...('product_name_ja' in override ? {product_name_ja: override.product_name_ja} : {}),
+    ...('price_jpy' in override ? {price_jpy: override.price_jpy} : {}),
+    ...(override.image ? {image: override.image} : {}),
+  };
+}
 async function save(next) {
   await mkdir(dataDir, {recursive: true, mode: 0o700});
   const temp = `${dbFile}.${randomBytes(6).toString('hex')}.tmp`;
@@ -184,7 +204,10 @@ const server = createServer(async (req, res) => {
         });
       } catch { return json(res, 404, {error: 'Image not found'}); }
     }
-    if (req.method === 'GET' && ['/admin', '/admin/'].includes(url.pathname)) {
+    if (req.method === 'GET' && url.pathname === '/admin') {
+      return respond(res, 308, '', {Location: '/admin/'});
+    }
+    if (req.method === 'GET' && url.pathname === '/admin/') {
       return respond(res, 200, await readFile(join(root, 'admin', 'index.html')), {'Content-Type': 'text/html; charset=utf-8'});
     }
     if (req.method === 'GET' && url.pathname === '/favicon.ico') return respond(res, 204, '');
@@ -235,7 +258,7 @@ const server = createServer(async (req, res) => {
       const products = [...productMap.values()].filter((product) => {
         const text = `${product.id} ${product.code} ${product.name} ${product.category}`.toLocaleLowerCase('ja');
         return !query || text.includes(query);
-      }).slice(0, 80).map((product) => ({...product, ...db.products[product.id]}));
+      }).slice(0, 80).map(editableProduct);
       return json(res, 200, {revision: db.revision, products});
     }
     const match = url.pathname.match(/^\/admin\/api\/products\/([A-Za-z0-9-]+)(\/image)?$/);
@@ -300,7 +323,7 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(port, host, () => {
-  console.log(`KISARAGI admin: ${origin}/admin`);
+  console.log(`KISARAGI admin: ${origin}/admin/`);
   if (!process.env.KISARAGI_ADMIN_PASSWORD) console.log(`One-session admin password: ${password}`);
   console.log(`Catalog SKUs: ${productMap.size}; data: ${dataDir}`);
 });

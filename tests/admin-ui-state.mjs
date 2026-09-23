@@ -61,6 +61,11 @@ async function runScenario({apiBase = 'http://127.0.0.1:8767', replies = []} = {
     selectionCategory: element(),
     productName: element(),
     price: element(),
+    officialCatalogPrice: element(),
+    officialCatalogPriceType: element(),
+    officialCatalogPriceSource: element(),
+    officialCatalogPricePeriod: element(),
+    officialCatalogPriceStatus: element(),
     imageFile: element(),
     packageConfirm: element(),
     preview: element(true),
@@ -141,13 +146,35 @@ for (const [name, replies] of [
 }
 
 const ready = await runScenario({
-  replies: [response(capabilities), response({authenticated: true}), response({revision: 4, products: []})],
+  replies: [response(capabilities), response({authenticated: true}), response({revision: 4, products: [{
+    id: 'tsn-goods-C088',
+    code: 'C088',
+    name: 'スモーキング・ブラウン・シングル',
+    category: 'ROLLING_ACCESSORIES',
+    price_jpy: null,
+    official_catalog_price_jpy: 110,
+    official_catalog_price_text: '110円',
+    official_catalog_price_source_id: 'TSN_SMOKING_GOODS_2026',
+    official_catalog_price_as_of: null,
+    official_catalog_price_effective_from: '2026-04-01',
+    official_catalog_price_effective_to: '2027-03-31',
+    official_catalog_price_type: 'SUGGESTED_RETAIL_PRICE',
+    official_catalog_price_tax_included: true,
+    official_catalog_price_extraction_status: 'OCR_EXTRACTED',
+    official_catalog_price_evidence: [{source_id: 'TSN_SMOKING_GOODS_2026', source_page: 6}],
+  }]})],
 });
 assert.equal(ready.elements.connectionPanel.hidden, true);
 assert.equal(ready.elements.loginForm.hidden, true);
 assert.equal(ready.elements.editor.hidden, false);
 assert.equal(ready.elements.status.textContent, '管理サービスに接続しました');
 assert.ok(ready.requests.every((request) => request.options.signal?.milliseconds === 2500));
+ready.elements.results.children[0].listeners.get('click')();
+assert.equal(ready.elements.officialCatalogPrice.textContent, '110円（税込）');
+assert.equal(ready.elements.officialCatalogPriceType.textContent, '希望小売価格');
+assert.equal(ready.elements.officialCatalogPriceSource.textContent, 'TSN喫煙商品カタログ 2026 · PDF 6ページ');
+assert.equal(ready.elements.officialCatalogPricePeriod.textContent, '2026年4月1日〜2027年3月31日');
+assert.equal(ready.elements.officialCatalogPriceStatus.textContent, '公式PDFからOCR抽出済み');
 
 ready.queue.push(response({ok: true}));
 await ready.elements.logout.listeners.get('click')();

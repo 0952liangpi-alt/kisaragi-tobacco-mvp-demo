@@ -30,6 +30,13 @@ assert.equal(audit.TOTAL_TSN_2026_SKU, 763);
 assert.equal(audit.TSN_MATCHED_EXISTING, 8);
 assert.equal(audit.TSN_ADDED, 755);
 assert.equal(audit.TOTAL_TSN_GOODS_2026_SKU, 181);
+assert.equal(audit.OFFICIAL_CATALOG_PRICE_SOURCE_ROWS, 1078);
+assert.equal(audit.OFFICIAL_CATALOG_PRICE_TERMS, 1070);
+assert.equal(audit.OFFICIAL_CATALOG_NUMERIC_PRICE, 1056);
+assert.equal(audit.OFFICIAL_CATALOG_OPEN_PRICE, 14);
+assert.equal(audit.OFFICIAL_CATALOG_PRICE_MISSING, 30);
+assert.equal(audit.OFFICIAL_CATALOG_PRICE_CONFLICTS, 0);
+assert.equal(audit.OFFICIAL_CATALOG_PRICE_COVERAGE_PERCENT, 97.3);
 assert.deepEqual(audit.TSN_GOODS_BY_CATEGORY, {
   ROLLING_ACCESSORIES: 142,
   PIPE_ACCESSORIES: 17,
@@ -41,10 +48,16 @@ for (const sourceProduct of globalThis.KISARAGI_JT_2025_SKUS) {
   const matches = catalog.filter((product) => product.product_code === sourceProduct.code);
   assert.equal(matches.length, 1, `JT code ${sourceProduct.code} must resolve to exactly one canonical SKU`);
   assert.equal(matches[0].historical_list_price_jpy, sourceProduct.historical_list_price_jpy);
+  assert.ok(matches[0].official_catalog_price_evidence.some((fact) => (
+    fact.source_id === 'JT_CATALOG_2025_10' &&
+    fact.amount_jpy === sourceProduct.official_catalog_price_jpy &&
+    fact.price_kind === 'FIXED_LIST_PRICE' &&
+    fact.tax_mode === 'INCLUDED'
+  )));
   assert.equal(matches[0].historical_price_as_of, '2025-10-01');
   assert.equal(matches[0].manufacturer_pdf_page, sourceProduct.pdf_page);
 }
-assert.equal(catalog.find((product) => product.id === 'jt-1992').price_jpy, null, 'historical JT price must not masquerade as current price');
+assert.equal(catalog.find((product) => product.id === 'jt-1992').price_jpy, null, 'official JT catalog price must not masquerade as an approved sale price');
 assert.equal(catalog.find((product) => product.id === 'wt-1117').price_jpy, 470, 'existing reference price must not be overwritten');
 assert.equal(catalog.find((product) => product.id === 'jt-1919').category, 'CIGARS');
 assert.equal(catalog.find((product) => product.id === 'jt-3438').category, 'SMOKELESS_TOBACCO');
@@ -53,10 +66,16 @@ for (const sourceProduct of globalThis.KISARAGI_TSN_2026_SKUS) {
   const matches = catalog.filter((product) => product.product_code === sourceProduct.code);
   assert.equal(matches.length, 1, `TSN code ${sourceProduct.code} must resolve to exactly one canonical SKU`);
   assert.equal(matches[0].category, sourceProduct.category);
+  assert.ok(matches[0].official_catalog_price_evidence.some((fact) => (
+    fact.source_id === 'TSN_IMPORT_2026_04' &&
+    fact.amount_jpy === sourceProduct.official_catalog_price_jpy &&
+    fact.price_kind === 'CATALOG_LISTED_PRICE' &&
+    fact.tax_mode === 'UNSPECIFIED'
+  )));
   if (matches[0].id.startsWith('tsn-')) {
     assert.equal(matches[0].historical_list_price_jpy, sourceProduct.historical_list_price_jpy);
     assert.equal(matches[0].historical_price_as_of, '2026-05-21');
-    assert.equal(matches[0].price_jpy, null, 'historical PDF price must not masquerade as current price');
+    assert.equal(matches[0].price_jpy, null, 'official PDF price must not masquerade as an approved sale price');
   }
 }
 assert.equal(catalog.find((product) => product.id === 'tsn-2920').category, 'IMPORTED_CIGARETTES');
@@ -70,8 +89,12 @@ for (const sourceProduct of globalThis.KISARAGI_TSN_GOODS_2026_SKUS) {
   assert.equal(matches.length, 1, `goods code ${sourceProduct.code} must resolve to one canonical SKU`);
   assert.equal(matches[0].category, sourceProduct.category);
   assert.equal(matches[0].status, 'IDENTITY_PENDING');
-  assert.equal(matches[0].price_jpy, null, 'OCR price must not masquerade as current price');
-  assert.equal(matches[0].historical_list_price_jpy, sourceProduct.ocr_list_price_candidate_jpy, 'OCR catalog price remains historical, not current');
+  assert.equal(matches[0].price_jpy, null, 'official OCR-backed catalog price must not masquerade as an approved sale price');
+  assert.equal(matches[0].historical_list_price_jpy, sourceProduct.ocr_list_price_candidate_jpy, 'legacy price alias must remain compatible');
+  assert.equal(
+    matches[0].official_catalog_price_kind,
+    sourceProduct.official_catalog_price_text === 'オープン価格' ? 'OPEN_PRICE' : sourceProduct.official_catalog_price_type,
+  );
   assert.equal(matches[0].image, null, 'unreviewed goods must not receive a guessed image');
   assert.equal(matches[0].product_name_ocr_candidate, sourceProduct.ocr_name_candidate);
   assert.equal(matches[0].product_name_ja, sourceProduct.ocr_name_candidate || sourceProduct.name);

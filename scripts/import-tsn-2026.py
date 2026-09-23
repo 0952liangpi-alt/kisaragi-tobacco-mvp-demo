@@ -80,6 +80,7 @@ def extract_cell(page, page_number, word):
         category = "CUT_TOBACCO"
     brand = re.split(r"[・\s（(]", name, maxsplit=1)[0]
     amount = float(pack.group(1))
+    official_price = int(price.group(1).replace(",", ""))
     return {
         "code": code,
         "brand": brand,
@@ -90,7 +91,17 @@ def extract_cell(page, page_number, word):
         "pack_unit": pack.group(2),
         "tar_mg": float(tar.group(1)) if tar else None,
         "nicotine_mg": float(nicotine.group(1)) if nicotine else None,
-        "historical_list_price_jpy": int(price.group(1).replace(",", "")),
+        # Compatibility field retained for existing catalog consumers.
+        "historical_list_price_jpy": official_price,
+        "official_catalog_price_jpy": official_price,
+        "official_catalog_price_text": f"{official_price:,}円",
+        "official_catalog_price_source_id": "TSN_IMPORT_2026_04",
+        "official_catalog_price_as_of": "2026-05-21",
+        "official_catalog_price_effective_from": None,
+        "official_catalog_price_effective_to": None,
+        "official_catalog_price_type": "CATALOG_LISTED_PRICE",
+        "official_catalog_price_tax_included": None,
+        "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
         "pdf_page": page_number,
     }
 
@@ -228,6 +239,12 @@ def main():
         "source_url": SOURCE_URL,
         "pdf_sha256": digest,
         "price_as_of": "2026-05-21",
+        "official_catalog_price_type": "CATALOG_LISTED_PRICE",
+        "official_catalog_price_tax_included": None,
+        "official_catalog_price_as_of": "2026-05-21",
+        "official_catalog_price_effective_from": None,
+        "official_catalog_price_effective_to": None,
+        "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
         "scope": "TS Network imported and CAP tobacco catalog, revised 2026-05-21",
         "image_permission_basis": "CLIENT_AUTHORIZATION_CONFIRMED_BY_USER_2026-09-20",
     }

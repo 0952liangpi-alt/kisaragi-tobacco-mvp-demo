@@ -32,7 +32,7 @@ for (const contract of ['cartReturnFocus', 'document.body.style.overflow=\'hidde
   assert.ok(shopScript.includes(contract), `7: cart dialog contract missing ${contract}`);
 }
 assert.ok(trust.includes('運営・取引情報') && trust.includes('たばこ販売許可') && trust.includes('個人情報の取扱い') && trust.includes('配送・返品'), '8: trust center must cover operating and transaction disclosures');
-assert.ok(trust.includes('現在は商品案内と選択リストのみ利用できます'), '8: trust center must state the current service boundary');
+assert.ok(trust.includes('内部取引コアは構築済み、公開販売は未開始です') && trust.includes('本番受入が完了するまで、会員・注文・決済は停止します'), '8: trust center must distinguish built internals from the inactive public service boundary');
 assert.ok(worker.includes("'./trust.html'") && worker.includes("'./trust.css'"), '8: trust center must be part of the offline shell');
 assert.ok(shopCss.includes('.product-grid, .product-grid.is-single { grid-template-columns: 1fr; }'), '9: mobile shop cards must be single-column');
 assert.ok(archiveCss.includes('.jp-sku-grid { grid-template-columns:1fr;'), '9: mobile archive cards must be single-column');

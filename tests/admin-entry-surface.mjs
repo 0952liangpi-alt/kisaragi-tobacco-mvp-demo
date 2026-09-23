@@ -19,8 +19,11 @@ assert.ok(trust.includes('id="admin-entry"') && trust.includes('公開クラウ�
 
 const admin = read('admin/index.html');
 assert.ok(admin.includes('id="connectionPanel"') && admin.includes('id="loginForm" class="login-panel" autocomplete="off" hidden'), 'admin page must gate login behind service verification');
+assert.ok(admin.includes('href="./commerce.html"') && admin.includes('取引運用'), 'product admin must link to the same-site commerce operations console');
 assert.ok(admin.includes('autocomplete="username" hidden'), 'admin login must expose a hidden username field to password managers');
 assert.ok(admin.includes('id="logout"') && admin.includes('ログアウト'), 'the real admin session must expose logout');
+assert.ok(admin.includes('公式カタログ価格') && admin.includes('読取専用'), 'product admin must expose official catalog price evidence as read-only');
+assert.ok(admin.includes('注文・決済で使用する承認価格とは別'), 'product admin must distinguish catalog evidence from an approved checkout price');
 assert.ok(admin.indexOf('../catalog-live-config.js') < admin.indexOf('./admin.js'), 'admin config must load before the admin controller');
 
 const adminScript = read('admin/admin.js');
@@ -30,15 +33,16 @@ for (const marker of ['KISARAGI_CATALOG_ADMIN', 'catalog.read', 'product.update'
 assert.ok(adminScript.includes("if (!apiBase)") && adminScript.includes("'クラウド管理は未接続です'"), 'public admin must fail closed when no data service is configured');
 assert.ok(adminScript.includes("credentials: 'include'"), 'protected local admin requests must carry the HttpOnly session cookie');
 assert.ok(adminScript.includes('AbortSignal.timeout(requestTimeoutMs)'), 'admin API requests must have a bounded timeout');
+assert.ok(adminScript.includes('official_catalog_price_source_id') && adminScript.includes('official_catalog_price_extraction_status'), 'admin controller must render official catalog price provenance');
 
 const loader = read('catalog-live-loader.js');
 assert.ok(!loader.includes('data-catalog-admin'), 'catalog loading must not reveal an admin link without service health proof');
 
 const worker = read('service-worker.js');
-for (const asset of ["'./admin/'", "'./admin/admin.css'", "'./admin/admin.js'", "'./admin-entry.css'"]) {
+for (const asset of ["'./admin/'", "'./admin/admin.css'", "'./admin/admin.js'", "'./admin/commerce.html'", "'./admin/commerce.css'", "'./admin/commerce.js'", "'./admin-entry.css'"]) {
   assert.ok(worker.includes(asset), `service worker must include ${asset}`);
 }
-assert.ok(worker.includes('admin\\/admin'), 'admin runtime assets must bypass stale cache');
+assert.ok(worker.includes('admin\\/(?:admin|commerce)'), 'all admin runtime assets must bypass stale cache');
 
 const detail = read('product-detail.js');
 assert.ok(detail.includes('/^https?:\\/\\//.test(sourcePath)'), 'product details must preserve absolute uploaded image URLs');

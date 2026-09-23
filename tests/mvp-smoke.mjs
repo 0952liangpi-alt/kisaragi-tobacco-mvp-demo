@@ -4,6 +4,7 @@ import {strict as assert} from 'node:assert';
 const root = new URL('../', import.meta.url);
 const read = (path) => readFileSync(new URL(path, root), 'utf8');
 const html = read('index.html');
+const indexPage = read('index-page.js');
 const shop = read('shop.html');
 const shopScript = read('shop.js');
 const productDetail = read('product-detail.js');
@@ -26,9 +27,9 @@ const manifest = JSON.parse(read('manifest.webmanifest'));
 const requiredChecks = [
   ['age gate', html, 'id="age"'],
   ['home age gate is a labelled modal', html, 'role="dialog" aria-modal="true" aria-labelledby="age-title"'],
-  ['home age gate traps keyboard focus', html, "if(event.key!=='Tab')return"],
-  ['home age gate locks background scroll', html, "document.body.style.overflow='hidden'"],
-  ['home age gate restores background interaction', html, 'element.inert=inert'],
+  ['home age gate traps keyboard focus', indexPage, "event.key !== 'Tab'"],
+  ['home age gate locks background scroll', indexPage, "document.body.style.overflow = 'hidden'"],
+  ['home age gate restores background interaction', indexPage, 'element.inert = inert'],
   ['adult confirmation', html, 'id="enter"'],
   ['underage notice', html, '未成年者の喫煙は法律で禁じられています'],
   ['future-order disclosure', html, 'オンライン注文機能は現在準備中です'],
@@ -40,7 +41,7 @@ const requiredChecks = [
   ['home navigation from shop', shop, 'href="./index.html">ホーム</a>'],
   ['archive navigation from shop', shop, 'href="./index.html#jp-sku-catalog">資料庫</a>'],
   ['order-function navigation from shop', shop, 'href="./checkout.html#orderFunctions">注文機能</a>'],
-  ['shared age session on home', html, "sessionStorage.setItem(ageKey,'1')"],
+  ['shared age session on home', indexPage, "sessionStorage.setItem(ageKey, '1')"],
   ['shared age session on shop', shopScript, "sessionStorage.setItem('kisaragi-age-verified','1')"],
   ['canonical catalog primary CTA', luxuryHome, 'href="#jp-sku-catalog"'],
   ['archive incremental display', renderer, 'items.slice(0, shownCount)'],
@@ -78,10 +79,10 @@ const requiredChecks = [
   ['catalog search', renderer, 'type="search"'],
   ['localized image load fallback', renderer, '画像を読み込めません'],
   ['localized missing image state', renderer, '画像未登録'],
-  ['catalog distinguishes unverified reference price', renderer, "参考税込価格<b>${product.price_jpy == null ? '未確認'"],
-  ['catalog labels OCR prices as candidates', renderer, "product.ocr_list_price_candidate_jpy != null ? '資料価格候補'"],
-  ['detail uses source-specific price date', productDetail, 'product.historical_price_as_of'],
-  ['detail uses neutral source-page label', productDetail, "metaRow('資料掲載ページ',"],
+  ['catalog separates official reference price from approved sale price', renderer, '参考情報・承認済み販売価格ではありません'],
+  ['catalog labels OCR-backed official prices for review', renderer, 'official_catalog_price_verification'],
+  ['detail uses official source-specific price date', productDetail, 'product.official_catalog_price_as_of'],
+  ['detail uses official source-page label', productDetail, "metaRow('価格掲載ページ',"],
   ['detail offers manufacturer source when distinct', productDetail, 'product.manufacturer_source_url !== product.source_url'],
   ['detail localizes unknown brand', productDetail, "product.brand !== 'UNKNOWN' ? product.brand : 'ブランド確認中'"],
   ['localized identity state', renderer, "IDENTITY_PENDING: '資料転記・現行未確認'"],
@@ -103,7 +104,7 @@ const requiredChecks = [
   ['hero uses real catalog products', luxuryHome, './assets/catalog/products/wt-1020-seven-stars.png'],
   ['whole-page sprite retired', imageCss, '.hero-visual'],
   ['service worker registration target', serviceWorker, './catalog-core.js'],
-  ['service worker registration', html, "serviceWorker.register('./service-worker.js')"],
+  ['service worker registration', indexPage, "serviceWorker.register('./service-worker.js')"],
   ['runtime image cache policy', serviceWorker, "dest==='image'"],
   ['PWA icon', JSON.stringify(manifest), 'assets/tougu-mark.svg'],
   ['sticky header', baseCss, 'position:sticky'],

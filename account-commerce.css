@@ -1,0 +1,32 @@
+.order-actions {
+  display: grid;
+  justify-items: end;
+  gap: .45rem;
+  min-width: 10rem;
+}
+
+.order-actions button {
+  min-height: 40px;
+  border: 1px solid var(--gold);
+  padding: .55rem .75rem;
+  background: transparent;
+  color: var(--text);
+  font: 700 .7rem inherit;
+  cursor: pointer;
+}
+
+.order-actions button:disabled {
+  cursor: wait;
+  opacity: .65;
+}
+
+@media (max-width: 760px) {
+  .order-row {
+    grid-template-columns: 1fr;
+  }
+
+  .order-actions {
+    justify-items: start;
+    min-width: 0;
+  }
+}

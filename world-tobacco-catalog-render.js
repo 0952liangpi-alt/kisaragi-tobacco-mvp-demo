@@ -6,6 +6,43 @@
     '"': '&quot;',
     "'": '&#039;',
   })[character]);
+  const yen = (value) => value == null ? '未登録' : `¥${Number(value).toLocaleString('ja-JP')}`;
+  const officialPriceKindLabel = (kind) => ({
+    MANUFACTURER_LIST_PRICE_TAX_INCLUDED: 'メーカー定価',
+    MANUFACTURER_LIST_PRICE_TAX_INCLUSIVE: 'メーカー定価',
+    MANUFACTURER_LIST_PRICE: 'メーカー定価',
+    FIXED_LIST_PRICE: '定価',
+    CATALOG_RETAIL_PRICE: 'カタログ掲載小売価格',
+    CATALOG_PRICE: 'カタログ掲載価格',
+    CATALOG_LISTED_PRICE: 'カタログ掲載価格',
+    SUGGESTED_RETAIL_PRICE_TAX_INCLUDED: '希望小売価格',
+    SUGGESTED_RETAIL_PRICE_TAX_INCLUSIVE: '希望小売価格',
+    SUGGESTED_RETAIL_PRICE: '希望小売価格',
+    OPEN_PRICE: 'オープン価格',
+  })[String(kind || '').toUpperCase()] || '公式カタログ価格';
+  const officialPrice = (product) => {
+    const rawAmount = product.official_catalog_price_jpy;
+    const amount = rawAmount != null && Number.isFinite(Number(rawAmount)) ? Number(rawAmount) : null;
+    const kind = String(product.official_catalog_price_kind || product.official_catalog_price_type || '').toUpperCase();
+    const open = kind === 'OPEN_PRICE' || String(product.official_catalog_price_text || '').includes('オープン価格');
+    return {amount, open, kindLabel:officialPriceKindLabel(kind)};
+  };
+  const publicPrice = (product) => {
+    if (product.price_jpy != null) return {text:yen(product.price_jpy), label:'管理者設定の表示価格', note:'注文時に承認価格を再確認'};
+    const official = officialPrice(product);
+    const tax = product.official_catalog_price_tax_included === true ? '税込' : product.official_catalog_price_tax_included === false ? '税別' : '税区分記載なし';
+    const priceStatus = product.official_catalog_price_verification || product.official_catalog_price_extraction_status || '';
+    const extractionStatus = String(priceStatus).toUpperCase();
+    const sourceNote = extractionStatus === 'OCR_EXTRACTED'
+      ? '・公式PDF OCR抽出' : /OCR_REVIEW_REQUIRED|PENDING/.test(extractionStatus) ? '・OCR確認待ち' : '';
+    const date = product.official_catalog_price_as_of || [
+      product.official_catalog_price_valid_from || product.official_catalog_price_effective_from,
+      product.official_catalog_price_valid_until || product.official_catalog_price_effective_to,
+    ].filter(Boolean).join(' ～ ');
+    if (official.amount != null) return {text:yen(official.amount), label:`${official.kindLabel}（${tax}${sourceNote}）`, note:`${date ? `${date} / ` : ''}参考情報・承認済み販売価格ではありません`};
+    if (official.open) return {text:'オープン価格', label:`${official.kindLabel}${sourceNote ? `（${sourceNote.slice(1)}）` : ''}`, note:'販売価格は事業者承認後に確定'};
+    return {text:'未登録', label:'販売価格未承認', note:'注文価格は未登録'};
+  };
 
   const boot = () => {
     const data = globalThis.KISARAGI_CANONICAL_CATALOG || [];
@@ -45,7 +82,7 @@
             <span class="jp-sku-kicker">CANONICAL PRODUCT CATALOG</span>
             <h2>商品庫<br>${audit.TOTAL_LOCAL_SKU ?? data.length}品項。</h2>
           </div>
-          <p>JTたばこ、TSN取扱たばこ、喫煙商品、ライターを同じ商品データで整理しています。商品名や価格を照合中の品目は確認待ちとして掲載します。</p>
+          <p>JTたばこ、TSN取扱たばこ、喫煙商品、ライターを同じ商品データで整理しています。公式カタログ価格は出典と基準日を保持した参考情報であり、承認済み販売価格とは分離しています。</p>
         </div>
         <div class="jp-sku-summary" aria-label="商品庫の収録状況">
           <span><b>${audit.TOTAL_REFERENCE_SKU ?? 0}</b> 参照SKU</span>
@@ -88,7 +125,7 @@
         <p class="jp-sku-result" aria-live="polite"></p>
         <div class="jp-sku-grid"></div>
         <button class="jp-sku-more" type="button" hidden>さらに表示</button>
-        <p class="jp-sku-note">掲載情報は調査用資料です。販売、決済、在庫保証は行いません。</p>
+        <p class="jp-sku-note">公式カタログ価格は参考情報です。現在の販売価格または承認済み注文価格を示すものではありません。</p>
       </div>`;
     anchor.insertAdjacentElement('afterend', section);
 
@@ -101,7 +138,6 @@
     const result = section.querySelector('.jp-sku-result');
     const moreButton = section.querySelector('.jp-sku-more');
     const pageSize = 24;
-    const yen = (value) => value == null ? '未登録' : `¥${Number(value).toLocaleString('ja-JP')}`;
     const statusLabels = Object.freeze({
       PRICE_CONFLICT: '価格確認待ち',
       IDENTITY_PENDING: '資料転記・現行未確認',
@@ -175,16 +211,25 @@
       result.textContent = `${brandLabel}${categoryLabel}${imageLabel}${queryLabel} / ${items.length}品項中${shownCount}件表示`;
       moreButton.hidden = shownCount >= items.length;
       moreButton.textContent = `さらに${Math.min(pageSize, items.length - shownCount)}件表示`;
-      grid.innerHTML = items.length ? items.slice(0, shownCount).map((product) => `
+      grid.innerHTML = items.length ? items.slice(0, shownCount).map((product) => {
+        const displayPrice = publicPrice(product);
+        const official = officialPrice(product);
+        const taxLabel = product.official_catalog_price_tax_included === true ? '税込' : product.official_catalog_price_tax_included === false ? '税別' : '税区分記載なし';
+        const officialText = official.amount != null ? yen(official.amount) : official.open ? 'オープン価格' : null;
+        const validPeriod = [
+          product.official_catalog_price_valid_from || product.official_catalog_price_effective_from,
+          product.official_catalog_price_valid_until || product.official_catalog_price_effective_to,
+        ].filter(Boolean).join(' ～ ');
+        return `
         <article class="jp-sku-card ${product.status === 'PRICE_CONFLICT' ? 'has-conflict' : ''}" data-sku="${escapeHtml(product.id)}">
           ${imageMarkup(product)}
           <div class="jp-sku-body">
             <span class="jp-sku-brand">${escapeHtml(product.brand === 'UNKNOWN' ? 'ブランド確認中' : product.brand)}</span>
             <h3>${escapeHtml(product.product_name_ja)}</h3>
             <div class="jp-sku-meta">
-              <span>参考税込価格<b>${product.price_jpy == null ? '未確認' : yen(product.price_jpy)}</b></span>
+              <span>${escapeHtml(displayPrice.label)}<b>${escapeHtml(displayPrice.text)}</b><small>${escapeHtml(displayPrice.note)}</small></span>
               <span>商品コード<b>${escapeHtml(product.product_code || '未登録')}</b></span>
-              ${product.historical_list_price_jpy != null ? `<span>${product.ocr_list_price_candidate_jpy != null ? '資料価格候補' : '資料掲載価格'}（${escapeHtml(product.historical_price_as_of || '日付未確認')}・現行未確認）<b>${yen(product.historical_list_price_jpy)}</b></span>` : ''}
+              ${officialText && product.price_jpy != null ? `<span>${escapeHtml(official.kindLabel)} / ${escapeHtml(taxLabel)}<b>${escapeHtml(officialText)}</b><small>${escapeHtml(product.official_catalog_price_as_of || validPeriod || '基準日未登録')} / 承認済み販売価格ではありません</small></span>` : ''}
               ${product.pack_size != null ? `<span>包装<b>${product.pack_size}${escapeHtml(product.pack_unit || '本')}</b></span>` : ''}
               ${product.tar_mg != null ? `<span>Tar<b>${product.tar_mg}mg</b></span>` : ''}
               ${product.nicotine_mg != null ? `<span>Nicotine<b>${product.nicotine_mg}mg</b></span>` : ''}
@@ -196,7 +241,8 @@
                 : '<span>提供画像</span>'}
             </div>
           </div>
-        </article>`).join('') : '<p class="jp-sku-empty">該当する商品はありません。検索語または絞り込み条件を変更してください。</p>';
+        </article>`;
+      }).join('') : '<p class="jp-sku-empty">該当する商品はありません。検索語または絞り込み条件を変更してください。</p>';
 
       grid.querySelectorAll('img').forEach((image) => {
         image.addEventListener('error', () => {

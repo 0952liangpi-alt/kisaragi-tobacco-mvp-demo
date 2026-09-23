@@ -67,6 +67,52 @@
     );
     status(error.message, true);
   }
+  const priceTypeLabels = {
+    FIXED_LIST_PRICE: '定価',
+    CATALOG_LISTED_PRICE: 'カタログ掲載価格',
+    SUGGESTED_RETAIL_PRICE: '希望小売価格',
+    OPEN_PRICE: 'オープン価格',
+  };
+  const sourceLabels = {
+    JT_CATALOG_2025_10: 'JTたばこカタログ 2025年10月版',
+    TSN_IMPORT_2026_04: 'TSN輸入たばこカタログ 2026年4月版（5月21日修正）',
+    TSN_SMOKING_GOODS_2026: 'TSN喫煙商品カタログ 2026',
+    TSN_LIGHTERS_2026: 'TSNライターカタログ 2026',
+  };
+  const extractionLabels = {
+    SOURCE_EXTRACTED: '原典データから抽出済み',
+    OCR_EXTRACTED: '公式PDFからOCR抽出済み',
+    SOURCE_REVIEWED: '公式原典で確認済み',
+  };
+  function formatDate(value) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) return value || null;
+    const [year, month, day] = value.split('-');
+    return `${year}年${Number(month)}月${Number(day)}日`;
+  }
+  function showOfficialPrice(product) {
+    const amount = Number.isInteger(product.official_catalog_price_jpy)
+      ? `¥${product.official_catalog_price_jpy.toLocaleString('ja-JP')}` : null;
+    const listedText = product.official_catalog_price_text || amount || '価格記載なし';
+    const isOpenPrice = product.official_catalog_price_type === 'OPEN_PRICE' || listedText === 'オープン価格';
+    const tax = isOpenPrice ? '' : product.official_catalog_price_tax_included === true ? '（税込）'
+      : product.official_catalog_price_tax_included === false ? '（税別）' : '';
+    $('#officialCatalogPrice').textContent = `${listedText}${tax}`;
+    $('#officialCatalogPriceType').textContent = priceTypeLabels[product.official_catalog_price_type]
+      || product.official_catalog_price_type || '―';
+    const evidence = Array.isArray(product.official_catalog_price_evidence)
+      ? product.official_catalog_price_evidence[0] : product.official_catalog_price_evidence;
+    const sourcePage = evidence?.source_page ?? evidence?.pdf_page;
+    const source = sourceLabels[product.official_catalog_price_source_id]
+      || product.official_catalog_price_source_id || '―';
+    $('#officialCatalogPriceSource').textContent = sourcePage ? `${source} · PDF ${sourcePage}ページ` : source;
+    const from = formatDate(product.official_catalog_price_effective_from);
+    const to = formatDate(product.official_catalog_price_effective_to);
+    const asOf = formatDate(product.official_catalog_price_as_of);
+    $('#officialCatalogPricePeriod').textContent = from && to ? `${from}〜${to}`
+      : from ? `${from}から` : asOf ? `${asOf}時点` : '―';
+    $('#officialCatalogPriceStatus').textContent = extractionLabels[product.official_catalog_price_extraction_status]
+      || product.official_catalog_price_extraction_status || '―';
+  }
   function choose(product) {
     selected = product;
     $('#detail').hidden = false;
@@ -74,6 +120,7 @@
     $('#selectionCategory').textContent = product.category;
     $('#productName').value = product.product_name_ja || product.name;
     $('#price').value = product.price_jpy ?? '';
+    showOfficialPrice(product);
     $('#imageFile').value = '';
     $('#packageConfirm').checked = false;
     if (previewUrl) URL.revokeObjectURL(previewUrl);
