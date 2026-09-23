@@ -10,8 +10,11 @@
   let selected = null;
   let previewUrl = null;
   const status = (message, error = false) => {
-    $('#status').textContent = message;
-    $('#status').classList.toggle('error', error);
+    const node = $('#status');
+    node.setAttribute('role', error ? 'alert' : 'status');
+    node.setAttribute('aria-live', error ? 'assertive' : 'polite');
+    node.textContent = message;
+    node.classList.toggle('error', error);
   };
   async function request(path, options = {}) {
     if (!apiBase) throw new Error('管理データサービスは接続されていません');
@@ -115,6 +118,10 @@
   }
   function choose(product) {
     selected = product;
+    for (const item of $('#results').children) {
+      const button = item.children?.[0];
+      if (button) button.setAttribute('aria-pressed', String(button.dataset.productId === String(product.id)));
+    }
     $('#detail').hidden = false;
     $('#selectionCode').textContent = product.code;
     $('#selectionCategory').textContent = product.category;
@@ -134,18 +141,20 @@
     const host = $('#results');
     host.replaceChildren();
     for (const product of products) {
+      const item = document.createElement('li');
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'result';
-      button.setAttribute('role', 'option');
-      button.setAttribute('aria-selected', String(selected?.id === product.id));
+      button.dataset.productId = product.id;
+      button.setAttribute('aria-pressed', String(selected?.id === product.id));
       const name = document.createElement('strong');
       name.textContent = product.product_name_ja || product.name;
       const code = document.createElement('small');
       code.textContent = `${product.code} · ${product.category}`;
       button.append(name, code);
+      item.append(button);
       button.addEventListener('click', () => choose(product));
-      host.append(button);
+      host.append(item);
     }
     $('#count').textContent = `${products.length} 件`;
   }

@@ -23,10 +23,13 @@ for (const id of ['memberModule','ageModule','inventoryModule','deliveryModule',
 assert.equal((pages['checkout.html'].match(/class="module-unavailable" role="status"/g) || []).length, 8, 'all disconnected services must render as status, not fake controls');
 assert.ok(!pages['checkout.html'].includes('class="module-button"') && !pages['checkout.html'].includes('class="disabled-order-button"'), 'disconnected services must not look like actionable buttons');
 for (const path of ['index.html','shop.html']) {
-  assert.ok(pages[path].includes('href="./checkout.html#orderFunctions"'), `${path} must expose the published order-function route`);
+  assert.ok(pages[path].includes('href="./checkout.html"'), `${path} must expose the saved-selection route`);
 }
 for (const [path, html] of Object.entries(pages)) {
   assert.ok(html.includes('href="./admin/"'), `${path} must link to the integrated same-site admin route`);
+  const globalNavigation = html.match(/<nav class="unified-(?:site-nav|mobile-dock)"[\s\S]*?<\/nav>/g) || [];
+  assert.ok(globalNavigation.every((navigation) => !navigation.includes('account.html') && !navigation.includes('admin/')), `${path} global navigation must remain customer-only`);
+  assert.ok(html.indexOf('href="./admin/"') > html.indexOf('</main>'), `${path} admin entry must remain in the footer rather than the primary journey`);
 }
 assert.ok(pages['shop.html'].includes('kisaragi-public-theme.css') && pages['checkout.html'].includes('kisaragi-public-theme.css'), 'shop and checkout must share the client theme');
 assert.ok(theme.includes('filter: none !important') && theme.includes('mix-blend-mode: normal !important'), 'product media must preserve source color');

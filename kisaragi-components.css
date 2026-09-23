@@ -138,6 +138,15 @@ body[data-kisaragi-mode="archive"] .citation-button {
   font-weight: 800;
 }
 
+#startApplication[aria-disabled="true"] {
+  border-color: var(--line);
+  background: color-mix(in srgb, var(--surface) 82%, var(--line));
+  color: var(--muted);
+  cursor: not-allowed;
+  opacity: .58;
+  pointer-events: none;
+}
+
 .mobile-dock {
   display: none;
 }
@@ -283,5 +292,54 @@ body[data-kisaragi-mode="archive"] .citation-button {
 
   .site-header .mode-switch-btn {
     flex: 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .cart-line {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .55rem;
+  }
+
+  .cart-line-main > p:first-child strong {
+    display: block;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .cart-line-price {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    justify-items: start;
+    gap: .5rem;
+    white-space: normal;
+  }
+
+  .cart-line-price small {
+    text-align: left;
+  }
+
+  .cart-line-price strong {
+    justify-self: end;
+  }
+
+  .quantity-control {
+    grid-template-columns: 44px 42px 44px;
+    overflow: visible;
+  }
+
+  .quantity-control button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .quantity-control output {
+    height: 44px;
+  }
+
+  .cart-line .remove {
+    min-height: 44px;
+    margin-left: .35rem;
+    padding: .4rem .55rem;
   }
 }

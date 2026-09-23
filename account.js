@@ -4,6 +4,22 @@
   const $ = (selector) => document.querySelector(selector);
   const client = () => globalThis.KISARAGI_COMMERCE_LIVE;
   const yen = (amount) => `¥${Number(amount).toLocaleString('ja-JP')}`;
+  const orderStatusLabel = (status) => ({
+    DRAFT:'確認待ち', PENDING:'処理中', PENDING_PROVIDER:'外部手続き待ち',
+    AWAITING_PAYMENT:'お支払い待ち', PAYMENT_PENDING:'お支払い確認中', PAYMENT_FAILED:'お支払い未完了',
+    PAYMENT_REVIEW_REQUIRED:'お支払い確認中', PAID:'お支払い済み', FULFILLMENT_PENDING:'出荷準備中',
+    READY_TO_SHIP:'出荷準備完了', SHIPPED:'発送済み', IN_TRANSIT:'配送中', DELIVERED:'配達済み',
+    CANCELLED:'取消済み', REFUNDED:'返金済み',
+  })[String(status || '').toUpperCase()] || '確認中';
+  const memberStatusLabel = (status) => ({
+    ACTIVE:'利用中', VERIFIED:'確認済み', PENDING:'確認待ち', PENDING_VERIFICATION:'本人確認待ち',
+    SUSPENDED:'利用停止中', LOCKED:'一時停止中', CLOSED:'退会済み',
+  })[String(status || '').toUpperCase()] || '確認中';
+  const shipmentStatusLabel = (status) => ({
+    PENDING:'出荷準備中', LABEL_CREATED:'送り状作成済み', READY_TO_SHIP:'出荷準備完了',
+    SHIPPED:'発送済み', ACCEPTED:'受付済み', IN_TRANSIT:'配送中', OUT_FOR_DELIVERY:'配達中',
+    DELIVERED:'配達済み', DELIVERY_FAILED:'持ち戻り', RETURNED:'返送済み', CANCELLED:'取消済み',
+  })[String(status || '').toUpperCase()] || '確認中';
   let capabilities = null;
   let session = {authenticated:false};
 
@@ -15,8 +31,21 @@
     return node;
   }
 
+  function setAnnouncementState(node, error = false) {
+    node.setAttribute('role', error ? 'alert' : 'status');
+    node.setAttribute('aria-live', error ? 'assertive' : 'polite');
+    node.setAttribute('aria-atomic', 'true');
+  }
+
+  function announce(node, message, error = false) {
+    setAnnouncementState(node, error);
+    node.textContent = message;
+  }
+
   function setServiceState(state, title, copy) {
-    $('#serviceStatus').dataset.state = state;
+    const status = $('#serviceStatus');
+    status.dataset.state = state;
+    setAnnouncementState(status, state === 'offline');
     $('#serviceStatusTitle').textContent = title;
     $('#serviceStatusCopy').textContent = copy;
   }
@@ -34,51 +63,54 @@
       const ready = client().providerReady(documentData, providerId);
       card.dataset.state = ready ? 'ready' : 'missing';
       card.querySelector('b').textContent = ready
-        ? '本番受入確認済み'
+        ? '利用準備確認済み'
         : provider?.configured
-          ? '接続済み・受入証跡待ち'
+          ? '接続済み・最終確認待ち'
           : '契約情報待ち';
     }
   }
 
   function renderBlockers(readiness) {
     const host = $('#activationBlockers');
+    host.removeAttribute('role');
+    host.setAttribute('aria-live', 'polite');
+    host.setAttribute('aria-atomic', 'true');
     const missing = Array.isArray(readiness?.missing) ? readiness.missing : [];
     if (readiness?.ready === true && readiness?.activated === true) {
-      host.replaceChildren(element('li', {text:'サーバーの本番開始条件はすべて確認済みです。'}));
+      host.replaceChildren(element('li', {text:'オンライン注文の受付条件はすべて確認済みです。'}));
       return;
     }
     const labels = {
-      ACTIVATION_DISABLED:'総合販売スイッチ（未アクティブ）',
+      ACTIVATION_DISABLED:'オンライン注文受付：開始前',
       LICENSED_PREMISE_NOT_CONFIGURED:'通信販売許可・許可営業所ID',
-      LICENSED_PREMISE_ACCEPTANCE_UNVERIFIED:'通信販売許可・許可営業所の本番受入証跡',
-      PAYMENT_WEBHOOK_NOT_CONFIGURED:'決済Webhook署名設定',
+      LICENSED_PREMISE_ACCEPTANCE_UNVERIFIED:'通信販売許可・許可営業所情報の最終確認',
+      PAYMENT_WEBHOOK_NOT_CONFIGURED:'決済結果通知の安全設定',
       SHIPPING_RATES_NOT_CONFIGURED:'承認済み配送サービス・運賃表',
-      SHIPPING_RATE_ACCEPTANCE_UNVERIFIED:'配送サービス・運賃表の本番受入証跡',
-      DEPLOYMENT_SECURITY_NOT_CONFIGURED:'クラウド配備の暗号化・バックアップ・監視・アクセス制御',
-      DEPLOYMENT_SECURITY_EVIDENCE_STALE:'クラウド配備の復旧試験証跡（更新が必要）',
-      DEPLOYMENT_SECURITY_ACCEPTANCE_UNVERIFIED:'クラウド配備セキュリティの本番受入証跡',
+      SHIPPING_RATE_ACCEPTANCE_UNVERIFIED:'配送サービス・運賃表の最終確認',
+      DEPLOYMENT_SECURITY_NOT_CONFIGURED:'公開環境の暗号化・バックアップ・監視・アクセス制御',
+      DEPLOYMENT_SECURITY_EVIDENCE_STALE:'バックアップ復旧確認の更新',
+      DEPLOYMENT_SECURITY_ACCEPTANCE_UNVERIFIED:'公開環境の安全確認',
       MERCHANT_PUBLICATION_NOT_CONFIGURED:'公開経営情報・許認可・規約',
-      MERCHANT_PUBLICATION_ACCEPTANCE_UNVERIFIED:'公開経営情報・規約の本番受入証跡',
-      ADMIN_IDENTITY_NOT_CONFIGURED:'管理者SSO・受信プロキシ認証',
+      MERCHANT_PUBLICATION_ACCEPTANCE_UNVERIFIED:'運営者情報・規約の公開確認',
+      ADMIN_IDENTITY_NOT_CONFIGURED:'管理者ログインとデータ受信経路の安全設定',
       EKYC_NOT_CONFIGURED:'eKYC事業者の契約情報',
-      EKYC_ACCEPTANCE_UNVERIFIED:'eKYC事業者の本番受入証跡',
+      EKYC_ACCEPTANCE_UNVERIFIED:'eKYC事業者の利用開始確認',
       PAYMENT_NOT_CONFIGURED:'決済事業者の契約情報',
-      PAYMENT_ACCEPTANCE_UNVERIFIED:'決済事業者の本番受入証跡',
+      PAYMENT_ACCEPTANCE_UNVERIFIED:'決済事業者の利用開始確認',
       CARRIER_NOT_CONFIGURED:'配送事業者の契約情報',
-      CARRIER_ACCEPTANCE_UNVERIFIED:'配送事業者の本番受入証跡',
+      CARRIER_ACCEPTANCE_UNVERIFIED:'配送事業者の利用開始確認',
       EMAIL_NOT_CONFIGURED:'通知メール事業者の契約情報',
-      EMAIL_ACCEPTANCE_UNVERIFIED:'通知メール事業者の本番受入証跡',
+      EMAIL_ACCEPTANCE_UNVERIFIED:'通知メール事業者の利用開始確認',
     };
     const licenseMissing = missing.some((blocker) => blocker?.code === 'LICENSED_PREMISE_NOT_CONFIGURED');
     const baseline = [
-      licenseMissing ? null : '通信販売許可・許可営業所ID：API設定済み',
+      licenseMissing ? null : '通信販売許可・許可営業所ID：登録済み',
       '供給元審査・承認済み販売価格表：商品ごとに確認',
-      'クラウド配備セキュリティ・公開経営情報：本番受入を確認',
-      '本番受入試験',
+      '公開環境の安全対策・運営者情報：最終確認',
+      '販売開始前の総合テスト',
     ].filter(Boolean);
     host.replaceChildren();
-    [...missing.map((blocker) => labels[blocker?.code] || blocker?.label || blocker?.code || blocker), ...baseline]
+    [...missing.map((blocker) => labels[blocker?.code] || blocker?.label || '追加の確認項目'), ...baseline]
       .forEach((blocker) => host.append(element('li', {text:String(blocker)})));
   }
 
@@ -89,7 +121,7 @@
       $('#sessionChip').textContent = capabilities ? '未ログイン' : '利用停止';
       host.append(element('p', {text:capabilities
         ? '保護された会員セッションは開始されていません。'
-        : '保護されたAPIが未接続のため、会員情報は入力できません。'}));
+        : '会員サービスを確認できないため、会員情報は入力できません。'}));
       return;
     }
 
@@ -98,7 +130,7 @@
     const rows = [
       ['会員ID', session.user?.id || '非公開'],
       ['メール', session.user?.email || '登録済み'],
-      ['会員状態', session.user?.status || '確認中'],
+      ['会員状態', memberStatusLabel(session.user?.status)],
     ];
     rows.forEach(([label, value]) => {
       const row = element('div');
@@ -138,7 +170,7 @@
     const shipment = order.shipment || null;
     const detailList = element('dl', {className:'order-detail-list'});
     appendDetailRow(detailList, '注文参照番号', reference || '発行待ち');
-    appendDetailRow(detailList, '注文状態', order.status || '確認中');
+    appendDetailRow(detailList, '注文状態', orderStatusLabel(order.status));
     appendDetailRow(detailList, '商品小計', Number.isInteger(order.totals?.subtotalJpy) ? yen(order.totals.subtotalJpy) : null);
     appendDetailRow(detailList, '配送料', Number.isInteger(order.totals?.shippingJpy) ? yen(order.totals.shippingJpy) : null);
     appendDetailRow(detailList, '合計', Number.isInteger(order.totals?.totalJpy) ? yen(order.totals.totalJpy) : null);
@@ -149,7 +181,7 @@
     appendDetailRow(detailList, '年齢確認', preference.ageVerificationRequired === true ? '受取時年齢確認要' : null);
     appendDetailRow(detailList, '置き配', preference.leaveAtDoorAllowed === false ? '置き配不可' : null);
     if (shipment) {
-      appendDetailRow(detailList, '配送状態', shipment.status || '確認中');
+      appendDetailRow(detailList, '配送状態', shipmentStatusLabel(shipment.status));
       appendDetailRow(detailList, '追跡番号', shipment.trackingNumber);
     }
     host.append(detailList);
@@ -174,7 +206,7 @@
     events.forEach((event) => {
       const item = element('li');
       const time = event.occurredAt || event.time;
-      const summary = [event.status, event.location].filter(Boolean).join(' / ');
+      const summary = [shipmentStatusLabel(event.status), event.location].filter(Boolean).join(' / ');
       if (time) item.append(element('time', {text:String(time)}));
       if (summary) item.append(element('b', {text:summary}));
       if (event.detail) item.append(element('span', {text:String(event.detail)}));
@@ -190,6 +222,10 @@
     const detail = element('section', {className:'order-detail'});
     detail.id = detailId;
     detail.hidden = true;
+    const detailStatus = element('p', {className:'form-message'});
+    const detailContent = element('div');
+    setAnnouncementState(detailStatus);
+    detail.append(detailStatus, detailContent);
     const button = element('button', {type:'button', text:'詳細を見る'});
     button.setAttribute('aria-expanded', 'false');
     button.setAttribute('aria-controls', detailId);
@@ -201,12 +237,14 @@
       button.textContent = opening ? '詳細を閉じる' : '詳細を見る';
       if (!opening || loaded) return;
       button.disabled = true;
-      detail.replaceChildren(element('p', {className:'form-message', text:'保護された注文台帳から詳細を読み込んでいます。'}));
+      announce(detailStatus, '保護された注文台帳から詳細を読み込んでいます。');
       try {
-        renderOrderDetail(await client().order(id), detail);
+        renderOrderDetail(await client().order(id), detailContent);
         loaded = true;
+        announce(detailStatus, '注文詳細を読み込みました。');
       } catch {
-        detail.replaceChildren(element('p', {className:'form-message', text:'注文詳細を読み込めませんでした。セッションと通信状態をご確認ください。'}));
+        detailContent.replaceChildren();
+        announce(detailStatus, '注文詳細を読み込めませんでした。セッションと通信状態をご確認ください。', true);
       } finally {
         button.disabled = false;
       }
@@ -217,6 +255,7 @@
 
   function renderOrders(payload) {
     const host = $('#orderHistory');
+    setAnnouncementState(host);
     host.replaceChildren();
     const orders = Array.isArray(payload) ? payload : Array.isArray(payload?.orders) ? payload.orders : Array.isArray(payload?.items) ? payload.items : [];
     if (!orders.length) {
@@ -232,7 +271,7 @@
       const reference = order.publicReference || order.publicOrderReference || order.reference;
       copy.append(
         element('b', {text:reference || order.id || order.orderId || '注文参照番号は発行待ち'}),
-        element('small', {text:`状態：${order.status || '確認中'}`}),
+        element('small', {text:`状態：${orderStatusLabel(order.status)}`}),
       );
       const total = Number(order.totals?.totalJpy ?? order.totals?.grandTotal ?? order.total ?? 0);
       const actions = element('div', {className:'order-actions'});
@@ -240,17 +279,18 @@
       if (order.status === 'PAYMENT_FAILED' && order.paymentReviewRequired !== true && client().isActivated(capabilities)) {
         const retry = element('button', {type:'button', text:'決済を再試行'});
         const feedback = element('small', {className:'form-message'});
+        setAnnouncementState(feedback);
         retry.addEventListener('click', async () => {
           retry.disabled = true;
-          feedback.textContent = '決済事業者へ再試行を要求しています。';
+          announce(feedback, '決済事業者へ再試行を要求しています。');
           try {
             await client().retryPayment(order.id || order.orderId);
-            feedback.textContent = '再試行を受け付けました。決済事業者の応答を待っています。';
+            announce(feedback, '再試行を受け付けました。決済事業者の応答を待っています。');
             await refreshSession();
           } catch (error) {
-            feedback.textContent = error.code === 'PAYMENT_REVIEW_REQUIRED'
+            announce(feedback, error.code === 'PAYMENT_REVIEW_REQUIRED'
               ? '決済照合が必要です。運営者へお問い合わせください。'
-              : '決済を再試行できませんでした。状態を再確認してください。';
+              : '決済を再試行できませんでした。状態を再確認してください。', true);
             retry.disabled = false;
           }
         });
@@ -264,12 +304,13 @@
 
   function createAuthForm(mode) {
     const form = element('form', {className:'auth-form'});
-    form.noValidate = true;
+    const messageId = `auth-${mode}-message`;
     const emailLabel = element('label', {text:'メールアドレス'});
     const email = element('input', {type:'email'});
     email.name = 'email';
     email.autocomplete = 'email';
     email.required = true;
+    email.setAttribute('aria-describedby', messageId);
     emailLabel.append(email);
     const passwordLabel = element('label', {text:'パスワード'});
     const password = element('input', {type:'password'});
@@ -277,22 +318,38 @@
     password.autocomplete = mode === 'register' ? 'new-password' : 'current-password';
     password.minLength = 12;
     password.required = true;
+    password.setAttribute('aria-describedby', messageId);
     passwordLabel.append(password);
     const submit = element('button', {type:'submit', text:mode === 'register' ? '会員登録' : 'ログイン'});
     const message = element('p', {className:'form-message'});
+    message.id = messageId;
+    setAnnouncementState(message);
     form.append(emailLabel, passwordLabel, submit, message);
+    form.addEventListener('invalid', (event) => {
+      if (event.target !== form.querySelector(':invalid')) return;
+      announce(message, '入力内容を確認してください。メールアドレスと12文字以上のパスワードが必要です。', true);
+      event.target.focus();
+    }, true);
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (!form.checkValidity()) {
+        const firstInvalid = form.querySelector(':invalid');
+        announce(message, '入力内容を確認してください。メールアドレスと12文字以上のパスワードが必要です。', true);
+        firstInvalid?.focus();
+        form.reportValidity();
+        return;
+      }
       const registrationAllowed = mode === 'register' && client().isActivated(capabilities);
       const loginAllowed = mode === 'login' && Boolean(capabilities);
       if (!registrationAllowed && !loginAllowed) return;
       submit.disabled = true;
-      message.textContent = '保護された接続で処理しています。';
+      announce(message, '保護された接続で処理しています。');
       try {
         await (mode === 'register' ? client().register(email.value, password.value) : client().login(email.value, password.value));
         await refreshSession();
       } catch (error) {
-        message.textContent = error.status === 401 ? 'メールアドレスまたはパスワードを確認してください。' : '手続きを完了できませんでした。';
+        announce(message, error.status === 401 ? 'メールアドレスまたはパスワードを確認してください。' : '手続きを完了できませんでした。', true);
+        (error.status === 401 ? email : form.querySelector(':invalid'))?.focus();
       } finally {
         submit.disabled = false;
       }
@@ -305,11 +362,20 @@
     host.replaceChildren();
     if (session.authenticated) {
       const logout = element('button', {className:'logout-button', type:'button', text:'ログアウト'});
+      const feedback = element('p', {className:'form-message'});
+      setAnnouncementState(feedback);
       logout.addEventListener('click', async () => {
         logout.disabled = true;
-        try { await client().logout(); } finally { await refreshSession(); }
+        announce(feedback, 'ログアウトしています。');
+        try {
+          await client().logout();
+          await refreshSession();
+        } catch {
+          announce(feedback, 'ログアウトできませんでした。通信状態を確認して、もう一度お試しください。', true);
+          logout.disabled = false;
+        }
       });
-      host.append(logout);
+      host.append(logout, feedback);
       return;
     }
     if (!capabilities) {
@@ -340,27 +406,37 @@
   }
 
   async function refreshSession() {
+    let sessionLoadFailed = false;
     try {
       session = await client().session();
     } catch {
       session = {authenticated:false};
+      sessionLoadFailed = true;
     }
+    setAnnouncementState($('#sessionContent'), sessionLoadFailed);
     renderSession();
+    if (sessionLoadFailed) {
+      $('#sessionContent').append(element('p', {className:'form-message', text:'会員セッションを確認できませんでした。通信状態をご確認ください。'}));
+    }
     renderActions();
     if (!session.authenticated) {
       renderOrders([]);
       return;
     }
+    announce($('#orderHistory'), '注文履歴を読み込んでいます。');
     try { renderOrders(await client().orders()); }
-    catch { renderOrders([]); }
+    catch {
+      $('#ordersChip').textContent = '確認できません';
+      announce($('#orderHistory'), '注文履歴を読み込めませんでした。通信状態をご確認ください。', true);
+    }
   }
 
   function failClosed(message) {
     capabilities = null;
-    setServiceState('offline', '外部契約待ち・販売開始前', message);
-    setLayer('#internalLayer', 'waiting', '構築済み・公開API未接続');
+    setServiceState('offline', 'オンライン注文は準備中です', message);
+    setLayer('#internalLayer', 'waiting', '機能準備済み・接続待ち');
     setLayer('#providerLayer', 'waiting', '外部契約待ち');
-    setLayer('#activationLayer', 'locked', '未アクティブ');
+    setLayer('#activationLayer', 'locked', '受付開始前');
     document.querySelectorAll('[data-provider]').forEach((card) => {
       card.dataset.state = 'missing';
       card.querySelector('b').textContent = '契約情報待ち';
@@ -372,7 +448,7 @@
 
   async function init() {
     if (!client()?.configured) {
-      failClosed('公開環境の保護された commerce API は未設定です。個人情報を受け付けません。');
+      failClosed('会員・注文サービスはまだ利用できません。個人情報は受け付けていません。');
       return;
     }
     try {
@@ -380,17 +456,20 @@
       const activated = client().isActivated(capabilities);
       const internalReady = ['memberAuth', 'cart', 'inventory', 'orders', 'outbox', 'audit']
         .every((id) => capabilities.modules?.[id] === 'ready');
-      setLayer('#internalLayer', internalReady ? 'ready' : 'waiting', internalReady ? '内部コア構築済み' : '内部確認が必要');
-      setLayer('#providerLayer', activated ? 'ready' : 'waiting', activated ? '外部接続準備完了' : '外部契約待ち');
-      setLayer('#activationLayer', activated ? 'ready' : 'locked', activated ? 'アクティブ' : '未アクティブ');
-      setServiceState(activated ? 'ready' : 'checking', activated ? 'オンライン販売サービス：稼働中' : '内部コア構築済み・外部契約待ち', activated
-        ? 'サーバーが全プロバイダーの接続と販売開始を確認しました。'
-        : '内部APIは応答していますが、総合販売スイッチは有効になっていません。');
+      setLayer('#internalLayer', internalReady ? 'ready' : 'waiting', internalReady ? 'サイト機能は準備済み' : 'サイト機能の確認が必要');
+      setLayer('#providerLayer', activated ? 'ready' : 'waiting', activated ? '外部サービス準備完了' : '外部契約待ち');
+      setLayer('#activationLayer', activated ? 'ready' : 'locked', activated ? '受付中' : '受付開始前');
+      setServiceState(activated ? 'ready' : 'checking', activated ? 'オンライン注文を受け付けています' : 'オンライン注文は準備中です', activated
+        ? '必要な外部サービスの接続と注文受付の開始を確認済みです。'
+        : 'サイト機能は準備済みですが、必要な契約または安全確認が完了していないため、注文受付を停止しています。');
       renderProviders(capabilities);
-      try { renderBlockers(await client().activationReadiness()); } catch { /* Capability state remains fail-closed. */ }
+      try { renderBlockers(await client().activationReadiness()); }
+      catch {
+        announce($('#activationBlockers'), '受付開始前の確認項目を読み込めませんでした。通信状態をご確認ください。', true);
+      }
       await refreshSession();
     } catch {
-      failClosed('内部APIに接続できません。入力と販売処理を停止しています。');
+      failClosed('会員・注文サービスを確認できないため、入力と販売処理を停止しています。');
     }
   }
 

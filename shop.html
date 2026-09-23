@@ -45,11 +45,9 @@
     <a class="brand" href="./index.html" aria-label="KISARAGI ホーム"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a>
     <nav class="unified-site-nav" aria-label="メインナビゲーション">
       <a href="./index.html">ホーム</a>
-      <a href="#catalog" aria-current="page">商品案内</a>
-      <a href="./index.html#jp-sku-catalog">資料庫</a>
-      <a href="./checkout.html#orderFunctions">注文機能</a>
-      <a href="./account.html">会員・注文</a>
-      <a href="./trust.html">運営・取引</a>
+      <a href="./shop.html#catalog" aria-current="page">商品案内</a>
+      <a href="./checkout.html">選択リスト</a>
+      <a href="./trust.html">利用案内</a>
     </nav>
     <div class="mode-switch-group" role="group" aria-label="表示モード">
       <button class="mode-switch-btn" type="button" data-mode-target="shop" aria-pressed="true">商品を選ぶ</button>
@@ -71,7 +69,7 @@
         <p class="overline">KISARAGI PRODUCT CATALOG</p>
         <h1>選ぶ前に、<br><em>確かめる。</em></h1>
         <p>品名・画像・参考価格と出典を確かめながら、気になる商品を選択リストへまとめられます。</p>
-        <div class="hero-actions"><a class="button primary" href="#catalog">商品を見る</a><a class="text-link" href="./index.html#jp-sku-catalog">資料庫で探す</a></div>
+        <div class="hero-actions"><a class="button primary" href="#catalog">商品を見る</a><a class="text-link" href="#catalog" data-mode-target="archive" aria-pressed="false">出典を見る</a></div>
       </div>
       <figure class="hero-image"><img src="./assets/catalog/products/ua-terea-riviera-pearl.jpg" alt="顧客提供の加熱式たばこ製品パッケージ写真"><figcaption>掲載画像の状態は商品ごとに表示しています</figcaption></figure>
     </section>
@@ -108,18 +106,17 @@
 
   </main>
 
-  <nav class="unified-mobile-dock" aria-label="モバイルナビゲーション">
+  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション">
     <a href="./index.html">ホーム</a>
     <a href="./shop.html#catalog" aria-current="page">商品</a>
-    <button id="mobileOpenCart" type="button" aria-haspopup="dialog">カート <span class="mobile-cart-count" id="mobileCartCount" aria-live="polite">0</span></button>
-    <a href="./account.html">会員</a>
-    <a href="./trust.html">運営</a>
+    <a href="./checkout.html">選択</a>
+    <a href="./trust.html">案内</a>
   </nav>
 
-  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上向けの商品案内です。オンライン注文機能は現在準備中です。</p><div class="footer-links"><a href="./checkout.html#orderFunctions">注文接続状況</a><a href="./account.html">会員・注文</a><a href="./trust.html">運営・取引情報</a><a href="./admin/">商品管理</a></div></footer>
+  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上向けの商品案内です。オンライン注文機能は現在準備中です。</p><div class="footer-links"><a href="./checkout.html">選択リスト</a><a href="./trust.html">利用案内</a><a href="./admin/">管理者入口</a></div></footer>
 
   <div class="backdrop" id="backdrop" hidden></div>
-  <aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartPanelTitle" aria-hidden="true">
+  <aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartPanelTitle" aria-hidden="true" inert>
     <div class="panel-head"><h2 id="cartPanelTitle">選択リスト</h2><button class="icon-button" id="closeCart" type="button">閉じる</button></div>
     <div id="cartItems" class="cart-items"></div>
     <div class="cart-total"><span id="cartTotalLabel">商品小計（参考）</span><strong id="cartTotal">¥0</strong></div>

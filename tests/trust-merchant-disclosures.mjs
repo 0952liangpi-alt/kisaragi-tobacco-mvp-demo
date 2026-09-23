@@ -46,8 +46,8 @@ const verified = await renderWith(async () => ({
 }));
 assert.equal(verified.merchantLegalName.textContent, hostileName, 'hostile public text must remain inert text');
 assert.equal(verified.operator.dataset.disclosureState, 'verified');
-assert.equal(verified.merchantDisclosureState.textContent, '公開経営情報：本番受入確認済み');
-assert.match(verified.merchantPublicationStatus.textContent, /公開経営情報は本番受入確認済み/);
+assert.equal(verified.merchantDisclosureState.textContent, '運営者情報：公開確認済み');
+assert.match(verified.merchantPublicationStatus.textContent, /運営者情報と利用条件を確認できます/);
 
 const rejected = await renderWith(async () => { throw Object.assign(new Error('not verified'), {status:503}); });
 assert.equal(rejected.merchantLegalName.textContent, 'placeholder:merchantLegalName', '503 must preserve the static unverified placeholder');

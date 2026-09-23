@@ -25,7 +25,7 @@ assert.ok(!html.includes('id="shippingMethods"') && !html.includes('id="tracking
 assert.ok(!/<(?:form|input|select)\b/i.test(html), 'the public selection page must not collect personal or logistics data');
 assert.ok(html.includes('eKYC・年齢確認') && html.includes('配送・受取方法') && html.includes('配送状況・追跡'), 'identity, delivery, and tracking connection states must remain visible');
 assert.ok(html.includes('現在は入力できません') && html.includes('現在は発行しません'), 'disconnected delivery and tracking modules must tell customers that data entry and IDs are unavailable');
-assert.ok(html.includes('配送サービス：未接続') && html.includes('追跡サービス：未接続'), 'delivery and tracking must be represented as disconnected status, not controls');
+assert.ok(html.includes('配送会社との連携：契約情報待ち') && html.includes('配送会社との連携：実際の追跡番号のみ表示'), 'delivery and tracking must be represented as unavailable status, not controls');
 assert.ok(!html.includes('logistics-core.js'), 'the public selection page must not load the provisional logistics module');
 assert.ok(!script.includes('fetch(') && !script.includes('XMLHttpRequest') && !script.includes('navigator.sendBeacon'), 'checkout must not transmit address or tracking data');
 assert.ok(script.includes('if (activated && liveSession.authenticated)') && script.includes('live().checkoutOptions()'), 'delivery controls must require both activation and an authenticated protected session');

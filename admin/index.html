@@ -13,8 +13,9 @@
   <script defer src="./admin.js?v=20260923-admin2"></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">本文へ移動</a>
   <header><a class="admin-brand" href="../index.html"><strong>KISARAGI</strong><span>商品管理</span></a><nav aria-label="管理画面ナビゲーション"><a href="../shop.html#catalog">商品案内</a><a href="./commerce.html">取引運用</a><a href="../trust.html#admin-entry">接続状況</a></nav></header>
-  <main>
+  <main id="main" tabindex="-1">
     <section id="connectionPanel" class="connection-panel" role="status" aria-live="polite">
       <p class="eyebrow">ADMIN SERVICE STATUS</p>
       <h1>管理サービスを確認しています</h1>
@@ -35,7 +36,7 @@
       <label class="search">商品名・品番で検索<input id="search" type="search" placeholder="品番または商品名" autocomplete="off"></label>
       <p id="count" aria-live="polite"></p>
       <div class="workspace">
-        <div id="results" class="results" role="listbox" aria-label="検索結果"></div>
+        <ul id="results" class="results" aria-label="検索結果"></ul>
         <div id="detail" class="detail" hidden>
           <p id="selectionCode" class="code"></p>
           <p id="selectionCategory" class="category"></p>

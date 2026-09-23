@@ -18,6 +18,7 @@ const response = (data, status = 200) => ({
 function element(hidden = false) {
   const listeners = new Map();
   const classes = new Set();
+  const attributes = new Map();
   return {
     hidden,
     dataset: {},
@@ -27,6 +28,7 @@ function element(hidden = false) {
     checked: false,
     src: '',
     listeners,
+    attributes,
     children: [],
     classList: {
       toggle(name, force) {
@@ -38,7 +40,7 @@ function element(hidden = false) {
     addEventListener(type, handler) { listeners.set(type, handler); },
     replaceChildren(...children) { this.children = children; },
     append(...children) { this.children.push(...children); },
-    setAttribute() {},
+    setAttribute(name, value) { attributes.set(name, String(value)); },
     querySelector() { return null; },
   };
 }
@@ -169,7 +171,9 @@ assert.equal(ready.elements.loginForm.hidden, true);
 assert.equal(ready.elements.editor.hidden, false);
 assert.equal(ready.elements.status.textContent, '管理サービスに接続しました');
 assert.ok(ready.requests.every((request) => request.options.signal?.milliseconds === 2500));
-ready.elements.results.children[0].listeners.get('click')();
+const firstResultButton = ready.elements.results.children[0].children[0];
+firstResultButton.listeners.get('click')();
+assert.equal(firstResultButton.attributes.get('aria-pressed'), 'true', 'the selected product button must expose its pressed state');
 assert.equal(ready.elements.officialCatalogPrice.textContent, '110円（税込）');
 assert.equal(ready.elements.officialCatalogPriceType.textContent, '希望小売価格');
 assert.equal(ready.elements.officialCatalogPriceSource.textContent, 'TSN喫煙商品カタログ 2026 · PDF 6ページ');

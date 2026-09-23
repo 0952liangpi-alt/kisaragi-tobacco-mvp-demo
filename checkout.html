@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="KISARAGIで選んだ商品の確認と、会員・年齢確認、配送、支払い、注文、追跡サービスの現在の接続状況です。">
+  <meta name="description" content="KISARAGIで選んだ商品、数量、参考小計を確認するページです。オンライン注文は現在準備中です。">
   <meta name="theme-color" content="#121212">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767 http://127.0.0.1:8769; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>KISARAGI | 選択リストと注文機能</title>
+  <title>KISARAGI | 選択リスト</title>
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./checkout.css?v=20260922-delivery1">
   <link rel="stylesheet" href="./kisaragi-public-theme.css?v=20260922-client1">
@@ -26,22 +26,22 @@
   <a class="skip-link" href="#selection">選択リストへ移動</a>
   <header class="site-header">
     <a class="brand" href="./index.html" aria-label="KISARAGI トップ"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a>
-    <nav class="unified-site-nav" aria-label="メインナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品案内</a><a href="./index.html#jp-sku-catalog">資料庫</a><a href="./checkout.html#orderFunctions" aria-current="page">注文機能</a><a href="./account.html">会員・注文</a><a href="./trust.html">運営・取引</a></nav>
+    <nav class="unified-site-nav" aria-label="メインナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品案内</a><a href="./checkout.html" aria-current="page">選択リスト</a><a href="./trust.html">利用案内</a></nav>
   </header>
 
   <main id="selection">
     <section class="intro">
       <p class="eyebrow">KISARAGI SELECTION LIST</p>
       <h1>選んだ商品を、<br><em>確認する。</em></h1>
-      <p>選んだ商品の確認から、会員・年齢確認、配送、支払い、注文、追跡までの全体像をご覧いただけます。</p>
+      <p>選んだ商品、数量、参考小計をこの端末で確認できます。オンライン注文は現在準備中です。</p>
     </section>
 
-    <div class="notice" id="commerceRuntimeNotice" data-state="locked" aria-live="polite"><strong>内部コア構築済み</strong><span>外部契約と本番受入が完了するまで総合販売スイッチは有効になりません。このページでは氏名、住所、本人確認書類、決済情報を受け付けません。</span></div>
+    <div class="notice" id="commerceRuntimeNotice" data-state="locked" aria-live="polite"><strong>オンライン注文は準備中です</strong><span>現在は商品閲覧と選択リストのみご利用いただけます。氏名、住所、本人確認書類、決済情報は受け付けません。</span></div>
 
     <section class="checkout-grid" aria-label="選択内容">
       <section class="application-card" aria-labelledby="summaryTitle">
-        <div class="card-heading"><p class="eyebrow">CURRENT CART</p><h2 id="summaryTitle">選択リスト（カート）</h2></div>
-        <p class="cart-runtime-status" id="cartRuntimeStatus" role="status">端末内カート：利用可能 / 会員カート内部コア：構築済み・API接続待ち</p>
+        <div class="card-heading"><p class="eyebrow">CURRENT SELECTION</p><h2 id="summaryTitle">選択リスト</h2></div>
+        <p class="cart-runtime-status" id="cartRuntimeStatus" role="status">選択リスト：利用できます / オンライン注文：準備中です</p>
         <div id="selectionItems" class="selection-items" aria-live="polite"></div>
         <div class="total"><span id="selectionTotalLabel">参考表示価格の小計</span><strong id="selectionTotal">¥0</strong></div>
         <p class="summary-note" id="selectionPriceNote">商品案内の表示価格は参考情報です。正式な販売価格は、供給元が承認した販売価格表をサーバーで照合した場合にだけ表示します。</p>
@@ -49,24 +49,23 @@
       </section>
 
       <aside class="summary-card" aria-labelledby="nextStepsTitle">
-        <p class="eyebrow">ORDER JOURNEY</p>
-        <h2 id="nextStepsTitle">ご注文までの流れ</h2>
+        <p class="eyebrow">AVAILABLE NOW</p>
+        <h2 id="nextStepsTitle">現在ご利用いただけること</h2>
         <ol class="next-steps">
-          <li><span>1</span><div><b>商品を選ぶ</b><small>選択リストと参考小計は現在利用できます。</small></div></li>
-          <li><span>2</span><div><b>会員・年齢確認</b><small>会員情報と20歳以上の確認を行います。</small></div></li>
-          <li><span>3</span><div><b>配送・支払い</b><small>受取方法と支払い方法を選択します。</small></div></li>
-          <li><span>4</span><div><b>注文・追跡</b><small>注文確定後に履歴と配送状況を確認します。</small></div></li>
+          <li><span>1</span><div><b>商品を見る</b><small>商品情報、参考価格、出典を確認できます。</small></div></li>
+          <li><span>2</span><div><b>商品を選ぶ</b><small>気になる商品を選択リストへ追加できます。</small></div></li>
+          <li><span>3</span><div><b>選択内容を確認する</b><small>数量と参考小計をこの端末で確認できます。</small></div></li>
+          <li><span>4</span><div><b>注文受付を待つ</b><small>会員登録、配送、支払い、注文は準備中です。</small></div></li>
         </ol>
-        <a class="outline-button wide" href="#orderFunctions">注文機能一覧へ</a>
-        <a class="outline-button wide secondary-link" href="./account.html">会員・注文履歴を確認する</a>
-        <p class="summary-note">各機能は下に表示しています。受付開始までは個人情報を入力できません。</p>
+        <a class="outline-button wide" href="#orderFunctions">オンライン注文の準備状況を見る</a>
+        <p class="summary-note">受付開始までは個人情報を入力できません。</p>
       </aside>
     </section>
 
     <section class="function-directory" id="orderFunctions" aria-labelledby="functionDirectoryTitle">
       <div class="directory-heading">
-        <div><p class="eyebrow">ONLINE SERVICE STATUS</p><h2 id="functionDirectoryTitle">正式サービス接続状況</h2></div>
-        <p>内部実装、外部事業者との契約、総合販売スイッチを分けて表示します。公開APIが未設定または外部契約が不足する場合は必ず停止します。</p>
+        <div><p class="eyebrow">ONLINE SERVICE STATUS</p><h2 id="functionDirectoryTitle">オンライン注文の準備状況</h2></div>
+        <p>会員登録、年齢確認、配送、支払い、注文、追跡は現在準備中です。必要な確認が完了していない機能は利用できません。</p>
       </div>
 
       <nav class="function-rail" aria-label="注文機能一覧">
@@ -82,85 +81,86 @@
 
       <div class="function-grid">
         <article class="function-module" id="memberModule" data-module="memberAuth">
-          <div class="module-top"><span class="module-number">01</span><span class="module-state">内部実装済み</span></div>
+          <div class="module-top"><span class="module-number">01</span><span class="module-state">機能準備済み</span></div>
           <h3>会員・ログイン</h3>
           <p>注文者情報と購入履歴を安全に管理するための会員機能です。</p>
           <dl><div><dt>会員登録</dt><dd>受付開始後</dd></div><div><dt>ログイン</dt><dd>受付開始後</dd></div><div><dt>購入履歴</dt><dd>注文受付後に表示</dd></div></dl>
-          <p class="module-unavailable" role="status">内部コア：構築済み<br><span>会員サービス：未接続（外部契約待ち）</span></p>
+          <p class="module-unavailable" role="status">会員機能：準備済み<br><span>会員サービス：契約・接続準備中</span></p>
+          <a class="outline-button wide" href="./account.html">会員機能の準備状況を詳しく見る</a>
         </article>
 
         <article class="function-module" id="ageModule" data-module="ekyc">
-          <div class="module-top"><span class="module-number">02</span><span class="module-state">接続境界実装済み</span></div>
+          <div class="module-top"><span class="module-number">02</span><span class="module-state">機能準備済み</span></div>
           <h3>eKYC・年齢確認</h3>
           <p>20歳以上であることを確認し、確認結果を注文手続きに連携する機能です。</p>
           <dl><div><dt>本人確認</dt><dd>受付開始後</dd></div><div><dt>年齢判定</dt><dd>20歳以上</dd></div><div><dt>確認書類</dt><dd>現在は受け付けません</dd></div></dl>
-          <p class="module-unavailable" role="status">接続境界：構築済み<br><span>eKYCサービス：未接続（契約情報待ち）</span></p>
+          <p class="module-unavailable" role="status">年齢確認機能：準備済み<br><span>eKYCサービス：契約・接続準備中</span></p>
         </article>
 
         <article class="function-module" id="inventoryModule" data-module="inventory">
-          <div class="module-top"><span class="module-number">03</span><span class="module-state">内部実装済み</span></div>
+          <div class="module-top"><span class="module-number">03</span><span class="module-state">機能準備済み</span></div>
           <h3>在庫・最終価格確認</h3>
           <p>注文前に在庫、購入可能数、正式な税込価格を確定する機能です。</p>
           <dl><div><dt>参考表示価格</dt><dd>商品案内で確認</dd></div><div><dt>承認済み販売価格</dt><dd>供給元価格表から確定</dd></div><div><dt>在庫・購入上限</dt><dd>サーバー予約時に確定</dd></div></dl>
-          <p class="module-unavailable" role="status">内部在庫・価格台帳：構築済み<br><span>在庫サービス：未接続</span></p>
+          <p class="module-unavailable" role="status">在庫・価格確認機能：準備済み<br><span>最新在庫との連携：準備中</span></p>
         </article>
 
         <article class="function-module" id="deliveryModule" data-module="carrier">
-          <div class="module-top"><span class="module-number">04</span><span class="module-state">接続境界実装済み</span></div>
+          <div class="module-top"><span class="module-number">04</span><span class="module-state">機能準備済み</span></div>
           <h3>配送・受取方法</h3>
           <p>配送先、配送方法、希望日時、対面受取条件を指定する機能です。</p>
           <dl><div><dt>配送先</dt><dd>現在は入力できません</dd></div><div><dt>配送方法</dt><dd>受付開始後に選択</dd></div><div><dt>受取条件</dt><dd>対面・年齢確認を予定</dd></div></dl>
-          <p class="module-unavailable" role="status">配送連携境界：構築済み<br><span>配送サービス：未接続（契約情報待ち）</span></p>
+          <p class="module-unavailable" role="status">配送条件入力機能：準備済み<br><span>配送会社との連携：契約情報待ち</span></p>
         </article>
 
         <article class="function-module" id="paymentModule" data-module="payment">
-          <div class="module-top"><span class="module-number">05</span><span class="module-state">接続境界実装済み</span></div>
+          <div class="module-top"><span class="module-number">05</span><span class="module-state">機能準備済み</span></div>
           <h3>お支払い</h3>
           <p>利用可能な支払い方法を選び、安全な決済画面へ進むための機能です。</p>
           <dl><div><dt>支払い方法</dt><dd>受付開始時に表示</dd></div><div><dt>決済情報</dt><dd>現在は受け付けません</dd></div><div><dt>領収情報</dt><dd>注文確定後に表示</dd></div></dl>
-          <p class="module-unavailable" role="status">決済・返金境界：構築済み<br><span>決済サービス：未接続（契約情報待ち）</span></p>
+          <p class="module-unavailable" role="status">支払い・返金機能：準備済み<br><span>決済サービス：契約・接続準備中</span></p>
         </article>
 
         <article class="function-module" id="orderModule" data-module="orders">
-          <div class="module-top"><span class="module-number">06</span><span class="module-state">内部実装済み</span></div>
+          <div class="module-top"><span class="module-number">06</span><span class="module-state">機能準備済み</span></div>
           <h3>注文内容の確認・確定</h3>
           <p>商品、数量、価格、配送先、支払い方法を確認して注文を確定する機能です。</p>
           <dl><div><dt>注文番号</dt><dd>現在は発行しません</dd></div><div><dt>注文確定</dt><dd>受付開始後</dd></div><div><dt>変更・取消</dt><dd>注文履歴から案内</dd></div></dl>
-          <p class="module-unavailable" role="status">注文・予約台帳：構築済み<br><span>注文サービス：未接続</span></p>
+          <p class="module-unavailable" role="status">注文記録機能：準備済み<br><span>オンライン注文受付：準備中</span></p>
           <div id="liveOrderSummary" class="live-module-data" hidden></div>
         </article>
 
         <article class="function-module" id="notificationModule" data-module="outbox">
-          <div class="module-top"><span class="module-number">07</span><span class="module-state">内部実装済み</span></div>
+          <div class="module-top"><span class="module-number">07</span><span class="module-state">機能準備済み</span></div>
           <h3>注文履歴・お知らせ</h3>
           <p>受付、確認、出荷などの更新と過去の注文を確認する機能です。</p>
           <dl><div><dt>注文履歴</dt><dd>注文受付後に表示</dd></div><div><dt>状態更新</dt><dd>会員画面で案内</dd></div><div><dt>問い合わせ</dt><dd>受付開始後</dd></div></dl>
-          <p class="module-unavailable" role="status">通知キュー：構築済み<br><span>通知サービス：未接続（メール契約待ち）</span></p>
+          <p class="module-unavailable" role="status">注文履歴・通知機能：準備済み<br><span>メール通知：契約・接続準備中</span></p>
         </article>
 
         <article class="function-module" id="trackingModule" data-module="carrier">
-          <div class="module-top"><span class="module-number">08</span><span class="module-state">接続境界実装済み</span></div>
+          <div class="module-top"><span class="module-number">08</span><span class="module-state">機能準備済み</span></div>
           <h3>配送状況・追跡</h3>
           <p>出荷後の配送会社、追跡番号、受取予定を確認する機能です。</p>
           <dl><div><dt>追跡番号</dt><dd>現在は発行しません</dd></div><div><dt>配送状況</dt><dd>出荷後に表示</dd></div><div><dt>受取予定</dt><dd>配送会社確定後に表示</dd></div></dl>
-          <p class="module-unavailable" role="status">追跡データ境界：構築済み<br><span>追跡サービス：未接続（実配送番号のみ表示）</span></p>
+          <p class="module-unavailable" role="status">配送追跡機能：準備済み<br><span>配送会社との連携：実際の追跡番号のみ表示</span></p>
         </article>
       </div>
 
       <div class="order-gate" role="status">
         <div><b>オンライン注文の受付は準備中です</b><span>現在は個人情報、本人確認書類、配送先、決済情報を送信できません。</span></div>
-        <span class="order-unavailable">注文受付：未接続</span>
+        <span class="order-unavailable">注文受付：準備中</span>
       </div>
       <section class="activation-readiness" aria-labelledby="activationTitle">
-        <div><p class="eyebrow">ACTIVATION BLOCKERS</p><h3 id="activationTitle">本番開始前の確認項目</h3></div>
-        <ul id="activationBlockers"><li>通信販売許可・販売条件の確認</li><li>供給元審査・承認済み販売価格表</li><li>eKYC・決済・配送・メール事業者の契約情報</li><li>管理者SSO・受信プロキシ認証</li><li>クラウド配備セキュリティの本番受入</li><li>公開経営情報・許認可・規約の本番受入</li><li>本番受入試験</li></ul>
+        <div><p class="eyebrow">START CHECKLIST</p><h3 id="activationTitle">受付開始前の確認項目</h3></div>
+        <ul id="activationBlockers"><li>通信販売許可・販売条件の最終確認</li><li>供給元審査・承認済み販売価格表</li><li>eKYC・決済・配送・メール事業者の契約情報</li><li>管理者ログインとデータ受信経路の安全確認</li><li>公開環境の安全確認</li><li>運営者情報・許認可・規約の公開確認</li><li>販売開始前の総合テスト</li></ul>
       </section>
       <div id="checkoutActivationHost" class="checkout-activation-host" aria-live="polite"></div>
     </section>
   </main>
 
-  <nav class="unified-mobile-dock" aria-label="モバイルナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品</a><a href="./checkout.html#orderFunctions" aria-current="page">注文</a><a href="./account.html">会員</a><a href="./trust.html">運営</a></nav>
+  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品</a><a href="./checkout.html" aria-current="page">選択</a><a href="./trust.html">案内</a></nav>
 
-  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上限定 · 商品情報と選択リスト</p><div class="footer-links"><a href="./shop.html#catalog">商品案内へ戻る</a><a href="./trust.html">運営・取引情報</a><a href="./admin/">商品管理</a></div></footer>
+  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上限定 · 商品情報と選択リスト</p><div class="footer-links"><a href="./shop.html#catalog">商品案内へ戻る</a><a href="./trust.html">利用案内</a><a href="./admin/">管理者入口</a></div></footer>
 </body>
 </html>

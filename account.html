@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="KISARAGIの会員セッション、注文履歴、外部サービス契約状況を確認するページです。">
+  <meta name="description" content="KISARAGIの会員登録と注文履歴について、現在の準備状況を確認するページです。">
   <meta name="theme-color" content="#121212">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self' http://127.0.0.1:8769; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>KISARAGI | 会員・注文状況</title>
+  <title>KISARAGI | 会員機能の準備状況</title>
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./account.css?v=20260922-order-details1">
   <link rel="stylesheet" href="./account-commerce.css?v=20260922-contract2">
@@ -19,27 +19,27 @@
   <a class="skip-link" href="#accountMain">会員状況へ移動</a>
   <header class="site-header">
     <a class="brand" href="./index.html" aria-label="KISARAGI トップ"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>MEMBER &amp; ORDERS</small></span></a>
-    <nav class="unified-site-nav" aria-label="メインナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品案内</a><a href="./index.html#jp-sku-catalog">資料庫</a><a href="./checkout.html#orderFunctions">注文機能</a><a href="./account.html" aria-current="page">会員・注文</a><a href="./trust.html">運営・取引</a></nav>
+    <nav class="unified-site-nav" aria-label="メインナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品案内</a><a href="./checkout.html">選択リスト</a><a href="./trust.html">利用案内</a></nav>
   </header>
 
   <main id="accountMain">
     <section class="account-intro">
-      <p class="eyebrow">MEMBER &amp; OPERATIONS</p>
-      <h1>会員と注文を、<br><em>一つの画面で。</em></h1>
-      <p>内部システム、外部事業者との接続、販売開始スイッチを分けて表示します。販売停止中も既存会員はログインして注文履歴を確認できますが、新規登録・配送先・本人確認・決済の入力は受け付けません。</p>
+      <p class="eyebrow">MEMBER SERVICE STATUS</p>
+      <h1>会員機能は、<br><em>現在準備中です。</em></h1>
+      <p>会員登録とオンライン注文はまだご利用いただけません。受付開始までは、氏名、住所、本人確認書類、決済情報を入力できません。</p>
     </section>
 
     <section class="status-banner" id="serviceStatus" data-state="checking" aria-live="polite">
       <span class="status-light" aria-hidden="true"></span>
-      <div><b id="serviceStatusTitle">サービス状態を確認中</b><span id="serviceStatusCopy">保護された内部APIの応答を確認しています。</span></div>
+      <div><b id="serviceStatusTitle">オンライン注文は準備中です</b><span id="serviceStatusCopy">現在は会員情報や注文情報を受け付けていません。</span></div>
     </section>
 
     <section class="three-layer" aria-labelledby="readinessTitle">
-      <div class="section-heading"><p class="eyebrow">THREE-LAYER READINESS</p><h2 id="readinessTitle">運用開始までの三層</h2></div>
+      <div class="section-heading"><p class="eyebrow">SERVICE READINESS</p><h2 id="readinessTitle">受付開始までの準備</h2></div>
       <div class="layer-grid">
-        <article id="internalLayer" data-state="checking"><span>01</span><h3>内部コア</h3><b>確認中</b><p>会員、カート、在庫、注文、監査、通知キューの内部実装を確認します。</p></article>
+        <article id="internalLayer" data-state="checking"><span>01</span><h3>サイト機能</h3><b>確認中</b><p>会員、選択リスト、在庫、注文履歴、お知らせの各機能を確認します。</p></article>
         <article id="providerLayer" data-state="waiting"><span>02</span><h3>外部契約</h3><b>契約情報待ち</b><p>eKYC、決済、配送、メールの正式な接続情報が必要です。</p></article>
-        <article id="activationLayer" data-state="locked"><span>03</span><h3>販売開始</h3><b>未アクティブ</b><p>全サービスの疎通・受入確認後にサーバー側でのみ有効化します。</p><ul id="activationBlockers"><li>通信販売許可・販売条件の確認</li><li>供給元審査・承認済み販売価格表</li><li>外部事業者の契約情報</li><li>管理者SSO・受信プロキシ認証</li><li>クラウド配備セキュリティの本番受入</li><li>公開経営情報・許認可・規約の本番受入</li><li>本番受入試験</li></ul></article>
+        <article id="activationLayer" data-state="locked"><span>03</span><h3>販売開始</h3><b>受付開始前</b><p>すべての安全確認と外部サービスの接続後に、運営者が受付を開始します。</p><ul id="activationBlockers"><li>通信販売許可・販売条件の最終確認</li><li>供給元審査・承認済み販売価格表</li><li>外部事業者の契約情報</li><li>管理者ログインとデータ受信経路の安全確認</li><li>公開環境の安全確認</li><li>運営者情報・許認可・規約の公開確認</li><li>販売開始前の総合テスト</li></ul></article>
       </div>
     </section>
 
@@ -57,7 +57,7 @@
     </section>
 
     <section class="provider-section" aria-labelledby="providerTitle">
-      <div class="section-heading"><p class="eyebrow">SIGNED PROVIDERS</p><h2 id="providerTitle">外部サービス接続</h2><p>接続状態はサーバーの capability 文書だけを真値として表示します。</p></div>
+      <div class="section-heading"><p class="eyebrow">SIGNED PROVIDERS</p><h2 id="providerTitle">外部サービス接続</h2><p>年齢確認、決済、配送、メールについて、サーバーが確認した最新の利用状態を表示します。</p></div>
       <div class="provider-grid">
         <article data-provider="ekyc"><span>eKYC</span><b>確認中</b><small>年齢・本人確認</small></article>
         <article data-provider="payment"><span>PAYMENT</span><b>確認中</b><small>決済・返金</small></article>
@@ -66,10 +66,10 @@
       </div>
     </section>
 
-    <section class="safety-note" role="note"><b>安全な待機状態</b><p>APIが未設定または応答しない場合は、すべての会員入力を停止します。内部APIが稼働し販売だけを停止している場合は、既存会員のログイン・注文履歴確認だけを継続し、新規登録・住所入力・本人確認・決済・注文確定を停止します。</p><a href="./checkout.html#orderFunctions">全機能の状態を見る</a></section>
+    <section class="safety-note" role="note"><b>安全な待機状態</b><p>会員・注文サービスを確認できない場合は、すべての会員入力を停止します。注文受付だけが停止している場合は、既存会員のログインと注文履歴確認のみ継続し、新規登録、住所入力、本人確認、決済、注文確定は受け付けません。</p><a href="./checkout.html#orderFunctions">全機能の状態を見る</a></section>
   </main>
 
-  <nav class="unified-mobile-dock" aria-label="モバイルナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品</a><a href="./checkout.html">選択</a><a href="./account.html" aria-current="page">会員</a><a href="./trust.html">運営</a></nav>
-  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>MEMBER &amp; ORDERS</small></span></a><p>販売停止中は既存会員の認証と注文履歴確認だけを保護APIで継続し、新規の配送先・本人確認書類・決済情報は収集しません。</p><a href="./checkout.html">選択リストへ</a></footer>
+  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品</a><a href="./checkout.html">選択</a><a href="./trust.html">案内</a></nav>
+  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>MEMBER &amp; ORDERS</small></span></a><p>販売停止中は既存会員のログインと注文履歴確認だけを継続し、新しい配送先、本人確認書類、決済情報は収集しません。</p><a href="./checkout.html">選択リストへ</a></footer>
 </body>
 </html>
