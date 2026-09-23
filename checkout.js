@@ -7,6 +7,13 @@
   const catalog = () => (globalThis.KISARAGI_CANONICAL_CATALOG || []).filter((item) => item.status !== 'PRICE_CONFLICT');
   const currentPrice = (item) => item.price_jpy ?? item.price ?? null;
   const yen = (amount) => `¥${Number(amount || 0).toLocaleString('ja-JP')}`;
+  const orderStatusLabel = (status) => ({
+    DRAFT:'確認待ち', PENDING:'処理中', PENDING_PROVIDER:'外部手続き待ち',
+    AWAITING_PAYMENT:'お支払い待ち', PAYMENT_PENDING:'お支払い確認中', PAYMENT_FAILED:'お支払い未完了',
+    PAYMENT_REVIEW_REQUIRED:'お支払い確認中', PAID:'お支払い済み', FULFILLMENT_PENDING:'出荷準備中',
+    READY_TO_SHIP:'出荷準備完了', SHIPPED:'発送済み', IN_TRANSIT:'配送中', DELIVERED:'配達済み',
+    CANCELLED:'取消済み', REFUNDED:'返金済み',
+  })[String(status || '').toUpperCase()] || '確認中';
   const officialPriceKindLabel = (kind) => ({
     MANUFACTURER_LIST_PRICE_TAX_INCLUDED:'メーカー定価',
     MANUFACTURER_LIST_PRICE_TAX_INCLUSIVE:'メーカー定価',
@@ -46,6 +53,27 @@
     if (text != null) node.textContent = text;
     if (type) node.type = type;
     return node;
+  }
+
+  function setAnnouncementState(node, error = false) {
+    node.setAttribute('role', error ? 'alert' : 'status');
+    node.setAttribute('aria-live', error ? 'assertive' : 'polite');
+    node.setAttribute('aria-atomic', 'true');
+  }
+
+  function announce(node, message, error = false) {
+    setAnnouncementState(node, error);
+    node.textContent = message;
+  }
+
+  function statusElement(className, message, error = false) {
+    const node = element('div', {className});
+    announce(node, message, error);
+    return node;
+  }
+
+  function appendCheckoutStatus(message, error = false) {
+    $('#checkoutActivationHost').append(statusElement('checkout-live-result', message, error));
   }
 
   function restoreSelection() {
@@ -262,12 +290,12 @@
       const internalReady = !requirement.internal || liveCapabilities.modules?.[requirement.internal] === 'ready';
       const externalReady = !requirement.provider || live().providerReady(liveCapabilities, requirement.provider);
       card.dataset.runtime = activated && internalReady && externalReady ? 'active' : internalReady ? 'ready' : 'blocked';
-      card.querySelector('.module-state').textContent = activated && internalReady && externalReady ? '稼働中' : internalReady ? '内部準備完了' : '内部確認が必要';
+      card.querySelector('.module-state').textContent = activated && internalReady && externalReady ? '利用可能' : internalReady ? '機能準備済み' : '準備状況の確認が必要';
       const status = card.querySelector('.module-unavailable');
       status.replaceChildren(
-        document.createTextNode(internalReady ? '内部コア：準備完了' : '内部コア：確認が必要'),
+        document.createTextNode(internalReady ? 'この機能：準備済み' : 'この機能：確認が必要'),
         document.createElement('br'),
-        element('span', {text:externalReady ? (activated ? '外部接続：稼働中' : '外部接続：準備完了・総合スイッチ待ち') : '外部接続：契約情報待ち'}),
+        element('span', {text:externalReady ? (activated ? '関連サービス：利用可能' : '関連サービス：準備済み・受付開始待ち') : '関連サービス：契約情報待ち'}),
       );
     });
   }
@@ -276,40 +304,40 @@
     const host = $('#activationBlockers');
     const missing = Array.isArray(payload?.missing) ? payload.missing : [];
     if (payload?.ready === true && payload?.activated === true) {
-      host.replaceChildren(element('li', {text:'サーバーの本番開始条件はすべて確認済みです。'}));
+      host.replaceChildren(element('li', {text:'オンライン注文の受付条件はすべて確認済みです。'}));
       return;
     }
     const labels = {
-      ACTIVATION_DISABLED:'総合販売スイッチ（未アクティブ）',
+      ACTIVATION_DISABLED:'オンライン注文受付：開始前',
       LICENSED_PREMISE_NOT_CONFIGURED:'通信販売許可・許可営業所ID',
-      LICENSED_PREMISE_ACCEPTANCE_UNVERIFIED:'通信販売許可・許可営業所の本番受入証跡',
-      PAYMENT_WEBHOOK_NOT_CONFIGURED:'決済Webhook署名設定',
+      LICENSED_PREMISE_ACCEPTANCE_UNVERIFIED:'通信販売許可・許可営業所情報の最終確認',
+      PAYMENT_WEBHOOK_NOT_CONFIGURED:'決済結果通知の安全設定',
       SHIPPING_RATES_NOT_CONFIGURED:'承認済み配送サービス・運賃表',
-      SHIPPING_RATE_ACCEPTANCE_UNVERIFIED:'配送サービス・運賃表の本番受入証跡',
-      DEPLOYMENT_SECURITY_NOT_CONFIGURED:'クラウド配備の暗号化・バックアップ・監視・アクセス制御',
-      DEPLOYMENT_SECURITY_EVIDENCE_STALE:'クラウド配備の復旧試験証跡（更新が必要）',
-      DEPLOYMENT_SECURITY_ACCEPTANCE_UNVERIFIED:'クラウド配備セキュリティの本番受入証跡',
+      SHIPPING_RATE_ACCEPTANCE_UNVERIFIED:'配送サービス・運賃表の最終確認',
+      DEPLOYMENT_SECURITY_NOT_CONFIGURED:'公開環境の暗号化・バックアップ・監視・アクセス制御',
+      DEPLOYMENT_SECURITY_EVIDENCE_STALE:'バックアップ復旧確認の更新',
+      DEPLOYMENT_SECURITY_ACCEPTANCE_UNVERIFIED:'公開環境の安全確認',
       MERCHANT_PUBLICATION_NOT_CONFIGURED:'公開経営情報・許認可・規約',
-      MERCHANT_PUBLICATION_ACCEPTANCE_UNVERIFIED:'公開経営情報・規約の本番受入証跡',
-      ADMIN_IDENTITY_NOT_CONFIGURED:'管理者SSO・受信プロキシ認証',
+      MERCHANT_PUBLICATION_ACCEPTANCE_UNVERIFIED:'運営者情報・規約の公開確認',
+      ADMIN_IDENTITY_NOT_CONFIGURED:'管理者ログインとデータ受信経路の安全設定',
       EKYC_NOT_CONFIGURED:'eKYC事業者の契約情報',
-      EKYC_ACCEPTANCE_UNVERIFIED:'eKYC事業者の本番受入証跡',
+      EKYC_ACCEPTANCE_UNVERIFIED:'eKYC事業者の利用開始確認',
       PAYMENT_NOT_CONFIGURED:'決済事業者の契約情報',
-      PAYMENT_ACCEPTANCE_UNVERIFIED:'決済事業者の本番受入証跡',
+      PAYMENT_ACCEPTANCE_UNVERIFIED:'決済事業者の利用開始確認',
       CARRIER_NOT_CONFIGURED:'配送事業者の契約情報',
-      CARRIER_ACCEPTANCE_UNVERIFIED:'配送事業者の本番受入証跡',
+      CARRIER_ACCEPTANCE_UNVERIFIED:'配送事業者の利用開始確認',
       EMAIL_NOT_CONFIGURED:'通知メール事業者の契約情報',
-      EMAIL_ACCEPTANCE_UNVERIFIED:'通知メール事業者の本番受入証跡',
+      EMAIL_ACCEPTANCE_UNVERIFIED:'通知メール事業者の利用開始確認',
     };
     const licenseMissing = missing.some((item) => item?.code === 'LICENSED_PREMISE_NOT_CONFIGURED');
     const baseline = [
-      licenseMissing ? null : '通信販売許可・許可営業所ID：API設定済み',
+      licenseMissing ? null : '通信販売許可・許可営業所ID：登録済み',
       '供給元審査・承認済み販売価格表：商品ごとに確認',
-      'クラウド配備セキュリティ・公開経営情報：本番受入を確認',
-      '本番受入試験',
+      '公開環境の安全対策・運営者情報：最終確認',
+      '販売開始前の総合テスト',
     ].filter(Boolean);
     host.replaceChildren();
-    [...missing.map((item) => labels[item?.code] || item?.label || item?.code || item), ...baseline]
+    [...missing.map((item) => labels[item?.code] || item?.label || '追加の確認項目'), ...baseline]
       .forEach((item) => host.append(element('li', {text:String(item)})));
   }
 
@@ -346,7 +374,7 @@
     const localLines = commerce().readCart();
     if (normalizeServerLines(liveCartPayload).length === 0) {
       if (!localLines.length) {
-        host.append(element('div', {className:'checkout-live-result', text:'会員カートは空です。商品案内から商品を選択してください。'}));
+        host.append(statusElement('checkout-live-result', '会員カートは空です。商品案内から商品を選択してください。'));
         return;
       }
       const transfer = element('section', {className:'checkout-live-form'});
@@ -356,16 +384,18 @@
       );
       const transferButton = element('button', {type:'button', text:'会員カートへ反映する'});
       const transferResult = element('div', {className:'checkout-live-result'});
+      setAnnouncementState(transferResult);
       transferButton.addEventListener('click', async () => {
         transferButton.disabled = true;
-        transferResult.textContent = '会員カートへ保存しています。';
+        announce(transferResult, '会員カートへ保存しています。');
         try {
           for (const line of localLines) await live().setCartItem(line.id, line.quantity);
           liveCartPayload = await live().cart();
           renderServerSelection(liveCartPayload);
           renderActivatedCheckout();
+          appendCheckoutStatus('選択リストを会員カートへ反映しました。');
         } catch {
-          transferResult.textContent = '会員カートへ反映できませんでした。商品状態とセッションをご確認ください。';
+          announce(transferResult, '会員カートへ反映できませんでした。商品状態とセッションをご確認ください。', true);
           transferButton.disabled = false;
         }
       });
@@ -379,21 +409,21 @@
     const policy = options?.deliveryPolicy;
     const subtotal = approvedCartSubtotal(liveCartPayload);
     if (!services.length || !policy) {
-      host.append(element('div', {className:'checkout-live-result', text:'承認済みの配送サービス・運賃表と受取条件を確認できないため、注文入力を停止しています。'}));
+      host.append(statusElement('checkout-live-result', '承認済みの配送サービス・運賃表と受取条件を確認できないため、注文入力を停止しています。', true));
       return;
     }
     if (!policy.faceToFaceDelivery || !policy.ageVerificationRequired || policy.leaveAtDoorAllowed) {
-      host.append(element('div', {className:'checkout-live-result', text:'対面受取・受取時年齢確認・置き配禁止の条件が揃っていないため、注文入力を停止しています。'}));
+      host.append(statusElement('checkout-live-result', '対面受取・受取時年齢確認・置き配禁止の条件が揃っていないため、注文入力を停止しています。', true));
       return;
     }
     if (subtotal == null) {
-      host.append(element('div', {className:'checkout-live-result', text:'会員カート内の全商品について承認済み販売価格を確認できないため、注文入力を停止しています。'}));
+      host.append(statusElement('checkout-live-result', '会員カート内の全商品について承認済み販売価格を確認できないため、注文入力を停止しています。', true));
       return;
     }
 
     const form = element('form', {className:'checkout-live-form'});
     form.noValidate = true;
-    form.append(element('h3', {text:'配送先と注文内容の確認'}), element('p', {text:'入力内容は保護された注文APIへ送信され、まず在庫予約付きのDRAFT注文として保存されます。決済や配送を模擬完了させることはありません。'}));
+    form.append(element('h3', {text:'配送先と注文内容の確認'}), element('p', {text:'入力内容を安全に送信し、在庫を確保した仮注文として保存します。支払いと配送は、それぞれのサービスで確定するまで完了扱いになりません。'}));
     const fields = element('div', {className:'checkout-live-fields'});
     const definitions = [
       ['recipientName','text','受取人氏名','name'], ['phone','tel','電話番号','tel'], ['postalCode','text','郵便番号','postal-code'],
@@ -482,14 +512,15 @@
     carrier.addEventListener('change', updateTotals);
     updateTotals();
 
-    const submit = element('button', {type:'submit', text:'在庫と承認価格を確認してDRAFT注文を作成'});
+    const submit = element('button', {type:'submit', text:'在庫と販売価格を確認して仮注文を保存'});
     const result = element('div', {className:'checkout-live-result'});
+    setAnnouncementState(result);
     form.append(fields, compliance, totals, submit, result);
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       if (!form.reportValidity() || !live().isActivated(liveCapabilities)) return;
       submit.disabled = true;
-      result.textContent = '保護されたサーバーで在庫・承認価格を確認しています。';
+      announce(result, '保護されたサーバーで在庫・承認価格を確認しています。');
       try {
         const draft = await live().createDraftOrder({
           recipientName:inputs.recipientName.value, phone:inputs.phone.value, postalCode:inputs.postalCode.value,
@@ -497,46 +528,50 @@
         }, carrier.value, deliveryDate.value, timeSlot.value);
         const persistedOrder = draft.order || draft;
         const orderId = persistedOrder.id || persistedOrder.orderId;
-        result.replaceChildren(element('b', {text:`DRAFT注文 ${orderId || '保存済み'}`}), element('p', {text:`状態：${persistedOrder.status || 'DRAFT'}。外部処理はまだ開始していません。`}));
+        const persistedStatus = persistedOrder.status || 'DRAFT';
+        const persistedStatusCopy = persistedStatus === 'DRAFT' ? '状態：確認待ち' : `状態：${orderStatusLabel(persistedStatus)}`;
+        setAnnouncementState(result);
+        result.replaceChildren(element('b', {text:`仮注文 ${orderId || '保存済み'}`}), element('p', {text:`${persistedStatusCopy}。年齢確認、支払い、配送の手続きはまだ開始していません。`}));
         if (orderId) {
           const activate = element('button', {type:'button', text:'eKYC・決済手続きを開始'});
           const activationStatus = element('p', {className:'checkout-processing-status'});
+          setAnnouncementState(activationStatus);
           activate.addEventListener('click', async () => {
             activate.disabled = true;
             activate.textContent = 'eKYC 年齢確認処理中...';
-            activationStatus.textContent = '本人確認事業者の応答を待っています。確認完了を確約する表示ではありません。';
+            announce(activationStatus, '本人確認事業者の応答を待っています。確認完了を確約する表示ではありません。');
             try {
               const response = await live().activateOrder(orderId);
               activate.textContent = '決済処理状況を確認中...';
-              activationStatus.textContent = 'eKYCの応答を受領し、決済事業者の受付状態を確認しています。決済完了を確約する表示ではありません。';
+              announce(activationStatus, 'eKYCの応答を受領し、決済事業者の受付状態を確認しています。決済完了を確約する表示ではありません。');
               await new Promise((resolve) => requestAnimationFrame(resolve));
               const providerUrl = safeProviderLink(response);
-              result.append(element('p', {text:`注文状態：${response.order?.status || '処理受付済み'}`}));
+              result.append(element('p', {text:`注文状態：${orderStatusLabel(response.order?.status)}`}));
               if (providerUrl) {
                 const link = element('a', {className:'outline-button', text:'本人確認・決済事業者へ進む'});
                 link.href = providerUrl;
                 link.rel = 'noopener noreferrer';
                 result.append(link);
               }
-              activationStatus.textContent = providerUrl
+              announce(activationStatus, providerUrl
                 ? '事業者の画面で本人確認・決済手続きを続けてください。完了状態は事業者の確定応答後に注文履歴へ反映されます。'
-                : '外部処理を受け付けました。完了状態は事業者の確定応答後に注文履歴へ反映されます。';
+                : '外部処理を受け付けました。完了状態は事業者の確定応答後に注文履歴へ反映されます。');
               activate.textContent = '注文状態を再確認する';
             } catch (error) {
               const missingItems = Array.isArray(error.payload?.details?.missing)
                 ? error.payload.details.missing
                 : Array.isArray(error.payload?.missing) ? error.payload.missing : [];
               const missing = missingItems.length
-                ? ` 不足：${missingItems.map((item) => item?.label || item?.code || String(item)).join('、')}`
+                ? ` 確認が必要な項目：${missingItems.length}件。上の確認項目をご覧ください。`
                 : '';
-              activationStatus.textContent = `外部処理は開始されませんでした。${missing}`;
+              announce(activationStatus, `外部処理は開始されませんでした。${missing}`, true);
               activate.textContent = 'eKYC・決済手続きを再試行';
             } finally { activate.disabled = false; }
           });
           result.append(activate, activationStatus);
         }
       } catch (error) {
-        result.textContent = error.payload?.message || 'DRAFT注文を作成できませんでした。在庫・価格・入力内容をご確認ください。';
+        announce(result, '仮注文を保存できませんでした。在庫・価格・入力内容をご確認ください。', true);
       } finally { submit.disabled = false; }
     });
     host.append(form);
@@ -545,52 +580,68 @@
   function failClosed(copy) {
     const notice = $('#commerceRuntimeNotice');
     notice.dataset.state = 'locked';
-    notice.querySelector('strong').textContent = '内部コア構築済み・販売開始前';
+    setAnnouncementState(notice, true);
+    notice.querySelector('strong').textContent = 'オンライン注文は準備中です';
     notice.querySelector('span').textContent = copy;
     $('#checkoutActivationHost').replaceChildren();
   }
 
   async function initializeLiveCommerce() {
     if (!live()?.configured) {
-      failClosed('公開環境の保護された commerce API は未設定です。外部契約と本番受入が完了するまで、個人情報・本人確認書類・決済情報を受け付けません。');
+      failClosed('オンライン注文サービスはまだ利用できません。必要な契約と安全確認が完了するまで、個人情報、本人確認書類、決済情報を受け付けません。');
       return;
     }
+    const loadMessages = [];
+    let sessionLoadFailed = false;
+    announce($('#checkoutActivationHost'), 'オンライン注文の利用状態を確認しています。');
     try {
       liveCapabilities = await live().capabilities();
-      $('#cartRuntimeStatus').textContent = liveCapabilities.modules?.cart === 'ready'
-        ? '端末内カート：利用可能 / 保護された会員カートAPI：内部準備完了'
-        : '端末内カート：利用可能 / 会員カートAPI：内部確認が必要';
+      setAnnouncementState($('#cartRuntimeStatus'));
+      announce($('#cartRuntimeStatus'), liveCapabilities.modules?.cart === 'ready'
+        ? 'この端末の選択リスト：利用可能 / 会員用選択リスト：準備済み'
+        : 'この端末の選択リスト：利用可能 / 会員用選択リスト：確認が必要');
       renderModuleStates();
-      try { renderReadiness(await live().activationReadiness()); } catch { /* Static blockers remain visible. */ }
-      try { liveSession = await live().session(); } catch { liveSession = {authenticated:false}; }
+      try { renderReadiness(await live().activationReadiness()); }
+      catch { loadMessages.push('受付開始前の確認項目を読み込めませんでした。'); }
+      try { liveSession = await live().session(); }
+      catch {
+        liveSession = {authenticated:false};
+        sessionLoadFailed = true;
+        loadMessages.push('会員セッションを確認できませんでした。通信状態をご確認ください。');
+      }
       if (liveSession.authenticated) {
         try {
           liveCartPayload = await live().cart();
           if (normalizeServerLines(liveCartPayload).length) renderServerSelection(liveCartPayload);
-        } catch { /* Keep the local reference selection. */ }
-        try { renderOrderSummary(await live().orders()); } catch { /* No history is displayed without an authenticated response. */ }
+        } catch { loadMessages.push('会員カートを読み込めませんでした。端末内の選択リストを表示しています。'); }
+        try { renderOrderSummary(await live().orders()); }
+        catch { loadMessages.push('注文履歴を読み込めませんでした。会員ページで状態をご確認ください。'); }
       }
       const activated = live().isActivated(liveCapabilities);
       liveCheckoutOptions = null;
       if (activated && liveSession.authenticated) {
         try { liveCheckoutOptions = normalizeCheckoutOptions(await live().checkoutOptions()); }
-        catch { /* Missing or invalid options keep the checkout form fail-closed. */ }
+        catch { loadMessages.push('配送サービスと受取条件を読み込めないため、注文入力を停止しています。'); }
       }
       const notice = $('#commerceRuntimeNotice');
       notice.dataset.state = activated ? 'active' : 'locked';
-      notice.querySelector('strong').textContent = activated ? 'オンライン販売サービス稼働中' : '内部コア構築済み・外部契約待ち';
+      setAnnouncementState(notice);
+      notice.querySelector('strong').textContent = activated ? 'オンライン注文を受け付けています' : 'オンライン注文は準備中です';
       notice.querySelector('span').textContent = activated
-        ? '保護された内部APIと外部事業者の接続が確認されています。'
-        : '内部APIは応答していますが、外部契約または本番受入が未完了のため総合販売スイッチは無効です。';
-      renderActivatedCheckout();
+        ? '会員・注文サービスと必要な外部サービスの接続を確認済みです。'
+        : 'サイトの基本機能は準備済みですが、必要な契約または安全確認が完了していないため、注文受付を停止しています。';
+      if (sessionLoadFailed) $('#checkoutActivationHost').replaceChildren();
+      else renderActivatedCheckout();
+      loadMessages.forEach((message) => appendCheckoutStatus(message, true));
     } catch {
-      failClosed('内部APIに接続できないため、販売処理とすべての敏感情報入力を停止しています。');
+      failClosed('会員・注文サービスを確認できないため、販売処理と個人情報の入力を停止しています。');
     }
   }
 
   async function init() {
     if (!commerce()) {
       console.error('KISARAGI commerce configuration failed to load');
+      failClosed('選択リストの読み込みに失敗しました。ページを再読み込みしてください。');
       return;
     }
     renderLocalSelection();

@@ -9,13 +9,18 @@ for (const page of publicPages) {
   const html = read(page);
   assert.ok(html.includes('href="./admin/"'), `${page} must link to the same-site admin route`);
   assert.ok(!html.includes('127.0.0.1:8767/admin'), `${page} must not expose a phone-breaking loopback admin link`);
+  const globalNavigation = html.match(/<nav class="unified-(?:site-nav|mobile-dock)"[\s\S]*?<\/nav>/g) || [];
+  assert.ok(globalNavigation.every((navigation) => !navigation.includes('admin/')), `${page} must keep the operator route out of global customer navigation`);
+  const customerBoundary = page === 'trust.html' ? html.indexOf('id="release-gate"') : html.indexOf('</main>');
+  assert.ok(html.indexOf('href="./admin/"') > customerBoundary, `${page} must place the admin entry after customer-facing content`);
 }
 
 const home = read('luxury-home.js');
-assert.ok(home.includes('href="./admin/"') && home.includes('<b>商品管理</b>'), 'the generated homepage must expose the integrated admin route');
+assert.ok(!home.includes('href="./admin/"') && !home.includes('<b>商品管理</b>'), 'the generated homepage primary path must not expose operator tooling');
 
 const trust = read('trust.html');
 assert.ok(trust.includes('id="admin-entry"') && trust.includes('公開クラウド管理</dt><dd>未接続'), 'operations page must state the cloud admin boundary');
+assert.ok(trust.indexOf('id="admin-entry"') > trust.indexOf('id="release-gate"'), 'operator tooling must follow all customer-facing disclosures');
 
 const admin = read('admin/index.html');
 assert.ok(admin.includes('id="connectionPanel"') && admin.includes('id="loginForm" class="login-panel" autocomplete="off" hidden'), 'admin page must gate login behind service verification');

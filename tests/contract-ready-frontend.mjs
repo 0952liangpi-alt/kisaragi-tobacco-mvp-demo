@@ -148,15 +148,25 @@ for (const html of [checkoutHtml, accountHtml]) {
   assert.ok(!/<(?:form|input|select)\b/i.test(html), 'sensitive controls must not exist in static public HTML');
 }
 
-assert.ok(checkoutHtml.includes('内部コア構築済み') && checkoutHtml.includes('外部契約') && checkoutHtml.includes('総合販売スイッチ'), 'checkout must expose internal, provider, and activation layers');
-assert.ok(checkoutHtml.includes('選択リスト（カート）') && checkoutHtml.includes('会員カート内部コア'), 'the real cart module must be visible alongside the local selection');
-assert.ok(accountHtml.includes('内部コア') && accountHtml.includes('外部契約') && accountHtml.includes('販売開始'), 'account page must expose the three readiness layers');
-for (const blocker of ['通信販売許可','供給元審査','承認済み販売価格表','外部事業者の契約情報','クラウド配備','本番受入試験']) {
+const checkoutFirstScreen = checkoutHtml.slice(checkoutHtml.indexOf('<section class="intro">'), checkoutHtml.indexOf('<section class="checkout-grid"'));
+const accountFirstScreen = accountHtml.slice(accountHtml.indexOf('<section class="account-intro">'), accountHtml.indexOf('<section class="three-layer"'));
+for (const [surface, firstScreen] of [['checkout', checkoutFirstScreen], ['account', accountFirstScreen]]) {
+  for (const technicalTerm of ['内部コア', '外部契約', '接続境界', '総合販売スイッチ', 'commerce API', '本番受入']) {
+    assert.ok(!firstScreen.includes(technicalTerm), `${surface} first screen must not expose engineering term ${technicalTerm}`);
+  }
+}
+assert.ok(!checkoutScript.includes("notice.querySelector('strong').textContent = '内部コア") && !checkoutScript.includes('公開環境の保護された commerce API'), 'checkout runtime must not replace customer-facing first-screen copy with engineering language');
+assert.ok(!accountScript.includes("setServiceState('offline', '外部契約待ち・販売開始前'") && !accountScript.includes("'内部コア構築済み・外部契約待ち'"), 'account runtime must not replace customer-facing first-screen copy with engineering language');
+assert.ok(checkoutHtml.includes('機能：準備済み') && checkoutHtml.includes('契約・接続準備中') && checkoutHtml.includes('受付開始前の確認項目'), 'checkout detail must retain the real internal, provider, and activation state in customer language');
+assert.ok(checkoutHtml.includes('id="selectionItems"') && checkoutScript.includes('会員カート'), 'the local selection and protected member-cart implementation must both remain real');
+assert.ok(accountHtml.includes('サイト機能') && accountHtml.includes('外部契約') && accountHtml.includes('販売開始'), 'account page must expose the three readiness layers in customer language');
+for (const blocker of ['通信販売許可','供給元審査','承認済み販売価格表','外部事業者の契約情報','公開環境の安全確認','販売開始前の総合テスト']) {
   assert.ok(accountHtml.includes(blocker), `account readiness must include ${blocker}`);
 }
 assert.ok(checkoutScript.includes('isApprovedPriceSource') && checkoutHtml.includes('参考表示価格') && checkoutHtml.includes('承認済み販売価格'), 'reference display prices and approved sale prices must stay separate');
 assert.ok(checkoutScript.includes('live().isActivated(liveCapabilities)') && accountScript.includes('client().isActivated(capabilities)'), 'sensitive controls must require a server-confirmed activation state');
-assert.ok(checkoutScript.includes("persistedOrder.status || 'DRAFT'") && checkoutScript.includes('activateOrder(orderId)'), 'checkout must create a real persisted DRAFT before external activation');
+assert.ok(checkoutScript.includes('live().createDraftOrder') && checkoutScript.includes('const persistedOrder = draft.order || draft') && checkoutScript.includes("DRAFT:'確認待ち'") && checkoutScript.includes('orderStatusLabel(persistedStatus)') && checkoutScript.includes('activateOrder(orderId)'), 'checkout must persist a real draft and map its server status before external activation');
+assert.ok(checkoutScript.includes('orderStatusLabel(response.order?.status)'), 'activated-order feedback must not expose a raw server status');
 assert.ok(checkoutScript.includes("url.protocol === 'https:'"), 'external provider navigation must only accept HTTPS URLs');
 assert.ok(checkoutScript.includes('service.freeShippingThresholdJpy') && !checkoutScript.includes('subtotal >= 15000'), 'free shipping must use the approved per-service threshold and never invent a fixed amount');
 assert.ok(checkoutScript.includes('live().checkoutOptions()') && checkoutScript.includes('options?.services') && !checkoutScript.includes("{id:'yamato'"), 'checkout must only offer protected server-approved services');
@@ -165,17 +175,18 @@ assert.ok(checkoutScript.includes("['対面受取', '受取時年齢確認要', 
 assert.ok(checkoutScript.includes('eKYC 年齢確認処理中...') && checkoutScript.includes('決済処理状況を確認中...'), 'activation feedback must distinguish eKYC and payment processing without declaring success');
 assert.ok(accountScript.includes('retryPayment') && clientSource.includes('retry-payment'), 'payment failure must expose a real idempotent server retry path');
 assert.ok(accountScript.includes('client().order(id)') && accountScript.includes('order.publicReference') && accountScript.includes('order.deliveryPreference'), 'each real order must expose protected on-demand details and the public reference/delivery preference');
+assert.ok(accountScript.includes('memberStatusLabel(session.user?.status)') && accountScript.includes('shipmentStatusLabel(shipment.status)') && accountScript.includes('shipmentStatusLabel(event.status)'), 'member and shipment views must map raw server statuses to customer language');
 assert.ok(accountScript.includes('shipment?.events') && accountScript.includes("url.protocol === 'https:'") && !accountScript.includes('羽田'), 'tracking must render only server-returned events and HTTPS provider links');
 assert.ok(accountScript.includes("const loginAllowed = mode === 'login' && Boolean(capabilities)"), 'existing members must retain login and order-history access while new sales are disabled');
 assert.ok(accountScript.includes('新規登録と新規販売は停止中です。既存会員はログインして注文履歴を確認できます。'), 'the stopped-sale member state must explain the read-only service boundary');
-assert.ok(accountHtml.includes('既存会員のログイン・注文履歴確認だけを継続') && accountHtml.includes('新規登録・住所入力・本人確認・決済・注文確定を停止'), 'account copy must describe the wind-down boundary without claiming all login is disabled');
+assert.ok(accountHtml.includes('既存会員のログインと注文履歴確認のみ継続') && accountHtml.includes('新規登録、住所入力、本人確認、決済、注文確定は受け付けません'), 'account copy must describe the wind-down boundary without claiming all login is disabled');
 for (const script of [checkoutScript, accountScript]) {
   for (const code of ['DEPLOYMENT_SECURITY_NOT_CONFIGURED','DEPLOYMENT_SECURITY_EVIDENCE_STALE','DEPLOYMENT_SECURITY_ACCEPTANCE_UNVERIFIED','MERCHANT_PUBLICATION_NOT_CONFIGURED','MERCHANT_PUBLICATION_ACCEPTANCE_UNVERIFIED','ADMIN_IDENTITY_NOT_CONFIGURED']) {
     assert.ok(script.includes(code), `readiness copy must map ${code}`);
   }
 }
 assert.ok(trustHtml.includes('commerce-live-config.js') && trustHtml.includes('commerce-live-client.js') && trustHtml.includes('trust.js'), 'trust page must load the protected disclosure client');
-assert.ok(trustHtml.includes('公開経営情報：本番受入待ち') && trustHtml.includes('クラウド配備の暗号化、バックアップ復旧、監視、アクセス制御の受入'), 'trust page must preserve an explicit unverified publication and deployment-security state');
+assert.ok(trustHtml.includes('運営者情報：公開準備中') && trustHtml.includes('暗号化、バックアップ復旧、監視、アクセス制御の安全確認'), 'trust page must preserve a customer-readable unverified publication and security state');
 assert.ok(trustScript.includes('merchantDisclosures()') && trustScript.includes('.textContent =') && !trustScript.includes('innerHTML'), 'merchant disclosures must render through textContent only');
 
 console.log('Contract-ready frontend: PASS (fail-closed public mode, live capability/session/cart/order/disclosure client, approved-price boundary, activation-gated sensitive controls)');

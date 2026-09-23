@@ -41,8 +41,8 @@
     }
     const section = document.getElementById('operator');
     section.dataset.disclosureState = 'verified';
-    document.getElementById('merchantDisclosureState').textContent = '公開経営情報：本番受入確認済み';
-    document.getElementById('merchantPublicationStatus').textContent = '公開経営情報は本番受入確認済みです。オンライン販売の状態は、クラウド配備の安全性と外部サービスを含む総合販売条件で判定します。';
+    document.getElementById('merchantDisclosureState').textContent = '運営者情報：公開確認済み';
+    document.getElementById('merchantPublicationStatus').textContent = '運営者情報と利用条件を確認できます。オンライン注文の受付状況は、公開環境の安全性と必要な外部サービスの準備状況を含めて判定します。';
   }
 
   async function init() {

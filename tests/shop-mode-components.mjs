@@ -10,7 +10,7 @@ const publicTheme = read('kisaragi-public-theme.css');
 
 assert.ok(html.includes('data-kisaragi-mode="shop"'), 'shop mode must be explicit on first render');
 assert.equal((html.match(/data-mode-target="shop"/g) || []).length, 2, 'desktop and mobile shop controls are required');
-assert.equal((html.match(/data-mode-target="archive"/g) || []).length, 2, 'desktop and mobile archive controls are required');
+assert.equal((html.match(/data-mode-target="archive"/g) || []).length, 3, 'desktop, mobile, and hero archive controls are required');
 assert.ok(html.includes('class="mobile-mode-bar"'), 'the mobile mode switch must remain available when the header switch is hidden');
 assert.ok(script.includes("restore();setMode('shop')"), 'every fresh catalog navigation must default to Shop mode');
 assert.ok(!script.includes('kisaragi-catalog-mode-v1'), 'Archive mode must not persist across navigations');
@@ -27,10 +27,13 @@ assert.ok(!script.includes('submitOrderAndPayment'), 'the public catalog must no
 assert.ok(html.includes('href="./checkout.html"'), 'the public catalog must link to the bounded logistics preview');
 assert.ok(html.includes('kisaragi-public-theme.css'), 'the catalog must load the shared public theme');
 assert.ok(publicTheme.includes('.site-header .mode-switch-group') && publicTheme.includes('display: none !important'), 'the duplicate desktop mode controls must be hidden on mobile');
-assert.ok(css.includes('.mobile-mode-bar') && css.includes('.unified-mobile-dock button'), 'mobile mode and cart controls must have dedicated responsive styles');
-assert.ok(html.includes('id="mobileOpenCart"') && html.includes('id="mobileCartCount"'), 'the mobile dock must expose a cart control and live count');
+assert.ok(css.includes('.mobile-mode-bar'), 'mobile mode controls must have dedicated responsive styles');
+assert.ok(html.includes('id="openCart"') && html.includes('id="cartCount"'), 'the page header must retain the live selection-list control');
+assert.ok(!html.includes('id="mobileOpenCart"') && !html.includes('id="mobileCartCount"'), 'the mobile dock must not duplicate the selection-list control');
 const mobileDock = html.match(/<nav class="unified-mobile-dock"[\s\S]*?<\/nav>/)?.[0] || '';
-assert.equal((mobileDock.match(/<(?:a|button)\b/g) || []).length, 5, 'the mobile dock must keep exactly five stable navigation items');
+assert.equal((mobileDock.match(/<a\b/g) || []).length, 4, 'the mobile dock must keep exactly four stable customer navigation items');
+assert.ok(mobileDock.includes('href="./checkout.html">選択</a>'), 'the mobile dock must route selection review to checkout');
+assert.ok(!mobileDock.includes('account.html') && !mobileDock.includes('admin/'), 'the mobile dock must not expose account or operator routes');
 assert.ok(!html.includes('commerceStatusGrid'), 'the internal commerce status board must not render publicly');
 
 console.log('Shop mode components: PASS');

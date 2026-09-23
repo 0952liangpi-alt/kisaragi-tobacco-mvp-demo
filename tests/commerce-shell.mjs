@@ -55,8 +55,8 @@ assert.equal(commerce.quantityCount([{id:'sku-1',quantity:2},{id:'sku-2',quantit
 
 assert.ok(!shopHtml.includes('id="commerceStatusGrid"') && !checkoutHtml.includes('id="checkoutModuleStatus"'), 'internal module status boards must stay out of the public pages');
 assert.ok(!checkoutHtml.includes('id="commerceStages"'), 'the public selection page must not expose the internal purchase stage map');
-assert.ok(checkoutHtml.includes('id="selectionItems"') && checkoutHtml.includes('ご注文までの流れ'), 'checkout must present the saved selection and customer-facing next steps');
-assert.ok(checkoutHtml.includes('オンライン注文の受付は準備中です') && checkoutHtml.includes('注文受付：未接続'), 'the future order path must remain visibly disconnected');
+assert.ok(checkoutHtml.includes('id="selectionItems"') && checkoutHtml.includes('現在ご利用いただけること'), 'checkout must present the saved selection and customer-facing next steps');
+assert.ok(checkoutHtml.includes('オンライン注文の受付は準備中です') && checkoutHtml.includes('注文受付：準備中'), 'the future order path must remain visibly unavailable in customer language');
 for (const label of ['会員・ログイン','eKYC・年齢確認','在庫・最終価格確認','配送・受取方法','お支払い','注文内容の確認・確定','注文履歴・お知らせ','配送状況・追跡']) {
   assert.ok(checkoutHtml.includes(label), `checkout must expose the customer-facing ${label} connection status`);
 }
