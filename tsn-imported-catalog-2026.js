@@ -40,7 +40,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ef210559949eabe0260c7788b76a7142150fcb8d33ede2291d2b49f331342752",
       "width": 192,
       "height": 295,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -69,7 +70,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8836adfeac997d5c9615df53112f04fb730e7f6b79ac58e02198b37711a28283",
       "width": 166,
       "height": 266,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -98,7 +100,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a1d9f7f1d9b68826cd58e210e50125c821c4c003229a36efa9bbf2b45d45db3c",
       "width": 166,
       "height": 269,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -127,7 +130,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9fa9d570fd281bb7a18ee2e2bad95c669b02cce72307508c1e2c40381babfffc",
       "width": 166,
       "height": 270,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -156,7 +160,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ce2d684771a44b5e71a748bb939fb4d7badce56b47c00a120be7b6240006e2c8",
       "width": 165,
       "height": 262,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -185,7 +190,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "184f82444c83bbacb674ceddf741fc716b2b6ab5250e6c427b6557a5ac63d017",
       "width": 166,
       "height": 286,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -214,7 +220,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7f1ac8a7f0edbaa59b37c70e9c36cc2232b2b5c16d9c31eb6b96446fac1d590d",
       "width": 166,
       "height": 282,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -243,7 +250,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7c542632fb560bfa1e14827cf3f37e1f58e564c4e1bf23bbdf27f610d2947159",
       "width": 166,
       "height": 327,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -272,7 +280,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d219179c63b69723330e9f8c092a999d508ee2354d815daf63fa229a2e81b2fa",
       "width": 165,
       "height": 268,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -301,7 +310,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e5d54128b97fe60cadadaf82c49d609d4863d5179a9ef8db6812ec8de622a1c9",
       "width": 166,
       "height": 266,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -330,7 +340,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "298e27a7a7d0b3dcc2ec5f3dbe386040ca2345ac08bcc896b25004744e8b7453",
       "width": 166,
       "height": 269,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -359,7 +370,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e8c2ec446741decc90369fff0195b796f27bcfe7fd758a21ca764b14058da49c",
       "width": 166,
       "height": 266,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -388,7 +400,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "759b91fdd402ff1a5d24d2fcb719a79adc47e73ab9577dbac506b92055f11439",
       "width": 165,
       "height": 264,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -417,7 +430,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "fb80c99b5fe672a9669bbbccc20359619c2f53a9c3c5f1333bc489b99e64cc17",
       "width": 166,
       "height": 269,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -446,7 +460,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4c72a73ec64dad2d2693b21eccb725f9b5f4d68c748c27d48e51356e010ce9c7",
       "width": 166,
       "height": 309,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -475,7 +490,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b92110c0973c71fd12cfbe54ccb3e3be9f949dd9f9438a1ceef01a46c1aa0779",
       "width": 166,
       "height": 269,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -504,7 +520,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2061ce2e1b3c3684286362c6d6f83a282434616dd3f58f88a5c9e46ae8984af8",
       "width": 165,
       "height": 269,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -533,7 +550,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f8d54fe6fd246e69e20c667a43ed3cb7bea010642fb7337d77dec4da2f046b9d",
       "width": 166,
       "height": 309,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -562,7 +580,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "144db33bbce9fe77df10ca2a288fb62bc3d59c81869a2219b43c14c335c78656",
       "width": 166,
       "height": 280,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -591,7 +610,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "cd1a73daabd565f37b2fcd421b0f2981ab19d0cbb6a80355aad64d2f9cd93dee",
       "width": 166,
       "height": 321,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -620,7 +640,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8d787592a7a862f3d396b880ae6b3c18368212f1aa94ea3261cbcf7e81db0556",
       "width": 165,
       "height": 269,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -649,7 +670,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "748120dd2fe7cfc7f0210e6fca725770ada1cf90ca62e0bce6063d20bd6904b5",
       "width": 166,
       "height": 317,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -678,7 +700,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "01755a8012159c84a0fd6bf34532897eefc698c363165bbaedad3e91fe414e79",
       "width": 166,
       "height": 264,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -707,7 +730,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f43213426c08d6c3fefd60b9c14e20932011c189b203744e827bc4efd47019aa",
       "width": 166,
       "height": 308,
-      "pdf_page": 2
+      "pdf_page": 2,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -736,7 +760,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7a80e99c06b0e003fbe6cbfe1a3bba368cc26714536a5a4e279beeac1d14b183",
       "width": 165,
       "height": 272,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -765,7 +790,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2e09bac67610addb920f7eb5cb9ef2016d20232fac82a1a60550c3f0ff46ec11",
       "width": 165,
       "height": 320,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -794,7 +820,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d29e3a615991e5e3af61878280bb2afb30d826553e969033db1b75a856ea28ec",
       "width": 165,
       "height": 309,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -823,7 +850,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "eb589030f0a44ae97164e5f5b3944cf26b77f0445b384a3f3eb846964d37697f",
       "width": 166,
       "height": 313,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -852,7 +880,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f9b3b259aca590e0be52d0a59d9faa0800012ea808316630457a236e04dc2e28",
       "width": 165,
       "height": 311,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -881,7 +910,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "dedfc98938c932b230e0835220fdaf84a171d9eb70b2638ce0d6ce3d7bcdb410",
       "width": 165,
       "height": 311,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -910,7 +940,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3ef12a0701423346e105dafa2b47d99ee4dca9cea5cf8bcb10f354c779573d07",
       "width": 165,
       "height": 268,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -939,7 +970,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e8cfe489ed0d391a4dda452fe8a54480e2cabbb6989095622f6a58c6b3e32ed4",
       "width": 166,
       "height": 271,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -968,7 +1000,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "619785255a5f48a9711a801495e19bab343e294d92d6a564b4e0f9183df0709e",
       "width": 165,
       "height": 311,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -997,7 +1030,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5b820bcd679adc40e6fb73a52413b683250ff35bd17099603786c7b05f0d17c8",
       "width": 165,
       "height": 264,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1026,7 +1060,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8e228f2a29a607895d033db90a3c42974b66ad7fe0194cb49a66466119d00743",
       "width": 165,
       "height": 311,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1055,7 +1090,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "53ef46ebe7042899fbc2dcbdf6f8b920145d44703238325bfad72681a7814917",
       "width": 165,
       "height": 310,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1084,7 +1120,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "487bb66310b8fd6eb1cb46694e7a2b03da5af356c584fbb19ce57b70e6842799",
       "width": 165,
       "height": 311,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1113,7 +1150,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "895bb91abe93f4c01bd1a27bbff61e43bc6a8dda6a7896f6b933d070306ee4c3",
       "width": 165,
       "height": 309,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1142,7 +1180,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c181352c9bdf084876f1cfba38ef8944a4d119793d605c9f55bddb69e77fb140",
       "width": 165,
       "height": 308,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1171,7 +1210,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8faf460cd0985524746e1a0dbddbe4d49ad3379183485a815f2c184a99ee5f85",
       "width": 166,
       "height": 304,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1200,7 +1240,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1513e5328162c3709f7a12f7de16533cc3f8d019c9b8b8eb3903503eb3844ad0",
       "width": 165,
       "height": 306,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1229,7 +1270,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "24dd8a1ed4f60e64895e36156ffca214786b41c431fb6819224073645965ab1d",
       "width": 165,
       "height": 305,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1258,7 +1300,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "28bd2e1b91e8dfe59cef30fdc1a34281064d3e6daef1046aef940b35733c7295",
       "width": 165,
       "height": 305,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1287,7 +1330,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "057b3b4a426fe3a6a21aa94e1f5986c8408e4f02d204675726535653e7251326",
       "width": 166,
       "height": 301,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1316,7 +1360,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e16def86217b4e4b1071be457a99de952e5ef9bcf29cf982dbfd7b1f1de1ad46",
       "width": 165,
       "height": 302,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1345,7 +1390,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "566cd377346bfa08050af7557b11d67cecdb7742a7d08fd71d89f747458f24cc",
       "width": 165,
       "height": 305,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1374,7 +1420,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "487f5e8efd4175595d21dc85af8e2a0872c7168c765c446bfa195829ecbe782c",
       "width": 165,
       "height": 279,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1403,7 +1450,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "adca654c1d49f41020efb07df7baf27b0523e7303d0b7d631107752d5410805b",
       "width": 166,
       "height": 324,
-      "pdf_page": 3
+      "pdf_page": 3,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1432,7 +1480,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "83cd52167f567824bcf686df42088cbed1d2ab4c667c9525378b2e82ccec90b7",
       "width": 165,
       "height": 329,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1461,7 +1510,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e332f2d43a5f380adef0ce9b6c414fd4fa2adcc3dea7908c29eeda4bab96664a",
       "width": 166,
       "height": 270,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1490,7 +1540,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "03761ccbc13959fbebe7dd42fb64b9778a0403ef09a90c9ec0d1b7ce55507048",
       "width": 166,
       "height": 328,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1519,7 +1570,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "64f023283f917a87ef49b17c814497ab3759c8bdfd2d6143f8bc410b0b033f98",
       "width": 166,
       "height": 324,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1548,7 +1600,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ca295682e75a4bf73be5783cbf134595f10e54317916c8cd98fd1e7287ef1fa0",
       "width": 165,
       "height": 256,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1577,7 +1630,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d210ba0360a15bfc7966e1d67d47da90b09dd3b461363ee7c8d7169a6caf629b",
       "width": 166,
       "height": 256,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1606,7 +1660,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a60bc26beae04818c66f011f219774af4d8164e08c3f4032fc3757640b85d607",
       "width": 166,
       "height": 255,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1635,7 +1690,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9689c45e7142611ff06f93a498efdcb4697725dda28b3719665817b299c7649a",
       "width": 212,
       "height": 309,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1664,7 +1720,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5e6073e67d19d6eae4ac4c55d00e236d821aab8900ded3e6c65e8a6883577e79",
       "width": 165,
       "height": 256,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1693,7 +1750,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "02989defca0e0018456d5338c77b4691c8b5066ebefddf0233b2213f6e2ee690",
       "width": 166,
       "height": 258,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1722,7 +1780,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d04b75c3cba8d741c6737340fafc2dec3b70da9ebb0a7173bcd3957c2b365b5a",
       "width": 166,
       "height": 260,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1751,7 +1810,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "23c4b8137d9cad7c335af600668be2e121a5b95c61b607f147579fc56208c62b",
       "width": 166,
       "height": 347,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1780,7 +1840,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "46091c93c38c3c72eab69053a6e1ac6eaed84356d71d8ab3aa243a1c1d0cf8e6",
       "width": 165,
       "height": 343,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1809,7 +1870,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a13b2ae0ea6d88adb82898981abbe98715d62e8ed8af772b321b57dffb958b78",
       "width": 166,
       "height": 332,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1838,7 +1900,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9fb37a010dd073fd0fa35254ff0c0b0d2c1a905e0e7eef56559946bcd84a5e0f",
       "width": 166,
       "height": 310,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1867,7 +1930,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2a70b1aa0be9be1b7d9d4b998d1675c72d94d336af9c4625b164abca58f62c59",
       "width": 166,
       "height": 269,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1896,7 +1960,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8ea1aec7634d299e709ca13b05f9c8f32d8744f08477c0fca096b6d5b4d151f8",
       "width": 165,
       "height": 264,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1925,7 +1990,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "14c9f5a6c38984b192136e9c0923761b3080981753b37de9ec36618181979d28",
       "width": 166,
       "height": 267,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1954,7 +2020,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "898b35c8ea5199e8ce27e056c1d5e88b194c376f1dec2252aba00b81d4d3b1b5",
       "width": 166,
       "height": 264,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -1983,7 +2050,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5617fbd8b0ebd3ef9fd636d4405bceb3c96dec976f211df0fe381e665fcf4e0e",
       "width": 166,
       "height": 278,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2012,7 +2080,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "168d202164afcd2ca0c250ac8c28d995db460f37073c7394a8b203e4d2f0660b",
       "width": 165,
       "height": 320,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2041,7 +2110,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0a2e6f9c3746b70dcafa232bb19583a59df18f045dc88cbc40262f1f4daeeed6",
       "width": 166,
       "height": 269,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2070,7 +2140,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0fa4c8a5c98e87b2e96db1b77669bdcdccced2d0cf783db4860624c89c7cbe97",
       "width": 166,
       "height": 268,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2099,7 +2170,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "005311564142965268869e4e9b8f290174e58f6fbe04e5258adaab18a6378dbd",
       "width": 200,
       "height": 305,
-      "pdf_page": 4
+      "pdf_page": 4,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2128,7 +2200,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e8a9c218fb45a3154e334fa62748626cb834c5231d03af0513e5ac8da4942b39",
       "width": 225,
       "height": 315,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2157,7 +2230,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f883e6a88f2b89b0b17fb9a0bf9a4373345488e1e7b430257059ba60f71d37cb",
       "width": 219,
       "height": 287,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2186,7 +2260,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "60f3f58b0599a6055e3a7c3834756f4bd59ea19b3a5e4dcbb738ac4e3c9b0eef",
       "width": 219,
       "height": 289,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2215,7 +2290,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "56a27b404f23b2f769fd92e22a31601b31050f4faa743ac31c722d82a0d836e8",
       "width": 219,
       "height": 287,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2244,7 +2320,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7f1e457553b550d503952dfdf26505c30eba910707bf73a7b207c385d892d9fc",
       "width": 219,
       "height": 285,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2273,7 +2350,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8d7ca7d413a19c932b4e5debea622116d067fa3a683a8034eef6e133aa05aeba",
       "width": 219,
       "height": 287,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2302,7 +2380,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "013495fedb4551c935a465e74fde44e1740b98e1f085e924a28d5b676fdb6f93",
       "width": 219,
       "height": 286,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2331,7 +2410,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "43470b53894d9db3318fb7925a44bafd40c673e6b678ddf12ed47227555e7f22",
       "width": 219,
       "height": 286,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2360,7 +2440,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a577d041406a3dfcc79ed696972e7807abd2e0f69af449ff484c921546fe3f6a",
       "width": 225,
       "height": 312,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2389,7 +2470,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ad9b64d4a30900bc0c70a6d63fb99ac76dae6e6a40a252cae9bc69d1d22005d7",
       "width": 213,
       "height": 280,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2418,7 +2500,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ae9630cbf3ceefe6a35b2f420b21354f26ce86eaaabc927846a2b834e5a45318",
       "width": 213,
       "height": 284,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2447,7 +2530,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9a7c22b0a64166f45879fa7273b5ae7440f35a416467122914759b9a644e5a2b",
       "width": 166,
       "height": 257,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2476,7 +2560,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1d4873b664a0bb100ca9d86409b4cdbb72e2877ef47ffe51b95ada9fe5b11da9",
       "width": 165,
       "height": 256,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2505,7 +2590,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9924f58f6054c5e9713a53754f42355a4bb6b3abd02c8021ce173feefdf890ad",
       "width": 165,
       "height": 258,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2534,7 +2620,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "02571b0dc709223a6e9d76fddf642e62c86189a612f1241f8719e0647904ca66",
       "width": 165,
       "height": 254,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2563,7 +2650,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "78023d453c4d6221a0bb51ad9a12be3dd0565a36041a93aff3ea3fa1136fe5ab",
       "width": 166,
       "height": 288,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2592,7 +2680,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7101e18ec16ed0b7db4b4eb23e822a4535fc7e8131ae45e3b51c494513d8bd95",
       "width": 165,
       "height": 289,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2621,7 +2710,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8b731ae54799187c0bd3194adb821cc4655fae215a46b584a041d2b07941f939",
       "width": 165,
       "height": 286,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2650,7 +2740,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b0f9ee6b26a1e7a965ec67724b12ea616336d4ea771cb0d993d5b63d39f73d6e",
       "width": 195,
       "height": 310,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2679,7 +2770,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e84aeaf2f09c5e78d778efbc49bc0114675a712411bcbdb0137084fdce0258b8",
       "width": 166,
       "height": 260,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2708,7 +2800,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "52d2d9e406caa3ddd4c21dbadf4efad80840bfccba458724eb13f1fb1456ba84",
       "width": 169,
       "height": 261,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2737,7 +2830,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "59b45750e2663e51f138b76eebb1abe76ce082fb2ed2f75d859ef036889d2892",
       "width": 165,
       "height": 262,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2766,7 +2860,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "206d481b09709ca255828fb0e96bfeb32072de11e451ffcba728088a6a0f3cb5",
       "width": 165,
       "height": 260,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2795,7 +2890,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c57af8f31fd96082c2431b800b88c7311ca38996e2c7c866f8fe8f952d55cad2",
       "width": 166,
       "height": 267,
-      "pdf_page": 5
+      "pdf_page": 5,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2824,7 +2920,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e96efb9d8572e1909d25ab43e98ed032706494b45bb71bee855182c938999ac6",
       "width": 165,
       "height": 259,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2853,7 +2950,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "34d691f28ec160016cc6fc46798c32f1a45e8aecdb1d21ac48a941260630716f",
       "width": 166,
       "height": 257,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2882,7 +2980,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1ededf8356e035581045d46a9d62fe5fca294d4751c9a43a657929c14df4ebe4",
       "width": 166,
       "height": 260,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2911,7 +3010,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "63e9e39ab873f84dbbd7e6bfc6a1907668770f21e179ff54d4056c1a690a7a6f",
       "width": 166,
       "height": 259,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2940,7 +3040,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c7c6b4cca828f9e640a8d00bf6fc0123d56ae91adbe736f007d09674411d502c",
       "width": 165,
       "height": 259,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2969,7 +3070,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3b135dd8c02e03ca6dcc05ea2a55cba9b2261c52f71a2f7256caf63e3ca6b3aa",
       "width": 166,
       "height": 258,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -2998,7 +3100,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ae935bd93feba123d6330f7d3a36b80700e0e08529e623df1abeaeb6b15eea15",
       "width": 166,
       "height": 259,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3027,7 +3130,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2b8285ba12f51a0cd12a85530e8b30076314ff9a3686596e2e5ac4347b3e4305",
       "width": 166,
       "height": 259,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3056,7 +3160,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "21978dc48753c9c6a0c7ee68b1dea9ada468aa5317d2b149caf3141a9225f401",
       "width": 165,
       "height": 259,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3085,7 +3190,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ffabf978b0cb1800a51217a59f8314566b4dcee37913e05991ac4e356353eda9",
       "width": 166,
       "height": 265,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3114,7 +3220,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "722d7f35bc98d6ed89d50727b53007992cb0b1e554da34ae8b8be9184d2a8f02",
       "width": 166,
       "height": 264,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3143,7 +3250,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "383abce7e2aa3656c234c556f4f074bbca3dc99e0101bf88caefcc41e1dd50ca",
       "width": 166,
       "height": 266,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3172,7 +3280,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "46734314c8933cc503cf2dc77061b051bf1fc9b9b132c9f9b2457a4ce444d99e",
       "width": 165,
       "height": 267,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3201,7 +3310,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "67ee6339b1f6cb90f192d3c2fc11304e5f2f1252c49261df4655348d73ba312d",
       "width": 166,
       "height": 260,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3230,7 +3340,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "950ec1baa6b7aafa666978c168804fcf7222325551813230ac982cfbb05cc390",
       "width": 166,
       "height": 262,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3259,7 +3370,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3b6f9373f6a5ea1b90832e76146998654fb8e8baa6f88c737301c4e45190cd04",
       "width": 166,
       "height": 263,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3288,7 +3400,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c3ed7bda1ed7f7bcca8e2f97b7bcf649cefd82e5136afb31e167d84850c39527",
       "width": 165,
       "height": 314,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3317,7 +3430,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a4b4c27bfbc2b3bbc23593b2e5f272756f94bb153723722522017f5bef6775bf",
       "width": 166,
       "height": 315,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3346,7 +3460,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e74b10e0930da315465f01b899e9fd7ab7b0830e8bcd233e4d983c8511d0113e",
       "width": 166,
       "height": 261,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3375,7 +3490,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b455ee5b4cee66aac54f20d0fd05efeebac832d8ad98d3e6da307aad8ff92e1d",
       "width": 166,
       "height": 265,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3404,7 +3520,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6740c4377f0a400ce266ad6afd265ed8d9af79f9d984708b4c38f79811ab3648",
       "width": 165,
       "height": 260,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3433,7 +3550,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c5716eb341dedfd7a7a14ed12acc30d7a135209c00fc1d9da02f55a369f49fe8",
       "width": 166,
       "height": 264,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3462,7 +3580,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "88ce28b2100b2ed62b97a2215603ad1b15b1874bc6fbc0cd92065453e3ce16b3",
       "width": 166,
       "height": 263,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3491,7 +3610,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b19e157feaa3fd3d3a4a3768c455736359da7c9c819158dc4f1bf14a39463f11",
       "width": 166,
       "height": 261,
-      "pdf_page": 6
+      "pdf_page": 6,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3520,7 +3640,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6e9280f7ad4fe8b64e2997a1c0f4dfcdbf176a57edb3f48ce10234907ec0757b",
       "width": 165,
       "height": 261,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3549,7 +3670,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8baf02de2fc0a72cf28472e9cb5210ec510cc51650db3dff5570e40a7bc8c2db",
       "width": 165,
       "height": 264,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3578,7 +3700,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f8f04a2840b13072312de1fd07115a309bc7acee2a620d6f7967b15a8da27c83",
       "width": 165,
       "height": 266,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3607,7 +3730,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0069e5e973d9a02210a41558da4444aad20b85bc6be0fa8dfe68ddfe4bf65219",
       "width": 166,
       "height": 268,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3636,7 +3760,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1e08ea51361a8dc7a74e764803c92fd3f58612df89454fc679d3c3d204307d80",
       "width": 165,
       "height": 266,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3665,7 +3790,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "932e8378e96e957d576521e7878073846673a1e7c54605831c589a3577fd2572",
       "width": 165,
       "height": 264,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3694,7 +3820,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4d09f647485ccf6c76e6f25c8419ba096aac1dedf0ad62e7f5f0b1dd625f743a",
       "width": 166,
       "height": 267,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3723,7 +3850,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ccbbab34fdd1790053f4b9d5b31fe8b0a2f5fb13b0b3c2ef3c2b52fadcfd1efa",
       "width": 165,
       "height": 267,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3752,7 +3880,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7c2662258bd7709fc5bcdcc88dca033c77d1bafe5fb056be5b9ce9b981c67e94",
       "width": 165,
       "height": 262,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3781,7 +3910,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e4a338d782da3c5e1141597e86c9ef4a2894ac9060f249486f629cbe3055e444",
       "width": 165,
       "height": 265,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3810,7 +3940,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5eb41e015b80e7bfac66e3c81cfea9d8ff68ab378704afd28980f394039ce474",
       "width": 166,
       "height": 258,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3839,7 +3970,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b87b50377060ed6732f914f04c54a41bee207261bd2686c9a082f2a3e0a66061",
       "width": 165,
       "height": 261,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3868,7 +4000,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0c2c2abd90f2b5b3a4698dcfa62a077ed9a72cdb9d8331c82f0e8a89552064fd",
       "width": 165,
       "height": 264,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3897,7 +4030,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1ebd61dc6028ed4667bcadc3b493e46124e392ac2c192b79fbd486d09c85a122",
       "width": 165,
       "height": 261,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3926,7 +4060,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1bc21b0ded5b5b51e0443d4101e3ea0ed84fb7c630add3e1e971dd68093ac41c",
       "width": 166,
       "height": 265,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3955,7 +4090,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c3c3a07e6a20ca87be89131013414d54f8763d4164c3009f9b3f20563d06f11a",
       "width": 169,
       "height": 264,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -3984,7 +4120,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c48f58f5b7125965c3ce431b5824f2abf3f8c5d4633b380b99a136ca2d69a9e0",
       "width": 168,
       "height": 266,
-      "pdf_page": 7
+      "pdf_page": 7,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4013,7 +4150,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7933641504ea66f916bd890c5ffa1f28c91882fa04b1e88215807361f8fdd7de",
       "width": 224,
       "height": 144,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4042,7 +4180,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4915133c51bd5ce2007287dcb79798a8067816b8e10b5c1f54e58bb2fc517f34",
       "width": 224,
       "height": 145,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4071,7 +4210,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c6717570333b0488990b2f75c89e51c3f36b658e7f1c5394ad9d99c6aefe77e4",
       "width": 224,
       "height": 145,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4100,7 +4240,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1634fc95a6120279adbf5c7c25a4ac8da86c803cd3ae3ef08c7c953e4f5276c4",
       "width": 224,
       "height": 146,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4129,7 +4270,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f6ddbeb9f846d942daf1e795a8b648629686f95fd118c1b6c81cb61710aba5cb",
       "width": 224,
       "height": 143,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4158,7 +4300,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b80974b7034d474b87cd5c65f99f472afad68d444ebb8ab5c8e64785526d6f60",
       "width": 224,
       "height": 145,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4187,7 +4330,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ab52ae3ce99553bcd3647dc749010bcad6793298f4479fb24d7472b086220e6c",
       "width": 224,
       "height": 147,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4216,7 +4360,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bdccbde4f349a915c7632ae7d44708abe0fb1c88e3e2ba8c0976fc8b184a437b",
       "width": 224,
       "height": 145,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4245,7 +4390,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "45ba0beb48adc84bce7e16a39ce24a7744a70bc18fb3606f8bff43ce93141b3e",
       "width": 224,
       "height": 146,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4274,7 +4420,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "60beb8b30bd3321253ea3fde72fc62f8f3abad3db8f527c92d4c7af8243967e2",
       "width": 224,
       "height": 145,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4303,7 +4450,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5d5b08d121f6650ef6a019247d18f7df8b8d23f512a26cd210fd77780c78dad6",
       "width": 224,
       "height": 148,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4332,7 +4480,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ced1ccfd40533f0e9068369749b577f02db35a9faea1d0ee0cad954e6e6fe2a5",
       "width": 224,
       "height": 145,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4361,7 +4510,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1f5a39ecada808010cfc334430a2a766be2cfe88b6db2d4b87b67146fa5d07a1",
       "width": 224,
       "height": 146,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4390,7 +4540,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "903f41b42ecbd7af0a6533ffe67042ca7a1c4b05227a6fc5c83cc1d13022c4ad",
       "width": 224,
       "height": 144,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4419,7 +4570,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3521d06f072fb2ee7a87bb4ef1a9c876526ae1ce90fffc684dab103955e593d0",
       "width": 224,
       "height": 146,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4448,7 +4600,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f5e1ae0b85d16a012febffc6cc881988f7da4dcd352da889085e9e622b471191",
       "width": 226,
       "height": 146,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4477,7 +4630,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b1a97bf3a46d10e507cd8bf74fde6ed49af5b2372f39661311fc47ec1b9f091b",
       "width": 224,
       "height": 145,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4506,7 +4660,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c15af096de5642eb71e606de7af2fabccc24f614cbb8cb532b70e346c08c20bd",
       "width": 224,
       "height": 145,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4535,7 +4690,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ca559020ffff3812060bf4dbdf739919cbf34d26c7a9effd4ac6f05cc69085e7",
       "width": 224,
       "height": 144,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4564,7 +4720,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "408ca255bb88db319504118c8c6e87d036b4749244504bff2f7ecc0c2fa89192",
       "width": 224,
       "height": 146,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4593,7 +4750,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c4c7292a2cfa8e50dbd910b7184a745880d699582a14fb89d426e0c9e5e1325d",
       "width": 224,
       "height": 147,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4622,7 +4780,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "601757710bdd46dfe8e3dae6abe40280d453e7e4e82715ca9fd21a5273317f4d",
       "width": 224,
       "height": 145,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4651,7 +4810,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c25af611cf3fa61af76c0d9f56e1f05a5ba1a8f30bb25f6f571b43e1236a1ed5",
       "width": 224,
       "height": 147,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4680,7 +4840,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6823e3f12e2014455d393a72ebaa31afe375c783e5579642d1d3d8d6ce63dd40",
       "width": 224,
       "height": 145,
-      "pdf_page": 8
+      "pdf_page": 8,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4709,7 +4870,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ba3827f7f946f3cfc59bca153c4c95c2ff9eb5a4eab1d9a3e5ef6f15a1e656e2",
       "width": 225,
       "height": 143,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4738,7 +4900,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8f480081c5373c58406a9e8168c42e2a5a5b791160b4388f1239d02baf16e7fb",
       "width": 224,
       "height": 145,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4767,7 +4930,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "76aad7cd15ddee55b5cf690bdf551ac48903ca4e75344c3f2738df56efe4c5ce",
       "width": 224,
       "height": 144,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4796,7 +4960,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b6aae3db197e54819336d36de022d98c2a2ce4f102d084d1800a47fdc8fb6075",
       "width": 224,
       "height": 144,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4825,7 +4990,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5886c46df7d379b472d2339cea482b437315d793a70287b62f2f0ced4cfa5d7e",
       "width": 225,
       "height": 146,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4854,7 +5020,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4bf122bb0c1508f89f895571b6be7dd1ff7f5c61acb4871a154cdbc976b0baef",
       "width": 224,
       "height": 146,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4883,7 +5050,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bd3b34f57941f8b6a9d9d7c2929fb8b094cb8d2df55c31ade2a02efc35152668",
       "width": 224,
       "height": 144,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4912,7 +5080,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d521d8d943bb9245a2a6e45a57de536e4ebcd8ac20a5b8d60bd4d6bffd4e1667",
       "width": 224,
       "height": 145,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4941,7 +5110,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "adbcd8b9c6981f3ee84d08b6f83d4b0a84c907c0fb74abd779aa0f9641e5c1a1",
       "width": 225,
       "height": 146,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4970,7 +5140,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "70ee1f4b72b5298f958e68b69f713ecf58dfcf3466c914290159acc8f350e128",
       "width": 224,
       "height": 148,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -4999,7 +5170,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "51792f88cd75d2e17afe7df7e0ad92f813636888ff3e4c99247b73fef26a515d",
       "width": 224,
       "height": 148,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5028,7 +5200,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "30f885e81b7c32463fce67fa1d1a19c2f42a176475eba3e833fa41be46ae031a",
       "width": 224,
       "height": 145,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5057,7 +5230,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "adbbcdd754a44eacb76a204dda785abf738c1069a7e212577fa8f37494d71e17",
       "width": 225,
       "height": 146,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5086,7 +5260,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2c91599cb72882588e9e514f4543529157bfe2c58e0179a9476bf4596f206808",
       "width": 224,
       "height": 148,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5115,7 +5290,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a58c16618bcbbfae4be4ca9f9339388e8daa8fe00a35bb0e7f2f78bef3706782",
       "width": 224,
       "height": 145,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5144,7 +5320,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6838981d15b7bf9b31c8f9e229725e88a4a3ec9bc4a7296d1643dce20af16aa0",
       "width": 224,
       "height": 143,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5173,7 +5350,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "83775e83844669aa67d575edbe197822ce1b139c69238e3ba2cba754b45b7d61",
       "width": 225,
       "height": 145,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5202,7 +5380,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a57b8e9757bce1f40d29cc4bf50b5286f74d151ef366aee4839392a5b9422964",
       "width": 224,
       "height": 145,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5231,7 +5410,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "46a0a8fd96fd4e9fdc386d8bac142a8dfab9132b3def856ebdf931d61520d771",
       "width": 224,
       "height": 146,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5260,7 +5440,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1eb7737732fce5f30d386d3a9fc7497f3c1f62012ed39ccdc98d11d0bfda275b",
       "width": 224,
       "height": 146,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5289,7 +5470,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d391f6b6dcd488dbd56d0e0d1fc4d8725718534321b4a50e6e11db3dcc6533d0",
       "width": 225,
       "height": 155,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5318,7 +5500,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9f79059711dedf36309e9f34ae8bcb93674fbedd573b7f8c765702d0b46e6121",
       "width": 224,
       "height": 155,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5347,7 +5530,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7d150b495614d28c2c82d5339d6e1d9453364899481c8ab69906bd97bc2fa118",
       "width": 224,
       "height": 154,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5376,7 +5560,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "37f8ae1dbcf34bab825e5168a17e5da6213cfd99bf812b25c3ec6ef68b489b3f",
       "width": 224,
       "height": 156,
-      "pdf_page": 9
+      "pdf_page": 9,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5405,7 +5590,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c274c8de3dcd4654378519a425d9b446ad01a9b8128a99d8a36457c7a026cdc1",
       "width": 224,
       "height": 171,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5434,7 +5620,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b81229da475a7739139e04182201d477b4af73733babb1b8e248141fad3691ae",
       "width": 224,
       "height": 171,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5463,7 +5650,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b80550c79cf35fb66c78709f2abd666923e0e944227bf67fa5274ca219591575",
       "width": 224,
       "height": 175,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5492,7 +5680,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c97fd5b0d307dd7baef873d8d56216ad588ae797304d9357ce03f4f2735100d9",
       "width": 224,
       "height": 174,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5521,7 +5710,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "77f378b3e4554826ff211be50e9a5b186f746daff79467bb55be6ba5612caaae",
       "width": 224,
       "height": 171,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5550,7 +5740,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4bc4cd8ef3a368b8295c3f5c64279e423df58e3983466a62a693abc7c303b75d",
       "width": 224,
       "height": 170,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5579,7 +5770,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6bea138eac49719ff4b24a91406074fbdb8240edd8f5f46f632c7245e6c889fd",
       "width": 224,
       "height": 174,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5608,7 +5800,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1524edb9494850e39d395bacd296c213792ba16156e66f37e0a095c1e73a5454",
       "width": 224,
       "height": 172,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5637,7 +5830,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d5bb22eba33b620ccb60da5f174a2f33ebb602c442ffd2fe53eccbfbb11ef506",
       "width": 224,
       "height": 173,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5666,7 +5860,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7d23fd917bfa3511b6bf47d62204dd42ae29da975f1d237c455d5b2bab8ce84b",
       "width": 166,
       "height": 259,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5695,7 +5890,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4a243363dd1d5fafc61b31234cf4241dbd18e35d8ee3ecc387ff33ae15b20d5e",
       "width": 166,
       "height": 259,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5724,7 +5920,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3c81c620ee565f0511f6c3f3f24f9474aa2f27b50d658e57324b16278c341cd8",
       "width": 166,
       "height": 259,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5753,7 +5950,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b5213beb4ad0edb265ae2de57fc0b6da0249976568396ebbc1e3d79a8c542525",
       "width": 165,
       "height": 259,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5782,7 +5980,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "642a89f10d8720fe4d1bce0bc6bc83ef314982f95ebdccb5991ecb55c13e2117",
       "width": 162,
       "height": 269,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5811,7 +6010,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "cd7dea32e3aea3ab433f3b79eff8a73a805c14f98412735205be711a0c8d69d7",
       "width": 163,
       "height": 273,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5840,7 +6040,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "646da92e0d61c354715d90fbdef973647de9c85620fbc0c50be1dc37b1576b53",
       "width": 162,
       "height": 271,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5869,7 +6070,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "baffdeb3618172a254c98cccc70a5c9381634a38e356e4c8e0a7158513348861",
       "width": 162,
       "height": 269,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5898,7 +6100,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d9b7aee06c2e7a64f5856758899390eaabf750034a0b161dccef2e920a0370f5",
       "width": 162,
       "height": 272,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5927,7 +6130,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bcfb556a0540872ec25de36f9e1a622c70f27feb2499a976f485a7ba1937cde2",
       "width": 166,
       "height": 277,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5956,7 +6160,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "70170c81621ec1864e35de397c35d33efa6c788c5a139b88eed75f30613c3559",
       "width": 166,
       "height": 277,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -5985,7 +6190,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e06fdab0f762a2fcebd45dee63d8d0cfa1a6faa25c8828d57e5f915e2d2d5cef",
       "width": 165,
       "height": 279,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6014,7 +6220,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "434e03e03a7ad64d6eee9fb92af713e851a55e7fdd53147cd9063bb3e13d21aa",
       "width": 166,
       "height": 276,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6043,7 +6250,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5f8a26240bbe68a56edbb6c779cc83b7265fc7e54fc05ecf15caea52fe4da2a1",
       "width": 166,
       "height": 284,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6072,7 +6280,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b8b474a412cb85facf43dd4583db4de070597190cabbf53120c7fae627298c7a",
       "width": 166,
       "height": 274,
-      "pdf_page": 10
+      "pdf_page": 10,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6101,7 +6310,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "fbd17f5010569e1e04a2d9e47fcd6d642895d7f849f637cbc4c4d85497e0e791",
       "width": 165,
       "height": 281,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6130,7 +6340,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "59bc366c848b0c87631f6d0704042ea9cb7268bd40103c13b215e80e1356232d",
       "width": 165,
       "height": 280,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6159,7 +6370,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "60496839ad334da579213bc5ec38796435587c9f645fb3b484fbd9bd9b567e13",
       "width": 165,
       "height": 281,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6188,7 +6400,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "857f742cbfe47162fa6ae340647e7598b7de24da4b92718e49e43bfc76aea80c",
       "width": 166,
       "height": 281,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6217,7 +6430,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c668731a641be9ec2ae27225ec83956ccf8ba495eb9c7306c8559c169a985f18",
       "width": 165,
       "height": 279,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6246,7 +6460,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b971cc1fedb3678be420551569468731d3c0d5961e9d2579933446f77f45ff4f",
       "width": 165,
       "height": 281,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6275,7 +6490,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d895dee332ae2204ab6a13deb18e037a99f1659e554fa6037a01b6be677809ec",
       "width": 165,
       "height": 276,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6304,7 +6520,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0998c25597ed392f17a81509ab002f9c1778d8c2561d0779ab48deca0a9d1b63",
       "width": 166,
       "height": 278,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6333,7 +6550,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5c7eab70ad02272f6370cbaa17d2b8eeb09c137389284a518fde2f5b6c4ed4bf",
       "width": 165,
       "height": 280,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6362,7 +6580,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6060da380bf19a69b78fcbe551e0c0fa7dda95f3787263aa8d95c4dccf89a72d",
       "width": 165,
       "height": 276,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6391,7 +6610,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4b414e2295ca227f6f47bedeee57b8ad711b21fce5a3153b1494de22b6ab8cc4",
       "width": 165,
       "height": 274,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6420,7 +6640,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "15eed9cf54a2646da6c6d5e7377ae501ff1698857293d3539a59626d65245e0d",
       "width": 166,
       "height": 278,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6449,7 +6670,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "17210a67f68901abac006a963c2c2131a17f2f83ab4e2ebb3f107c263f998baa",
       "width": 165,
       "height": 280,
-      "pdf_page": 11
+      "pdf_page": 11,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6478,7 +6700,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3b3c2df4798752991e4fff18c9e87f3ea2e729f97a5bfecf921313b7cb8fec2f",
       "width": 163,
       "height": 256,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6507,7 +6730,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4f8f9f5ea47284501a40af8486874bce19e883cd0f0d486497db06e0985408bc",
       "width": 168,
       "height": 256,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6536,7 +6760,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "389e3095e2e2b10b12755d16f45e88959573fa6d4f0a3475ce248c1a0b1d7d29",
       "width": 166,
       "height": 256,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6565,7 +6790,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1f078dc70a0b7712c04b55854478048508793dbef6dcd1aaed513d4f995926ab",
       "width": 166,
       "height": 310,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6594,7 +6820,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3edb5d077ac7e10b3ba8019019f6408e1df87a3f41cf3bf61c4eb247fd4b63b8",
       "width": 165,
       "height": 310,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6623,7 +6850,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "cf3fad1b307530adfb729b1d128521185a5af85d3f21b662f85fe29198478b50",
       "width": 166,
       "height": 252,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6652,7 +6880,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "57460549bf317f83184fe893fca92392f4cea8f49dabf75a464f0593d5531a97",
       "width": 166,
       "height": 251,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6681,7 +6910,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "496b089a88b5baa155f1a4660778526068ccf6590e59e0574dfc66ed6ca8d0a7",
       "width": 166,
       "height": 250,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6710,7 +6940,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b3e923a1b756f0fd484c77b4f9aaae2cc6ae48b115880af43a72fabd9015ee09",
       "width": 165,
       "height": 268,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6739,7 +6970,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "02f83d7f4ece891da9d9b6f2f4c48935d67b93526b4cc71dd5759cb072cf6e6b",
       "width": 166,
       "height": 266,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6768,7 +7000,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1033cbf27463fcf5bf0e4ab4d1f096b6c01046068d342e37b94984b4014d1fdc",
       "width": 166,
       "height": 307,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6797,7 +7030,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c64e394cb1192fb8be072f5aaccd45f27c1be774500f6915d80e74686cc2f47d",
       "width": 166,
       "height": 318,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6826,7 +7060,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "387571530a7c406302a2d07b8651b3cd3c1d5d60bb2a0b7b3e0e6e0eddb4a882",
       "width": 165,
       "height": 309,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6855,7 +7090,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0854afd11571a439bfd63534aa78040980413af9e2fcf81be0cd3b812e91940d",
       "width": 166,
       "height": 310,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6884,7 +7120,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6785cd0303652d8dcac3b705f8bd8618918c51d3d8e75f5adf1fae5e29a66dd7",
       "width": 166,
       "height": 273,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6913,7 +7150,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ec8966cd4684b66f9f9bb5cf2b5a1e9fc82cbd7f0a05d3752a7eb0a2b467227d",
       "width": 166,
       "height": 274,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6942,7 +7180,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4a084293dabb0db74d4c0bcad1477674bd2e951fd301a3737ef406c5d8960afd",
       "width": 165,
       "height": 273,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -6971,7 +7210,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0b7ef8d206210c768ee2fabeabd36d816fe0123055bde87c2995977e078ce392",
       "width": 166,
       "height": 272,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7000,7 +7240,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0a7356e129dcbf1300b301613f21f9d40878b6b6fea152bce89d60a211a97cf0",
       "width": 166,
       "height": 272,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7029,7 +7270,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7a157034bd6b9ab5ec3addbe07634f30819c017c2bbd82eb2a99b27c8cff363d",
       "width": 166,
       "height": 277,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7058,7 +7300,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1642bf03bc0559c4bd6dfa6eb38c7510e923ebefa5d34f7ce738c84de2f9e67f",
       "width": 165,
       "height": 277,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7087,7 +7330,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0cc1358aa458ef18774b2b211bfea67344d9fc8b6405997e79b69c74dd131ae1",
       "width": 166,
       "height": 264,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7116,7 +7360,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9f035b03d16cd92059294a638125f46d87e7861f9445cc1e552c0e9be0b6733e",
       "width": 166,
       "height": 264,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7145,7 +7390,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6ac6be79175313fdc76867873f4f09b8f3fb94b5950b250038f7b3b121f50c19",
       "width": 166,
       "height": 263,
-      "pdf_page": 12
+      "pdf_page": 12,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7174,7 +7420,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9f373c68516a691297e00387036cd371cc82bfbd9d35721adfd07d0deffb9daf",
       "width": 165,
       "height": 259,
-      "pdf_page": 13
+      "pdf_page": 13,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7203,7 +7450,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4f98885dd8e8b911ef1dc9d0f6be16040b6df6f45a83dff98ddee2737debba32",
       "width": 165,
       "height": 261,
-      "pdf_page": 13
+      "pdf_page": 13,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7232,7 +7480,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b37f03c9c620db00581a88689c86828bb0276a581ec0837eed80bbb5b18b7ff2",
       "width": 165,
       "height": 255,
-      "pdf_page": 13
+      "pdf_page": 13,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7261,7 +7510,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "40a47d6f617b7d5a247a25516d4c4c8eaa0f362ccb19dada1b0c60bd6bdb1679",
       "width": 166,
       "height": 267,
-      "pdf_page": 13
+      "pdf_page": 13,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7290,7 +7540,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a72548d4222bf2ab153dc45d4a9d00078d3af57b9dfd270d0291932f1f7a3819",
       "width": 165,
       "height": 262,
-      "pdf_page": 13
+      "pdf_page": 13,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7319,7 +7570,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bf18d9a3ac63630498157cb9faec07d486a4aa42b84b7123b64f9dea3c69cf32",
       "width": 165,
       "height": 289,
-      "pdf_page": 13
+      "pdf_page": 13,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7348,7 +7600,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "36808e60ffffd90f23af069e2530671424b6a4656fe4b804aa605f3d4ad6e17b",
       "width": 165,
       "height": 289,
-      "pdf_page": 13
+      "pdf_page": 13,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7377,7 +7630,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "51a4020c3083f277629d20f022f9492d6b6ba87b719b8aec6665c64c5b7fe472",
       "width": 166,
       "height": 291,
-      "pdf_page": 13
+      "pdf_page": 13,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7406,7 +7660,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "403dd9afba3dc0fa5222522fe0cb1799bea9b744d2c3faa42de6fcc68fcdb14f",
       "width": 165,
       "height": 268,
-      "pdf_page": 13
+      "pdf_page": 13,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7435,7 +7690,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d065b2da869f3127a896363cedbdac97d0c62dadfe8361cee1324846d280c14c",
       "width": 165,
       "height": 268,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7464,7 +7720,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e28b02058aa615574cf104e924be931650e8d042c1f65c76cf0a0c818292697c",
       "width": 166,
       "height": 268,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7493,7 +7750,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "90a1c0413bbb3385a639884536e5abb08cb99328fcb617eb3339fc14c4cb35cc",
       "width": 166,
       "height": 268,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7522,7 +7780,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e41c4c63537d4a7e862e129b1c095fbbbac778d978c4d8f5285a7a73142a263c",
       "width": 154,
       "height": 327,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7551,7 +7810,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9b29a797c82a9a9ae9b9bd0c83b78ca7cc3897fde4d4bb5056b18755db0a8d6c",
       "width": 165,
       "height": 270,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7580,7 +7840,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c9c9e92ae19d2a538817ca4be3896728e3e94c47fad2a95a7c31d237dcbf2dce",
       "width": 166,
       "height": 265,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7609,7 +7870,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "49e55b8c3d339e8f2c01fffec1c8a34971fe85eb70a9dcef6f99391ec2835f14",
       "width": 166,
       "height": 265,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7638,7 +7900,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "af7d32f0be85cfa6bc36b4a87b5c4dc960c1d7589fb6c4b015d308ea6307e4c0",
       "width": 166,
       "height": 244,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7667,7 +7930,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8be60f4bc0f07aa20dbca801acf25613f6109d4ea46ba2185d0f145815e4b318",
       "width": 165,
       "height": 246,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7696,7 +7960,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9356b3dfef9e73047856a89b18cfdb904c170f98d0c67aaf26eb8e3076676227",
       "width": 166,
       "height": 262,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7725,7 +7990,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5e124b0760daef06c68628ec8450e8e2b1d596daa7263f3fc548a5b672bbc999",
       "width": 166,
       "height": 265,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7748,7 +8014,15 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_type": "CATALOG_LISTED_PRICE",
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
-    "pdf_page": 14
+    "pdf_page": 14,
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2627-2026.jpg",
+      "sha256": "3beede45a09c6ba1dcba090150a13e3e03627ab4a4711f6161124185de87ca60",
+      "width": 338,
+      "height": 417,
+      "pdf_page": 14,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "2631",
@@ -7776,7 +8050,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e5ba0b1dc70c20c5add737c901f270206e1fee98d77c74fc3de6287dab32c4d9",
       "width": 165,
       "height": 232,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7805,7 +8080,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "27dd384958526163a946cb2b44fe4bdc741df2892e0f44d789efb3f3c8437351",
       "width": 166,
       "height": 311,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7834,7 +8110,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "86a1625801bc5ad3a63e8f2d18b7a3e6cea5f6ce5facd31fbdd89381df023d51",
       "width": 166,
       "height": 307,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7863,7 +8140,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c01e526d587f67d28f1287c1a6c52586b58021919c7e50522c7e58c9473750fd",
       "width": 166,
       "height": 233,
-      "pdf_page": 14
+      "pdf_page": 14,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7892,7 +8170,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c391a64e7da816a04613954fe6b43336b5a8bf920db6d7c22b4299fd828f8824",
       "width": 165,
       "height": 263,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7921,7 +8200,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "01422a001b567d57828bb5f7b79ece506b66e02f594369cd4a418589b080f137",
       "width": 224,
       "height": 136,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7950,7 +8230,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "934ef84717a0e6972205151bab94e5ad092b37a002c4ee691760707b60105b13",
       "width": 144,
       "height": 331,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -7979,7 +8260,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5c94d1285a2cafea8e23fd2b80e479b6804865a0b93a6610a903839d35019f1d",
       "width": 224,
       "height": 109,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8008,7 +8290,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3fc2023a5f3912823d25444b7fcce195db27d4a03b2f5f3abf767bad20a9d42a",
       "width": 225,
       "height": 129,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8037,7 +8320,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "81f0885f330ebb02714bea888c99b334d4583c19a80b3d1d22e32af3672edf26",
       "width": 224,
       "height": 120,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8066,7 +8350,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "cc860641c7281a5ce9f3aae4eaca67fef49bd8fc83ef3ce9231c4c5d6e66be60",
       "width": 165,
       "height": 310,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8095,7 +8380,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7e24293d3eb6bb850555c519cc219b82d7f3991dfc252b714bedf5bdca2611b2",
       "width": 138,
       "height": 331,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8124,7 +8410,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "83f13ecd67319448d578d184d53234f34eac9faad33097bea034ec83d6a5edb5",
       "width": 135,
       "height": 331,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8153,7 +8440,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7916e0188e42195893c417f037003408206ded252957b0734b4733f10d7df41f",
       "width": 136,
       "height": 331,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8182,7 +8470,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "14016bb0b35e0d6a9aee990cb749d47870a4c89e9c268b5707230535bfb72140",
       "width": 137,
       "height": 331,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8211,7 +8500,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4d351999193d359592d3362d8877fc414f17f8449364a767bf5444a6e0d81003",
       "width": 144,
       "height": 355,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8240,7 +8530,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "087441921272e88cb1f8ac3624620d14313f2ae7b3dda99ffa8e4a76aabe260a",
       "width": 144,
       "height": 355,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8269,7 +8560,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a70d26cfdf1362dc0b44310f498085658c4ed2751fed11861285dffb7bca04f5",
       "width": 213,
       "height": 271,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8298,7 +8590,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "64ec46c48729ef88379200bd451033aef8a0493380307badaacfa4d43e450eaa",
       "width": 213,
       "height": 272,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8327,7 +8620,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "111f8558d38cb099509f758fa27eec7581c170d233c20e53f123ed6d9c4b3cb1",
       "width": 166,
       "height": 325,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8356,7 +8650,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "87dd542aa4317a46a514460d0565bd7b4142851c80cbe7b30b077ef996d389ae",
       "width": 165,
       "height": 265,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8385,7 +8680,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3e529e3532d5d447230d29d518a8d31c5f9d2936dd64e34b83e345733a094015",
       "width": 165,
       "height": 263,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8409,7 +8705,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 15,
-    "image_match_status": "DUPLICATE_IMAGE_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-3048-2026.jpg",
+      "sha256": "3e529e3532d5d447230d29d518a8d31c5f9d2936dd64e34b83e345733a094015",
+      "width": 165,
+      "height": 263,
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
+    }
   },
   {
     "code": "3049",
@@ -8437,7 +8740,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0696831bcce3f1346d612a8e602873924d1a9070d75690ee6c3b20dbd06b1324",
       "width": 273,
       "height": 288,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8466,7 +8770,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3c412be408515c3ffd0f4de7df482aeca380c9c12385931391eca0084a214fff",
       "width": 166,
       "height": 260,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8490,7 +8795,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 15,
-    "image_match_status": "DUPLICATE_IMAGE_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-3045-2026.jpg",
+      "sha256": "3c412be408515c3ffd0f4de7df482aeca380c9c12385931391eca0084a214fff",
+      "width": 166,
+      "height": 260,
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
+    }
   },
   {
     "code": "2339",
@@ -8518,7 +8830,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "004617cf690329d4da44cfb8d377723df578e6dd344877e99acd3c07e33a8b36",
       "width": 165,
       "height": 261,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8547,7 +8860,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7d1c31993fc1152ec71f4678a363a1b430c5a9f5726b2044003f2acad81916e7",
       "width": 166,
       "height": 261,
-      "pdf_page": 15
+      "pdf_page": 15,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8576,7 +8890,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "546e1d8cf2069750675b5342811dbb28dfee54818155a5a13c1b4fab8a7e588c",
       "width": 165,
       "height": 258,
-      "pdf_page": 16
+      "pdf_page": 16,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8605,7 +8920,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7367a2acd63d0d774035bf4d9dc8879240af58686fa8dca2719063faf2af3a75",
       "width": 177,
       "height": 281,
-      "pdf_page": 16
+      "pdf_page": 16,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8634,7 +8950,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "42766119fdac7b822bddc8f3b7b121fe809ada0875a815e7268e6a1c86ccb086",
       "width": 166,
       "height": 267,
-      "pdf_page": 16
+      "pdf_page": 16,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8663,7 +8980,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2f940b9256478d7c2056b90365a86a21927b22a2aaab6efeb77d68fb5cf9a972",
       "width": 166,
       "height": 267,
-      "pdf_page": 16
+      "pdf_page": 16,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8692,7 +9010,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "eba68ae85444f9a3153a6510e71a499e2dd8457c9086ed073a5a0a37c20f34d6",
       "width": 165,
       "height": 264,
-      "pdf_page": 16
+      "pdf_page": 16,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8721,7 +9040,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b1554de4b8926f32b6814bbc51dad335d56bfc585b7f8a675d9dbbe22197fa65",
       "width": 166,
       "height": 274,
-      "pdf_page": 16
+      "pdf_page": 16,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8750,7 +9070,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ec545db72f8f0d7de860a73c30c7ee045f192378a7d53235f7152a818f6de882",
       "width": 166,
       "height": 276,
-      "pdf_page": 16
+      "pdf_page": 16,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8779,7 +9100,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3622d57e333bbb44b8bc7032fe20c039ed70f003cce9ec835a9f802fe03b289f",
       "width": 166,
       "height": 269,
-      "pdf_page": 16
+      "pdf_page": 16,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8808,7 +9130,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3dc3b4325613c36d10acd57e71494e69b76e8e728862a782b86bda8b3aed6025",
       "width": 165,
       "height": 271,
-      "pdf_page": 16
+      "pdf_page": 16,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8837,7 +9160,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6ca58cebc0bec18ec1c80c0a6bf64a04df2e2b2b5264839f910be7b01e43dc95",
       "width": 166,
       "height": 271,
-      "pdf_page": 16
+      "pdf_page": 16,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8866,7 +9190,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9430f8d693738b784e1de98f8ff910417338a57543dfb196f6a0230cbbd5be6d",
       "width": 165,
       "height": 273,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8895,7 +9220,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ffb659d061bc3b1f1b4bb319513297af08897a59c3dc22bb01e8e1e53694410c",
       "width": 171,
       "height": 281,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8924,7 +9250,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "dace6d17f5e6dd6a0eeedcba330dcbe3d97ffa012b4c36aeea1c1008a24e4304",
       "width": 165,
       "height": 273,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8953,7 +9280,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f2bc5f4d10689491502a8252652320e5ec7d142085e03b42cb88fd7639daaf3b",
       "width": 154,
       "height": 266,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -8982,7 +9310,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a06134f59bb333f2af1fd9646c052b092be063d51f4edeb011bcd769d6ed2fde",
       "width": 153,
       "height": 265,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9011,7 +9340,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e27b18d4f625faa5dec60094050308240bdfe388c6ee7c0f4e73c1f31b5c0817",
       "width": 153,
       "height": 265,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9040,7 +9370,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d823e02e1a4825188343b71d5f0c05ae60344387cff2badc744db684a75cdab2",
       "width": 154,
       "height": 264,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9069,7 +9400,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "90d9b00bab7f93fa1f163aebc2ffd1d14b1889f185b45dd43c1d4df2ce6fa586",
       "width": 154,
       "height": 263,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9098,7 +9430,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "799fc768425d0d1f6957c5a492bc4543c52246c79b752d39934a3bc9c76dc6ca",
       "width": 153,
       "height": 260,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9127,7 +9460,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1c83f7cf6118ab5f54df233c9de95daf0f6ed6a4d8d83f613428093d216215b0",
       "width": 153,
       "height": 264,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9156,7 +9490,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "86f9b75d0beb059123bf6e9d33794375cb8b6c3ddf6ffc505165e21ec995a300",
       "width": 165,
       "height": 341,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9185,7 +9520,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "aa83b1d9c3703fa5e02881789e329c3de4a218f62259c9ce2f4da2eacc9f94a8",
       "width": 154,
       "height": 255,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9214,7 +9550,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d88c94637cb77a18cb0f0dc1347d70146c852f9d07fec2fd751fe7d58858d82a",
       "width": 153,
       "height": 255,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9243,7 +9580,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "afbf954f332479a0690a3ce308a7c90b602e7510c980759f9811aeff829c254c",
       "width": 153,
       "height": 265,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9272,7 +9610,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f57d9dbea905961b6e1fbf21f6e5b8d9a5c39c88ee7dbdc0164f41e69ca405cc",
       "width": 154,
       "height": 263,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9301,7 +9640,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "46ef232b9331897e9d7e0cf7935bdb210220e0f16390e6d45884676f94d7876a",
       "width": 154,
       "height": 264,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9330,7 +9670,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e240a20552b06dd29ee072704c9886e894cf51eecbaafea602cf2014a39d1712",
       "width": 189,
       "height": 247,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9359,7 +9700,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f3c17cab455730b4fb3672b0f17839104dbc604d190d551cc23ab51402bbf754",
       "width": 236,
       "height": 235,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9388,7 +9730,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "cfbf8598f859da207e37241a7c84fcba626c3f91ac90bd3f57ed537b4b03b320",
       "width": 154,
       "height": 244,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9417,7 +9760,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8e0674f393a6f12949a3cf9058126ec4cea1d0893d59a7d26ff090a6a1a52fab",
       "width": 154,
       "height": 245,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9446,7 +9790,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "da2f404a2367d8730a6c56296129b540dcee913d4b061e0a9753cdaca0dd5d6a",
       "width": 153,
       "height": 244,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9475,7 +9820,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8c44545b87bc4531db8231fbd2ba11f399d3569e415ca068cd36f5599f8bc92f",
       "width": 224,
       "height": 141,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9504,7 +9850,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a74404367e411611e25ae302f64e87ff220a034a25048d3c039fcab32f3aa466",
       "width": 154,
       "height": 246,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9533,7 +9880,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c75cadaadb8d323ab6912a04af5d10dd0d037b751db0c54bb657d0e2ffb2a681",
       "width": 154,
       "height": 245,
-      "pdf_page": 17
+      "pdf_page": 17,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9562,7 +9910,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "01123eb4e47447a18517e0d33e959e30e02b1df52a024c41ad13143db4863d7a",
       "width": 154,
       "height": 247,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9591,7 +9940,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6a9d5105ed3e670e0c2da5936e24209c95536368f571663b44ec18bead26f787",
       "width": 154,
       "height": 244,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9620,7 +9970,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "77a5af9f0e62530ef8175ffb97a670c71a8d3ac10e2ab9fcfbde7deea98122c5",
       "width": 224,
       "height": 141,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9649,7 +10000,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "428b7e60cf9acb1a4bc0868f6e0acfd9c515a781508cb4214a8280fc19a00674",
       "width": 224,
       "height": 121,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9678,7 +10030,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5c2662748d9dddf3087edf1740407d3d54bbc4826ecf172994c4e49f6adda74a",
       "width": 224,
       "height": 121,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9707,7 +10060,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "797d0ecccb00b929b88edf2aa6105c7480b4d49ccabbcbd6860f0f4dc0a9971e",
       "width": 224,
       "height": 122,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9736,7 +10090,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3cde68b8dcfcd042b9c489aad5ff61b0d9bd895e8a6034e55836884340c46dcf",
       "width": 165,
       "height": 328,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9765,7 +10120,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b72ee7ca1c5afae5edaf8487c263db45c067fa6af786d46c4a45db620a65b285",
       "width": 166,
       "height": 320,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9794,7 +10150,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b0fb3bf04aa63fc90e252701492b53d59ee9b6e95cc746b623a6a5da9c21793d",
       "width": 165,
       "height": 327,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9823,7 +10180,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e3ec63702ffb59b985585f6f0622785e19d4a06b4c23cb888da35b30cb2ff571",
       "width": 166,
       "height": 327,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9852,7 +10210,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b7b6bede7d96017a1b85ef0e97c15aeb600f76cb2d8bc99a29aed96a793dcba1",
       "width": 149,
       "height": 272,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9881,7 +10240,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0b86bea85ed4ded4263a1c866dbf5778bbcfa2dd51fd9a1c4a9e36efa7ca1657",
       "width": 148,
       "height": 272,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9910,7 +10270,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1cdf93530727a00010fe25456360976a6926b7390375f80a84dee1daba1d1090",
       "width": 165,
       "height": 305,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9939,7 +10300,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ce0232baa52348a350187bab5d14409d9ebacebe2f15a8bdbf6d4bbce9e6a2cb",
       "width": 224,
       "height": 127,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9968,7 +10330,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "dab497d058407382afe890cc8ee08100728106b23a01fd8084202cfc462cf7bc",
       "width": 224,
       "height": 134,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -9997,7 +10360,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "359592c6221c2ddb445a671cd02158f2cbf10f84be465d456dfa623446d3bf68",
       "width": 224,
       "height": 134,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10026,7 +10390,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b4446fe03624afe5f87afc23db21ec6ea38ba790f6709d3138fad8704e4827c1",
       "width": 165,
       "height": 306,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10055,7 +10420,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "dc7e04150891da280203a0afbb88d36a1b4d6e3a4f566f08814f2253b52871c0",
       "width": 166,
       "height": 329,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10084,7 +10450,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e08ae57c795de01f9e63894b7e858ff2cd167261bd5869083aa8b653da63463c",
       "width": 154,
       "height": 251,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10113,7 +10480,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2106ffbbfbe1332c0433989fe9def5561384c35295b183e03246c0e5df82b207",
       "width": 154,
       "height": 252,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10142,7 +10510,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b497cd91feb612f5068c7dd3d4465169817f9cefcea78f41f083c4fece4c56ad",
       "width": 154,
       "height": 252,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10171,7 +10540,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "177f27935013f7c299824ef2069e3138f7b7c22fc8e19cce8c23c97b2f61d275",
       "width": 166,
       "height": 327,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10200,7 +10570,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9178dbad696df83b16a4ace525bfa305ea692226bfa151e42f6079be027fd21b",
       "width": 166,
       "height": 326,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10229,7 +10600,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a0d6ff84c071596717283a07451a6aacb7af5588f113673ba544f87c087f3cba",
       "width": 176,
       "height": 326,
-      "pdf_page": 18
+      "pdf_page": 18,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10258,7 +10630,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e148c0c778d5f29c9701c7476b87ab2aba39b669fe6b4b77e436a7325d1f6dd4",
       "width": 165,
       "height": 326,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10287,7 +10660,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2792949623992a85626b7a447ef571b4bd19bfd3cfd68bd57f8ac0477a382419",
       "width": 148,
       "height": 272,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10316,7 +10690,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b38a192078106b3e3463c189c416dd6a65bb7fa38063cda823a077ed8b45188b",
       "width": 147,
       "height": 272,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10345,7 +10720,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c3178b2a592713ccec3413039d056477f032b004a08019cc1c86f76521d47271",
       "width": 148,
       "height": 272,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10374,7 +10750,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1983f9dfd74d87fbe47af8d7b1e0d7b53df6b908893dbed2ad8a4f96b2a831ad",
       "width": 148,
       "height": 272,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10403,7 +10780,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "033d693e3701a6200ec540899c2572c0e48171fc845fba130f5e237dcabdce84",
       "width": 224,
       "height": 135,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10432,7 +10810,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bed70c666431770099742e345f1a12ae8641d962354d32b76a68d2e8ca5210cd",
       "width": 165,
       "height": 306,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10461,7 +10840,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b8c99012910b384b66e4bd4a5efdcfdc0be272de5726ffd2c96f4e21322ac1dc",
       "width": 224,
       "height": 139,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10490,7 +10870,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b7341b912110694110da62c6b7058d758857bdf1405e215cc4189242eb9fdf95",
       "width": 225,
       "height": 139,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10519,7 +10900,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d9a026a0c8157ea176f648acf583390199c6c26f38e57169a1dd4b1bb244caaf",
       "width": 224,
       "height": 136,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10548,7 +10930,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "685be1fe3ba30b9d08d82a15b064805e7aa32975377e05993052f6687272458a",
       "width": 165,
       "height": 306,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10577,7 +10960,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b0945ddb1fbc350e97a832d5675760f7bc9f9e1833e36ac498a1256d68ab58c3",
       "width": 166,
       "height": 306,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10606,7 +10990,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5d33dab66a9836196438f9fe67b2120789c35621e15d3971ef2bd366caa1525a",
       "width": 153,
       "height": 254,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10635,7 +11020,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "54214ad2fa9749f78a2b13c5594b12d65e1df6508769dc5ae1b69237d4186dca",
       "width": 153,
       "height": 252,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10664,7 +11050,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "da15a6cccc980658eef9872d383a9df817b4392ce00fddf4a190929e6555793e",
       "width": 154,
       "height": 253,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10693,7 +11080,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "985fc740909d2ca0ef5a2689058eb31617e9aea95b5c7bfb475c2e4370d72695",
       "width": 154,
       "height": 254,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10722,7 +11110,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f6cd3957e0817ab99cc151d2d07fab32ed3346614410da265410c32270a58d36",
       "width": 153,
       "height": 254,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10751,7 +11140,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5ec9e9c048021049529e31cc3a6681ffe74b7275bc743db807d7f67c2404c15f",
       "width": 153,
       "height": 252,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10780,7 +11170,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b060699589d84e7ec89a78885d074ad2a44681d0ea0f05ce86c542df4d8ce497",
       "width": 154,
       "height": 252,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10809,7 +11200,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7e7094e4161b075e605f02267fa3542c7d19845b66d1ff8a571e3514905d0806",
       "width": 154,
       "height": 254,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10838,7 +11230,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ad4502d014a582fdcdb52b6a533d686fc2b57a782cb05d01ab07968537c29ef9",
       "width": 153,
       "height": 254,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10867,7 +11260,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3e8d496f8cea175c9643a318b7db889411f53472edba590e1e1d64d92028d487",
       "width": 141,
       "height": 271,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10896,7 +11290,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2346d5e2afec747e0b36cff8ae468494a3f4476f459ab36d8ca69ec6d9ef7430",
       "width": 147,
       "height": 271,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10925,7 +11320,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "795e6f22a4d88c0f31d582709d9fda31a4a47d5fecf61cab9221fc441aded92c",
       "width": 147,
       "height": 271,
-      "pdf_page": 19
+      "pdf_page": 19,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10954,7 +11350,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2e759a5fc1811ff47fd0b5b6e8d809847cd0f6b1d8bd9f84a492197ca567a8d6",
       "width": 147,
       "height": 272,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -10983,7 +11380,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "212b51d6ddb85d1a8c7084ffc0397e73706921d7c30fa9e6037615f69865d84e",
       "width": 166,
       "height": 277,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11012,7 +11410,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2c5dba48cd7873d8f693325168e6e84ae07782ca1b1b007dbced84add251981c",
       "width": 166,
       "height": 277,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11041,7 +11440,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "24a4baaa09ef33e561f9473380c860221c0e86ca11c09d416211e3b941d8bea5",
       "width": 166,
       "height": 304,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11070,7 +11470,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e7d128fa8b178c529d205004a6f3f25633885f909d257465ebfd9ffdd858c3d4",
       "width": 165,
       "height": 308,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11099,7 +11500,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0f5460bdd2aad7f03e9bfd5ff6f2bd9a7a34eae5509a2227cf5cc89d0a0d6511",
       "width": 154,
       "height": 258,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11128,7 +11530,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "677de89363da894145752bea02eb26c4fe800a0cea5e14b9bd42da949f306a42",
       "width": 154,
       "height": 240,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11157,7 +11560,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "51c50838daea2c70c52405014e8ee113809c424e71583e93bb160e5c8673210f",
       "width": 154,
       "height": 256,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11186,7 +11590,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "96480a6a22f0938d929d1b051ed55b6ca6ebb9e4a83cd09ffd747ab305154e5e",
       "width": 154,
       "height": 258,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11215,7 +11620,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4c27d6154ce997e64742b8d9264f1303acfbb077cab525e23dde0cda390ee617",
       "width": 154,
       "height": 254,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11244,7 +11650,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "06c98d0396bd34b757ed0d29791e8a751e9d4f62c4384557b1d719cadb0724ef",
       "width": 154,
       "height": 257,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11273,7 +11680,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "937f5608b17da84fde45cb0d4099d7792d4868f3062ce4d342a4a8a99f48e3dd",
       "width": 154,
       "height": 257,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11302,7 +11710,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "fd25f150313a5148af9d7dfcd8c640debcace08f4be80052fdd1a079a2aea8f3",
       "width": 154,
       "height": 258,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11331,7 +11740,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "53a8da369c8322ead346d38832ed77feacd7cc136682d2f86748ea6e1808ae0d",
       "width": 154,
       "height": 258,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11360,7 +11770,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4a796c7989cbac680e26ad87c4cd267315ed380ed3761d82e17c8b5e03d9d23d",
       "width": 154,
       "height": 258,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11389,7 +11800,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "aad037491ca29bff232d6c29d7f46470dd4bfbb5b75a1e5a1c99bf938e083fd9",
       "width": 154,
       "height": 258,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11418,7 +11830,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "527dbd524b443437708bd3eaba170c6527bc88edb70753195537fce7e11188fc",
       "width": 154,
       "height": 256,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11447,7 +11860,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6fb5c01c4c4751f2e8fbea95d9fd5aca7b54ed1e5e3bd906ab82515585d26f63",
       "width": 154,
       "height": 258,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11476,7 +11890,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "344e93181a8ec06466c66288b9803718f6272173423041455af260b85141af4f",
       "width": 154,
       "height": 257,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11505,7 +11920,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a19cf3627ac459696b16affbe549c3d553067c21690dc5470c7c0a1737aa9536",
       "width": 154,
       "height": 258,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11534,7 +11950,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6f174408f64fbc10ca442db5652cc94cf23c3a11e1a3cc09b41186e58c451bed",
       "width": 154,
       "height": 257,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11563,7 +11980,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3760cdda7dabdbdee4dacc98af0b0616b9713fd90c16043415f0f1d41ea1dbdf",
       "width": 154,
       "height": 255,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11592,7 +12010,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4e8144cc669457ae2f3c63d76521e39ba20f59bbf6271761fa051b5df23a5ee8",
       "width": 154,
       "height": 243,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11621,7 +12040,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "21e6111f78bd877f08262f0b40566f286086f2ef7ab321dfbe7eda0e44a8e7f2",
       "width": 154,
       "height": 255,
-      "pdf_page": 20
+      "pdf_page": 20,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11650,7 +12070,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "72abe6ee22df8c1310dcd78a0d9b065efddd38beaee1e15a7d7333c9ed0b29c4",
       "width": 153,
       "height": 240,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11679,7 +12100,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "109f58e9c5912cda87d66c8afb58080424c6c87ebad815f5c49bdf343b1c7aa8",
       "width": 153,
       "height": 252,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11708,7 +12130,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "784079b9804baf107142d3bd9a9a1e03d484fca9314daceb1b0aded548e75936",
       "width": 154,
       "height": 247,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11737,7 +12160,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "cd420521246f9726a63502af6066c1b1ad1aaa35e9ffd1bea42d8387e36a50c1",
       "width": 166,
       "height": 308,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11766,7 +12190,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "cd15b561bed21c030d5174b1a8927dc36f91ea8a1b50d7c0f7a45c9aeeba9854",
       "width": 165,
       "height": 308,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11795,7 +12220,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "79ea52250e0b6009b3f0729a9175bdc36c8d344a4aaa7b845b490b1c7e882097",
       "width": 165,
       "height": 308,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11824,7 +12250,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c196e8998850bfb556905d384db9b91e3afe3a511d6726bc750ffd14e9a9ab8b",
       "width": 165,
       "height": 306,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11853,7 +12280,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f2d1ab06f3928e970adf93c864a6dfde8c0f67d1cf6c47164e768156210f7238",
       "width": 154,
       "height": 249,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11882,7 +12310,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "196a0140292984fd411ce75e2fd2fcbc2e023f2f9188c533ae9c6e3077322ceb",
       "width": 153,
       "height": 248,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11911,7 +12340,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "64581006b3f0dff0e0ede4ad6fef80f54419ac694473c975ecdb37a58fa48ebf",
       "width": 153,
       "height": 248,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11940,7 +12370,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "714675020da673acb3437736d006aea666fec004311046b515a450c840909ad5",
       "width": 154,
       "height": 248,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11969,7 +12400,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ab6b7f888e07113af873efc009e9cd99ad6d12ffb2f03eb4c954750a4ee72200",
       "width": 154,
       "height": 249,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -11998,7 +12430,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5e7df796333bc76a58c99e1709d061b1bb398bc11d7b85ea140e6b74bdb3ac01",
       "width": 153,
       "height": 250,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12027,7 +12460,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "508e58fa2ba434d8ba64ce376d977eba174416c0e3e67927734fa3a2a7ab9da0",
       "width": 153,
       "height": 245,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12056,7 +12490,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "eee22dbfabbd6554b1fd19cc9086a6d2e3d2743a32a01a8049af5cc2979c7a83",
       "width": 154,
       "height": 236,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12085,7 +12520,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "758298d7f3beb60845873b8d1de09512c2419dbd3d2b5b6b9589a5dc017d24ba",
       "width": 154,
       "height": 246,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12114,7 +12550,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4b8b9272bb6045ae358354fdbdfa17fe630cb13d06193d5af6ad7686f358c14f",
       "width": 153,
       "height": 235,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12143,7 +12580,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "06ac15c55b4dd04974241a9b430820d7133c030cbe03eba58b355954d5a54160",
       "width": 153,
       "height": 246,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12172,7 +12610,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c5ae0015de339e16ced473c17296b50c6480a6491ebe191e8982f48b04eca385",
       "width": 154,
       "height": 236,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12201,7 +12640,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "986a106afe141c73093abb4e1ff15d0540eedc47e4cfdaf7680ff7c073dd8d14",
       "width": 154,
       "height": 245,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12230,7 +12670,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a17863b05adbe4fdb1110deb94fcc1dc1c898f77f345bb6bdd2e51d1c832ce37",
       "width": 153,
       "height": 246,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12259,7 +12700,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "193d5ea7f36fd127ed6a7d8906497c92fd7e5156f77bd1d0400cd44cc6778e19",
       "width": 153,
       "height": 235,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12288,7 +12730,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "25ee81e82f7765c158fa39a1b64fea5ea89e463a7ff96ad769a8b2e1e0b1cb76",
       "width": 154,
       "height": 245,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12317,7 +12760,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9b99133d0ababf0fee98dd0a9e7047422b66bf3a8cd0bfa4f9468bb7ea2c5d8e",
       "width": 154,
       "height": 246,
-      "pdf_page": 21
+      "pdf_page": 21,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12346,7 +12790,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8697ba8ab6b0b17952d2d5ad6f62ae73c6c9372bca5d2e20665498cbe4c95b92",
       "width": 154,
       "height": 235,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12375,7 +12820,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a5073b46f50bd2d9c570efb29361767b31fb96598c0d4055bcee3fcb0fa6bbdc",
       "width": 154,
       "height": 235,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12404,7 +12850,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b839b44b5700b3002d4ae9f67d932de41d383dce149184dc744928327452f4d5",
       "width": 154,
       "height": 235,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12433,7 +12880,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c3c23a0ce6e93e874ca1884fb1a917b6961ab552ca31e8e1aab1daa97acbaff9",
       "width": 154,
       "height": 246,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12462,7 +12910,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8bdd62366385063e6f7162bae5abc0ac0f740eff3a37bc6a4c45a1e03bdd3aeb",
       "width": 154,
       "height": 247,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12491,7 +12940,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "fc422ba9a80a910a264fd82d5b5832efe7595ee9fe7db9dc4b965c454a255a09",
       "width": 154,
       "height": 246,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12520,7 +12970,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "cbb62a7b7ae8ead46cecf3f5d84cf4a982eab4ae59540c8a87c763aba534109a",
       "width": 154,
       "height": 245,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12549,7 +13000,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2ad47dd85e8b17939ffbfcab40c90328fb8d1fbeb452d515405a6cedede66a7b",
       "width": 236,
       "height": 243,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12578,7 +13030,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bee487b52e02325dff7951184c1925a9bb90dc92574ff3b61ecc9e6a593bf88d",
       "width": 154,
       "height": 240,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12607,7 +13060,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ba881d672f65e01c0532dc10a598ffd1979b737af10e03818bbcae8ba9c81599",
       "width": 154,
       "height": 240,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12636,7 +13090,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2e3ac4ed7a6911fa072154029ae8358c0a28e3586857a7359a6901c418099d4e",
       "width": 154,
       "height": 246,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12665,7 +13120,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8f40ca9bb024044603ca40416e0963e1bddd87fc290bd208c3710b4d8285c21a",
       "width": 154,
       "height": 243,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12694,7 +13150,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4dd68ec6a9925bd5c9e0f260d2fcd9749615fcae129fa95dd66d785a816e0edb",
       "width": 154,
       "height": 243,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12723,7 +13180,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b4b8fcbb390c297c33fe1f3372f27142df4f336fc7eb6523301fbc8583f0692b",
       "width": 154,
       "height": 236,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12752,7 +13210,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2abb98c5d31fd125f14290712cbf910edea8549d6b3e40d7c96e5a3ef59e53fc",
       "width": 154,
       "height": 238,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12781,7 +13240,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2957a492c3fa83d1987aa82af725f28f19a85dbbd864586204fae41743cf2c82",
       "width": 154,
       "height": 244,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12810,7 +13270,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ca010082c89fdb5fc231f9ac97cf623c70fcd9cf7c4629629892f5fe6fe9ed48",
       "width": 224,
       "height": 136,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12839,7 +13300,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bd4ebcb35455f4b622cdcf787ebcbf057bcad7c2439f0f0af8943ec8e7ef3b2d",
       "width": 166,
       "height": 306,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12868,7 +13330,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1157bded1150dcb93607a5c788220571f3c4685d13b6b2dd2a515651fc3d7422",
       "width": 166,
       "height": 270,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12897,7 +13360,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "05e1f4c1fc362d42501f1d52507147904c798c7bebaf30afa0211e13ea6bd43a",
       "width": 150,
       "height": 272,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12926,7 +13390,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "02d3ac0942bbdb95bb5aedc9003a3c0118508f7e9f3f6c7cb041bbf1e3eced2a",
       "width": 154,
       "height": 279,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12955,7 +13420,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8e92918c48b77718892bfafb954dc0323bf4354fc118087b269a01f9420602af",
       "width": 154,
       "height": 243,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -12984,7 +13450,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e175412e49fa81951187c8f2e9836d7c946f00a156f174a3e9785121dfa8aee4",
       "width": 154,
       "height": 249,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13013,7 +13480,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "56bae71ad405b96a859706953cbe5716d91756dde161d1f989261f5b7fd729f8",
       "width": 154,
       "height": 241,
-      "pdf_page": 22
+      "pdf_page": 22,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13042,7 +13510,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1710414787ada80b78bc546393c3da267550935fa06dbc0ee617fdc27ba10716",
       "width": 153,
       "height": 255,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13071,7 +13540,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "dadfd308e31117cac9c3302102f9506e27bd225f1461d4a4eacfbd49dab0f678",
       "width": 153,
       "height": 247,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13100,7 +13570,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d1b28b7e80ba257c8df4611f6cbd3676345268e383fcfae50508332f34be8847",
       "width": 154,
       "height": 254,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13129,7 +13600,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "90569b8f83a53d25e4402f0aa2ea463b716cda1d79f21b7dcf794a52b5daee53",
       "width": 154,
       "height": 254,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13158,7 +13630,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a5a8dc5e93df13082b90f297a77ad6ad739612590af37999d76a718765615804",
       "width": 236,
       "height": 233,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13187,7 +13660,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "aab5a771aba1b8e6cab3d9b332d203a92bd1ec89bd0f1b61a632feab428a552a",
       "width": 236,
       "height": 237,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13216,7 +13690,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8c92f7b2071de250c4d4edc21da37e521f75bb1bc7bdae9b6fa2a0e0be33ffe4",
       "width": 165,
       "height": 307,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13245,7 +13720,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a06c947d3b7ec91509b83664d10c04e89297f5c5dd315a82ca9ea98dee5b6507",
       "width": 166,
       "height": 326,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13274,7 +13750,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "22bc2c0291e12a9dd3817b926e56f6af2d89ad06cf76d3e556131ac77c06618c",
       "width": 236,
       "height": 235,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13303,7 +13780,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2e22527d9c5a5844628d826c313ea3f5740004e48c0de192e7781feac7dd6fab",
       "width": 165,
       "height": 305,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13332,7 +13810,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "748aef8b930c3533d22fb7e558b67d46f05abdd1c78f5c963de68a74a8d78d47",
       "width": 236,
       "height": 235,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13361,7 +13840,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c6208f44042a8f0c4935e5627d492497d96186f82ed6e921d916eaf89a5d77bd",
       "width": 236,
       "height": 235,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13390,7 +13870,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4ad7189053f6ef039f12fd7acdc8889ee097d7e082a0e46a5edac8f41ff29af6",
       "width": 236,
       "height": 236,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13419,7 +13900,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "44f432b552fc3e606bd938bfebe17f5e31805c664162ecf6073ebaf923982b65",
       "width": 236,
       "height": 236,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13448,7 +13930,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "db8a1866110fae225bbd02a7bc03453bf2417f36220839cd57b291ce793f8e05",
       "width": 236,
       "height": 236,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13477,7 +13960,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a14de4ce407b7d57dbdb1aca4744424f63868767e599722222bf4dba7e313285",
       "width": 236,
       "height": 237,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13506,7 +13990,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "44f8d7eeec9048863abd19d8edfe055acd2d36db3b7682e5e56db56472c21c0c",
       "width": 165,
       "height": 303,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13535,7 +14020,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2282c637288240716c46aee086a268d89bf07ff7fe59bfe366bb22d842be7051",
       "width": 165,
       "height": 266,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13564,7 +14050,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "12c2ca1494d8193ed181da7d02521af1153e17d5cedafeefdd99650419ac3ca5",
       "width": 144,
       "height": 272,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13593,7 +14080,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2af7a731b062e225540737af30f2a5ab9d0012fcab8d2efe5ad5aa8565599d3d",
       "width": 142,
       "height": 272,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13622,7 +14110,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a7013dae02145af6cdd1fd8caeae79b79e2a7ec82451bafea6756dcde64afd6b",
       "width": 143,
       "height": 271,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13651,7 +14140,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bd21cf1539b0ac08635f3b87a24d05e71c72baa3d9417ef88039cf3114429bc9",
       "width": 143,
       "height": 271,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13680,7 +14170,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "96f9d20a503cdae228b8c84d1c93dc36215cf415431229e095bca4e1df3c4df5",
       "width": 165,
       "height": 267,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13709,7 +14200,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c24d61c2f38d96a242bbdd31d06d7d9da3c2fad1e7d01e277dca9fe92b4769f6",
       "width": 166,
       "height": 267,
-      "pdf_page": 23
+      "pdf_page": 23,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13738,7 +14230,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e7f6adae736142df43fe677bbd15cfb9c18754af3593d16476852049c1f6ac44",
       "width": 165,
       "height": 268,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13767,7 +14260,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "118276287f9bd68803602768d9a03a5f449223f634f9c6c65de301aed1d10a4a",
       "width": 166,
       "height": 299,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13796,7 +14290,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "798dfd14251ae7653d8401f0e18498105376d1a44c4f48d067239459c46a34b7",
       "width": 166,
       "height": 267,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13825,7 +14320,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "fe5c7dd6706eae554245089b87002f3964a1eeba633a21a0fd36180e508c7dc3",
       "width": 166,
       "height": 276,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13854,7 +14350,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3cc70e148ab6c8f19fa88cbe9abef067a9f68712de98a44c875a64419bf77960",
       "width": 165,
       "height": 268,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13883,7 +14380,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "20e3f36d8ff2320fdfa539faf85f02adb1f25c888bd4fe222289ac47cbe8a1e5",
       "width": 166,
       "height": 268,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13912,7 +14410,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c18d9be398de230ea1179069b58fcdb2f41eac72058d2f52a9d73502ed83d355",
       "width": 166,
       "height": 267,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13941,7 +14440,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bfb73384cd0e668a02ab78fb814d8a8bd29a225230b9b714cc7b76d8edd26aef",
       "width": 166,
       "height": 270,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13970,7 +14470,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2625dca45f7d08d3bd7282d2baa5a79f8720ef8c2a03eb20f264bed1921e3b2c",
       "width": 165,
       "height": 265,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -13999,7 +14500,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a617152c20accfa49f8d4c1dcc5dc16d164dcd669deb7ce29bf8ad01ca38e154",
       "width": 166,
       "height": 264,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14028,7 +14530,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bbee59394e39ac2fc44cd05691c4526a16f454e748b6a7e7f01c74cfb6508575",
       "width": 165,
       "height": 265,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14057,7 +14560,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "aaaded14f2459c32fd757347d9bdcede78590f8ac70fb784ec091425372a6583",
       "width": 166,
       "height": 268,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14086,7 +14590,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "40b9aa7dc2977e1f96c818545da8a6f069c36bf5e7856b5df7e65c181bc2d3b0",
       "width": 165,
       "height": 268,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14115,7 +14620,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "af48368d8077442720f86a5cb2dbfaac486f7578b96df1f58f740de8d594299b",
       "width": 166,
       "height": 274,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14144,7 +14650,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "68e4b2a61cf16e87b1d49f398875f7cae0934d77e08b09066cd642e2e6ee3016",
       "width": 166,
       "height": 267,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14173,7 +14680,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "44d5104ed0150b0ec1c34481f63529b527ac190505ef75896c773c18d0f2ba23",
       "width": 166,
       "height": 274,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14202,7 +14710,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "db6b6e218113e0002758c97a87b079eb337f960efc678af0c95d1d161c6cfa33",
       "width": 165,
       "height": 265,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14231,7 +14740,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4a945c0357563cc5e9ad25257e733b94c8d71bc1288ebb2d44f28deb56bfedb5",
       "width": 166,
       "height": 272,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14260,7 +14770,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "abe9c1425154c402d2baa3c55bb89aed9b2d3508168a856d69a4a85abe3725de",
       "width": 165,
       "height": 273,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14289,7 +14800,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3be0c1065e4b9a6cae71e8261116b4f3efbf76a122b860ee65da89c627db5ac2",
       "width": 166,
       "height": 272,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14318,7 +14830,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "17ddb329e18cbd37afb0aff868c1bd1f0f7ef532aad145d831f7ae7297712217",
       "width": 165,
       "height": 272,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14347,7 +14860,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6a21e62fd49d54c1fa3843e171e723555da128311c3d921a5b02469aa2645e22",
       "width": 166,
       "height": 271,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14376,7 +14890,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8b4ff3c5623d184316a85ea2b61273ae7040b174242e74a929979475cc32a113",
       "width": 166,
       "height": 264,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14405,7 +14920,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a3696157d9061081d1267b64e682b5ad5a6591542bbb677a80f73e2f8edb59f9",
       "width": 166,
       "height": 270,
-      "pdf_page": 24
+      "pdf_page": 24,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14434,7 +14950,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0ffeea06c372c186c1ee77b6e49aa9468357fc724797bff163de3df78fd88376",
       "width": 165,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14463,7 +14980,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9992dc9f9981d90dff532ea6ff05c006e82d73574099eb7297bda772f0ff17b2",
       "width": 165,
       "height": 268,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14492,7 +15010,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ec993fce78b20dab7d1a7ca3b5a3afc70d2d0b55f9fd7061fa0acfd9fce23713",
       "width": 165,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14521,7 +15040,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "da0f5d65758935d0d07a96f0bd26ece5fe0f982343e96a7c5a050315b1ded246",
       "width": 166,
       "height": 270,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14550,7 +15070,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8ec6e72a4bee2c1cfade02bde8f2e28b2d160ab081a4e74ba1ace8fd6e93cff8",
       "width": 153,
       "height": 257,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14579,7 +15100,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "166944f1d35af7220358013a75ea0632482039e2b71a1f8711b66ac43273f181",
       "width": 147,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14608,7 +15130,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6c3183578523ad2aac3f54cf11004a4c80a4f931bbc7796fd2196b56e94ca99c",
       "width": 142,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14637,7 +15160,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "41666c651598323a3280ea36490182cfc8813f0480003e6af378e338e4f8c5fe",
       "width": 147,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14666,7 +15190,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c4fc32154279b7287369aba3b8e4b574d693bf34641c01e23ff3b8f7bcf6c8be",
       "width": 142,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14695,7 +15220,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9befc123b4c6454159bf4b5ec875b84bdd893cbd0a4ce0187838cf848438cbc2",
       "width": 149,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14724,7 +15250,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f1e36a299a5751093aa8885207477957e7963538233fba55a680a1ae567e9505",
       "width": 147,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14753,7 +15280,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "79f0954ae3e4977ea20a7b8919b60f3e728441d7b00e00b26a55aa6112194716",
       "width": 148,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14782,7 +15310,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "daf8aec23a6572a66057e88d4de0824416adee98d320623664a548dbaa6e6fa5",
       "width": 145,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14811,7 +15340,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bfd6743f5510b929c8dd31c7f1cd027a217a4db8815f06ee47672f6762cffbda",
       "width": 236,
       "height": 241,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14840,7 +15370,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5131e58f3eb80ba7c03efe5f43830793a5a4e3f4586ff9e8d856cb10ef40b2f7",
       "width": 165,
       "height": 269,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14869,7 +15400,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "359ac8bac91322fb4b040f3060f29ea49054cec279116422704d81e3d2f31e47",
       "width": 166,
       "height": 307,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14898,7 +15430,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e04a663af9a5a65be71623b904e128574ca4d9722c55da7e0cde04c3aa0c86c3",
       "width": 139,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14927,7 +15460,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d994eddcb868c02c74d96ac18c840cd90c7d27118b5d516409223a51852cfa4f",
       "width": 142,
       "height": 242,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14956,7 +15490,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b0c9712c5ebd92a1672890d0e3205a6700fb2e9a378dc02976ce15aea7fe3e9e",
       "width": 140,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -14985,7 +15520,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3362170aeeb1f94a1967507ef60071a4fdfc89fb180539e9c109d64ae0b02ff7",
       "width": 140,
       "height": 272,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15014,7 +15550,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2ea4a96db07a5aef4e63c1284f1ec5b85a9e2a1dea027d90b3d58928b457b3e5",
       "width": 175,
       "height": 325,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15043,7 +15580,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4c370fb97cebcd2563b4e898e24f0df6f32867c1099db5a265faef3389b6b3ad",
       "width": 165,
       "height": 326,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15072,7 +15610,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1b6fc453da6572f4bddc07d5b79d70a4edc5979050926dca3e66d6e45ba403fc",
       "width": 165,
       "height": 325,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15101,7 +15640,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "41bfed152c94e7484b4e78eb5db92a3e91fb31b8a32c0d297cac87073c658a27",
       "width": 166,
       "height": 326,
-      "pdf_page": 25
+      "pdf_page": 25,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15130,7 +15670,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1958acd4c1fe1151bf8d85a4a614f1e7ece5b431129be7e88b3a6d5a8389439c",
       "width": 224,
       "height": 140,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15159,7 +15700,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2c51cdf7740eea4e33822a00283107fecc07155ccded6335c7eb041c8d672fbe",
       "width": 224,
       "height": 140,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15188,7 +15730,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c0d47d85de9e13a0715e3ef7876c4f11fdf08f508a679a2a3468807f06b73952",
       "width": 224,
       "height": 140,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15217,7 +15760,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8b3326060cbfc3ad6408e77790e89ce54289238f9702273e65f9ed6999cb5540",
       "width": 224,
       "height": 140,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15246,7 +15790,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c62824fa1de2074f3dcc5adb15faecad991c19f44b58a45b2a7777794a5f9879",
       "width": 165,
       "height": 308,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15275,7 +15820,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ad6d27cdccbc3e27cf37c8e414d0cc6ad543cbf3f707396666e79e7d26ab29ca",
       "width": 166,
       "height": 308,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15304,7 +15850,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "08b46b0949d9b3627aa5551e1eabfb0df287a85414e625d6682e848ad0312b69",
       "width": 166,
       "height": 307,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15333,7 +15880,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "663e0495d7b70967a032acbde278e4ec549b01176286d9f1426bb49ee98e209b",
       "width": 158,
       "height": 272,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15362,7 +15910,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "300477b3629c756c2991d2480f6037504d0fec2083d8cb6b86aa5a97851819e7",
       "width": 158,
       "height": 272,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15391,7 +15940,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4facce367e19244ca9835f0ac63f94c58a240e0851203e735c021be4803015d6",
       "width": 227,
       "height": 260,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15420,7 +15970,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c729407176efb72fcf3885ef131f516a65c4d26f0ab805ec9f7b561eb622f297",
       "width": 166,
       "height": 306,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15449,7 +16000,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b67c7ca3e7d777dc3596dce733c9cdc8ac52be376361f7fb1c2c055ccea9ce43",
       "width": 236,
       "height": 236,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15478,7 +16030,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d50b7d1a24d29ba528251172de1f2aa66425710381fbd6304098f6b9fe72c767",
       "width": 165,
       "height": 307,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15507,7 +16060,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "de6462f5fa07bbd68fb1b666eb3ee53d9d4bb13554164e6bf3003f420ba944ea",
       "width": 166,
       "height": 306,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15536,7 +16090,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "543cea259be2e25ad6077040eeb0101e77b33478d28488eb769bb34e75bf8b4e",
       "width": 166,
       "height": 329,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15565,7 +16120,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d5d8439b6a975e66465c47447e950a2bed3f3f3b06311cdca9cc4370322185fb",
       "width": 166,
       "height": 302,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15594,7 +16150,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4aa6fce6b32ca36a9b119e06942378f9d2037c74466dc160350973dc3e16f253",
       "width": 165,
       "height": 300,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15623,7 +16180,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9b1e129458e400148cd4748c29c94ade8bcc0b9c3cfb97737794ed4ec080ad2e",
       "width": 154,
       "height": 255,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15652,7 +16210,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f0179679b1c4674d79afdaa77a314e03ae17ff085110230a5c0877972815e7aa",
       "width": 154,
       "height": 255,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15681,7 +16240,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c883fa43626bb6efced410e8857fb6e5cd7aa23a6b21a5fb0fe96e93b985e5e5",
       "width": 154,
       "height": 254,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15710,7 +16270,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "18ee16017dc7d841e8c82ad37dd59334506ae221d12675668a41322e10d1d95e",
       "width": 154,
       "height": 253,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15739,7 +16300,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "203eb0d35ca11811924fd0a4ec2c8e4470278ea5819342f25c85c68c8a1a5448",
       "width": 154,
       "height": 255,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15768,7 +16330,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0535a16f0ea008218a7a8dfca71436dbaee4bdd17afc2cd18342262f82c47344",
       "width": 154,
       "height": 257,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15797,7 +16360,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0a013e92458327062bf41ac2033339daef9c7574fba6d6f7879d0dc2cd099f28",
       "width": 154,
       "height": 255,
-      "pdf_page": 26
+      "pdf_page": 26,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15826,7 +16390,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "aaebb4bdf2f48aa69110a8d9783097f11dc2e2399441dfa526b65fd899b9c6c8",
       "width": 165,
       "height": 305,
-      "pdf_page": 27
+      "pdf_page": 27,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15855,7 +16420,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "cacbc7f8d0f036e4743ce4a1b7834253ea9fcd9de07f800bbb83fb37aa1a2b12",
       "width": 236,
       "height": 235,
-      "pdf_page": 27
+      "pdf_page": 27,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15884,7 +16450,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "965e8d2e9eb25599739bd27d251d3e82863c94dbe51af00f84d42970f5712118",
       "width": 236,
       "height": 236,
-      "pdf_page": 27
+      "pdf_page": 27,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15913,7 +16480,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7be35305fcaa67ea234ce372872e4cca4d69bb0dbc75616a0f54b1f5c3ebf6b8",
       "width": 166,
       "height": 270,
-      "pdf_page": 27
+      "pdf_page": 27,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15942,7 +16510,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6b533023310377495bcdede93e0bd88663c62d9c121c394a362007728dbfb021",
       "width": 223,
       "height": 331,
-      "pdf_page": 27
+      "pdf_page": 27,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -15971,7 +16540,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8479dadfa950a78640f47f86e40a523edaf2c0061d012a948dd05696403b7b3a",
       "width": 146,
       "height": 331,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16000,7 +16570,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "15a1b4ff2b5580555aa161aa6d50d6d17b9519fac62fbd8b70d2aab957e6ce9f",
       "width": 148,
       "height": 331,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16029,7 +16600,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ed3974e22d425c6396765d6e5b66205459cb688bb9f25495480377794b09f896",
       "width": 248,
       "height": 236,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16058,7 +16630,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5eeea3efd4402791e8523c0e76c33deab411a27e9f3286eb88fd2a9b1af31d20",
       "width": 248,
       "height": 236,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16087,7 +16660,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9e0e44251b1df6e77020a97d0647f017c5d4146aa751002175427b9f0725ac9e",
       "width": 248,
       "height": 234,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16116,7 +16690,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9a2e88a879cd9855ee3285b4c6bccf34a2b04cf539acf0fb7494068db8de8d54",
       "width": 164,
       "height": 331,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16145,7 +16720,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ef294b697743d7ea78c0864608706126c74a36a8e43445886a02b5d7fd4dc591",
       "width": 167,
       "height": 331,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16174,7 +16750,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d499e3242e8b8454377e4d46b60a1958218d2fb2a12aaecb748e2014d4300611",
       "width": 166,
       "height": 302,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16203,7 +16780,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3b9e903655a4f74e8877e93974266d931980e649875b195d7e17e4d708b5d3fa",
       "width": 165,
       "height": 300,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16232,7 +16810,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7d2ccc45216eef6f073b1f4a028067ca4a8b07e36b8fe9068a0bd2f2d7351a42",
       "width": 166,
       "height": 300,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16261,7 +16840,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "83d4d305b6327583a261b7a81d4e360df1ed83abf5ddadab730d7a76f47fec63",
       "width": 166,
       "height": 300,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16290,7 +16870,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2a26be5a8f4fff2c180d8e7303cf0435f76f7760760baadc814d8b09c09e6b07",
       "width": 166,
       "height": 299,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16319,7 +16900,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "045dfb2c866ae326f6890e68dc2b720fdc2a42cac4bb79b7a2d3f85ba67c4274",
       "width": 248,
       "height": 259,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16348,7 +16930,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "62ae564076435f047d4d9131c009738d9f4a6b633162b79249798599ed07decf",
       "width": 248,
       "height": 258,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16377,7 +16960,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8b942f4e41cd9f1a31ecd6cd856df382f5637fd9c12d24679772cd242ee26dc2",
       "width": 248,
       "height": 259,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16406,7 +16990,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d4feceaef1d90a7bfb3c18aa51f46e3b5cdddfc4527273656da45df4c90ddcfe",
       "width": 236,
       "height": 213,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16435,7 +17020,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "67819ff8cb528a085ca2e86f30db81868b6b11959866287c0f0faf660547c360",
       "width": 235,
       "height": 212,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16464,7 +17050,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "74c6ffd6bf3bfe7ed4124ed3d0dcbdf0d7f0310e8b23165a6108fcb9cfb5919d",
       "width": 234,
       "height": 212,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16493,7 +17080,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1bcd441090f12fb38d058ef6e142c0709b6cdfd4ec15d29173f89449f3bbc8a9",
       "width": 234,
       "height": 212,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16522,7 +17110,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5eadbf5a80cfef5ca861b69216eae72203b8a61c8394adff7dd5199d34c83f57",
       "width": 236,
       "height": 212,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16551,7 +17140,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "18a450ba139b5ef1c54c32b0b14256af2ab702ea251e9bff420fb895ffee6780",
       "width": 165,
       "height": 269,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16580,7 +17170,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "38063121f8e83e97860533a24d423006922678e3ec40583edc0cd8da221879fb",
       "width": 166,
       "height": 270,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16609,7 +17200,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bbf75ab5973653b13c68d41418ae0cfb6b3d5ce96fd10ba5a7ab673b7ae9d100",
       "width": 166,
       "height": 263,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16638,7 +17230,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7fd9ee89416cddee5c32900d8a224f6f466a444c97bf4020b764779017e7dd4e",
       "width": 166,
       "height": 262,
-      "pdf_page": 28
+      "pdf_page": 28,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16667,7 +17260,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a723dd57b39cd75b8e18ecb2d8ab8c42f769452476e104cf43afe773c656fee1",
       "width": 195,
       "height": 348,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16696,7 +17290,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1e5ba1112f6f879c773ccc9c31525ec88c4da92c21d2d0f6b8772a186671127d",
       "width": 195,
       "height": 351,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16725,7 +17320,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7cdf806318bdb0b661e79029fc78ffc4127bafc27b46ba10883a12bb6edd6695",
       "width": 195,
       "height": 354,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16754,7 +17350,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6348bf121b09329a6e154f4bb1fe530ce49bcf30529f251eb77416537b4c67d0",
       "width": 195,
       "height": 356,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16783,7 +17380,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1387df536bc68638ca47a74a8f859f77e79e22f2b5d038f693928366037f9675",
       "width": 195,
       "height": 347,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16812,7 +17410,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5d6348edb842196ad74bffae14a3858d189d7173ab120dbf30b74b14e52931bf",
       "width": 195,
       "height": 351,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16841,7 +17440,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "bc7c042c4e66feed94310301020f356c43c56928b89a46a6408c6cbb9111459d",
       "width": 150,
       "height": 331,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16870,7 +17470,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a20ee4f18d65100cfbfd04ffcecfdd6a34dd5b5b05ffd739cb6ac78796afc369",
       "width": 189,
       "height": 334,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16899,7 +17500,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "65ee6675fb62c9f3b3c65b8f5a3a22a950522c8baf70ff9427e5c461e91bb5a2",
       "width": 249,
       "height": 319,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16928,7 +17530,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ebed22dcb1e350e807a515860df157b48f30c4d721c8a982cec7467b61baeda9",
       "width": 232,
       "height": 319,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16957,7 +17560,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "afe618fd41c37557097cb2611796aae2a5f203a8bce14e679692d75db49d46b3",
       "width": 211,
       "height": 319,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -16986,7 +17590,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "75b8f3676adf038a9820f19e118ec0a5aac65e3fc06206a5dfcb16bc3fbf63a9",
       "width": 224,
       "height": 244,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17015,7 +17620,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8bd7eb9adeac1b470f52f587e35c3be678bd0ffe5f6dd5ffece2ab3df3d1a783",
       "width": 235,
       "height": 213,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17044,7 +17650,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e69545e120ae2eeb79692933f8c10484962da09fb43cf34a918bc584e00c9226",
       "width": 234,
       "height": 213,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17073,7 +17680,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a8a810f50e0c6414884939c0314bd1863d31b5a690fde1f4b8ae9f7c261a2a89",
       "width": 224,
       "height": 280,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17102,7 +17710,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "be96c3a04a9cc2c5eb0d794d0790fcbfe68e11b6cd3de9fc25d63b01d8289eb1",
       "width": 224,
       "height": 278,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17131,7 +17740,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4f029b927bba6a261d864e3800b0c0ea980dfdead830233268a9b6873451c81a",
       "width": 225,
       "height": 275,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17160,7 +17770,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "fb6213c45df3a67b909cb0398a49a336719b114d190ba04facc10eae5ec5fdbe",
       "width": 224,
       "height": 280,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17189,7 +17800,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f0a338b08505c53155656bee78a7c56bb145494d59f0f9bd6ff0b7eace3aa2b7",
       "width": 254,
       "height": 244,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17218,7 +17830,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5e0431fe3ca9c537f7661988eb0b9b585fffe7bd2a2a311b6b257ece916d77cb",
       "width": 254,
       "height": 248,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17247,7 +17860,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d9738da3bc1348b05f017a77be69c07c1b10c6da03abd0f6b9b230178d570322",
       "width": 254,
       "height": 248,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17276,7 +17890,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f0dd255950a87ce538b77664836ab2753c4f86dd002b1b1e4e4d7812d763ad9f",
       "width": 224,
       "height": 213,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17305,7 +17920,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "892656b14e12b7b05ee023940bad808bb94515a09080e9138904f98d44c281bb",
       "width": 254,
       "height": 244,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17334,7 +17950,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "dbdcdb3c7d3deb9e2d9550320d6be6e4143b0b51be45a1571674402f46a733b2",
       "width": 254,
       "height": 248,
-      "pdf_page": 29
+      "pdf_page": 29,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17363,7 +17980,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a99ccc795b0d6b0d6dfd56851887edfa03f249871552a49cc0566596c05136b2",
       "width": 254,
       "height": 275,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17392,7 +18010,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "46ac55988cdbb0c93dbe64594abd3b5ba875e8f6f3bdc43d309a8a3ad86d5f83",
       "width": 166,
       "height": 283,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17421,7 +18040,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2682208883ad1360f4cbb6b2020c27873b4ecc217c382f0a34f48ced8b868784",
       "width": 224,
       "height": 250,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17450,7 +18070,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2e14836003b1200dc3fbf8044a1047b144567c5dc173ebc3aa0c16da28c6fd87",
       "width": 154,
       "height": 331,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17479,7 +18100,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b3f169b13cc589e2b6f7f8a7001a551daa7cb3ac144a954a662010eadf6ea043",
       "width": 224,
       "height": 249,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17508,7 +18130,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5c1c5fe7112a56fe66a92a87c022262954f7f2994e354dab3ae200883a236440",
       "width": 150,
       "height": 331,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17537,7 +18160,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "edc9b3863d32482e35400cd74c6d136a36357ad54f37edc9e0d10f788bc6d1b1",
       "width": 166,
       "height": 279,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17566,7 +18190,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ff56eb4f14b8fa0d16501bd6da79fae7705764c033b7559d3574df9cfc41e2b4",
       "width": 224,
       "height": 246,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17595,7 +18220,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b2e703df8371fa6aa478f338e71669c91367963fcf44e2c8725b9077906fa143",
       "width": 165,
       "height": 328,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17624,7 +18250,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d962c5555a7811b093c8f8d39af47c386e44118c5f2696243c342e1a4a3b7901",
       "width": 224,
       "height": 243,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17653,7 +18280,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "00117487c64c25fa6d4b85017b0113750855ca02ccc2fb7a75839a58ff236a01",
       "width": 164,
       "height": 331,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17682,7 +18310,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8910f753d195b7d6d363223c1b8df1e9a05c4313069a061adebe8b16e68002a7",
       "width": 218,
       "height": 250,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17711,7 +18340,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "426b0c9f7de829274e2414c006654adb0e3cc3a4b00c3aaf5aa5afe736c2707e",
       "width": 224,
       "height": 233,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17740,7 +18370,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "aea95bc4cf6335a94012de8634dfaac01b09a6562e9b878a3a4c2ce5fcbf80b7",
       "width": 224,
       "height": 223,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17769,7 +18400,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e538b34ef4574375896a9663788c845c2a8fc18c906ebab379e8df5f90fb7e13",
       "width": 189,
       "height": 342,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17798,7 +18430,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "73ccb8cbdb3fc61daa48f203f47e0ab8245c50b2bd6d4dbce6f66a88c5f2283f",
       "width": 194,
       "height": 346,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17827,7 +18460,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "92a543d2618d76e508553b59f9d81c66b045ceec8698461684731ae8ffc6b5b0",
       "width": 183,
       "height": 334,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17856,7 +18490,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "94acecd9d4116b72d631e7d6d9f40f3210b9873bee1b18f8bd1ba227cade27af",
       "width": 195,
       "height": 351,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17885,7 +18520,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2caa9b68ec2e0d9f170e78107874523dffc59ce409f20c212c37e415ed148748",
       "width": 195,
       "height": 347,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17914,7 +18550,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ccac8dfea91bc9d369b937d2dfd4ac48f0cacd87f503b857d403dcf743aa91b4",
       "width": 188,
       "height": 342,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17943,7 +18580,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a11fe99ec15e50ff3ec1bb349ed0f96245c0ce54155d78977a0457d075d12ceb",
       "width": 248,
       "height": 152,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -17972,7 +18610,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f9b72b9a12543118a0049a9a5b37b62a70b92025767f15180fe80bca3047bdc3",
       "width": 166,
       "height": 247,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18001,7 +18640,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "04eeeba5c82333f1f2931a320109b969d67bfbdf9e7dc548c7d6c61529352bdb",
       "width": 166,
       "height": 279,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18030,7 +18670,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c5c7f55843fa04fda78d383850232a66cde25ecb90b42beeb4e0cbff2590a5e1",
       "width": 166,
       "height": 264,
-      "pdf_page": 30
+      "pdf_page": 30,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18059,7 +18700,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a08593f188f21ae9b2d1def17ae1ca799266ba2611f60a96ed2be9a953cc8b04",
       "width": 165,
       "height": 266,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18088,7 +18730,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "dc4ffe194945f3f6eec8430f7685d4f4f79611fdbee26dd0438a434794ee5f5e",
       "width": 165,
       "height": 266,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18117,7 +18760,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1bf21d33c772af0fdb3613ea0cbbdc46737cd32f873b83db567ba931d6d91181",
       "width": 224,
       "height": 229,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18146,7 +18790,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b77b0615cbb6f596b227aabf6b1a9edb25ef63b1cba0d694b215215400af375e",
       "width": 224,
       "height": 229,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18170,7 +18815,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2448-2026.jpg",
+      "sha256": "89feb41c1c7afd27e836d980b99c897c2fc7fd3bf6c2cad51bd13f9da4389597",
+      "width": 337,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "2449",
@@ -18193,7 +18845,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2449-2026.jpg",
+      "sha256": "337be687139e142a4e7b6cf3f1b8f3307cd36df440377b4eb5943e989edc0797",
+      "width": 337,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "2450",
@@ -18216,7 +18875,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2450-2026.jpg",
+      "sha256": "fbbb7fe8e7a5408d79a1c7159963d85636f8ea219d309e43cda9ddb351d54c9c",
+      "width": 338,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "2451",
@@ -18239,7 +18905,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2451-2026.jpg",
+      "sha256": "81d474c3a81a670d6280151ef570abe7d719dbc7bab4414da4348c4de9d6f40f",
+      "width": 337,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "4071",
@@ -18267,7 +18940,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b39d88b2242b7f0b20a510aaf85b22cd6db4f433573a3932940621508ee08a2d",
       "width": 152,
       "height": 331,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18296,7 +18970,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "89136340d8f235b0c27f1091f4d0a864e70c6b5b015a011673b7d5eb0355a23f",
       "width": 162,
       "height": 331,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18325,7 +19000,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "38d0c09e3ecd74767802ef8a2e9d4c8c27cecb30c63290bf0bd44a3917b47ff0",
       "width": 162,
       "height": 331,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18354,7 +19030,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a4b34f4cd0d78e89bc15d9f30e0bb75650f93f2f2845ebffbd15cd40b8fdce28",
       "width": 166,
       "height": 265,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18383,7 +19060,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b2f2f772e30587ce464de0b6ba755f811eda3b4f28c3626040b369b09fbbd0f1",
       "width": 111,
       "height": 331,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18407,7 +19085,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2959-2026.jpg",
+      "sha256": "36344adceb7a48e2c37f0cf7a906302e6045335ac0ba98c7f66faa617561cb87",
+      "width": 337,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "3862",
@@ -18430,7 +19115,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-3862-2026.jpg",
+      "sha256": "933f275f670a8e9ac9c7e85b09f46f91952146f50032af6fc58cec548b96833e",
+      "width": 338,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "3863",
@@ -18453,7 +19145,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-3863-2026.jpg",
+      "sha256": "45c60f8031748d1ad24b4a3c63c41885eefe71a26f23f30eff71ad235ca9d5c2",
+      "width": 338,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "2960",
@@ -18476,7 +19175,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2960-2026.jpg",
+      "sha256": "4a1c64065a1d4d2a9f74e6c09ef6c60b81dc277580fa6b07edf7de1a01027ba3",
+      "width": 337,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "2622",
@@ -18499,7 +19205,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2622-2026.jpg",
+      "sha256": "e68360752396093b3c6c835c558e84e0812c8d1c633fcd537cc48db93e92400b",
+      "width": 337,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "2443",
@@ -18522,7 +19235,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2443-2026.jpg",
+      "sha256": "9caeae3413d7169b2b179c05c1687c9bdaeedba1d8276278a3cebc7bbe57dac4",
+      "width": 337,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "2444",
@@ -18545,7 +19265,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2444-2026.jpg",
+      "sha256": "12e57f8b710f801750ffa77fcb823913cb67e057e095a183b1ac785d452de17d",
+      "width": 338,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "2623",
@@ -18568,7 +19295,14 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
     "official_catalog_price_tax_included": null,
     "official_catalog_price_extraction_status": "SOURCE_EXTRACTED",
     "pdf_page": 31,
-    "image_match_status": "LOW_RESOLUTION_REVIEW"
+    "image_asset": {
+      "file_path": "assets/catalog/products/tsn-2623-2026.jpg",
+      "sha256": "02275880c653f5516e648c7c5ef3799424522fc4e89e701f0b0b8ebea4159b44",
+      "width": 337,
+      "height": 417,
+      "pdf_page": 31,
+      "extraction_mode": "SOURCE_CELL_FALLBACK"
+    }
   },
   {
     "code": "4072",
@@ -18596,7 +19330,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "06e131feeed5ef4100b1dc3569d4360b657b2e930aefe0f860b00aede254acc8",
       "width": 189,
       "height": 342,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18625,7 +19360,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "076c63c084087380f05ec2f2bb9d7f6be2a50e03cbddf3a6c28ddd52175fd1bb",
       "width": 177,
       "height": 321,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18654,7 +19390,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3833b6f4c63851ae40d72e0a0335eb9ddaba4d0a2386a5e0bc2d35053c76f82a",
       "width": 189,
       "height": 345,
-      "pdf_page": 31
+      "pdf_page": 31,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18683,7 +19420,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c7e41d57ef165841990ffe164dad1cf6bcda05fa71e0bbb9b41da56c678ef187",
       "width": 225,
       "height": 274,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18712,7 +19450,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "912aafb8c04ad8b99b9e34d6072209cdefd771315a3e81c6631f629890aa1871",
       "width": 248,
       "height": 264,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18741,7 +19480,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "272b992d56c5745ae4d191989d253307146a2098ee3a7fa238aa3721d1275fe2",
       "width": 248,
       "height": 258,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18770,7 +19510,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "aca8c20e7b09033b19c20a5900a39924c7fb74bebaaa493e2058c0afed57c257",
       "width": 248,
       "height": 279,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18799,7 +19540,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3e3452e55051a2d3bf59980439f3d426ef8c0cb0130966f6df04bbd3ae9adab8",
       "width": 224,
       "height": 249,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18828,7 +19570,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b13dae9dcb587cd865c8f2056df36279303cf0a1df0eab19a18079a8a6a5ba14",
       "width": 236,
       "height": 213,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18857,7 +19600,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6e2705539136bc220eab5fe4df6e62355b2ebf02bd4287457025cc89e4563384",
       "width": 224,
       "height": 243,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18886,7 +19630,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "81e8fc8682e907d738046802e088eb15a2e523f1ddd461740f76abf0100a762b",
       "width": 166,
       "height": 295,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18915,7 +19660,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b3b82d297501800449d073b5a3959787c3836367c5fb75b46279545ee28e8a0f",
       "width": 165,
       "height": 242,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18944,7 +19690,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1c4808ef5ffd525d5175276f4ad9de3f97ebb1f54556543c3edd9657a65fbeb1",
       "width": 178,
       "height": 331,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -18973,7 +19720,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d259cd64f470242ae2dcdd6c505315b009b99ec264cef751bdb96d9efed46080",
       "width": 178,
       "height": 331,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19002,7 +19750,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9ba338b0e14e8286363cb827346aabc55100c1d64a1a991f891cba717ce7defe",
       "width": 210,
       "height": 339,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19031,7 +19780,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "74dce442bae4ce18692a7520eec849f2545d445f76e1f28c5b2ba3347ba58915",
       "width": 248,
       "height": 244,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19060,7 +19810,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e0c2732fd5580896eb95a6622958af6d50f77008c647d7e50b011c3d3eb574ca",
       "width": 248,
       "height": 247,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19089,7 +19840,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2425d36e2c4164470300ca3089e0860126e5306ac96013603e611a8ed8192bd5",
       "width": 248,
       "height": 243,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19118,7 +19870,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "470893a66eabbd4ca53f28aa872febe5900b9ac82493ad14c3cdd3988fc288dd",
       "width": 248,
       "height": 244,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19147,7 +19900,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2add4e15c6ac0dfb1bc0c4277c6d71b3391c387a8464156aa9dccf33452eb67d",
       "width": 211,
       "height": 214,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19176,7 +19930,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d576c2a5ced18fac6588737211567dd2cb00d3908dc40e31209ae36eb95ef260",
       "width": 242,
       "height": 236,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19205,7 +19960,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c15c59013a769bf3677f37d6ce4eb16dac832b6f13acce1bdd04b5bf75e900b2",
       "width": 166,
       "height": 276,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19234,7 +19990,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "69fafa6722355892b69156e25240bf2b3fafb4e88d6dee5d9df52bff15d0d7d7",
       "width": 225,
       "height": 222,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19263,7 +20020,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "84dfc7c4e377ef9ae2708ba5354fb4259a75574742cd4a8e3a33483a090572fe",
       "width": 224,
       "height": 239,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19292,7 +20050,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b6f668d5f815342fd4fba09d67983ba7b745e168990f68ca065792ce49b96c92",
       "width": 224,
       "height": 239,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19321,7 +20080,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7df849b53c98bdefb5f2dde92dafefeca0d9b3f74d6c3f5d89e7b79354d0efd8",
       "width": 224,
       "height": 240,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19350,7 +20110,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f65e423ebae2164f0e818d4d9a630ff2428b7fd529efe5e31606e4fe4734d34c",
       "width": 224,
       "height": 239,
-      "pdf_page": 32
+      "pdf_page": 32,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19379,7 +20140,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ea57e5946e98db55e11c4a28cf1084aa84760bebd363e55654395a7432a98cc0",
       "width": 225,
       "height": 239,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19408,7 +20170,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "25c01d2258f39d5afc7d0ad18503fb55abb3103474a0327f3aeac33901663b89",
       "width": 165,
       "height": 320,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19437,7 +20200,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "87efdf1756add7f41a370d9bc77571657a1f8b56c9c55c801531310b3905bec8",
       "width": 165,
       "height": 306,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19466,7 +20230,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b5b527bc6e250f03eb288a9cc0493065a1f77d96bdac7c9efc4a0826b2efd7ce",
       "width": 166,
       "height": 307,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19495,7 +20260,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f12ad67e0b87c76bacd336be79269643c38dca634b011b96cb8dc53d2fe314c4",
       "width": 225,
       "height": 251,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19524,7 +20290,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "369408fc56bc703f53a03da82472754060e6e76678da016a5fdeaaaf717b6884",
       "width": 165,
       "height": 357,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19553,7 +20320,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d2ed5e9002812991234e305a838489165e742002328ff73dc57f6b5c0ef63dfe",
       "width": 224,
       "height": 249,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19582,7 +20350,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b10ed31254fd72c9a664cb63c445e6b20370e10662514ed43e439da1964325d0",
       "width": 166,
       "height": 325,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19611,7 +20380,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "881f4f1e1dcf4659c2fd791480e4fa5df19edb889a9a2af85df5e2cf3df33ca4",
       "width": 225,
       "height": 244,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19640,7 +20410,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8b2511eee31a4a0ca961ee016e3cb79057c435ab079e1e6cabe41a786f03c5d0",
       "width": 164,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19669,7 +20440,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a28057a16d1dbd664541b9decab80d2c9b43044b566b319df7c7571f40512eb3",
       "width": 224,
       "height": 245,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19698,7 +20470,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2658c3d92c2947cd4d96ca4b2e0d693070e77ec0c092317606aa563671d054cd",
       "width": 154,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19727,7 +20500,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "16dd6ae07c9eecc218ac817bb5a01128cba8815d378c12ee2081c1ddc822a7d9",
       "width": 167,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19756,7 +20530,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ce76531662ec510c5f24f275e3edea7836cde90c79e48f25319fcab22cbc9498",
       "width": 167,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19785,7 +20560,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5ecdebd056a07f2d8106f2e7cd4e79e5d5f4a3208d9de4afb8c84930e7fa8c6e",
       "width": 168,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19814,7 +20590,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d00afb49045e35fb70bba4a414db86ffbb419a2aad0298eb55330c62ea4c44f5",
       "width": 167,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19843,7 +20620,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "82bdcd7f51e3f4a390a8b5701259aee848d06c02f623aca505096fd1bf4ab7da",
       "width": 167,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19872,7 +20650,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "62bd047c6a077331a49b75413a683c8e6a7b250777a6d996ba23f86673682715",
       "width": 167,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19901,7 +20680,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9c3943ee712d552c3b8d2cf576ee90f7cc91482b02ac5c00e5906395f473745a",
       "width": 167,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19930,7 +20710,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1bb353934a61ea3510b185eb5f3ccec6fbd39ad26f21de5da70d271140e31a02",
       "width": 168,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19959,7 +20740,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b196e6a255f6d7ca154eaf840cf743aa6ff4b7f49fe218a103b1edd4ca152a39",
       "width": 167,
       "height": 331,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -19988,7 +20770,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "557b4a18f0548d7f0dd5584f194f18aa5d6c1c2425af2cb36e21e50ff5c4855f",
       "width": 224,
       "height": 159,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20017,7 +20800,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0d9d924483abfdcb23eac04fdd573089fc0f2e400fe2ee621d67fc053a35fb0e",
       "width": 224,
       "height": 160,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20046,7 +20830,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7d940ffafe9a4341efca26111f3858b1902ec81e680dfffcc962bd1365d785a2",
       "width": 166,
       "height": 329,
-      "pdf_page": 33
+      "pdf_page": 33,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20075,7 +20860,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a4fe8506ad6e0e2313f47c2cc5ece2f92a095f31d108378e567f27672839f126",
       "width": 164,
       "height": 331,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20104,7 +20890,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "56b700bace5eee38d31621996da30658c19d85695eda41996c4cfcf361f1bc77",
       "width": 165,
       "height": 331,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20133,7 +20920,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "01c760548642e97dcbc44b2d5f92efd16b6d5025effaa47c208e4fa7d4d47967",
       "width": 162,
       "height": 331,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20162,7 +20950,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "18b1089a9838d40d078624111eed01747d6ecccb42a901cb333aa61cde8afde2",
       "width": 210,
       "height": 331,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20191,7 +20980,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6d7554f86f5382802259650dee0bac0e74ecfc83cfdc8cd5f26c3033f144a8d3",
       "width": 177,
       "height": 322,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20220,7 +21010,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b2509000fd63d3fa4fef25885aeb1b88c1c5e94ff3e0a3440d4e99f07e78d3fe",
       "width": 177,
       "height": 323,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20249,7 +21040,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "95c43719c9751c7dcc0bc8766b92d0f24094ff2a5699bccd4c9744dc4943812d",
       "width": 136,
       "height": 331,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20278,7 +21070,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "8d513e153ba4302ad796f3f4582c75ec1f3575144ada63dbaafb021a5592a20b",
       "width": 136,
       "height": 331,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20307,7 +21100,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0ea09ff4c8a34318542bdb18d078cc67fc43fc4589391378305ee81d54dabdf4",
       "width": 135,
       "height": 331,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20336,7 +21130,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "befa922d120e00e1babac0871fcf03ea4e3b957a0fad208ec79afaaedf572f6f",
       "width": 177,
       "height": 331,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20365,7 +21160,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "4ad9189bb76582f761285c1463d9e6daf60d665371b7ee0b80c9dd8d11af170e",
       "width": 178,
       "height": 328,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20394,7 +21190,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "43d68c08757e988bdfabc4f9626f2a83d3df596dee8b587756dacc360c622986",
       "width": 192,
       "height": 355,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20423,7 +21220,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "634fd2aacff6c8426973290c7cdcf9e39836e6e8e12518a37e770db6374556c1",
       "width": 192,
       "height": 355,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20452,7 +21250,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f375d6aa6534814e0c2ab7986e823ae51f5fd19d3590158bb8a3d77abd8c02f8",
       "width": 193,
       "height": 355,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20481,7 +21280,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "497c47aaf8ea2a7ea6298f249e354de8080d334f928436b6cfcddfaaeed07616",
       "width": 166,
       "height": 278,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20510,7 +21310,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "0680749a6c682b2221fd7d5bc16e8a5ab633c9f69421b644f8cb22bce84ad9c1",
       "width": 224,
       "height": 240,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20539,7 +21340,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a81afa7377a0fac670ffb1ac8c65d67f05e5697aa77a62c228dcdb62ae32b23c",
       "width": 165,
       "height": 294,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20568,7 +21370,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "272d51d504182e21486b2f59f338ed9ead351c7f4e995bc53151cc1680e30dfb",
       "width": 166,
       "height": 258,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20597,7 +21400,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "efb3e4efb687bb7a933a1e8003814309f4018d3eadadec1dbfaa3a426bba0d37",
       "width": 166,
       "height": 262,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20626,7 +21430,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d567e76ff6dd3c4621941c8fe95fd85c43b798c6fe8d1edd50ea017db82ecfd6",
       "width": 156,
       "height": 331,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20655,7 +21460,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "df7bb3f7a5322e5bb6c20330b1b345317ea7aed9d5532fb4da5f21885573cf58",
       "width": 224,
       "height": 268,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20684,7 +21490,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7e19a673ad6e8532011f194993e30dac31e5be35b6470e570d1339d53e728fdd",
       "width": 153,
       "height": 330,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20713,7 +21520,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "116d4156cf20ed6868ab28f4d90eca38a97f6fe35af436e955e4996a61ffde8e",
       "width": 152,
       "height": 330,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20742,7 +21550,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "fc065ec721286de5e0e50878caea50a6e57d8d079e8e5ce2abb3f3a631ce7b9f",
       "width": 224,
       "height": 245,
-      "pdf_page": 34
+      "pdf_page": 34,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20771,7 +21580,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "5800a3ee1e73ede16014efa3c2219854ecb23f80f3a17f8966f403d5a44f89ba",
       "width": 165,
       "height": 331,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20800,7 +21610,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "06f124e3241f2c541b28f8ac8c6da8e677a189f07a483749944af5c39aed7e13",
       "width": 224,
       "height": 248,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20829,7 +21640,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "72e537249524dd88da244b78d9f7b4fa9924bf12237da0c22816fbc559410689",
       "width": 224,
       "height": 249,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20858,7 +21670,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "483b8c6a482f0e0c16076dfbdc5df059a146ac58c646185a5678773f909fefad",
       "width": 152,
       "height": 331,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20887,7 +21700,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "79815fc2ec57cb231a12734fc6691318c0d9c2a978f1da8a759816f8383dafbb",
       "width": 165,
       "height": 274,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20916,7 +21730,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ba8fd8baa9f05fde62a903a17ba6cb01799fdd2a08cfce76c6bc78e8fc6b2fc5",
       "width": 224,
       "height": 241,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20945,7 +21760,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f46f3202b6ba8bcdcd31454bd5cefe895292ee4ee5f20ef25b64945a5e2995f4",
       "width": 166,
       "height": 331,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -20974,7 +21790,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "402932bca0ab5a0f588f039a65d100b6994d3f75b5526e90897151c2c3f9515d",
       "width": 236,
       "height": 188,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21003,7 +21820,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "3641299f9618a10b4000d6cb1258af16406b42bfb6bedcc4462e9290c679dc18",
       "width": 225,
       "height": 245,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21032,7 +21850,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "d4bf18a478d08735f7cdc7154c7741ae42876dc2349e6198a84912c680dd3485",
       "width": 224,
       "height": 247,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21061,7 +21880,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7a7908e209a97cdd40d135195159062a1f315a586a83a0900a46b8109fb3f7b3",
       "width": 224,
       "height": 251,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21090,7 +21910,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "103dafa90a48a6bb7ef308736230bcc2247219f6b652c2cf96c3547d97e3b1e5",
       "width": 224,
       "height": 339,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21119,7 +21940,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b7541d4bb7a43e9a6bc646bd73b846a4c7b0e26d8dc4418aa96d5d3b3e64e314",
       "width": 225,
       "height": 242,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21148,7 +21970,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "7c2c943fef1467a6ee105eb22fbb6c38839f5c47c3c27b96b30fee74de38a1f8",
       "width": 165,
       "height": 331,
-      "pdf_page": 35
+      "pdf_page": 35,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21177,7 +22000,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "256fcc7fba20e7924ed10ca12801c5549b3d75df2c7a6333f34a1689e6e8dea7",
       "width": 224,
       "height": 127,
-      "pdf_page": 36
+      "pdf_page": 36,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21206,7 +22030,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "b47d0ec3b42435d8117df960a97919bc236b77f40fd4df94e5c91d49d1088231",
       "width": 248,
       "height": 249,
-      "pdf_page": 36
+      "pdf_page": 36,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21235,7 +22060,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "9d5fdb2718c0ae6b5d438a6fbe08bd7fc06fb98daf174547f954cbbb508c6b1f",
       "width": 248,
       "height": 249,
-      "pdf_page": 36
+      "pdf_page": 36,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21264,7 +22090,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "6896b725d09944c6163051de55efae400d9fd6440dc60b5781686a1c72f66ea0",
       "width": 248,
       "height": 250,
-      "pdf_page": 36
+      "pdf_page": 36,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21293,7 +22120,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2343ec9a2e59108e38c5312acda220c029a1474fd83b1452be31b333369d10d9",
       "width": 248,
       "height": 251,
-      "pdf_page": 36
+      "pdf_page": 36,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21322,7 +22150,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "69e6505f7ac536f0c134a04e7bb5b01c44fd39ccbaedcf10c6c60d63499e3ee5",
       "width": 248,
       "height": 249,
-      "pdf_page": 36
+      "pdf_page": 36,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21351,7 +22180,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "2e28c6559fb72966692abb54ab8dfd51fe840ae20c97a80e22cff56b24805882",
       "width": 224,
       "height": 127,
-      "pdf_page": 36
+      "pdf_page": 36,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21556,7 +22386,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "09ffa54d82abceea54fc8860c4222164dfdd79319b2fc4e09ade587c51910d07",
       "width": 260,
       "height": 265,
-      "pdf_page": 36
+      "pdf_page": 36,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21585,7 +22416,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "e7164b07559c05b61d250b4d31b968897b34e1071c3b0a5a4b11d805e39e952b",
       "width": 260,
       "height": 258,
-      "pdf_page": 36
+      "pdf_page": 36,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21614,7 +22446,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "665120e34bee198f0c25a471f162d3f768b1d6d2a860543a5115df59b1da4a91",
       "width": 225,
       "height": 140,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21643,7 +22476,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "ca1de0eadc925e3e58bf506791fa0c0f0f455f6671c2b902f31aad237afa8348",
       "width": 224,
       "height": 140,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21672,7 +22506,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "22169fc52dd9494c2aafc3b2e5a3ca1935df0c9b7a8b4081637f9ae1da39e148",
       "width": 224,
       "height": 140,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21701,7 +22536,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "72beca9f66759f427b496c15eb976e6561989aff11fadcd0a7002643c5fd977f",
       "width": 166,
       "height": 316,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21730,7 +22566,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "12a6238d62c041146848f4fc1f697198521c8fedb8bfd1e0464a4e6785795f4d",
       "width": 133,
       "height": 331,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21759,7 +22596,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "df9188f30f91455e68e97ca993ca4187e96f1e61913d487d696c00903f540a2f",
       "width": 165,
       "height": 252,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21788,7 +22626,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "c58996b2b786c73d2c190682ca839f315d4cfe1707165515a1cac2f89d68e9d5",
       "width": 165,
       "height": 252,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21817,7 +22656,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "f004365cdbed1df7344d7cc7f35a037618de0b23de706eb9c96043d285589d32",
       "width": 166,
       "height": 263,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21846,7 +22686,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "a0c02c1a1fb339054630598751a2023766fceae3270fe8a08656e3bcdf93ff17",
       "width": 165,
       "height": 264,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21875,7 +22716,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "dea0cba62b19b99f4848aefbb5e1d0d440645b5ba3d1c8c75bfcdca1e19879b1",
       "width": 165,
       "height": 264,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21904,7 +22746,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "12d435e3d5a6fb9fdb0f61e3b55c45eb0d1e7634e569857dfd0552beee3e98c2",
       "width": 165,
       "height": 265,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21933,7 +22776,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "69fae32ec0a500a54eb579d1dad7e719abcd9b3564c6a5270a308770c7fab19c",
       "width": 166,
       "height": 264,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21962,7 +22806,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "79617d33a844ffdffc3283ccfa1994840f92ccd85a583c6c5cc64f70111febfb",
       "width": 165,
       "height": 286,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   },
   {
@@ -21991,7 +22836,8 @@ globalThis.KISARAGI_TSN_2026_SKUS = Object.freeze([
       "sha256": "1c96a4bd6791fdf06db0754e9fb7dc7a2ab464ba9dc3ced7ae7cbeda97d6c3a7",
       "width": 165,
       "height": 286,
-      "pdf_page": 37
+      "pdf_page": 37,
+      "extraction_mode": "PDF_IMAGE_OBJECTS"
     }
   }
 ].map((product) => Object.freeze(product)));

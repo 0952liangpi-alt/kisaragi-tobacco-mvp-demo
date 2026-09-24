@@ -6,7 +6,7 @@
 }
 
 .order-actions button {
-  min-height: 40px;
+  min-height: 44px;
   border: 1px solid var(--gold);
   padding: .55rem .75rem;
   background: transparent;

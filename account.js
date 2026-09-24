@@ -5,11 +5,14 @@
   const client = () => globalThis.KISARAGI_COMMERCE_LIVE;
   const yen = (amount) => `¥${Number(amount).toLocaleString('ja-JP')}`;
   const orderStatusLabel = (status) => ({
-    DRAFT:'確認待ち', PENDING:'処理中', PENDING_PROVIDER:'外部手続き待ち',
+    DRAFT:'仮注文保存済み', PENDING:'処理中', PENDING_PROVIDER:'手続き待ち',
+    AGE_VERIFICATION_PENDING:'年齢・本人確認待ち', AGE_VERIFIED:'年齢確認済み',
+    AGE_VERIFICATION_FAILED:'年齢・本人確認未完了',
     AWAITING_PAYMENT:'お支払い待ち', PAYMENT_PENDING:'お支払い確認中', PAYMENT_FAILED:'お支払い未完了',
     PAYMENT_REVIEW_REQUIRED:'お支払い確認中', PAID:'お支払い済み', FULFILLMENT_PENDING:'出荷準備中',
     READY_TO_SHIP:'出荷準備完了', SHIPPED:'発送済み', IN_TRANSIT:'配送中', DELIVERED:'配達済み',
-    CANCELLED:'取消済み', REFUNDED:'返金済み',
+    CANCELLATION_IN_PROGRESS:'取消処理中', CANCELLED:'取消済み',
+    REFUND_PENDING:'返金処理中', REFUND_IN_PROGRESS:'返金処理中', REFUNDED:'返金済み',
   })[String(status || '').toUpperCase()] || '確認中';
   const memberStatusLabel = (status) => ({
     ACTIVE:'利用中', VERIFIED:'確認済み', PENDING:'確認待ち', PENDING_VERIFICATION:'本人確認待ち',
@@ -20,8 +23,12 @@
     SHIPPED:'発送済み', ACCEPTED:'受付済み', IN_TRANSIT:'配送中', OUT_FOR_DELIVERY:'配達中',
     DELIVERED:'配達済み', DELIVERY_FAILED:'持ち戻り', RETURNED:'返送済み', CANCELLED:'取消済み',
   })[String(status || '').toUpperCase()] || '確認中';
+
   let capabilities = null;
   let session = {authenticated:false};
+  let sessionReachable = false;
+  let refreshGeneration = 0;
+  let externalRefreshPromise = null;
 
   function element(tag, {className, text, type} = {}) {
     const node = document.createElement(tag);
@@ -42,97 +49,75 @@
     node.textContent = message;
   }
 
-  function setServiceState(state, title, copy) {
-    const status = $('#serviceStatus');
-    status.dataset.state = state;
-    setAnnouncementState(status, state === 'offline');
-    $('#serviceStatusTitle').textContent = title;
-    $('#serviceStatusCopy').textContent = copy;
+  function ordersFrom(payload) {
+    if (Array.isArray(payload)) return payload;
+    if (Array.isArray(payload?.orders)) return payload.orders;
+    if (Array.isArray(payload?.items)) return payload.items;
+    return [];
   }
 
-  function setLayer(selector, state, title) {
-    const layer = $(selector);
-    layer.dataset.state = state;
-    layer.querySelector('b').textContent = title;
+  function isServiceUnavailable(error) {
+    return ['NOT_CONFIGURED', 'OFFLINE', 'TIMEOUT'].includes(error?.code) || Number(error?.status) >= 500;
   }
 
-  function renderProviders(documentData) {
-    for (const providerId of ['ekyc', 'payment', 'carrier', 'email']) {
-      const card = document.querySelector(`[data-provider="${providerId}"]`);
-      const provider = documentData?.providers?.[providerId];
-      const ready = client().providerReady(documentData, providerId);
-      card.dataset.state = ready ? 'ready' : 'missing';
-      card.querySelector('b').textContent = ready
-        ? '利用準備確認済み'
-        : provider?.configured
-          ? '接続済み・最終確認待ち'
-          : '契約情報待ち';
+  function authAvailable(mode) {
+    if (!capabilities || !sessionReachable) return false;
+    return mode === 'login' || client()?.isActivated(capabilities) === true;
+  }
+
+  function authUnavailableText(mode) {
+    if (!client()?.configured || !sessionReachable) {
+      return '会員サービスに接続できません。時間をおいてから、もう一度お試しください。';
     }
-  }
-
-  function renderBlockers(readiness) {
-    const host = $('#activationBlockers');
-    host.removeAttribute('role');
-    host.setAttribute('aria-live', 'polite');
-    host.setAttribute('aria-atomic', 'true');
-    const missing = Array.isArray(readiness?.missing) ? readiness.missing : [];
-    if (readiness?.ready === true && readiness?.activated === true) {
-      host.replaceChildren(element('li', {text:'オンライン注文の受付条件はすべて確認済みです。'}));
-      return;
+    if (mode === 'register') {
+      return 'オンライン会員登録は現在受付準備中です。受付開始後、この画面から登録できます。';
     }
-    const labels = {
-      ACTIVATION_DISABLED:'オンライン注文受付：開始前',
-      LICENSED_PREMISE_NOT_CONFIGURED:'通信販売許可・許可営業所ID',
-      LICENSED_PREMISE_ACCEPTANCE_UNVERIFIED:'通信販売許可・許可営業所情報の最終確認',
-      PAYMENT_WEBHOOK_NOT_CONFIGURED:'決済結果通知の安全設定',
-      SHIPPING_RATES_NOT_CONFIGURED:'承認済み配送サービス・運賃表',
-      SHIPPING_RATE_ACCEPTANCE_UNVERIFIED:'配送サービス・運賃表の最終確認',
-      DEPLOYMENT_SECURITY_NOT_CONFIGURED:'公開環境の暗号化・バックアップ・監視・アクセス制御',
-      DEPLOYMENT_SECURITY_EVIDENCE_STALE:'バックアップ復旧確認の更新',
-      DEPLOYMENT_SECURITY_ACCEPTANCE_UNVERIFIED:'公開環境の安全確認',
-      MERCHANT_PUBLICATION_NOT_CONFIGURED:'公開経営情報・許認可・規約',
-      MERCHANT_PUBLICATION_ACCEPTANCE_UNVERIFIED:'運営者情報・規約の公開確認',
-      ADMIN_IDENTITY_NOT_CONFIGURED:'管理者ログインとデータ受信経路の安全設定',
-      EKYC_NOT_CONFIGURED:'eKYC事業者の契約情報',
-      EKYC_ACCEPTANCE_UNVERIFIED:'eKYC事業者の利用開始確認',
-      PAYMENT_NOT_CONFIGURED:'決済事業者の契約情報',
-      PAYMENT_ACCEPTANCE_UNVERIFIED:'決済事業者の利用開始確認',
-      CARRIER_NOT_CONFIGURED:'配送事業者の契約情報',
-      CARRIER_ACCEPTANCE_UNVERIFIED:'配送事業者の利用開始確認',
-      EMAIL_NOT_CONFIGURED:'通知メール事業者の契約情報',
-      EMAIL_ACCEPTANCE_UNVERIFIED:'通知メール事業者の利用開始確認',
-    };
-    const licenseMissing = missing.some((blocker) => blocker?.code === 'LICENSED_PREMISE_NOT_CONFIGURED');
-    const baseline = [
-      licenseMissing ? null : '通信販売許可・許可営業所ID：登録済み',
-      '供給元審査・承認済み販売価格表：商品ごとに確認',
-      '公開環境の安全対策・運営者情報：最終確認',
-      '販売開始前の総合テスト',
-    ].filter(Boolean);
-    host.replaceChildren();
-    [...missing.map((blocker) => labels[blocker?.code] || blocker?.label || '追加の確認項目'), ...baseline]
-      .forEach((blocker) => host.append(element('li', {text:String(blocker)})));
+    return '現在、この手続きをご利用いただけません。';
   }
 
   function renderSession() {
     const host = $('#sessionContent');
     host.replaceChildren();
     if (!session.authenticated) {
-      $('#sessionChip').textContent = capabilities ? '未ログイン' : '利用停止';
-      host.append(element('p', {text:capabilities
-        ? '保護された会員セッションは開始されていません。'
-        : '会員サービスを確認できないため、会員情報は入力できません。'}));
+      $('#sessionChip').textContent = '未ログイン';
+      host.append(element('p', {text:'ログインまたは会員登録を選択してください。'}));
       return;
     }
 
     $('#sessionChip').textContent = 'ログイン中';
+    host.append(element('p', {text:session.user?.email
+      ? `${session.user.email} でログインしています。`
+      : '会員としてログインしています。'}));
+  }
+
+  function renderAgeVerification() {
+    const host = $('#ageVerificationContent');
+    host.replaceChildren();
+    if (!session.authenticated) {
+      $('#ageVerificationChip').textContent = 'ログイン後';
+      host.append(element('p', {text:'年齢・本人確認は、ご注文ごとに注文履歴へ表示します。'}));
+      return;
+    }
+    $('#ageVerificationChip').textContent = '注文ごと';
+    host.append(element('p', {text:'年齢・本人確認は注文手続きの開始後に行い、結果は該当する注文の状態として注文履歴へ反映します。'}));
+  }
+
+  function renderMemberProfile() {
+    const host = $('#memberProfileContent');
+    host.replaceChildren();
+    if (!session.authenticated) {
+      $('#memberProfileChip').textContent = 'ログイン後';
+      host.append(element('p', {text:'ログイン後に登録情報を表示します。'}));
+      return;
+    }
+
+    $('#memberProfileChip').textContent = '表示中';
     const list = element('dl');
-    const rows = [
+    [
       ['会員ID', session.user?.id || '非公開'],
       ['メール', session.user?.email || '登録済み'],
       ['会員状態', memberStatusLabel(session.user?.status)],
-    ];
-    rows.forEach(([label, value]) => {
+    ].forEach(([label, value]) => {
       const row = element('div');
       row.append(element('dt', {text:label}), element('dd', {text:value}));
       list.append(row);
@@ -150,6 +135,43 @@
     }
   }
 
+  function safeProviderAction(payload) {
+    const order = payload?.order || payload;
+    const attempts = Array.isArray(order?.paymentAttempts) ? order.paymentAttempts : [];
+    const persistedAction = [...attempts].reverse().find((attempt) => attempt?.clientAction)?.clientAction;
+    const candidates = [
+      {kind:'identity', action:payload?.ageVerification?.clientAction || order?.ageVerification?.clientAction},
+      {kind:'payment', action:payload?.payment?.clientAction || order?.payment?.clientAction || persistedAction},
+      {kind:String(order?.status || '').toUpperCase() === 'AGE_VERIFICATION_PENDING' ? 'identity' : 'payment', action:payload?.nextAction || payload?.redirectUrl},
+    ];
+    for (const candidate of candidates) {
+      const value = typeof candidate.action === 'string' ? candidate.action : candidate.action?.url;
+      if (!value) continue;
+      try {
+        const url = new URL(value);
+        if (url.protocol === 'https:') return {kind:candidate.kind, url:url.href};
+      } catch {}
+    }
+    return null;
+  }
+
+  function paymentResultLabel(payload) {
+    const status = String(payload?.payment?.status || payload?.order?.payment?.status || payload?.status || payload?.order?.status || '').toUpperCase();
+    return ({
+      REQUIRES_ACTION:'追加の手続きが必要です。',
+      PENDING:'決済処理中です。',
+      PROCESSING:'決済処理中です。',
+      PAYMENT_PENDING:'お支払い確認中です。',
+      AGE_VERIFICATION_PENDING:'年齢・本人確認の完了待ちです。',
+      AGE_VERIFIED:'年齢確認済みです。決済受付状態を確認しています。',
+      AGE_VERIFICATION_FAILED:'年齢・本人確認を完了できませんでした。',
+      SUCCEEDED:'お支払い済みです。',
+      PAID:'お支払い済みです。',
+      FAILED:'お支払いを完了できませんでした。',
+      PAYMENT_FAILED:'お支払いを完了できませんでした。',
+    })[status] || '最新の決済状況を注文詳細で確認してください。';
+  }
+
   function appendDetailRow(list, label, value) {
     if (value == null || value === '') return;
     const row = element('div');
@@ -157,34 +179,13 @@
     list.append(row);
   }
 
-  function renderOrderDetail(payload, host) {
-    const order = payload?.order || payload;
-    host.replaceChildren();
-    if (!order || typeof order !== 'object') {
-      host.append(element('p', {className:'form-message', text:'注文詳細を確認できませんでした。'}));
-      return;
-    }
-
-    const reference = order.publicReference || order.publicOrderReference || order.reference;
-    const preference = order.deliveryPreference || {};
-    const shipment = order.shipment || null;
-    const detailList = element('dl', {className:'order-detail-list'});
-    appendDetailRow(detailList, '注文参照番号', reference || '発行待ち');
-    appendDetailRow(detailList, '注文状態', orderStatusLabel(order.status));
-    appendDetailRow(detailList, '商品小計', Number.isInteger(order.totals?.subtotalJpy) ? yen(order.totals.subtotalJpy) : null);
-    appendDetailRow(detailList, '配送料', Number.isInteger(order.totals?.shippingJpy) ? yen(order.totals.shippingJpy) : null);
-    appendDetailRow(detailList, '合計', Number.isInteger(order.totals?.totalJpy) ? yen(order.totals.totalJpy) : null);
-    appendDetailRow(detailList, '配送サービス', order.carrierService || shipment?.serviceCode || shipment?.provider);
-    appendDetailRow(detailList, '指定配達日', preference.deliveryDate);
-    appendDetailRow(detailList, '指定時間帯', preference.timeSlotLabel || preference.timeSlot);
-    appendDetailRow(detailList, '受取方法', preference.faceToFaceDelivery === true ? '対面受取' : null);
-    appendDetailRow(detailList, '年齢確認', preference.ageVerificationRequired === true ? '受取時年齢確認要' : null);
-    appendDetailRow(detailList, '置き配', preference.leaveAtDoorAllowed === false ? '置き配不可' : null);
-    if (shipment) {
-      appendDetailRow(detailList, '配送状態', shipmentStatusLabel(shipment.status));
-      appendDetailRow(detailList, '追跡番号', shipment.trackingNumber);
-    }
-    host.append(detailList);
+  function appendTracking(order, host) {
+    const shipment = order?.shipment || null;
+    const list = element('dl', {className:'order-detail-list'});
+    appendDetailRow(list, '配送サービス', order?.carrierService || shipment?.serviceCode || shipment?.provider);
+    appendDetailRow(list, '配送状態', shipment ? shipmentStatusLabel(shipment.status) : '出荷前');
+    appendDetailRow(list, '追跡番号', shipment?.trackingNumber);
+    host.append(list);
 
     const trackingUrl = safeTrackingLink(shipment?.trackingUrl);
     if (trackingUrl) {
@@ -195,11 +196,12 @@
       host.append(link);
     }
 
+    host.append(element('h4', {text:'配送履歴'}));
     const events = Array.isArray(shipment?.events) ? shipment.events : [];
-    const timelineTitle = element('h4', {text:'配送履歴'});
-    host.append(timelineTitle);
     if (!events.length) {
-      host.append(element('p', {className:'form-message', text:shipment ? '配送事業者から確定した追跡イベントはまだありません。' : '出荷後に配送事業者の確定した追跡情報を表示します。'}));
+      host.append(element('p', {className:'form-message', text:shipment
+        ? '配送事業者から確定した追跡イベントはまだありません。'
+        : '出荷後に配送事業者の確定した追跡情報を表示します。'}));
       return;
     }
     const timeline = element('ol', {className:'order-timeline'});
@@ -213,6 +215,31 @@
       timeline.append(item);
     });
     host.append(timeline);
+  }
+
+  function renderOrderDetail(payload, host) {
+    const order = payload?.order || payload;
+    host.replaceChildren();
+    if (!order || typeof order !== 'object') {
+      host.append(element('p', {className:'form-message', text:'注文詳細を確認できませんでした。'}));
+      return;
+    }
+
+    const reference = order.publicReference || order.publicOrderReference || order.reference;
+    const preference = order.deliveryPreference || {};
+    const list = element('dl', {className:'order-detail-list'});
+    appendDetailRow(list, '注文参照番号', reference || '発行待ち');
+    appendDetailRow(list, '注文状態', orderStatusLabel(order.status));
+    appendDetailRow(list, '商品小計', Number.isInteger(order.totals?.subtotalJpy) ? yen(order.totals.subtotalJpy) : null);
+    appendDetailRow(list, '配送料', Number.isInteger(order.totals?.shippingJpy) ? yen(order.totals.shippingJpy) : null);
+    appendDetailRow(list, '合計', Number.isInteger(order.totals?.totalJpy) ? yen(order.totals.totalJpy) : null);
+    appendDetailRow(list, '指定配達日', preference.deliveryDate);
+    appendDetailRow(list, '指定時間帯', preference.timeSlotLabel || preference.timeSlot);
+    appendDetailRow(list, '受取方法', preference.faceToFaceDelivery === true ? '対面受取' : null);
+    appendDetailRow(list, '年齢確認', preference.ageVerificationRequired === true ? '受取時年齢確認要' : null);
+    appendDetailRow(list, '置き配', preference.leaveAtDoorAllowed === false ? '置き配不可' : null);
+    host.append(list);
+    appendTracking(order, host);
   }
 
   function addOrderDetailAction(order, row, actions) {
@@ -237,14 +264,14 @@
       button.textContent = opening ? '詳細を閉じる' : '詳細を見る';
       if (!opening || loaded) return;
       button.disabled = true;
-      announce(detailStatus, '保護された注文台帳から詳細を読み込んでいます。');
+      announce(detailStatus, '注文詳細を読み込んでいます。');
       try {
         renderOrderDetail(await client().order(id), detailContent);
         loaded = true;
         announce(detailStatus, '注文詳細を読み込みました。');
-      } catch {
+      } catch (error) {
         detailContent.replaceChildren();
-        announce(detailStatus, '注文詳細を読み込めませんでした。セッションと通信状態をご確認ください。', true);
+        announce(detailStatus, isServiceUnavailable(error) ? 'サービス未接続' : '注文詳細を読み込めませんでした。', true);
       } finally {
         button.disabled = false;
       }
@@ -255,9 +282,9 @@
 
   function renderOrders(payload) {
     const host = $('#orderHistory');
+    const orders = ordersFrom(payload);
     setAnnouncementState(host);
     host.replaceChildren();
-    const orders = Array.isArray(payload) ? payload : Array.isArray(payload?.orders) ? payload.orders : Array.isArray(payload?.items) ? payload.items : [];
     if (!orders.length) {
       $('#ordersChip').textContent = session.authenticated ? '0件' : 'ログイン後';
       host.append(element('p', {text:session.authenticated ? '保存された注文はありません。' : '注文履歴はログイン後に表示します。'}));
@@ -269,32 +296,93 @@
       const row = element('article', {className:'order-row'});
       const copy = element('div');
       const reference = order.publicReference || order.publicOrderReference || order.reference;
+      const statusLine = element('small', {text:`状態：${orderStatusLabel(order.status)}`});
       copy.append(
         element('b', {text:reference || order.id || order.orderId || '注文参照番号は発行待ち'}),
-        element('small', {text:`状態：${orderStatusLabel(order.status)}`}),
+        statusLine,
       );
       const total = Number(order.totals?.totalJpy ?? order.totals?.grandTotal ?? order.total ?? 0);
       const actions = element('div', {className:'order-actions'});
-      actions.append(element('strong', {text:total ? `¥${total.toLocaleString('ja-JP')}` : '金額確認中'}));
-      if (order.status === 'PAYMENT_FAILED' && order.paymentReviewRequired !== true && client().isActivated(capabilities)) {
+      actions.append(element('strong', {text:total ? yen(total) : '金額確認中'}));
+      if (['DRAFT', 'AGE_VERIFICATION_PENDING', 'AGE_VERIFIED', 'PAYMENT_PENDING'].includes(order.status)) {
+        const canActivate = client()?.isActivated(capabilities) === true;
+        const continuation = element('button', {
+          type:'button',
+          text:order.status === 'DRAFT' ? '年齢確認・お支払いへ' : '手続き状況を確認',
+        });
+        continuation.disabled = !canActivate;
+        const feedback = element('small', {className:canActivate ? 'form-message' : 'service-unavailable', text:canActivate ? '' : 'サービス未接続'});
+        const providerActionHost = element('div', {className:'payment-provider-action'});
+        setAnnouncementState(feedback);
+        continuation.addEventListener('click', async () => {
+          continuation.disabled = true;
+          providerActionHost.replaceChildren();
+          announce(feedback, order.status === 'DRAFT' ? '年齢確認とお支払いを開始しています。' : '最新の手続き状況を確認しています。');
+          try {
+            const id = order.id || order.orderId;
+            const response = order.status === 'DRAFT' ? await client().activateOrder(id) : await client().order(id);
+            const latestOrder = response?.order || response;
+            const providerAction = safeProviderAction(response);
+            if (latestOrder?.status) order.status = latestOrder.status;
+            statusLine.textContent = `状態：${orderStatusLabel(latestOrder?.status)}`;
+            announce(feedback, providerAction
+              ? providerAction.kind === 'identity'
+                ? '本人確認事業者で年齢・本人確認を続けてください。'
+                : '決済事業者でお支払いを続けてください。'
+              : paymentResultLabel(response));
+            if (providerAction) {
+              const link = element('a', {
+                className:'payment-provider-link',
+                text:providerAction.kind === 'identity' ? '本人確認事業者へ進む' : '決済事業者へ進む',
+              });
+              link.href = providerAction.url;
+              link.rel = 'noopener noreferrer';
+              providerActionHost.append(link);
+            }
+            continuation.textContent = '手続き状況を再確認';
+          } catch (error) {
+            announce(feedback, isServiceUnavailable(error) ? 'サービス未接続' : '手続きを続けられませんでした。時間をおいて再度お試しください。', true);
+          } finally {
+            continuation.disabled = !canActivate;
+          }
+        });
+        actions.append(continuation, feedback, providerActionHost);
+      }
+      if (order.status === 'PAYMENT_FAILED' && order.paymentReviewRequired !== true) {
+        const retryAvailable = client()?.isActivated(capabilities) === true;
         const retry = element('button', {type:'button', text:'決済を再試行'});
-        const feedback = element('small', {className:'form-message'});
+        retry.disabled = !retryAvailable;
+        const feedback = element('small', {className:retryAvailable ? 'form-message' : 'service-unavailable', text:retryAvailable ? '' : 'サービス未接続'});
+        const providerAction = element('div', {className:'payment-provider-action'});
         setAnnouncementState(feedback);
         retry.addEventListener('click', async () => {
           retry.disabled = true;
-          announce(feedback, '決済事業者へ再試行を要求しています。');
+          providerAction.replaceChildren();
+          announce(feedback, '決済を再試行しています。');
           try {
-            await client().retryPayment(order.id || order.orderId);
-            announce(feedback, '再試行を受け付けました。決済事業者の応答を待っています。');
-            await refreshSession();
+            const response = await client().retryPayment(order.id || order.orderId);
+            const externalAction = safeProviderAction(response);
+            const providerUrl = externalAction?.kind === 'payment' ? externalAction.url : null;
+            announce(feedback, providerUrl ? '決済事業者で手続きを続けてください。' : paymentResultLabel(response));
+            if (providerUrl) {
+              const link = element('a', {className:'payment-provider-link', text:'決済事業者へ進む'});
+              link.href = providerUrl;
+              link.rel = 'noopener noreferrer';
+              providerAction.append(link);
+            }
+            const latestPayload = await client().order(order.id || order.orderId);
+            const latestOrder = latestPayload?.order || latestPayload;
+            statusLine.textContent = `状態：${orderStatusLabel(latestOrder?.status)}`;
+            retry.textContent = '決済再試行を受付済み';
+            retry.disabled = true;
           } catch (error) {
             announce(feedback, error.code === 'PAYMENT_REVIEW_REQUIRED'
-              ? '決済照合が必要です。運営者へお問い合わせください。'
-              : '決済を再試行できませんでした。状態を再確認してください。', true);
-            retry.disabled = false;
+              ? '決済状況の確認が必要です。お問い合わせください。'
+              : isServiceUnavailable(error) ? 'サービス未接続' : '決済を再試行できませんでした。', true);
+            retry.disabled = isServiceUnavailable(error) || !retryAvailable;
           }
         });
-        actions.append(retry, feedback);
+        actions.append(retry, feedback, providerAction);
       }
       row.append(copy, actions);
       addOrderDetailAction(order, row, actions);
@@ -302,7 +390,56 @@
     });
   }
 
+  function renderTracking(payload) {
+    const host = $('#trackingContent');
+    const orders = ordersFrom(payload);
+    setAnnouncementState(host);
+    host.replaceChildren();
+    if (!orders.length) {
+      $('#trackingChip').textContent = session.authenticated ? '0件' : 'ログイン後';
+      host.append(element('p', {text:session.authenticated ? '追跡できる注文はありません。' : 'ログイン後に注文ごとの配送状況を確認できます。'}));
+      return;
+    }
+
+    $('#trackingChip').textContent = `${orders.length}件`;
+    orders.forEach((order) => {
+      const row = element('article', {className:'tracking-row'});
+      const reference = order.publicReference || order.publicOrderReference || order.reference || order.id || order.orderId || '注文参照番号は発行待ち';
+      const copy = element('div');
+      copy.append(element('b', {text:reference}), element('small', {text:`注文状態：${orderStatusLabel(order.status)}`}));
+      const action = element('div', {className:'tracking-action'});
+      const button = element('button', {type:'button', text:'配送状況を見る'});
+      const feedback = element('small', {className:'form-message'});
+      const detail = element('section', {className:'order-detail'});
+      detail.hidden = true;
+      setAnnouncementState(feedback);
+      button.addEventListener('click', async () => {
+        const id = order.id || order.orderId;
+        if (!id) return;
+        button.disabled = true;
+        detail.hidden = false;
+        detail.replaceChildren();
+        announce(feedback, '配送状況を読み込んでいます。');
+        try {
+          const payloadDetail = await client().order(id);
+          const detailOrder = payloadDetail?.order || payloadDetail;
+          appendTracking(detailOrder, detail);
+          announce(feedback, '配送状況を読み込みました。');
+        } catch (error) {
+          detail.hidden = true;
+          announce(feedback, isServiceUnavailable(error) ? 'サービス未接続' : '配送状況を読み込めませんでした。', true);
+        } finally {
+          button.disabled = false;
+        }
+      });
+      action.append(button, feedback);
+      row.append(copy, action, detail);
+      host.append(row);
+    });
+  }
+
   function createAuthForm(mode) {
+    const available = authAvailable(mode);
     const form = element('form', {className:'auth-form'});
     const messageId = `auth-${mode}-message`;
     const emailLabel = element('label', {text:'メールアドレス'});
@@ -310,6 +447,7 @@
     email.name = 'email';
     email.autocomplete = 'email';
     email.required = true;
+    email.disabled = !available;
     email.setAttribute('aria-describedby', messageId);
     emailLabel.append(email);
     const passwordLabel = element('label', {text:'パスワード'});
@@ -318,43 +456,194 @@
     password.autocomplete = mode === 'register' ? 'new-password' : 'current-password';
     password.minLength = 12;
     password.required = true;
+    password.disabled = !available;
     password.setAttribute('aria-describedby', messageId);
     passwordLabel.append(password);
+    const submitRow = element('div', {className:'submit-row'});
     const submit = element('button', {type:'submit', text:mode === 'register' ? '会員登録' : 'ログイン'});
+    submit.disabled = !available;
+    const serviceState = element('span', {className:'service-unavailable', text:authUnavailableText(mode)});
+    serviceState.hidden = available;
+    submitRow.append(submit, serviceState);
     const message = element('p', {className:'form-message'});
     message.id = messageId;
     setAnnouncementState(message);
-    form.append(emailLabel, passwordLabel, submit, message);
+    form.append(emailLabel, passwordLabel, submitRow, message);
     form.addEventListener('invalid', (event) => {
       if (event.target !== form.querySelector(':invalid')) return;
-      announce(message, '入力内容を確認してください。メールアドレスと12文字以上のパスワードが必要です。', true);
+      announce(message, 'メールアドレスと12文字以上のパスワードを入力してください。', true);
       event.target.focus();
     }, true);
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      if (!form.checkValidity()) {
+      if (!available || !form.checkValidity()) {
         const firstInvalid = form.querySelector(':invalid');
-        announce(message, '入力内容を確認してください。メールアドレスと12文字以上のパスワードが必要です。', true);
-        firstInvalid?.focus();
-        form.reportValidity();
+        if (available) {
+          announce(message, 'メールアドレスと12文字以上のパスワードを入力してください。', true);
+          firstInvalid?.focus();
+          form.reportValidity();
+        }
         return;
       }
-      const registrationAllowed = mode === 'register' && client().isActivated(capabilities);
-      const loginAllowed = mode === 'login' && Boolean(capabilities);
-      if (!registrationAllowed && !loginAllowed) return;
       submit.disabled = true;
       announce(message, '保護された接続で処理しています。');
       try {
         await (mode === 'register' ? client().register(email.value, password.value) : client().login(email.value, password.value));
         await refreshSession();
       } catch (error) {
-        announce(message, error.status === 401 ? 'メールアドレスまたはパスワードを確認してください。' : '手続きを完了できませんでした。', true);
-        (error.status === 401 ? email : form.querySelector(':invalid'))?.focus();
+        if (isServiceUnavailable(error)) {
+          sessionReachable = false;
+          email.disabled = true;
+          password.disabled = true;
+          serviceState.textContent = authUnavailableText(mode);
+          serviceState.hidden = false;
+          message.textContent = '';
+        } else {
+          announce(message, error.status === 401 ? 'メールアドレスまたはパスワードを確認してください。' : '手続きを完了できませんでした。', true);
+          (error.status === 401 ? email : form.querySelector(':invalid'))?.focus();
+        }
       } finally {
-        submit.disabled = false;
+        submit.disabled = !authAvailable(mode);
       }
     });
     return form;
+  }
+
+  function createPasswordResetForm(onReturnToLogin) {
+    const localReset = capabilities?.environment === 'local';
+    const linkedReset = !localReset && new URLSearchParams(globalThis.location?.search || '').get('mode') === 'reset';
+    const resetState = new URLSearchParams(globalThis.location?.search || '').get('state');
+    const requestAvailable = Boolean(
+      client()?.configured && sessionReachable && capabilities?.operations?.passwordReset?.request?.ready === true &&
+      typeof client().requestPasswordReset === 'function'
+    );
+    const confirmAvailable = Boolean(
+      client()?.configured && sessionReachable && capabilities?.operations?.passwordReset?.confirm?.ready === true &&
+      typeof client().confirmPasswordReset === 'function'
+    );
+    const available = requestAvailable || (linkedReset && confirmAvailable);
+    const section = element('section', {className:'password-reset-panel'});
+    section.append(
+      element('h3', {text:'パスワードを再設定'}),
+      element('p', {className:'password-reset-intro', text: localReset
+        ? 'メールアドレスを入力してください。登録状況にかかわらず同じ案内を表示し、この端末で15分以内に新しいパスワードを設定できます。'
+        : 'メールアドレスを入力してください。登録状況にかかわらず同じ案内を表示し、登録済みの場合は15分間有効な再設定リンクを送信します。'}),
+    );
+
+    const requestMessage = element('p', {className:'form-message'});
+    requestMessage.id = 'password-reset-request-message';
+    setAnnouncementState(requestMessage);
+    const requestForm = element('form', {className:'auth-form password-reset-request'});
+    const emailLabel = element('label', {text:'登録済みメールアドレス'});
+    const email = element('input', {type:'email'});
+    email.name = 'reset-email';
+    email.autocomplete = 'email';
+    email.required = true;
+    email.disabled = !requestAvailable;
+    email.setAttribute('aria-describedby', requestMessage.id);
+    emailLabel.append(email);
+    const requestButton = element('button', {type:'submit', text:'再設定手続きを続ける'});
+    requestButton.disabled = !requestAvailable;
+    requestForm.append(emailLabel, requestButton, requestMessage);
+
+    const confirmMessage = element('p', {className:'form-message'});
+    confirmMessage.id = 'password-reset-confirm-message';
+    setAnnouncementState(confirmMessage);
+    const confirmForm = element('form', {className:'auth-form password-reset-confirm'});
+    confirmForm.hidden = !linkedReset;
+    const passwordLabel = element('label', {text:'新しいパスワード（12文字以上）'});
+    const password = element('input', {type:'password'});
+    password.name = 'new-password';
+    password.autocomplete = 'new-password';
+    password.minLength = 12;
+    password.required = true;
+    password.disabled = !confirmAvailable;
+    password.setAttribute('aria-describedby', confirmMessage.id);
+    passwordLabel.append(password);
+    const confirmationLabel = element('label', {text:'新しいパスワード（確認）'});
+    const confirmation = element('input', {type:'password'});
+    confirmation.name = 'new-password-confirmation';
+    confirmation.autocomplete = 'new-password';
+    confirmation.minLength = 12;
+    confirmation.required = true;
+    confirmation.disabled = !confirmAvailable;
+    confirmation.setAttribute('aria-describedby', confirmMessage.id);
+    confirmationLabel.append(confirmation);
+    const confirmButton = element('button', {type:'submit', text:'パスワードを更新'});
+    confirmButton.disabled = !confirmAvailable;
+    confirmForm.append(passwordLabel, confirmationLabel, confirmButton, confirmMessage);
+
+    if (!available) {
+      announce(requestMessage, capabilities?.environment === 'production' && sessionReachable
+        ? 'パスワード再設定メールの受付は現在準備中です。ご利用ガイドのお問い合わせ窓口をご確認ください。'
+        : '会員サービスに接続できないため、現在パスワードを再設定できません。', true);
+    } else if (resetState === 'invalid') {
+      announce(confirmMessage, '再設定リンクの有効期限が切れているか、すでに使用されています。もう一度メール送信からやり直してください。', true);
+    }
+
+    requestForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!requestAvailable || !requestForm.checkValidity()) {
+        if (requestAvailable) requestForm.reportValidity();
+        return;
+      }
+      requestButton.disabled = true;
+      announce(requestMessage, '登録状況を確認しています。');
+      try {
+        await client().requestPasswordReset(email.value);
+        if (localReset) {
+          confirmForm.hidden = false;
+          announce(requestMessage, '再設定手続きを受け付けました。確認情報はこのブラウザで安全に保持されます。15分以内に新しいパスワードを設定してください。');
+          password.focus();
+        } else {
+          announce(requestMessage, '再設定手続きを受け付けました。登録済みの場合は、15分以内に再設定メールが届きます。');
+        }
+      } catch (error) {
+        announce(requestMessage, isServiceUnavailable(error)
+          ? '会員サービスに接続できません。時間をおいてから、もう一度お試しください。'
+          : '再設定手続きを開始できませんでした。入力内容をご確認ください。', true);
+      } finally {
+        requestButton.disabled = !requestAvailable;
+      }
+    });
+
+    confirmForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!confirmAvailable) return;
+      if (!confirmForm.checkValidity()) {
+        confirmForm.reportValidity();
+        return;
+      }
+      if (password.value !== confirmation.value) {
+        announce(confirmMessage, '確認用パスワードが一致していません。', true);
+        confirmation.focus();
+        return;
+      }
+      confirmButton.disabled = true;
+      announce(confirmMessage, 'パスワードを更新しています。');
+      try {
+        await client().confirmPasswordReset(password.value);
+        password.value = '';
+        confirmation.value = '';
+        announce(confirmMessage, '再設定手続きを完了しました。登録済みのアカウントは、新しいパスワードでログインできます。');
+        if (!localReset && globalThis.history?.replaceState) {
+          globalThis.history.replaceState({}, '', './account.html');
+        }
+      } catch (error) {
+        announce(confirmMessage, error.code === 'RESET_TOKEN_EXPIRED_OR_USED'
+          ? '再設定手続きの有効期限が切れているか、すでに完了しています。最初からやり直してください。'
+          : isServiceUnavailable(error)
+            ? '会員サービスに接続できません。時間をおいてから、もう一度お試しください。'
+            : 'パスワードを更新できませんでした。入力内容をご確認ください。', true);
+      } finally {
+        confirmButton.disabled = false;
+      }
+    });
+
+    const returnButton = element('button', {className:'text-button', type:'button', text:'ログイン画面へ戻る'});
+    returnButton.addEventListener('click', onReturnToLogin);
+    section.append(requestForm, confirmForm, returnButton);
+    return section;
   }
 
   function renderActions() {
@@ -369,109 +658,148 @@
         announce(feedback, 'ログアウトしています。');
         try {
           await client().logout();
+          localStorage.removeItem('kisaragi-shop-demo-cart-v1');
           await refreshSession();
         } catch {
-          announce(feedback, 'ログアウトできませんでした。通信状態を確認して、もう一度お試しください。', true);
+          announce(feedback, 'ログアウトできませんでした。もう一度お試しください。', true);
           logout.disabled = false;
         }
       });
       host.append(logout, feedback);
       return;
     }
-    if (!capabilities) {
-      host.append(element('p', {className:'form-message', text:'外部契約と販売開始の確認が完了するまで、登録・ログイン入力は無効です。'}));
-      return;
-    }
 
     const tabs = element('div', {className:'auth-tabs'});
+    tabs.setAttribute('role', 'tablist');
+    tabs.setAttribute('aria-label', '会員手続き');
     const loginTab = element('button', {type:'button', text:'ログイン'});
-    const registerTab = client().isActivated(capabilities)
-      ? element('button', {type:'button', text:'会員登録'})
-      : null;
+    const registerTab = element('button', {type:'button', text:'会員登録'});
+    const resetTab = element('button', {type:'button', text:'パスワード再設定'});
+    [loginTab, registerTab, resetTab].forEach((tab) => tab.setAttribute('role', 'tab'));
     const formHost = element('div');
     const select = (mode) => {
-      loginTab.setAttribute('aria-pressed', String(mode === 'login'));
-      registerTab?.setAttribute('aria-pressed', String(mode === 'register'));
-      formHost.replaceChildren(createAuthForm(mode));
+      [[loginTab, 'login'], [registerTab, 'register'], [resetTab, 'reset']].forEach(([tab, tabMode]) => {
+        const selected = mode === tabMode;
+        tab.setAttribute('aria-pressed', String(selected));
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      formHost.replaceChildren(mode === 'reset' ? createPasswordResetForm(() => {
+        select('login');
+        loginTab.focus();
+      }) : createAuthForm(mode));
     };
     loginTab.addEventListener('click', () => select('login'));
-    registerTab?.addEventListener('click', () => select('register'));
-    tabs.append(loginTab);
-    if (registerTab) tabs.append(registerTab);
+    registerTab.addEventListener('click', () => select('register'));
+    resetTab.addEventListener('click', () => select('reset'));
+    tabs.append(loginTab, registerTab, resetTab);
     host.append(tabs, formHost);
-    if (!registerTab) {
-      host.append(element('p', {className:'form-message', text:'新規登録と新規販売は停止中です。既存会員はログインして注文履歴を確認できます。'}));
-    }
-    select('login');
+    const initialMode = new URLSearchParams(globalThis.location?.search || '').get('mode') === 'reset' ? 'reset' : 'login';
+    select(initialMode);
+  }
+
+  function clearSensitiveSessionView(message = '会員情報を再確認しています。') {
+    refreshGeneration += 1;
+    session = {authenticated:false};
+    sessionReachable = false;
+    renderSession();
+    renderAgeVerification();
+    renderMemberProfile();
+    renderOrders([]);
+    renderTracking([]);
+    renderActions();
+    announce($('#orderHistory'), message);
+    announce($('#trackingContent'), message);
   }
 
   async function refreshSession() {
-    let sessionLoadFailed = false;
+    const generation = ++refreshGeneration;
+    let nextSession;
+    let reachable = true;
     try {
-      session = await client().session();
+      nextSession = await client().session();
     } catch {
-      session = {authenticated:false};
-      sessionLoadFailed = true;
+      nextSession = {authenticated:false};
+      reachable = false;
     }
-    setAnnouncementState($('#sessionContent'), sessionLoadFailed);
+    if (generation !== refreshGeneration) return;
+    session = nextSession;
+    sessionReachable = reachable;
     renderSession();
-    if (sessionLoadFailed) {
-      $('#sessionContent').append(element('p', {className:'form-message', text:'会員セッションを確認できませんでした。通信状態をご確認ください。'}));
-    }
+    renderAgeVerification();
+    renderMemberProfile();
     renderActions();
     if (!session.authenticated) {
       renderOrders([]);
+      renderTracking([]);
       return;
     }
     announce($('#orderHistory'), '注文履歴を読み込んでいます。');
-    try { renderOrders(await client().orders()); }
-    catch {
+    announce($('#trackingContent'), '配送情報を読み込んでいます。');
+    try {
+      const payload = await client().orders();
+      if (generation !== refreshGeneration) return;
+      renderOrders(payload);
+      renderTracking(payload);
+    } catch {
+      if (generation !== refreshGeneration) return;
       $('#ordersChip').textContent = '確認できません';
-      announce($('#orderHistory'), '注文履歴を読み込めませんでした。通信状態をご確認ください。', true);
+      $('#trackingChip').textContent = '確認できません';
+      announce($('#orderHistory'), '注文履歴を読み込めませんでした。', true);
+      announce($('#trackingContent'), '配送情報を読み込めませんでした。', true);
     }
   }
 
-  function failClosed(message) {
-    capabilities = null;
-    setServiceState('offline', 'オンライン注文は準備中です', message);
-    setLayer('#internalLayer', 'waiting', '機能準備済み・接続待ち');
-    setLayer('#providerLayer', 'waiting', '外部契約待ち');
-    setLayer('#activationLayer', 'locked', '受付開始前');
-    document.querySelectorAll('[data-provider]').forEach((card) => {
-      card.dataset.state = 'missing';
-      card.querySelector('b').textContent = '契約情報待ち';
+  function scheduleExternalSessionRefresh() {
+    clearSensitiveSessionView();
+    const refresh = refreshSession();
+    externalRefreshPromise = refresh;
+    return refresh.finally(() => {
+      if (externalRefreshPromise === refresh) externalRefreshPromise = null;
     });
+  }
+
+  function failClosed() {
+    capabilities = null;
+    session = {authenticated:false};
+    sessionReachable = false;
     renderSession();
+    renderAgeVerification();
+    renderMemberProfile();
     renderOrders([]);
+    renderTracking([]);
     renderActions();
+  }
+
+  function restoreLocationHash() {
+    const id = decodeURIComponent(String(globalThis.location?.hash || '').replace(/^#/, ''));
+    const target = id ? document.getElementById(id) : null;
+    if (target) requestAnimationFrame(() => target.scrollIntoView({block:'start'}));
   }
 
   async function init() {
     if (!client()?.configured) {
-      failClosed('会員・注文サービスはまだ利用できません。個人情報は受け付けていません。');
+      failClosed();
+      restoreLocationHash();
       return;
     }
     try {
       capabilities = await client().capabilities();
-      const activated = client().isActivated(capabilities);
-      const internalReady = ['memberAuth', 'cart', 'inventory', 'orders', 'outbox', 'audit']
-        .every((id) => capabilities.modules?.[id] === 'ready');
-      setLayer('#internalLayer', internalReady ? 'ready' : 'waiting', internalReady ? 'サイト機能は準備済み' : 'サイト機能の確認が必要');
-      setLayer('#providerLayer', activated ? 'ready' : 'waiting', activated ? '外部サービス準備完了' : '外部契約待ち');
-      setLayer('#activationLayer', activated ? 'ready' : 'locked', activated ? '受付中' : '受付開始前');
-      setServiceState(activated ? 'ready' : 'checking', activated ? 'オンライン注文を受け付けています' : 'オンライン注文は準備中です', activated
-        ? '必要な外部サービスの接続と注文受付の開始を確認済みです。'
-        : 'サイト機能は準備済みですが、必要な契約または安全確認が完了していないため、注文受付を停止しています。');
-      renderProviders(capabilities);
-      try { renderBlockers(await client().activationReadiness()); }
-      catch {
-        announce($('#activationBlockers'), '受付開始前の確認項目を読み込めませんでした。通信状態をご確認ください。', true);
-      }
       await refreshSession();
     } catch {
-      failClosed('会員・注文サービスを確認できないため、入力と販売処理を停止しています。');
+      failClosed();
     }
+    restoreLocationHash();
   }
+
+  globalThis.addEventListener?.('storage', (event) => {
+    if (event.key === client()?.sessionRevisionKey) scheduleExternalSessionRefresh();
+  });
+  globalThis.addEventListener?.('pageshow', scheduleExternalSessionRefresh);
+  globalThis.addEventListener?.('focus', scheduleExternalSessionRefresh);
+  globalThis.document?.addEventListener('visibilitychange', () => {
+    if (globalThis.document.visibilityState === 'visible') scheduleExternalSessionRefresh();
+  });
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

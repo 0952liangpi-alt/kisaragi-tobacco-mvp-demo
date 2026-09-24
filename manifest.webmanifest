@@ -4,9 +4,9 @@
   "lang": "ja-JP",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#121212",
-  "theme_color": "#121212",
-  "description": "KISARAGIの商品案内、資料庫、選択リスト",
+  "background_color": "#f4f5f2",
+  "theme_color": "#166547",
+  "description": "KISARAGIの日本たばこ・喫煙具オンラインストア",
   "icons": [
     {
       "src": "./assets/tougu-mark.svg",

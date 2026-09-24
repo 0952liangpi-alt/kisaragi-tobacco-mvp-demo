@@ -6,7 +6,6 @@
     legalName:'merchantLegalName',
     businessAddress:'merchantBusinessAddress',
     contactChannel:'merchantContactChannel',
-    permitPublicationReference:'merchantPermitReference',
     privacyPolicyVersion:'merchantPrivacyVersion',
     privacyPolicyReference:'merchantPrivacyReference',
     termsVersion:'merchantTermsVersion',
@@ -16,13 +15,12 @@
   });
 
   function publicFields(payload) {
-    if (payload?.verified !== true || !payload.disclosure) return null;
+    if (payload?.available !== true || payload?.published !== true || payload?.complete !== true || !payload.disclosure) return null;
     const disclosure = payload.disclosure;
     const fields = {
       legalName:disclosure.legalName,
       businessAddress:disclosure.businessAddress,
       contactChannel:disclosure.contactChannel,
-      permitPublicationReference:disclosure.permitPublicationReference,
       privacyPolicyVersion:disclosure.privacyPolicy?.version,
       privacyPolicyReference:disclosure.privacyPolicy?.reference,
       termsVersion:disclosure.terms?.version,
@@ -35,30 +33,21 @@
       : null;
   }
 
-  function renderVerifiedDisclosure(fields) {
+  function renderDisclosure(fields) {
     for (const [field, id] of Object.entries(fieldIds)) {
-      document.getElementById(id).textContent = fields[field];
+      const element = document.getElementById(id);
+      if (element) element.textContent = fields[field];
     }
-    const section = document.getElementById('operator');
-    section.dataset.disclosureState = 'verified';
-    document.getElementById('merchantDisclosureState').textContent = '運営者情報：公開確認済み';
-    document.getElementById('merchantPublicationStatus').textContent = '運営者情報と利用条件を確認できます。オンライン注文の受付状況は、公開環境の安全性と必要な外部サービスの準備状況を含めて判定します。';
   }
 
   async function init() {
     const api = client();
     if (!api?.configured || typeof api.merchantDisclosures !== 'function') return;
     try {
-      if (typeof api.activationReadiness === 'function') {
-        const readiness = await api.activationReadiness();
-        const merchantPublicationBlocked = Array.isArray(readiness?.missing) && readiness.missing.some((item) =>
-          ['MERCHANT_PUBLICATION_NOT_CONFIGURED', 'MERCHANT_PUBLICATION_ACCEPTANCE_UNVERIFIED'].includes(item?.code));
-        if (merchantPublicationBlocked) return;
-      }
       const fields = publicFields(await api.merchantDisclosures());
-      if (fields) renderVerifiedDisclosure(fields);
+      if (fields) renderDisclosure(fields);
     } catch {
-      // The static unverified placeholders are the fail-closed public state.
+      // Static customer guidance remains available when the optional text service is unavailable.
     }
   }
 

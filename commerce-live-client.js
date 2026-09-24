@@ -6,11 +6,13 @@
   const requiredProviders = Object.freeze(['ekyc', 'payment', 'carrier', 'email']);
   const requiredOperations = Object.freeze({
     ekyc:Object.freeze(['verify', 'status']),
-    payment:Object.freeze(['create', 'status', 'cancel', 'refund', 'webhook']),
-    carrier:Object.freeze(['create', 'tracking']),
+    payment:Object.freeze(['create', 'status', 'cancel', 'refund', 'refundStatus', 'webhook']),
+    carrier:Object.freeze(['create', 'tracking', 'cancel']),
     email:Object.freeze(['send']),
   });
   const pendingIdempotency = new Map();
+  const sessionRevisionKey = 'kisaragi_commerce_session_revision';
+  let sessionRevision = 0;
 
   class CommerceRequestError extends Error {
     constructor(message, {status = 0, code = 'COMMERCE_REQUEST_FAILED', payload = null} = {}) {
@@ -66,7 +68,7 @@
     if (payload?.service !== 'KISARAGI_COMMERCE' || payload?.schemaVersion !== 3) {
       throw new CommerceRequestError('Unexpected commerce capability document.', {code:'INVALID_CAPABILITIES'});
     }
-    if (!['ready_internal', 'active'].includes(payload.status) || typeof payload.activated !== 'boolean' ||
+    if (!['ready', 'active'].includes(payload.status) || typeof payload.activated !== 'boolean' ||
       typeof payload.modules !== 'object' || typeof payload.providers !== 'object' ||
       typeof payload.operations !== 'object' || typeof payload.checkout !== 'object' ||
       typeof payload.checkout.available !== 'boolean' || payload.checkout.currency !== 'JPY' ||
@@ -126,9 +128,15 @@
     if (pendingIdempotency.has(scope)) return pendingIdempotency.get(scope);
     try {
       const parsed = JSON.parse(globalThis.sessionStorage?.getItem(storageKey(scope)) || 'null');
-      if (parsed && typeof parsed.fingerprint === 'string' && typeof parsed.key === 'string') {
-        pendingIdempotency.set(scope, parsed);
-        return parsed;
+      if (parsed && typeof parsed.key === 'string' && parsed.key.startsWith(`${scope}:`) &&
+        parsed.key.length <= 200 && /^[A-Za-z0-9._:-]+$/.test(parsed.key)) {
+        const pending = {fingerprint:null, key:parsed.key};
+        pendingIdempotency.set(scope, pending);
+        // Remove legacy deterministic request fingerprints without discarding the
+        // random key needed to reconcile an uncertain prior network outcome.
+        try { globalThis.sessionStorage?.setItem(storageKey(scope), JSON.stringify({key:parsed.key})); }
+        catch { /* The in-memory recovered key remains usable. */ }
+        return pending;
       }
     } catch { /* Session storage is optional; the in-memory key still protects this page. */ }
     return null;
@@ -136,7 +144,7 @@
 
   function writePending(scope, value) {
     pendingIdempotency.set(scope, value);
-    try { globalThis.sessionStorage?.setItem(storageKey(scope), JSON.stringify(value)); }
+    try { globalThis.sessionStorage?.setItem(storageKey(scope), JSON.stringify({key:value.key})); }
     catch { /* The operation can continue with the in-memory copy. */ }
   }
 
@@ -146,11 +154,25 @@
     catch { /* No persisted copy is available. */ }
   }
 
+  function notifySessionChanged() {
+    try {
+      const revision = typeof globalThis.crypto?.randomUUID === 'function'
+        ? globalThis.crypto.randomUUID()
+        : `${Date.now()}:${++sessionRevision}`;
+      globalThis.localStorage?.setItem(sessionRevisionKey, revision);
+    } catch { /* Cross-tab notification is best effort; the server cookie remains authoritative. */ }
+  }
+
   async function idempotentRequest(scope, path, body) {
     const fingerprint = await requestFingerprint(body);
     const existing = readPending(scope);
-    const pending = existing?.fingerprint === fingerprint
-      ? existing
+    if (existing?.fingerprint && existing.fingerprint !== fingerprint) {
+      throw new CommerceRequestError('A previous request has an uncertain outcome. Retry it before changing the request.', {
+        code:'PENDING_REQUEST_CONFLICT',
+      });
+    }
+    const pending = existing
+      ? {...existing, fingerprint}
       : {fingerprint, key:createIdempotencyKey(scope)};
     writePending(scope, pending);
     try {
@@ -179,12 +201,36 @@
     async activationReadiness() { return request('/activation/readiness'); },
     async merchantDisclosures() { return request('/merchant-disclosures'); },
     async session() { return request('/session'); },
-    async register(email, password) { return request('/register', {method:'POST', body:JSON.stringify({email, password})}); },
-    async login(email, password) { return request('/login', {method:'POST', body:JSON.stringify({email, password})}); },
-    async logout() { return request('/logout', {method:'POST', body:'{}'}); },
+    sessionRevisionKey,
+    async register(email, password) {
+      const result = await request('/register', {method:'POST', body:JSON.stringify({email, password})});
+      notifySessionChanged();
+      return result;
+    },
+    async login(email, password) {
+      const result = await request('/login', {method:'POST', body:JSON.stringify({email, password})});
+      notifySessionChanged();
+      return result;
+    },
+    async requestPasswordReset(email) {
+      return request('/password-reset/request', {method:'POST', body:JSON.stringify({email})});
+    },
+    async confirmPasswordReset(password) {
+      const result = await request('/password-reset/confirm', {method:'POST', body:JSON.stringify({password})});
+      notifySessionChanged();
+      return result;
+    },
+    async logout() {
+      const result = await request('/logout', {method:'POST', body:'{}'});
+      notifySessionChanged();
+      return result;
+    },
     async cart() { return request('/cart'); },
     async setCartItem(productId, quantity) {
       return request(`/cart/items/${encodeURIComponent(productId)}`, {method:'PUT', body:JSON.stringify({quantity})});
+    },
+    async adjustCartItem(productId, delta) {
+      return request(`/cart/items/${encodeURIComponent(productId)}`, {method:'PATCH', body:JSON.stringify({delta})});
     },
     async removeCartItem(productId) {
       return request(`/cart/items/${encodeURIComponent(productId)}`, {method:'DELETE'});

@@ -8,6 +8,9 @@
   const goodsSources = globalThis.KISARAGI_TSN_GOODS_2026_SOURCE || {};
   const liveOverrides = globalThis.KISARAGI_LIVE_OVERRIDES || {};
   const liveApiBase = globalThis.KISARAGI_LIVE_CONFIG?.apiBase || null;
+  const liveSaleAuthorityUnavailable = Boolean(liveApiBase) && globalThis.KISARAGI_LIVE_STATUS !== 'LIVE';
+  const liveProjectedIds = Array.isArray(globalThis.KISARAGI_LIVE_PROJECTED_IDS)
+    ? new Set(globalThis.KISARAGI_LIVE_PROJECTED_IDS) : null;
   const jtByCode = new Map(jtProducts.map((product) => [product.code, product]));
   if (jtByCode.size !== jtProducts.length) throw new Error('Duplicate JT manufacturer product code');
   const tsnByCode = new Map(tsnProducts.map((product) => [product.code, product]));
@@ -313,6 +316,23 @@
       price_preserved: false,
     });
   });
+  const goodsImageAssets = goodsProducts.filter((product) => product.image_asset).map((product) => {
+    const sourceId = product.source_id === 'LIGHTERS' ? 'TSN_LIGHTERS_2026' : 'TSN_SMOKING_GOODS_2026';
+    return Object.freeze({
+      asset_id: `tsn-goods-2026-${product.code}`,
+      sku: `tsn-goods-${product.code}`,
+      file_path: product.image_asset.file_path,
+      sha256: product.image_asset.sha256,
+      width: product.image_asset.width,
+      height: product.image_asset.height,
+      pdf_page: product.pdf_page,
+      extraction_mode: product.image_asset.extraction_mode,
+      source: sourceId,
+      source_url: goodsSources[product.source_id]?.source_url || null,
+      status: 'APPROVED_EXTERNAL_SOURCE',
+      price_preserved: false,
+    });
+  });
   const validLiveIds = new Set([
     ...references.map((product) => product.id),
     ...userProducts.map((product) => product.id),
@@ -320,12 +340,14 @@
     ...tsnProducts.filter((product) => !existingCodes.has(product.code)).map((product) => `tsn-${product.code}`),
     ...goodsProducts.map((product) => `tsn-goods-${product.code}`),
   ]);
+  const unsupportedLiveIds = Object.freeze(Object.keys(liveOverrides).filter((id) => !validLiveIds.has(id)).sort());
   const liveImageAssets = Object.entries(liveOverrides).flatMap(([sku, override]) => {
     if (!validLiveIds.has(sku) || !override || !override.image || !liveApiBase) return [];
     const image = override.image;
     let url;
     try { url = new URL(image.url); } catch { return []; }
-    if (url.origin !== new URL(liveApiBase).origin || !url.pathname.startsWith(`/media/${sku}/`)) return [];
+    if (url.origin !== new URL(liveApiBase).origin ||
+        !/^\/catalog\/media\/sha256\/[a-f0-9]{2}\/[a-f0-9]{64}\.(?:jpg|png)$/.test(url.pathname)) return [];
     if (!/^[a-f0-9]{64}$/.test(image.sha256) || !Number.isInteger(image.width) || !Number.isInteger(image.height)) return [];
     return [Object.freeze({
       asset_id: `admin-${sku}-${image.sha256}`,
@@ -339,30 +361,15 @@
       price_preserved: false,
     })];
   });
-  const assets = [...existingAssets, ...jtImageAssets, ...tsnImageAssets, ...liveImageAssets];
+  const assets = [
+    ...existingAssets,
+    ...jtImageAssets,
+    ...tsnImageAssets,
+    ...goodsImageAssets,
+    ...liveImageAssets,
+  ];
 
   const ambiguousAssets = Object.freeze([
-    Object.freeze({
-      asset_id: 'ua-nas-organic-mint-a',
-      sku_candidates: ['wt-1525', 'wt-1524', 'wt-1523'],
-      source: 'USER_UPLOAD',
-      status: 'CONFLICT_REVIEW',
-      reason: 'Three reference SKUs share the same public product name; the image does not expose a reliable unique product code.',
-    }),
-    Object.freeze({
-      asset_id: 'ua-nas-organic-mint-b',
-      sku_candidates: ['wt-1525', 'wt-1524', 'wt-1523'],
-      source: 'USER_UPLOAD',
-      status: 'CONFLICT_REVIEW',
-      reason: 'Exact SKU is ambiguous.',
-    }),
-    Object.freeze({
-      asset_id: 'ua-nas-organic-mint-c',
-      sku_candidates: ['wt-1525', 'wt-1524', 'wt-1523'],
-      source: 'USER_UPLOAD',
-      status: 'CONFLICT_REVIEW',
-      reason: 'Exact SKU is ambiguous.',
-    }),
     ...tsnProducts.filter((product) => product.image_match_status === 'DUPLICATE_IMAGE_REVIEW').map((product) => Object.freeze({
       asset_id: `tsn2026-review-${product.code}`,
       sku_candidates: [`tsn-${product.code}`],
@@ -561,8 +568,8 @@
 
   const goodsOnlyProducts = goodsProducts.map((product) => {
     const source = goodsSources[product.source_id];
-    if (!source || product.match_status !== 'IDENTITY_PENDING') {
-      throw new Error(`Unverified TSN goods record: ${product.code}`);
+    if (!source || product.match_status !== 'SOURCE_CELL_MATCHED' || !product.image_asset) {
+      throw new Error(`Incomplete TSN goods source-cell record: ${product.code}`);
     }
     const sourceId = product.source_id === 'LIGHTERS' ? 'TSN_LIGHTERS_2026' : 'TSN_SMOKING_GOODS_2026';
     const officialPrice = officialPriceFields(Object.freeze([
@@ -574,16 +581,19 @@
         captureStatus: product.source_id === 'LIGHTERS' ? 'SOURCE_REVIEWED' : 'OCR_EXTRACTED',
       }),
     ].filter(Boolean)));
+    const id = `tsn-goods-${product.code}`;
+    const images = productImages(id);
+    const image = images[0] || null;
     return Object.freeze({
-      id: `tsn-goods-${product.code}`,
+      id,
       sku: product.code,
       category: product.category,
       subcategory: `TSN_${product.source_id}_2026_REFERENCE`,
       origin_country: 'UNKNOWN',
-      brand: 'UNKNOWN',
+      brand: product.brand,
       series: null,
       variant: null,
-      product_name_ja: product.ocr_name_candidate || product.name,
+      product_name_ja: product.name,
       product_name_en: null,
       product_name_ocr_candidate: product.ocr_name_candidate,
       ocr_name_confidence: product.ocr_name_confidence,
@@ -601,14 +611,14 @@
       nicotine_mg: null,
       product_code: product.code,
       system_code: null,
-      image: null,
-      images: Object.freeze([]),
-      image_source: null,
+      image,
+      images,
+      image_source: sourceId,
       source_url: source.source_url,
       source_checked_at: '2026-09-20',
       availability: 'UNKNOWN',
-      status: 'IDENTITY_PENDING',
-      notes: '2026 catalog OCR name and price are displayed as source candidates, not current sales terms.',
+      status: image ? 'IMAGE_BOUND' : 'CATALOG_ONLY',
+      notes: '2026 official client catalog source-cell name, image, code, and catalog price.',
     });
   });
 
@@ -616,31 +626,52 @@
     ...referenceProducts, ...uploadedProducts, ...jtOnlyProducts, ...tsnOnlyProducts, ...goodsOnlyProducts,
   ].map((product) => {
     const override = liveOverrides[product.id];
-    if (!override || typeof override !== 'object') return product;
+    if (!override || typeof override !== 'object') {
+      if (!liveSaleAuthorityUnavailable) return product;
+      return Object.freeze({
+        ...product,
+        price_jpy: null,
+        price_source: null,
+        approved_sale_price_id: null,
+        approved_sale_price_version: null,
+        sale_authority_unavailable: true,
+      });
+    }
     const editedName = typeof override.product_name_ja === 'string' && override.product_name_ja.trim().length > 0
       ? override.product_name_ja.trim() : null;
+    const approvedPriceIdentity = typeof override.price_id === 'string' && override.price_id.length > 0 &&
+      typeof override.price_version === 'string' && override.price_version.startsWith(`${override.price_id}:`);
     const hasPrice = Object.hasOwn(override, 'price_jpy') && (
-      override.price_jpy === null || (Number.isInteger(override.price_jpy) && override.price_jpy >= 0)
+      override.price_jpy === null || (Number.isInteger(override.price_jpy) && override.price_jpy > 0 && approvedPriceIdentity)
     );
+    const protectedApprovedPrice = hasPrice && override.price_jpy !== null && approvedPriceIdentity;
     const price = hasPrice ? override.price_jpy : product.price_jpy;
     const images = productImages(product.id);
     const image = images[0] || null;
-    const priceConflict = images.some((item) => item.observed_price_jpy != null && price != null && item.observed_price_jpy !== price);
+    const priceConflict = !protectedApprovedPrice && images.some((item) => (
+      item.observed_price_jpy != null && price != null && item.observed_price_jpy !== price
+    ));
     let status = product.status;
-    if (priceConflict || status === 'PRICE_CONFLICT') status = 'PRICE_CONFLICT';
+    if (protectedApprovedPrice) status = image ? 'IMAGE_BOUND' : 'CATALOG_ONLY';
+    else if (priceConflict || status === 'PRICE_CONFLICT') status = 'PRICE_CONFLICT';
     else if (status === 'IDENTITY_PENDING' && editedName) status = image ? 'IMAGE_BOUND' : 'CATALOG_ONLY';
     else if (status === 'CATALOG_ONLY' && image) status = 'IMAGE_BOUND';
     return Object.freeze({
       ...product,
       product_name_ja: editedName || product.product_name_ja,
       price_jpy: price,
-      price_source: hasPrice ? 'ADMIN' : null,
+      price_source: hasPrice && override.price_id ? 'APPROVED_SALE_PRICE' : null,
+      approved_sale_price_id: typeof override.price_id === 'string' ? override.price_id : null,
+      approved_sale_price_version: typeof override.price_version === 'string' ? override.price_version : null,
+      sale_authority_unavailable: false,
       image,
       images,
       image_source: (assetsBySku.get(product.id) || [])[0]?.source || null,
       status,
     });
-  }));
+  }).filter((product) => (
+    (!liveProjectedIds || liveProjectedIds.has(product.id)) && liveOverrides[product.id]?.active !== false
+  )));
 
   const ids = new Set();
   const duplicateIds = [];
@@ -675,6 +706,21 @@
   const officialPriceTerms = canonical.filter((product) => product.official_catalog_price_evidence.length > 0);
   const officialNumericPrices = officialPriceTerms.filter((product) => Number.isInteger(product.official_catalog_price_jpy));
   const officialOpenPrices = officialPriceTerms.filter((product) => product.official_catalog_price_kind === 'OPEN_PRICE');
+  const officialCatalogCodes = new Set([
+    ...jtProducts.map((product) => product.code),
+    ...tsnProducts.map((product) => product.code),
+    ...goodsProducts.map((product) => product.code),
+  ]);
+  const officialCatalogProducts = canonical.filter((product) => officialCatalogCodes.has(product.product_code));
+  const officialCatalogImageReady = officialCatalogProducts.filter((product) => product.image);
+  const officialCatalogReady = officialCatalogProducts.filter((product) => (
+    product.image
+    && product.product_code
+    && product.brand
+    && product.brand !== 'UNKNOWN'
+    && product.product_name_ja
+    && product.official_catalog_price_evidence.length > 0
+  ));
   const officialPriceConflicts = canonical.filter((product) => {
     const byPeriod = new Map();
     for (const fact of product.official_catalog_price_evidence) {
@@ -738,10 +784,16 @@
     OFFICIAL_CATALOG_PRICE_MISSING: canonical.length - officialPriceTerms.length,
     OFFICIAL_CATALOG_PRICE_CONFLICTS: officialPriceConflicts.length,
     OFFICIAL_CATALOG_PRICE_COVERAGE_PERCENT: Number(((officialPriceTerms.length / canonical.length) * 100).toFixed(1)),
+    OFFICIAL_CATALOG_UNIQUE_SKU: officialCatalogProducts.length,
+    OFFICIAL_CATALOG_IMAGE_READY: officialCatalogImageReady.length,
+    OFFICIAL_CATALOG_IMAGE_MISSING: officialCatalogProducts.length - officialCatalogImageReady.length,
+    OFFICIAL_CATALOG_READY_SKU: officialCatalogReady.length,
+    OFFICIAL_CATALOG_COMPLETENESS_PERCENT: Number(((officialCatalogReady.length / officialCatalogProducts.length) * 100).toFixed(1)),
     TOTAL_ASSETS: assets.length,
     TOTAL_UPLOAD_ASSETS: assets.filter((asset) => asset.source === 'USER_UPLOAD').length,
     TOTAL_UPLOAD_PRODUCTS: new Set(assets.filter((asset) => asset.source === 'USER_UPLOAD').map((asset) => asset.sku)).size,
     IMAGE_BOUND: imageBound,
+    MERCHANT_SALE_READY_SKU: completeSku,
     COMPLETE_SKU: completeSku,
     MISSING_SKU: 0,
     MISSING_IMAGE: runtimeMissingImage,
@@ -772,4 +824,5 @@
   globalThis.KISARAGI_CANONICAL_CATALOG = Object.freeze(canonical);
   globalThis.KISARAGI_MISSING_IMAGE_MANIFEST = missingImageManifest;
   globalThis.KISARAGI_CATALOG_AUDIT = audit;
+  globalThis.KISARAGI_LIVE_UNSUPPORTED_IDS = unsupportedLiveIds;
 })();
