@@ -26,6 +26,7 @@
   <script defer src="./commerce-live-config.js?v=20260922-contract1"></script>
   <script defer src="./commerce-live-client.js?v=20260922-delivery1"></script>
   <script defer src="./catalog-page-loader.js?v=20260924-uiux3"></script>
+  <script defer src="./mobile-dock.js?v=20260924-apple-dock1"></script>
 </head>
 <body class="age-gate-locked" data-catalog-page="checkout" data-age-focus-target="#selection">
   <a class="skip-link" href="#selection" data-age-protected inert aria-hidden="true">ご注文手続きへ移動</a>
@@ -92,7 +93,7 @@
     </section>
   </main>
 
-  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション" data-age-protected inert aria-hidden="true"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品</a><a href="./checkout.html" aria-current="page">カート</a><a href="./account.html">会員</a></nav>
+  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション" data-age-protected inert aria-hidden="true"><a href="./index.html"><svg class="dock-icon" aria-hidden="true"><use href="./assets/nav-icons.svg#home"></use></svg><span class="dock-label">ホーム</span></a><a href="./shop.html#catalog"><svg class="dock-icon" aria-hidden="true"><use href="./assets/nav-icons.svg#products"></use></svg><span class="dock-label">商品</span></a><a href="./checkout.html" aria-current="page"><svg class="dock-icon" aria-hidden="true"><use href="./assets/nav-icons.svg#cart"></use></svg><span class="dock-label">カート</span></a><a href="./account.html"><svg class="dock-icon" aria-hidden="true"><use href="./assets/nav-icons.svg#account"></use></svg><span class="dock-label">会員</span></a></nav>
 
   <footer data-age-protected inert aria-hidden="true"><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>TOBACCO &amp; GOODS</small></span></a><p>20歳以上限定 · 商品案内とご注文手続き</p><div class="footer-links"><a href="./shop.html#catalog">商品案内</a><a href="./trust.html">ご利用ガイド</a><a href="#orderFunctions">会員・年齢確認</a></div></footer>
   <script>try{if(sessionStorage.getItem('kisaragi-age-verified')==='1'){document.getElementById('ageGate').hidden=true;document.querySelectorAll('[data-age-protected]').forEach((element)=>{element.inert=false;element.removeAttribute('aria-hidden')});document.body.classList.remove('age-gate-locked','has-open-modal')}}catch{}</script>
