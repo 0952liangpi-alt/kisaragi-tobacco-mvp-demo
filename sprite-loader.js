@@ -42,7 +42,7 @@
       await loadScript('./catalog-live-loader.js?v=20260920-live-v1');
       await globalThis.KISARAGI_LOAD_LIVE_OVERRIDES();
       await loadScript('./catalog-core.js?v=20260923-catalog-complete1');
-      loadStylesheet('./luxury-home.css?v=20260924-mobile-polish1');
+      loadStylesheet('./luxury-home.css?v=20260924-home-image-fit1');
       await loadScript('./luxury-home.js?v=20260924-mobile-polish1');
     } catch (error) {
       console.error('KISARAGI canonical catalog load failed', error);
