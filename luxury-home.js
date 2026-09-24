@@ -61,11 +61,13 @@
     const main = document.querySelector('main#top');
     if (!main || document.querySelector('.retail-home')) return;
 
-    const productsWithImages = catalog.filter((product) => (
-      productImage(product)
-      && product.status !== 'IDENTITY_PENDING'
-      && !String(product.product_name_ja || '').includes('確認待ち')
-    ));
+    const productsWithImages = catalog.filter((product) => {
+      const price = product.official_catalog_price_jpy ?? product.price_jpy;
+      return productImage(product)
+        && Number.isFinite(price)
+        && product.status !== 'IDENTITY_PENDING'
+        && !String(product.product_name_ja || '').includes('確認待ち');
+    });
     const preferredBrands = ['メビウス', 'セブンスター', 'マールボロ', 'キャメル', 'TEREA', 'IQOS'];
     const featured = [];
     preferredBrands.forEach((brand) => {

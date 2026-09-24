@@ -3,8 +3,29 @@
   --site-shell-surface: #1b1b1a;
   --site-shell-line: #4b4b49;
   --site-shell-accent: #c8b78b;
+  --site-shell-gold: #c8b78b;
+  --site-shell-accent-text: #806c3d;
+  --site-shell-accent-soft: rgb(200 183 139 / .12);
   --site-shell-text: #f1f1ee;
   --site-shell-muted: #b7b8ba;
+}
+
+.age > .age-card,
+body:has(.retail-home) .age > .age-card,
+.age-gate > .age-card {
+  border-top: 4px solid var(--site-shell-gold);
+  box-shadow: 0 12px 32px rgb(0 0 0 / .18);
+}
+
+#ageVerification #ageVerificationChip {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  padding: .25rem .625rem;
+  border-color: var(--site-shell-gold);
+  border-radius: 4px;
+  background: var(--site-shell-accent-soft);
+  color: var(--site-shell-accent-text);
 }
 
 .skip-link {
@@ -92,7 +113,7 @@
 
 @media (max-width: 900px) {
   body {
-    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important;
   }
 
   .unified-site-nav,
@@ -109,45 +130,84 @@
   .unified-mobile-dock {
     position: fixed;
     z-index: 30;
-    right: 10px;
-    bottom: max(10px, env(safe-area-inset-bottom, 0px));
-    left: 10px;
+    right: max(12px, env(safe-area-inset-right, 0px));
+    bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    left: max(12px, env(safe-area-inset-left, 0px));
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     align-items: stretch;
-    min-height: 58px;
+    min-height: 66px;
+    padding: 4px;
     overflow: visible;
-    border: 1px solid var(--site-shell-line);
-    border-radius: 8px;
-    background: rgb(27 27 26 / .97);
-    box-shadow: 0 12px 32px rgb(0 0 0 / .38);
-    color: var(--site-shell-text);
-    backdrop-filter: blur(12px);
+    border: 1px solid rgb(255 255 255 / .78);
+    border-radius: 20px;
+    background: rgb(250 250 252 / .88);
+    box-shadow: 0 10px 32px rgb(0 0 0 / .18), 0 1px 0 rgb(255 255 255 / .8) inset;
+    color: #1d1d1f;
+    backdrop-filter: saturate(180%) blur(24px);
+    -webkit-backdrop-filter: saturate(180%) blur(24px);
+    opacity: 1;
+    transform: translateY(var(--dock-shift-y, 0));
+    transition: opacity .2s ease, transform .24s ease;
+    will-change: transform;
+  }
+
+  .unified-mobile-dock.is-scrolling-away {
+    --dock-shift-y: calc(100% + 28px);
+    opacity: 0;
+    pointer-events: none;
   }
 
   .unified-mobile-dock a,
   .unified-mobile-dock a:visited,
   .unified-mobile-dock button {
-    display: grid;
+    display: flex;
     min-width: 0;
-    place-items: center;
-    padding: .5rem .15rem;
-    color: var(--site-shell-muted);
-    font-size: clamp(.66rem, 2.7vw, .76rem);
-    font-weight: 700;
+    min-height: 56px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    padding: .35rem .2rem;
+    border-radius: 16px;
+    color: #6e6e73;
+    font-size: clamp(.64rem, 2.6vw, .72rem);
+    font-weight: 650;
     line-height: 1.1;
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
+    transition: background-color .16s ease, color .16s ease, transform .16s ease;
   }
 
-  .unified-mobile-dock a + a {
-    border-left: 1px solid rgb(255 255 255 / .08);
+  .unified-mobile-dock .dock-icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+  }
+
+  .unified-mobile-dock .dock-label {
+    display: block;
+  }
+
+  .unified-mobile-dock a:active {
+    background: rgb(0 0 0 / .055);
+    transform: scale(.96);
   }
 
   .unified-mobile-dock a[aria-current="page"] {
-    background: var(--site-shell-accent);
-    color: #121212;
+    background: rgb(200 183 139 / .24);
+    color: #4b3f20;
+    font-weight: 750;
+  }
+}
+
+@media (min-width: 561px) and (max-width: 900px) {
+  .unified-mobile-dock {
+    right: auto;
+    left: 50%;
+    width: min(560px, calc(100vw - 24px));
+    transform: translate(-50%, var(--dock-shift-y, 0));
   }
 }
 
@@ -157,7 +217,9 @@ body.has-open-modal .mobile-dock {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .unified-site-nav a::after {
+  .unified-site-nav a::after,
+  .unified-mobile-dock,
+  .unified-mobile-dock a {
     transition: none;
   }
 }
