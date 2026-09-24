@@ -1,6 +1,4 @@
 globalThis.KISARAGI_JAPAN_SKUS = Object.freeze([
-{id:'wt-ime2832',brand:'セブンスター',name:'セブンスター・メンソール・ソリッド・ホワイト',price:600,shopPrice:545,code:'IME2832',systemCode:'000000002298'},
-{id:'wt-ime2831',brand:'セブンスター',name:'セブンスター・ボールド・ブラック',price:600,shopPrice:545,code:'IME2831',systemCode:'000000002297'},
 {id:'wt-1971',brand:'わかば・エコー',name:'エコー・KS',price:500,shopPrice:455,code:'1971',systemCode:'000000002132',tar:15,nicotine:1.1,packCount:20},
 {id:'wt-1970',brand:'わかば・エコー',name:'わかば・KS',price:500,shopPrice:455,code:'1970',systemCode:'000000002131',tar:16,nicotine:1.2,packCount:20},
 {id:'wt-1527',brand:'キャメル',name:'キャメル・クラフト・メンソール・ペアーカプセル・８・ボックス',price:470,shopPrice:427,code:'1527',systemCode:'000000002098'},
@@ -25,8 +23,6 @@ globalThis.KISARAGI_JAPAN_SKUS = Object.freeze([
 {id:'wt-1312',brand:'セブンスター',name:'セブンスター・ボックス',price:600,shopPrice:545,code:'1312',systemCode:'000000000989'},
 {id:'wt-1624',brand:'セブンスター',name:'セブンスター・メンソール・12・ボックス',price:600,shopPrice:545,code:'1624',systemCode:'000000000990'},
 {id:'wt-1143',brand:'セブンスター',name:'セブンスター・メンソール・8・ボックス',price:600,shopPrice:545,code:'1143',systemCode:'000000000991'},
-{id:'wt-ime2543',brand:'ソブラニー',name:'ソブラニー・カクテル',price:1000,shopPrice:909,code:'IME-2543',systemCode:'000000001005',origin:'ポーランド'},
-{id:'wt-ime2544',brand:'ソブラニー',name:'ソブラニー・ブラック・ロシアン',price:1000,shopPrice:909,code:'IME-2544',systemCode:'000000001006',origin:'ポーランド'},
 {id:'wt-1601',brand:'ナチュラルアメリカンスピリット',name:'ナチュラルアメリカンスピリット・オーガニック・リーフ・ゴールド',price:440,shopPrice:400,code:'1601',systemCode:'000000001097'},
 {id:'wt-1600',brand:'ナチュラルアメリカンスピリット',name:'ナチュラルアメリカンスピリット・オーガニック・リーフ・ターコイズ',price:440,shopPrice:400,code:'1600',systemCode:'000000001098'},
 {id:'wt-1610',brand:'ナチュラルアメリカンスピリット',name:'ナチュラルアメリカンスピリット・オーガニック・リーフ ONE',price:440,shopPrice:400,code:'1610',systemCode:'000000001099'},

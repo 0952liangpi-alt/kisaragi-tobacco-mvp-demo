@@ -4,83 +4,78 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="description" content="KISARAGIで現在利用できる機能と、運営者情報、個人情報の取扱い、利用条件、配送・返品に関する案内です。">
-  <meta name="theme-color" content="#121212">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self' http://127.0.0.1:8769; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="theme-color" content="#f4f5f2">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>KISARAGI | 利用案内</title>
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./trust.css?v=20260922-uiux1">
-  <link rel="stylesheet" href="./admin-entry.css?v=20260922-admin1">
   <link rel="stylesheet" href="./unified-site-shell.css?v=20260922-unified1">
+  <link rel="stylesheet" href="./trust.css?v=20260924-retail4">
   <script defer src="./commerce-live-config.js?v=20260922-contract1"></script>
   <script defer src="./commerce-live-client.js?v=20260922-contract2"></script>
-  <script defer src="./trust.js?v=20260922-disclosure1"></script>
+  <script defer src="./trust.js?v=20260924-retail4"></script>
 </head>
 <body>
   <a class="skip-link" href="#content">本文へ移動</a>
   <header class="trust-header">
-    <a class="trust-brand" href="./index.html"><span class="trust-mark"><img src="./assets/tougu-mark.svg" alt=""></span><span>KISARAGI<small>RESEARCH ARCHIVE</small></span></a>
-    <nav class="unified-site-nav" aria-label="メインナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品案内</a><a href="./checkout.html">選択リスト</a><a href="./trust.html" aria-current="page">利用案内</a></nav>
+    <a class="trust-brand" href="./index.html"><span class="trust-mark"><img src="./assets/tougu-mark.svg" alt=""></span><span>KISARAGI<small>TOBACCO &amp; GOODS</small></span></a>
+    <nav class="unified-site-nav" aria-label="メインナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品案内</a><a href="./account.html">会員メニュー</a><a href="./checkout.html">カート</a><a href="./trust.html" aria-current="page">ご利用ガイド</a></nav>
   </header>
 
   <main id="content">
     <section class="trust-intro">
-      <p class="eyebrow">USER GUIDE &amp; TRUST</p>
+      <p class="eyebrow">SHOPPING GUIDE</p>
       <h1>利用案内</h1>
-      <p>現在利用できる機能と、運営者情報、個人情報の取扱い、利用条件を確認できます。</p>
+      <p>商品の探し方から配送・返品、個人情報の取扱い、利用条件まで、お買い物に必要な情報をご案内します。</p>
     </section>
 
-    <section class="status-banner" aria-labelledby="currentStatusTitle">
-      <div><span class="status-dot" aria-hidden="true"></span><p><b id="currentStatusTitle">オンライン注文は現在準備中です</b><small id="merchantPublicationStatus">商品案内と選択リストはご利用いただけます。会員登録、注文、決済、配送は受付開始前です。</small></p></div>
-      <a href="./checkout.html#orderFunctions">準備状況を見る</a>
-    </section>
+    <nav class="trust-policy-nav" aria-label="利用案内メニュー">
+      <a href="#guide"><span>01</span>ご利用ガイド</a>
+      <a href="#delivery"><span>02</span>配送・返品</a>
+      <a href="#privacy"><span>03</span>プライバシー</a>
+      <a href="#terms"><span>04</span>利用規約</a>
+      <a href="#operator"><span>05</span>特定商取引法に基づく表記</a>
+    </nav>
 
     <div class="trust-grid">
-      <section class="trust-section" id="operator" data-disclosure-state="pending">
-        <span class="section-number">01</span><h2>運営者情報</h2>
-        <dl id="merchantDisclosureFields"><div><dt>運営事業者</dt><dd id="merchantLegalName">正式公開前に掲載</dd></div><div><dt>所在地</dt><dd id="merchantBusinessAddress">正式公開前に掲載</dd></div><div><dt>お問い合わせ窓口</dt><dd id="merchantContactChannel">現在準備中</dd></div></dl>
-        <p id="merchantDisclosureState" role="status" aria-live="polite">運営者情報：公開準備中</p>
-        <p>顧客確認と掲載同意が完了していない情報を推測して公開しません。</p>
-      </section>
-
-      <section class="trust-section" id="license">
-        <span class="section-number">02</span><h2>たばこ販売許可</h2>
-        <dl><div><dt>小売販売許可資料</dt><dd>事業者提供資料を受領済み</dd></div><div><dt>通信販売条件</dt><dd>許可条件・届出内容の確認待ち</dd></div><div><dt>公開許可情報</dt><dd id="merchantPermitReference">名義・番号・所在地の確認後に掲載</dd></div></dl>
-        <p>小売販売許可資料の受領だけでは通信販売可否を確定しません。正式運用開始前に、許可条件、通信販売の届出内容、事業者情報との一致、公開範囲を確認します。</p>
-      </section>
-
-      <section class="trust-section" id="privacy">
-        <span class="section-number">03</span><h2>個人情報の取扱い</h2>
-        <dl><div><dt>公開版</dt><dd id="merchantPrivacyVersion">正式公開前に掲載</dd></div><div><dt>公開参照</dt><dd id="merchantPrivacyReference">現在準備中</dd></div></dl>
-        <p>現行サイトには氏名、住所、本人確認書類、決済情報を入力・送信するフォームがありません。選択リストは利用中の端末内に保存されます。</p>
-        <p>会員・注文機能を接続する前に、取得項目、利用目的、保管期間、委託先、削除方法を明記します。</p>
-      </section>
-
-      <section class="trust-section" id="terms">
-        <span class="section-number">04</span><h2>利用条件</h2>
-        <dl><div><dt>公開版</dt><dd id="merchantTermsVersion">正式公開前に掲載</dd></div><div><dt>公開参照</dt><dd id="merchantTermsReference">現在準備中</dd></div></dl>
-        <ul><li>20歳未満の方は利用できません。</li><li>掲載価格は参考情報を含み、在庫や販売価格を保証しません。</li><li>現行サイトで注文契約、決済、配送依頼は成立しません。</li></ul>
+      <section class="trust-section" id="guide">
+        <span class="section-number">01</span><h2>ご利用ガイド</h2>
+        <ol class="guide-steps">
+          <li><b>商品を探す</b><span>カテゴリー、ブランド、商品名から商品を絞り込めます。</span></li>
+          <li><b>カートに入れる</b><span>気になる商品を保存し、数量や内容をまとめて確認できます。</span></li>
+          <li><b>内容を確認する</b><span>表示価格、年齢制限、配送条件を確認してからお手続きください。</span></li>
+        </ol>
+        <p>たばこ商品は20歳以上の方のみご利用いただけます。注文受付時には年齢確認を行います。</p>
       </section>
 
       <section class="trust-section" id="delivery">
-        <span class="section-number">05</span><h2>配送・返品</h2>
-        <dl><div><dt>返品・取消規定</dt><dd id="merchantReturnsVersion">正式公開前に掲載</dd></div><div><dt>公開参照</dt><dd id="merchantReturnsReference">現在準備中</dd></div></dl>
-        <p>現在は注文を受け付けていないため、配送・返品も発生しません。正式販売前に配送会社、送料、対面受取、配送地域、返品・取消条件を掲載します。</p>
+        <span class="section-number">02</span><h2>配送・返品</h2>
+        <dl><div><dt>配送方法・送料</dt><dd>ご注文内容確認画面に表示</dd></div><div><dt>お届け時期</dt><dd>配送先と配送方法に応じて表示</dd></div><div><dt>返品・取消規定</dt><dd id="merchantReturnsVersion">ご注文前にご案内</dd></div><div><dt>詳細</dt><dd id="merchantReturnsReference">返品・交換条件をご確認ください</dd></div></dl>
+        <p>商品違い、破損などがあった場合は、商品到着後すみやかにお問い合わせ窓口までご連絡ください。お客様都合の返品条件は、ご注文前に表示される案内が優先されます。</p>
       </section>
 
-      <section class="trust-section" id="release-gate">
-        <span class="section-number">06</span><h2>正式公開の条件</h2>
-        <ul><li>運営者・許認可・連絡先の公開確認</li><li>個人情報保護方針、利用規約、返品・取消規定の公開確認</li><li>暗号化、バックアップ復旧、監視、アクセス制御の安全確認</li><li>年齢確認、決済、配送サービスの接続確認</li><li>注文・取消・返品・問い合わせ対応の運用確認</li></ul>
+      <section class="trust-section" id="privacy">
+        <span class="section-number">03</span><h2>プライバシーポリシー</h2>
+        <dl><div><dt>方針</dt><dd id="merchantPrivacyVersion">個人情報の取扱い</dd></div><div><dt>お問い合わせ</dt><dd id="merchantPrivacyReference">下記の事業者窓口で承ります</dd></div></dl>
+        <p>会員登録、注文、配送、年齢確認、お問い合わせへの対応に必要な範囲で個人情報を取り扱います。取得した情報は、案内した利用目的の範囲を超えて利用しません。</p>
+        <p>未ログイン時のカートはご利用中の端末内に保存され、ログイン後は保護された会員カートへ統合されます。共有端末をご利用の場合は、利用後にログアウトし、端末内の選択内容も削除してください。</p>
+      </section>
+
+      <section class="trust-section" id="terms">
+        <span class="section-number">04</span><h2>利用規約</h2>
+        <dl><div><dt>規約</dt><dd id="merchantTermsVersion">サイト利用条件</dd></div><div><dt>適用範囲</dt><dd id="merchantTermsReference">本サイトの閲覧・商品選択・注文手続き</dd></div></dl>
+        <ul><li>20歳未満の方は、たばこ商品の閲覧・購入手続きを利用できません。</li><li>商品画像は表示環境やパッケージ変更により、実際の商品と異なる場合があります。</li><li>販売価格、在庫、配送条件は、ご注文内容確認画面に表示される内容をご確認ください。</li></ul>
+      </section>
+
+      <section class="trust-section trust-section--wide" id="operator">
+        <span class="section-number">05</span><h2>特定商取引法に基づく表記</h2>
+        <dl id="merchantDisclosureFields"><div><dt>販売事業者</dt><dd id="merchantLegalName">合同会社東隅</dd></div><div><dt>所在地</dt><dd id="merchantBusinessAddress">オンライン注文受付開始時に、このページでご案内します</dd></div><div><dt>お問い合わせ窓口</dt><dd id="merchantContactChannel">オンライン注文受付開始時に、このページでご案内します</dd></div><div><dt>販売価格</dt><dd>各商品ページに税込価格を表示</dd></div><div><dt>商品代金以外の必要料金</dt><dd>送料・手数料がある場合は注文内容確認画面に表示</dd></div><div><dt>支払方法・時期</dt><dd>利用できる方法と支払時期を注文内容確認画面に表示</dd></div><div><dt>商品の引渡時期</dt><dd>配送先と配送方法に応じた目安を注文内容確認画面に表示</dd></div><div><dt>返品・取消</dt><dd>本ページの「配送・返品」に表示</dd></div><div><dt>販売条件</dt><dd>20歳以上の本人確認が完了した方に限ります</dd></div></dl>
+        <p class="merchant-disclosure-note">注文受付の開始前に、所在地、お問い合わせ方法、支払・配送条件をこのページへ掲載します。個人の認証書類や会員情報は掲載しません。</p>
       </section>
     </div>
-
-    <section class="admin-entry" id="admin-entry" aria-labelledby="adminEntryTitle">
-      <div><p class="eyebrow">事業者向け / OPERATOR TOOLS</p><h2 id="adminEntryTitle">事業者向け管理ツール</h2><p>商品情報の更新と、販売開始後の在庫・注文・返金・出荷・通知を管理するための事業者向け画面です。</p></div>
-      <div class="admin-entry-action"><a href="./admin/">商品管理画面を開く</a><a href="./admin/commerce.html">取引運用画面を開く</a><dl><div><dt>本機管理サービス</dt><dd>接続時のみログイン・編集可能</dd></div><div><dt>公開クラウド管理</dt><dd>未接続</dd></div></dl><small>管理サービスが確認できない環境では、機密情報の入力や業務更新を受け付けません。</small></div>
-    </section>
   </main>
 
-  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品</a><a href="./checkout.html">選択</a><a href="./trust.html" aria-current="page">案内</a></nav>
+  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション"><a href="./index.html">ホーム</a><a href="./shop.html#catalog">商品</a><a href="./checkout.html">カート</a><a href="./account.html">会員</a></nav>
 
-  <footer><a class="trust-brand" href="./index.html"><span class="trust-mark"><img src="./assets/tougu-mark.svg" alt=""></span><span>KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上限定 · 現在はオンライン注文を受け付けていません。</p><div class="trust-footer-links"><a href="./shop.html#catalog">商品案内</a><a href="./checkout.html">選択リスト</a><a href="./admin/">管理者入口</a></div></footer>
+  <footer><a class="trust-brand" href="./index.html"><span class="trust-mark"><img src="./assets/tougu-mark.svg" alt=""></span><span>KISARAGI<small>TOBACCO &amp; GOODS</small></span></a><p>20歳未満の方は、たばこ商品の購入手続きを利用できません。</p><div class="trust-footer-links"><a href="#guide">ご利用ガイド</a><a href="#delivery">配送・返品</a><a href="#privacy">プライバシー</a><a href="#terms">利用規約</a><a href="#operator">特定商取引法に基づく表記</a></div></footer>
 </body>
 </html>

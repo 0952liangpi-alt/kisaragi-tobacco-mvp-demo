@@ -1,27 +1,31 @@
 /* Shared public-facing KISARAGI surface. Product media always keeps source color. */
 :root {
-  color-scheme: dark;
-  --ink: #f1f1ee;
-  --ink-soft: #25231e;
-  --paper: #121212;
-  --surface: #1b1b1a;
-  --line: #505156;
-  --muted: #b7b8ba;
-  --accent: #c8b78b;
-  --accent-hover: #e2d29f;
-  --warm: #c8b78b;
-  --danger: #e7a39c;
+  color-scheme: light;
+  --ink: #17221d;
+  --ink-soft: #25352d;
+  --paper: #f4f5f2;
+  --surface: #ffffff;
+  --line: #d8ded9;
+  --muted: #66716b;
+  --accent: #166547;
+  --accent-hover: #0f4b34;
+  --warm: #d7c584;
+  --danger: #983e34;
 }
 
 body[data-catalog-page="shop"],
 body[data-catalog-page="checkout"] {
-  background: radial-gradient(circle at 82% 15%, #292825 0, transparent 28%), var(--paper);
+  background: var(--paper);
   color: var(--ink);
+}
+
+body.age-gate-locked {
+  overflow: hidden;
 }
 
 .site-header {
   border-color: var(--line);
-  background: rgb(18 18 18 / .94);
+  background: rgb(255 255 255 / .97);
 }
 
 .brand-copy {
@@ -40,7 +44,7 @@ body[data-catalog-page="checkout"] {
 .brand-mark {
   overflow: hidden;
   border: 1px solid var(--accent);
-  background: transparent;
+  background: var(--surface);
 }
 
 .brand-mark img {
@@ -84,7 +88,7 @@ footer > a:not(.brand):hover,
 .filter-options button,
 .button.quiet {
   border-color: var(--line);
-  background: #171717;
+  background: var(--surface);
   color: var(--ink);
 }
 
@@ -93,7 +97,7 @@ footer > a:not(.brand):hover,
 .button.primary {
   border-color: var(--accent);
   background: var(--accent);
-  color: #121212;
+  color: #ffffff;
 }
 
 .button.primary:hover {
@@ -113,7 +117,7 @@ footer > a:not(.brand):hover,
 .hero-image figcaption,
 .product-image-link,
 .product-empty {
-  background: #f4f1e9;
+  background: #f4f5f2;
 }
 
 .hero-image figcaption,
@@ -129,8 +133,8 @@ footer > a:not(.brand):hover,
 }
 
 .notice {
-  border-color: #4c473b;
-  background: #1c1b18;
+  border-color: #c9d7cd;
+  background: #eef4ef;
   color: var(--muted);
 }
 
@@ -161,7 +165,7 @@ footer > a:not(.brand):hover,
 .citation-button:hover {
   border-color: var(--accent);
   background: var(--accent);
-  color: #121212;
+  color: #ffffff;
 }
 
 .product-meta,
@@ -172,22 +176,23 @@ footer > a:not(.brand):hover,
 }
 
 .quantity-control button {
-  background: #171717;
+  background: var(--surface);
   color: var(--ink);
 }
 
 .quantity-control button:hover {
-  background: #29261f;
+  background: #e8f0ea;
 }
 
 footer {
-  border-top: 1px solid var(--line);
-  background: #0e0e0e;
-  color: var(--muted);
+  border-top: 1px solid #26372f;
+  background: #111815;
+  color: #c7d0cb;
 }
 
 footer .brand-mark {
-  background: transparent;
+  border-color: var(--warm);
+  background: var(--warm);
 }
 
 .footer-links {
@@ -198,7 +203,7 @@ footer .brand-mark {
 }
 
 .footer-links a {
-  color: var(--ink);
+  color: #ffffff;
   font-size: .76rem;
   text-decoration: none;
 }
@@ -245,7 +250,7 @@ footer .brand-mark {
 
   .mobile-dock button[aria-pressed="true"] {
     background: var(--accent);
-    color: #121212;
+    color: #ffffff;
   }
 
   #catalog,

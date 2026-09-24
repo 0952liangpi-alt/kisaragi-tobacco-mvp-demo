@@ -3,135 +3,135 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="KISARAGIの商品案内。資料庫と同じ商品データから、商品名、画像、参考価格と出典を確認できます。">
-  <meta name="theme-color" content="#121212">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767 http://127.0.0.1:8769; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="KISARAGIの商品案内。紙巻き、加熱式、葉巻・手巻き、喫煙具から商品を検索し、カートにまとめられます。">
+  <meta name="theme-color" content="#f4f5f2">
+  <meta name="kisaragi-catalog-api" content="">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-BbKO2UBE6shUlnHWogPMwukE2ZPn9TFFp6bUDeIh98Y='; style-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>KISARAGI | 商品案内</title>
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
+  <link rel="preload" href="./age-gate-early.js?v=20260924-uiux4" as="script" fetchpriority="high">
+  <script defer src="./age-gate-early.js?v=20260924-uiux4"></script>
   <link rel="stylesheet" href="./shop.css">
-  <link rel="stylesheet" href="./shop-polish.css?v=20260921-catalog-mode1">
   <link rel="stylesheet" href="./shop-flow.css">
   <link rel="stylesheet" href="./kisaragi-components.css?v=20260922-order-nav1">
-  <link rel="stylesheet" href="./kisaragi-public-theme.css?v=20260922-client1">
+  <link rel="stylesheet" href="./kisaragi-public-theme.css?v=20260924-retail3">
   <link rel="stylesheet" href="./unified-site-shell.css?v=20260922-unified1">
+  <link rel="stylesheet" href="./shop-polish.css?v=20260924-retail3">
+  <link rel="preload" href="./catalog-core.js?v=20260924-uiux3" as="script">
+  <link rel="preload" href="./shop.js?v=20260924-uiux3" as="script">
+  <script defer src="./catalog-live-config.js?v=20260924-uiux3"></script>
+  <script defer src="./catalog-live-loader.js?v=20260924-uiux3"></script>
   <script defer src="./world-tobacco-japan.js"></script>
   <script defer src="./jt-catalog-2025.js?v=20260921-jt-color1"></script>
-  <script defer src="./tsn-imported-catalog-2026.js"></script>
-  <script defer src="./tsn-goods-catalog-2026.js"></script>
-  <script defer src="./catalog-live-config.js"></script>
-  <script defer src="./catalog-live-loader.js"></script>
+  <script defer src="./tsn-imported-catalog-2026.js?v=20260923-catalog-complete1"></script>
+  <script defer src="./tsn-goods-catalog-2026.js?v=20260923-catalog-complete1"></script>
   <script defer src="./commerce-core.js?v=20260922-commerce1"></script>
   <script defer src="./commerce-live-config.js?v=20260922-contract1"></script>
   <script defer src="./commerce-live-client.js?v=20260922-contract1"></script>
-  <script defer src="./catalog-page-loader.js?v=20260922-commerce1"></script>
+  <script defer src="./catalog-page-loader.js?v=20260924-uiux3"></script>
 </head>
-<body data-catalog-page="shop" data-kisaragi-mode="shop">
-  <a class="skip-link" href="#catalog">商品一覧へ移動</a>
+<body class="age-gate-locked" data-catalog-page="shop" data-age-focus-target="#searchInput">
+  <a class="skip-link" href="#catalog" data-age-protected inert aria-hidden="true">商品一覧へ移動</a>
   <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
     <section class="age-card">
       <p class="overline">KISARAGI / 20+</p>
       <h1 id="ageGateTitle">20歳以上の方のみ<br>ご利用いただけます</h1>
-      <p>本ページは日本国内の成人向け商品案内です。商品情報と選択リストをご利用いただけます。オンライン注文機能は現在準備中です。</p>
+      <p>本ページは日本国内の成人向け商品案内です。商品を検索し、気になる商品をカートに保存できます。</p>
       <p class="warning">未成年者の喫煙は法律で禁じられています。</p>
       <div class="age-actions">
         <button class="button primary" id="enterSite">20歳以上です</button>
         <a class="button quiet" id="leaveSite" href="https://www.google.com/">退出する</a>
       </div>
-      <small>オンライン注文機能は現在準備中です。</small>
+      <small>年齢確認後、商品案内をご覧いただけます。</small>
     </section>
   </div>
 
-  <header class="site-header">
-    <a class="brand" href="./index.html" aria-label="KISARAGI ホーム"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a>
+  <header class="site-header" data-age-protected inert aria-hidden="true">
+    <a class="brand" href="./index.html" aria-label="KISARAGI ホーム"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>TOBACCO &amp; SMOKING GOODS</small></span></a>
     <nav class="unified-site-nav" aria-label="メインナビゲーション">
       <a href="./index.html">ホーム</a>
       <a href="./shop.html#catalog" aria-current="page">商品案内</a>
-      <a href="./checkout.html">選択リスト</a>
-      <a href="./trust.html">利用案内</a>
+      <a href="./trust.html">ご利用ガイド</a>
+      <a href="./account.html">会員メニュー</a>
     </nav>
-    <div class="mode-switch-group" role="group" aria-label="表示モード">
-      <button class="mode-switch-btn" type="button" data-mode-target="shop" aria-pressed="true">商品を選ぶ</button>
-      <button class="mode-switch-btn" type="button" data-mode-target="archive" aria-pressed="false">出典を見る</button>
-    </div>
-    <button class="cart-toggle" id="openCart" type="button" aria-haspopup="dialog">選択リスト <b id="cartCount">0</b></button>
+    <button class="cart-toggle" id="openCart" type="button" aria-haspopup="dialog">カート <b id="cartCount">0</b></button>
   </header>
 
-  <section class="mobile-mode-bar" aria-label="商品表示モード">
-    <div class="mode-switch-group" role="group" aria-label="商品表示モード">
-      <button class="mode-switch-btn" type="button" data-mode-target="shop" aria-pressed="true">Shop</button>
-      <button class="mode-switch-btn" type="button" data-mode-target="archive" aria-pressed="false">Archive</button>
-    </div>
-  </section>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="overline">KISARAGI PRODUCT CATALOG</p>
-        <h1>選ぶ前に、<br><em>確かめる。</em></h1>
-        <p>品名・画像・参考価格と出典を確かめながら、気になる商品を選択リストへまとめられます。</p>
-        <div class="hero-actions"><a class="button primary" href="#catalog">商品を見る</a><a class="text-link" href="#catalog" data-mode-target="archive" aria-pressed="false">出典を見る</a></div>
+  <main id="top" data-age-protected inert aria-hidden="true">
+    <section class="retail-hero" aria-labelledby="retailHeroTitle">
+      <div class="retail-hero-copy">
+        <p class="overline">KISARAGI ONLINE CATALOG</p>
+        <h1 id="retailHeroTitle">商品を探す</h1>
+        <p>商品名、ブランド、商品コードから検索できます。まずは4つの商品区分からお選びください。</p>
       </div>
-      <figure class="hero-image"><img src="./assets/catalog/products/ua-terea-riviera-pearl.jpg" alt="顧客提供の加熱式たばこ製品パッケージ写真"><figcaption>掲載画像の状態は商品ごとに表示しています</figcaption></figure>
+      <nav class="retail-category-links" aria-label="商品区分から探す">
+        <a href="?category=cigarettes#catalog"><strong>紙巻きたばこ</strong><span>国内・輸入銘柄</span></a>
+        <a href="?category=heated#catalog"><strong>加熱式たばこ</strong><span>スティック・カプセル・デバイス</span></a>
+        <a href="?category=rolling#catalog"><strong>葉巻・手巻き</strong><span>葉巻・シャグ・パイプたばこ</span></a>
+        <a href="?category=goods#catalog"><strong>喫煙具</strong><span>ライター・灰皿・各種用品</span></a>
+      </nav>
     </section>
 
-    <section class="notice" aria-label="利用条件"><strong>20歳以上限定</strong><span>選択リストはこの端末内に保存されます。オンライン注文機能は現在準備中です。</span></section>
+    <section class="notice" aria-label="利用条件"><strong>20歳以上限定</strong><span>カートはこの端末に保存され、ページを再読み込みしても保持されます。</span></section>
 
     <section class="catalog section" id="catalog" aria-labelledby="catalogTitle">
-      <div class="section-heading"><p class="overline">PRODUCT DIRECTORY</p><h2 id="catalogTitle">商品案内</h2><p>掲載情報と参考価格を確認するための商品ディレクトリです。</p></div>
+      <div class="section-heading"><p class="overline">PRODUCT DIRECTORY</p><h2 id="catalogTitle">商品一覧</h2><p>検索と絞り込みを使って、商品をすばやく見つけられます。</p></div>
       <div class="filters" aria-label="商品検索">
         <label class="search"><span>商品名・ブランド・品番</span><input id="searchInput" type="search" placeholder="例：キャメル、TEREA"></label>
         <fieldset class="group-filter"><legend>商品区分</legend><div class="filter-options" id="groupFilters"></div></fieldset>
-        <label class="filter-select"><span>品類</span><select id="categoryFilter"></select></label>
+        <button class="filter-advanced-toggle" id="toggleAdvancedFilters" type="button" aria-expanded="false">カテゴリ・ブランドで絞り込む</button>
+        <label class="filter-select"><span>カテゴリ</span><select id="categoryFilter"></select></label>
         <label class="filter-select"><span>ブランド</span><select id="brandFilter"></select></label>
         <label class="filter-select" id="deviceFilterWrap" hidden><span>対応機種（商品名に明記）</span><select id="deviceFilter"></select></label>
         <button class="filter-reset" id="resetFilters" type="button">条件をクリア</button>
       </div>
       <div class="catalog-toolbar">
         <p class="result-count" id="resultCount" aria-live="polite"></p>
-        <label class="catalog-sort">並び替え<select id="sortOrder"><option value="source">資料順</option><option value="name">商品名順</option><option value="code">商品コード順</option></select></label>
+        <label class="catalog-sort">並び替え<select id="sortOrder"><option value="source">掲載順</option><option value="name">商品名順</option><option value="code">商品コード順</option></select></label>
       </div>
-      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <div class="product-grid" id="productGrid" aria-live="polite"><p class="catalog-loading" role="status">商品情報を読み込んでいます…</p></div>
       <button class="button quiet catalog-more" id="loadMoreProducts" type="button" hidden>さらに表示</button>
-      <p class="catalog-note">商品案内は選択用、資料庫は出典・詳細の確認用です。資料から自動読取した名称・価格は資料値で、現在の販売価格や在庫を示すものではありません。</p>
+      <p class="catalog-note">価格は各商品の表示内容をご確認ください。パッケージは予告なく変更される場合があります。</p>
     </section>
 
     <section class="guide section" id="guide" aria-labelledby="guideTitle">
       <div class="section-heading"><p class="overline">HOW IT WORKS</p><h2 id="guideTitle">ご利用前の確認</h2></div>
       <div class="guide-grid">
-        <article><span>1</span><h3>年齢を確認</h3><p>成人であることを確認して商品案内を閲覧します。</p></article>
-        <article><span>2</span><h3>選択リストへ追加</h3><p>気になる商品の数量と参考小計をこの端末内で確認します。</p></article>
-        <article><span>3</span><h3>資料を確認</h3><p>商品ごとの出典、資料日、画像状態を資料庫で確認します。</p></article>
+        <article><span>1</span><h3>商品を探す</h3><p>商品区分、ブランド、対応機種を選び、商品名やコードで検索します。</p></article>
+        <article><span>2</span><h3>商品情報を見る</h3><p>価格、規格、商品コードと掲載情報の出典を商品ごとに確認できます。</p></article>
+        <article><span>3</span><h3>カートへ追加</h3><p>気になる商品と数量をこの端末に保存し、まとめて確認できます。</p></article>
       </div>
     </section>
 
   </main>
 
-  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション">
+  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション" data-age-protected inert aria-hidden="true">
     <a href="./index.html">ホーム</a>
     <a href="./shop.html#catalog" aria-current="page">商品</a>
-    <a href="./checkout.html">選択</a>
-    <a href="./trust.html">案内</a>
+    <a href="./checkout.html">カート</a>
+    <a href="./account.html">会員</a>
   </nav>
 
-  <footer><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>RESEARCH ARCHIVE</small></span></a><p>20歳以上向けの商品案内です。オンライン注文機能は現在準備中です。</p><div class="footer-links"><a href="./checkout.html">選択リスト</a><a href="./trust.html">利用案内</a><a href="./admin/">管理者入口</a></div></footer>
+  <footer data-age-protected inert aria-hidden="true"><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><img src="./assets/tougu-mark.svg" alt=""></span><span class="brand-copy">KISARAGI<small>TOBACCO &amp; SMOKING GOODS</small></span></a><p>20歳以上の方を対象とした商品案内です。</p><div class="footer-links"><a href="./account.html">会員メニュー</a><a href="./checkout.html">カート</a><a href="./trust.html">ご利用ガイド</a></div></footer>
 
   <div class="backdrop" id="backdrop" hidden></div>
   <aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartPanelTitle" aria-hidden="true" inert>
-    <div class="panel-head"><h2 id="cartPanelTitle">選択リスト</h2><button class="icon-button" id="closeCart" type="button">閉じる</button></div>
+    <div class="panel-head"><h2 id="cartPanelTitle">カート</h2><button class="icon-button" id="closeCart" type="button">閉じる</button></div>
     <div id="cartItems" class="cart-items"></div>
-    <div class="cart-total"><span id="cartTotalLabel">商品小計（参考）</span><strong id="cartTotal">¥0</strong></div>
-    <a class="button primary full" id="startApplication" href="./checkout.html">選択リストを確認する</a>
-    <p class="panel-note" id="cartStorageNote">数量と参考小計はこの端末内に保存します。オンライン注文機能は現在準備中です。</p>
+    <div class="cart-total"><span id="cartTotalLabel">表示価格の小計</span><strong id="cartTotal">¥0</strong></div>
+    <a class="button primary full" id="startApplication" href="./checkout.html">カートを確認する</a>
+    <p class="panel-note" id="cartStorageNote">数量と表示小計はこの端末内に保存されます。</p>
   </aside>
   <div class="kisaragi-popover-backdrop" id="citationModal" role="dialog" aria-modal="true" aria-labelledby="citationTitle" aria-hidden="true">
     <section class="kisaragi-popover-card">
       <button type="button" class="kisaragi-popover-close" id="closeCitation" aria-label="閉じる">&times;</button>
-      <span class="kisaragi-popover-eyebrow">KISARAGI ARCHIVE / SOURCE</span>
+      <span class="kisaragi-popover-eyebrow">PRODUCT INFORMATION / SOURCE</span>
       <h2 class="kisaragi-popover-title" id="citationTitle"></h2>
       <dl class="kisaragi-popover-body" id="citationBody"></dl>
-      <a class="citation-source-link" id="citationSourceLink" target="_blank" rel="noopener noreferrer">資料掲載ページを開く</a>
+      <a class="citation-source-link" id="citationSourceLink" target="_blank" rel="noopener noreferrer">出典ページを開く</a>
     </section>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>try{if(sessionStorage.getItem('kisaragi-age-verified')==='1'){document.getElementById('ageGate').hidden=true;document.querySelectorAll('[data-age-protected]').forEach((element)=>{element.inert=false;element.removeAttribute('aria-hidden')});document.body.classList.remove('age-gate-locked','has-open-modal')}}catch{}</script>
 </body>
 </html>

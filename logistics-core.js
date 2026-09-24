@@ -17,9 +17,9 @@
   ]);
 
   const integrations = Object.freeze([
-    Object.freeze({id:'yamato', name:'ヤマト B2 Cloud API', status:'NOT_CONNECTED'}),
-    Object.freeze({id:'sagawa', name:'佐川 スマートAPI', status:'NOT_CONNECTED'}),
-    Object.freeze({id:'japanpost', name:'日本郵便 法人向け連携', status:'NOT_CONNECTED'})
+    Object.freeze({id:'yamato', name:'ヤマト運輸向け連携インターフェース', status:'INTERFACE_READY'}),
+    Object.freeze({id:'sagawa', name:'佐川急便向け連携インターフェース', status:'INTERFACE_READY'}),
+    Object.freeze({id:'japanpost', name:'日本郵便向け連携インターフェース', status:'INTERFACE_READY'})
   ]);
 
   const shippingMethod = (methodId) => shippingMethods.find((method) => method.id === methodId) || shippingMethods[0];

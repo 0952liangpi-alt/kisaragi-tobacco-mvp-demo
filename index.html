@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' http://127.0.0.1:8767; connect-src 'self' http://127.0.0.1:8767 http://127.0.0.1:8769; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
   <title>KISARAGI | 日本たばこ商品庫</title>
-  <meta name="description" content="KISARAGIの商品案内と資料庫。20歳以上の方が商品情報と出典を確認できるカタログサイトです。オンライン注文機能は準備中です。">
+  <meta name="description" content="KISARAGIの日本たばこ・喫煙具オンラインストア。商品をカテゴリー、ブランド、商品名から検索できます。">
   <meta name="theme-color" content="#f5f5f7">
+  <meta name="kisaragi-catalog-api" content="">
   <link rel="icon" href="./assets/tougu-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css?v=20260921-full-pack2">
   <link rel="stylesheet" href="./unified-site-shell.css?v=20260922-unified1">
@@ -17,14 +18,14 @@
 </head>
 <body>
   <a class="skip-link" href="#top">本文へ移動</a>
-  <div class="age" id="age" role="dialog" aria-modal="true" aria-labelledby="age-title"><div class="age-card"><span class="kicker">KISARAGI / 20+</span><h2 id="age-title">20歳以上の方のみ<br>ご覧いただけます。</h2><p>未成年者の喫煙は法律で禁じられています。本サイトは20歳以上の方に向けた商品案内です。オンライン注文機能は現在準備中です。</p><div class="age-actions"><button id="enter" type="button">20歳以上です</button><a href="https://www.google.com/">退出する</a></div></div></div>
-  <header><a class="brand" href="./index.html"><span class="tougu-mark"><img src="./assets/tougu-mark.svg" alt="東隅"></span><span>KISARAGI<small>RESEARCH ARCHIVE</small></span></a><nav class="unified-site-nav" aria-label="メインナビゲーション"><a href="./index.html" aria-current="page">ホーム</a><a href="./shop.html#catalog">商品案内</a><a href="./checkout.html">選択リスト</a><a href="./trust.html">利用案内</a></nav><a class="header-cta" href="./shop.html#catalog">商品を探す</a></header>
+  <div class="age" id="age" role="dialog" aria-modal="true" aria-labelledby="age-title"><div class="age-card"><span class="kicker">KISARAGI / 20+</span><h2 id="age-title">20歳以上の方のみ<br>ご利用いただけます。</h2><p>20歳未満の方へのたばこの販売は行っていません。年齢をご確認のうえお進みください。</p><div class="age-actions"><button id="enter" type="button">20歳以上です</button><a href="https://www.google.com/">退出する</a></div></div></div>
+  <header><a class="brand" href="./index.html"><span class="tougu-mark"><img src="./assets/tougu-mark.svg" alt="東隅"></span><span>KISARAGI<small>TOBACCO &amp; SMOKING GOODS</small></span></a><nav class="unified-site-nav" aria-label="メインナビゲーション"><a href="./index.html" aria-current="page">ホーム</a><a href="./shop.html#catalog">商品カテゴリー</a><a href="./account.html">会員メニュー</a><a href="./checkout.html">カート</a><a href="./trust.html">ご利用ガイド</a></nav><a class="header-cta" href="./shop.html#catalog">商品を探す</a></header>
   <main id="top" tabindex="-1">
     <section class="hero"></section><section class="statement"></section><section class="section category-section" id="categories"></section><section class="section" id="archive"></section><section class="value"></section><section class="section graph" id="graph"></section>
     <section class="section guide" id="guide"><div class="section-head"><div><span class="kicker">KISARAGI GUIDE</span><h2>知らない言葉を、<br>その場で理解する。</h2></div><p>商品を推薦するためではなく、分類や表示を正しく読むための基礎知識をまとめます。</p></div><div class="guide-grid"><article><b>01</b><h3>紙巻たばことは？</h3><p>基本的な構造と分類の見方。</p></article><article><b>02</b><h3>加熱式と電子たばこの違い</h3><p>仕組みとカテゴリー上の違い。</p></article><article><b>03</b><h3>タール・ニコチンの見方</h3><p>表示される数値をどう読むか。</p></article><article><b>04</b><h3>葉巻とシガリロの違い</h3><p>形状・分類上の基本的な違い。</p></article><article><b>05</b><h3>メンソールとは？</h3><p>商品分類で使われる表現を整理。</p></article><article><b>06</b><h3>出典の読み方</h3><p>KISARAGIが情報確認元を残す理由。</p></article></div></section>
-    <section class="about section" id="about"><div class="about-mark"><img src="./assets/tougu-mark.svg" alt="東隅"></div><div><span class="kicker">ABOUT KISARAGI / 東隅</span><h2>資料と商品案内を、<br>ひとつのサイトで。</h2><p>出典付きの資料庫で確認し、同じ商品データを使う商品案内で選択できます。</p><p>商品情報と選択リストをご利用いただけます。会員登録、年齢・本人確認、配送、決済を含むオンライン注文機能は現在準備中です。</p></div></section>
-    <section class="contact section" id="contact"><span class="kicker">CONTACT / BUSINESS INQUIRY</span><h2>資料提供・掲載内容・<br>業務利用について。</h2><p>掲載情報の訂正、権利に関するご連絡、店舗・卸売向けのデモ相談窓口は現在準備中です。</p><span class="contact-status">お問い合わせ窓口 準備中</span></section>
+    <section class="about section" id="about"><div class="about-mark"><img src="./assets/tougu-mark.svg" alt="東隅"></div><div><span class="kicker">ABOUT KISARAGI / 東隅</span><h2>たばこ・喫煙具を、<br>探しやすく。</h2><p>紙巻たばこ、加熱式たばこ、手巻き・葉巻、ライター・喫煙具を、カテゴリーとブランドから探せます。</p></div></section>
+    <section class="contact section" id="contact"><span class="kicker">CUSTOMER SUPPORT</span><h2>ご利用について。</h2><p>配送、お支払い、返品、会員情報については、ご利用ガイドをご確認ください。</p><a class="contact-status" href="./trust.html">ご利用ガイドを見る</a></section>
   </main>
-  <footer><div class="brand"><span class="tougu-mark"><img src="./assets/tougu-mark.svg" alt="東隅"></span><span>KISARAGI<small>RESEARCH ARCHIVE</small></span></div><p>20歳以上限定 · 商品情報と選択リスト</p><div><a href="./shop.html#catalog">商品案内</a><a href="./checkout.html">選択リスト</a><a href="./trust.html">利用案内</a><a href="./admin/">管理者入口</a><a href="#top">TOP ↑</a></div><small>© 2026 KISARAGI.</small></footer>
-  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション"><a href="./index.html" aria-current="page">ホーム</a><a href="./shop.html#catalog">商品</a><a href="./checkout.html">選択</a><a href="./trust.html">案内</a></nav>
+  <footer><div class="brand"><span class="tougu-mark"><img src="./assets/tougu-mark.svg" alt="東隅"></span><span>KISARAGI<small>TOBACCO &amp; SMOKING GOODS</small></span></div><p>20歳以上の方限定</p><div><a href="./shop.html#catalog">商品カテゴリー</a><a href="./account.html">会員メニュー</a><a href="./checkout.html">カート</a><a href="./trust.html">ご利用ガイド</a><a href="#top">TOP ↑</a></div><small>© 2026 KISARAGI.</small></footer>
+  <nav class="unified-mobile-dock" data-items="4" aria-label="モバイルナビゲーション"><a href="./index.html" aria-current="page">ホーム</a><a href="./shop.html#catalog">商品</a><a href="./checkout.html">カート</a><a href="./account.html">会員</a></nav>
 </body></html>
