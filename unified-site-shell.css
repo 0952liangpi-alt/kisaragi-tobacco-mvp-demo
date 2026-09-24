@@ -152,12 +152,6 @@ body:has(.retail-home) .age > .age-card,
     will-change: transform;
   }
 
-  .unified-mobile-dock.is-scrolling-away {
-    --dock-shift-y: calc(100% + 28px);
-    opacity: 0;
-    pointer-events: none;
-  }
-
   .unified-mobile-dock a,
   .unified-mobile-dock a:visited,
   .unified-mobile-dock button {
