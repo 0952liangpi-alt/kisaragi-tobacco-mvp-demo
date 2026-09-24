@@ -170,8 +170,8 @@ body:has(.retail-home) .age > .age-card,
     gap: 2px;
     padding: .35rem .2rem;
     border-radius: 16px;
-    color: #6e6e73;
-    font-size: clamp(.64rem, 2.6vw, .72rem);
+    color: #48484a;
+    font-size: clamp(.7rem, 2.6vw, .74rem);
     font-weight: 650;
     line-height: 1.1;
     text-align: center;

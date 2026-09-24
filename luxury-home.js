@@ -13,6 +13,10 @@
   };
 
   const productImage = (product) => product.image?.file_path || product.images?.[0]?.file_path || '';
+  const featuredImageExclusions = new Set([
+    'ua-terea-riviera-pearl',
+    'ua-iqos-iluma-prime-clear-blue',
+  ]);
   const productPrice = (product) => {
     const amount = product.official_catalog_price_jpy ?? product.price_jpy;
     if (Number.isFinite(amount)) return `&yen;${Number(amount).toLocaleString('ja-JP')}`;
@@ -65,6 +69,7 @@
       const price = product.official_catalog_price_jpy ?? product.price_jpy;
       return productImage(product)
         && Number.isFinite(price)
+        && !featuredImageExclusions.has(product.id)
         && product.status !== 'IDENTITY_PENDING'
         && !String(product.product_name_ja || '').includes('確認待ち');
     });
